@@ -40,8 +40,13 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMaUser = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripHoTen = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripNhomPhanQuyen = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -124,13 +129,46 @@
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMaUser,
+            this.toolStripHoTen,
+            this.toolStripNhomPhanQuyen});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 403);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(825, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMaUser
+            // 
+            this.toolStripMaUser.Name = "toolStripMaUser";
+            this.toolStripMaUser.Size = new System.Drawing.Size(65, 20);
+            this.toolStripMaUser.Text = "MAUSER";
+            // 
+            // toolStripHoTen
+            // 
+            this.toolStripHoTen.Name = "toolStripHoTen";
+            this.toolStripHoTen.Size = new System.Drawing.Size(57, 20);
+            this.toolStripHoTen.Text = "HOTEN";
+            // 
+            // toolStripNhomPhanQuyen
+            // 
+            this.toolStripNhomPhanQuyen.Name = "toolStripNhomPhanQuyen";
+            this.toolStripNhomPhanQuyen.Size = new System.Drawing.Size(134, 20);
+            this.toolStripNhomPhanQuyen.Text = "NHOM_PHANQUYEN";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 427);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.Ribbon = this.ribbonControl1;
             this.Text = "TN_CSDLPT_NOV09";
@@ -138,6 +176,8 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,6 +196,10 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory1;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        public  System.Windows.Forms.ToolStripMenuItem toolStripMaUser;
+        public  System.Windows.Forms.ToolStripMenuItem toolStripHoTen;
+        public  System.Windows.Forms.ToolStripMenuItem toolStripNhomPhanQuyen;
     }
 }
 
