@@ -78,6 +78,7 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = barButtonPhucHoi.Enabled = true;
             barButtonHuy.Enabled = true;
+            textBoxMaMonHoc.Enabled = true;
             monHocGridControl.Enabled = false;
         }
         
@@ -89,6 +90,8 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = barButtonPhucHoi.Enabled = true;
             barButtonHuy.Enabled = true;
+
+            textBoxMaMonHoc.Enabled = false;
             monHocGridControl.Enabled = false;
         }
 
@@ -221,8 +224,16 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
-            //check trùng mã
+            //check trùng mã môn học
+            String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + textBoxMaMonHoc.Text.Trim() +"'";
 
+            int kq = Program.ExecSqlNonQuery(strLenh);
+            if (kq == 1)
+            {
+                textBoxMaMonHoc.Focus();
+                return;
+            }
+          
             try
             {
                 bindingSourceMonHoc.EndEdit();
@@ -233,7 +244,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không thể ghi môn học, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                MessageBox.Show("Không thể ghi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
                 this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
                 return;
             }

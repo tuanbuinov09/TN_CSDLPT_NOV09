@@ -103,6 +103,16 @@ namespace TN_CSDLPT_NOV09.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_maybe_64px_3 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_maybe_64px_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_multiply_32px_1 {
             get {
                 object obj = ResourceManager.GetObject("icons8_multiply_32px_1", resourceCulture);

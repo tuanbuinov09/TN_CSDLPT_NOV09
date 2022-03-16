@@ -42,7 +42,6 @@
             this.barButtonQuanLyCauHoi = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -82,6 +81,7 @@
             this.barButtonQuanLyGiaoVien,
             this.barButtonQuanLyCauHoi});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.MaximumSize = new System.Drawing.Size(2000, 1500);
             this.ribbonControl1.MaxItemId = 11;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
@@ -92,6 +92,7 @@
             this.ribbonPage4,
             this.ribbonPage3});
             this.ribbonControl1.Size = new System.Drawing.Size(825, 158);
+            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // barButtonDangNhap
             // 
@@ -117,12 +118,14 @@
             this.barButtonDangXuat.Caption = "Đăng xuất";
             this.barButtonDangXuat.Id = 4;
             this.barButtonDangXuat.Name = "barButtonDangXuat";
+            this.barButtonDangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonDangXuat_ItemClick);
             // 
             // barButtonQuanLyMonHoc
             // 
             this.barButtonQuanLyMonHoc.Caption = "Môn học";
             this.barButtonQuanLyMonHoc.Id = 5;
             this.barButtonQuanLyMonHoc.Name = "barButtonQuanLyMonHoc";
+            this.barButtonQuanLyMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonQuanLyMonHoc_ItemClick);
             // 
             // barButtonQuanLyKhoa
             // 
@@ -162,18 +165,10 @@
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
             this.ribbonPageGroup2,
             this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Hệ thống";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.AllowTextClipping = false;
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonDangNhap);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "_________";
             // 
             // ribbonPageGroup2
             // 
@@ -323,7 +318,6 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem barButtonDangNhap;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonDangKy;
