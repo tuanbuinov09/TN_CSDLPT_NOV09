@@ -31,7 +31,7 @@
             this.comboBoxCoSo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxTenDangNhap = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelTenDangNhap = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonDangNhap = new System.Windows.Forms.Button();
             this.textBoxMatKhau = new System.Windows.Forms.TextBox();
@@ -67,18 +67,16 @@
             this.textBoxTenDangNhap.Name = "textBoxTenDangNhap";
             this.textBoxTenDangNhap.Size = new System.Drawing.Size(209, 21);
             this.textBoxTenDangNhap.TabIndex = 2;
-            this.textBoxTenDangNhap.TextChanged += new System.EventHandler(this.textBoxTenDangNhap_TextChanged);
             // 
-            // label2
+            // labelTenDangNhap
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(35, 92);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 14);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tên đăng nhập";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.labelTenDangNhap.AutoSize = true;
+            this.labelTenDangNhap.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTenDangNhap.Location = new System.Drawing.Point(35, 92);
+            this.labelTenDangNhap.Name = "labelTenDangNhap";
+            this.labelTenDangNhap.Size = new System.Drawing.Size(91, 14);
+            this.labelTenDangNhap.TabIndex = 3;
+            this.labelTenDangNhap.Text = "Tên đăng nhập";
             // 
             // label3
             // 
@@ -89,7 +87,6 @@
             this.label3.Size = new System.Drawing.Size(57, 14);
             this.label3.TabIndex = 5;
             this.label3.Text = "Mật khẩu";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // buttonDangNhap
             // 
@@ -108,7 +105,6 @@
             this.textBoxMatKhau.Name = "textBoxMatKhau";
             this.textBoxMatKhau.Size = new System.Drawing.Size(209, 21);
             this.textBoxMatKhau.TabIndex = 9;
-            this.textBoxMatKhau.TextChanged += new System.EventHandler(this.textBoxMatKhau_TextChanged);
             // 
             // radioButtonSinhVien
             // 
@@ -154,7 +150,7 @@
             this.Controls.Add(this.textBoxMatKhau);
             this.Controls.Add(this.buttonDangNhap);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelTenDangNhap);
             this.Controls.Add(this.textBoxTenDangNhap);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxCoSo);
@@ -173,7 +169,7 @@
         private System.Windows.Forms.ComboBox comboBoxCoSo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxTenDangNhap;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelTenDangNhap;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonDangNhap;
         private System.Windows.Forms.TextBox textBoxMatKhau;

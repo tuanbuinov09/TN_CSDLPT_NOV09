@@ -1,7 +1,4 @@
-﻿using DevExpress.Skins;
-using DevExpress.UserSkins;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -32,8 +29,9 @@ namespace TN_CSDLPT_NOV09
         public static String passwordDN = "";
         public static String mGroup = "";
         public static String mHoTen = "";
-        public static String mCoSo = "";
+        public static int mCoSo = -1;
 
+        public static String maSinhVien = "";
         public static BindingSource bds_DanhSachPhanManh = new BindingSource();
 
         public static FormMain formChinh;
