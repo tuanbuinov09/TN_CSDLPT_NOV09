@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 
 namespace TN_CSDLPT_NOV09.views
@@ -37,7 +30,7 @@ namespace TN_CSDLPT_NOV09.views
         private void comboBoxCoSo_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show(comboBoxCoSo.SelectedValue + "");
-            Program.servername = comboBoxCoSo.SelectedValue +"";
+            Program.servername = comboBoxCoSo.SelectedValue + "";
         }
 
         private void LayDanhSachPhanManh(String cmd)
@@ -83,73 +76,104 @@ namespace TN_CSDLPT_NOV09.views
                 MessageBox.Show("Tên đăng nhập và mật khẩu không được bỏ trống", "", MessageBoxButtons.OK);
                 return;
             }
-            Program.mlogin = textBoxTenDangNhap.Text.Trim();
-            Program.password = textBoxMatKhau.Text.Trim();
-            if (Program.KetNoi() == 0)
-            {
-                return;
-            }
-            Program.mCoSo = comboBoxCoSo.Text;
-            Program.mLoginDN = Program.mlogin;
-            Program.passwordDN = Program.password;
-            String strLenh = "EXEC SP_LAY_TT_GIANGVIEN_LOGIN '" + Program.mlogin + "'";
-            Program.myReader = Program.ExecSqlDataReader(strLenh);
-
-            if (Program.myReader == null)
-            {
-                return;
-            }
-            Program.myReader.Read();
-
-            Program.username = Program.myReader.GetString(0);
-            if (Convert.IsDBNull(Program.username))
-            {
-                MessageBox.Show("Ten dang nhap ban dung khong co quyen truy cap du lieu\nHay xem lai ten dang nhap va mat khau", "", MessageBoxButtons.OK);
-                return;
-            }
-            Program.mHoTen = Program.myReader.GetString(1);
-            Program.mGroup = Program.myReader.GetString(2);
-            Program.myReader.Close();
-            Program.conn.Close();
-
-            Program.formChinh.toolStripMaUser.Text = Program.username;
-            Program.formChinh.toolStripHoTen.Text = Program.mHoTen;
-            Program.formChinh.toolStripNhomPhanQuyen.Text = Program.mGroup;
-
             if (radioButtonGiangVien.Checked)
             {
+                Program.mlogin = textBoxTenDangNhap.Text.Trim();
+                Program.password = textBoxMatKhau.Text.Trim();
+                if (Program.KetNoi() == 0)
+                {
+                    return;
+                }
+                Program.mCoSo = comboBoxCoSo.SelectedIndex;
+                Program.mLoginDN = Program.mlogin;
+                Program.passwordDN = Program.password;
+                String strLenh = "EXEC SP_LAY_TT_GIANGVIEN_LOGIN '" + Program.mlogin + "'";
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
 
+                if (Program.myReader == null)
+                {
+                    return;
+                }
+                Program.myReader.Read();
+
+                Program.username = Program.myReader.GetString(0);
+                if (Convert.IsDBNull(Program.username))
+                {
+                    MessageBox.Show("Ten dang nhap ban dung khong co quyen truy cap du lieu\nHay xem lai ten dang nhap va mat khau", "", MessageBoxButtons.OK);
+                    return;
+                }
+                Program.mHoTen = Program.myReader.GetString(1);
+                Program.mGroup = Program.myReader.GetString(2);
+                Program.myReader.Close();
+                Program.conn.Close();
+
+                Program.formChinh.toolStripMaUser.Text = Program.username;
+                Program.formChinh.toolStripHoTen.Text = Program.mHoTen;
+                Program.formChinh.toolStripNhomPhanQuyen.Text = Program.mGroup;
             }
+            if (radioButtonSinhVien.Checked)
+            {
+                Program.mlogin = "sv_dungchung";
+                Program.password = "123";
+                if (Program.KetNoi() == 0)
+                {
+                    return;
+                }
+                Program.mCoSo = comboBoxCoSo.SelectedIndex;
+                Program.mLoginDN = Program.mlogin;
+                Program.passwordDN = Program.password;
+                String strLenh = "EXEC SP_LAY_TT_SV '" 
+                    + textBoxTenDangNhap.Text.Trim() + "', '"+textBoxMatKhau.Text.Trim()+"'";
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+
+                if (Program.myReader == null)
+                {
+                    
+                    return;
+                }
+
+                Program.myReader.Read();
+
+                //Program.username = Program.myReader.GetString(0);
+                try
+                {
+                    Program.maSinhVien = Program.myReader.GetString(0);
+                    Program.mHoTen = Program.myReader.GetString(1);
+                    Program.mGroup = "SINHVIEN";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đăng nhập không thành công, xem lại mã sinh viên và mật khẩu:" 
+                        + ex.Message,"Lỗi", MessageBoxButtons.OK);
+                    return;
+                }
+
+                if (Convert.IsDBNull(Program.username))
+                {
+                    MessageBox.Show("Ten dang nhap ban dung khong co quyen truy cap du lieu\nHay xem lai ten dang nhap va mat khau", "", MessageBoxButtons.OK);
+                    return;
+                }
+
+                
+                Program.myReader.Close();
+                Program.conn.Close();
+
+                Program.formChinh.toolStripMaUser.Text = Program.maSinhVien;
+                Program.formChinh.toolStripHoTen.Text = Program.mHoTen;
+                Program.formChinh.toolStripNhomPhanQuyen.Text = Program.mGroup;
+            }
+
         }
 
         private void radioButtonGiangVien_CheckedChanged(object sender, EventArgs e)
         {
-
+            labelTenDangNhap.Text = "Tên đăng nhập";
         }
 
         private void radioButtonSinhVien_CheckedChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxMatKhau_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxTenDangNhap_TextChanged(object sender, EventArgs e)
-        {
-
+            labelTenDangNhap.Text = "Mã sinh viên";
         }
     }
+
 }
