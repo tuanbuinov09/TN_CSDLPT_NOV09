@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+//@author tuanbuinov09
 namespace TN_CSDLPT_NOV09.views
 {
     public partial class FormDangNhap : DevExpress.XtraEditors.XtraForm
@@ -99,7 +99,7 @@ namespace TN_CSDLPT_NOV09.views
                 Program.username = Program.myReader.GetString(0);
                 if (Convert.IsDBNull(Program.username))
                 {
-                    MessageBox.Show("Ten dang nhap ban dung khong co quyen truy cap du lieu\nHay xem lai ten dang nhap va mat khau", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Tài khoản bạn dùng không có quyền truy cập dữ liệu\nXem lại tên đăng nhập và mật khẩu", "", MessageBoxButtons.OK);
                     return;
                 }
                 Program.mHoTen = Program.myReader.GetString(1);
@@ -128,7 +128,6 @@ namespace TN_CSDLPT_NOV09.views
 
                 if (Program.myReader == null)
                 {
-                    
                     return;
                 }
 
@@ -150,7 +149,7 @@ namespace TN_CSDLPT_NOV09.views
 
                 if (Convert.IsDBNull(Program.username))
                 {
-                    MessageBox.Show("Ten dang nhap ban dung khong co quyen truy cap du lieu\nHay xem lai ten dang nhap va mat khau", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Tài khoản bạn dùng không có quyền truy cập dữ liệu\nXem lại tên đăng nhập và mật khẩu", "", MessageBoxButtons.OK);
                     return;
                 }
 
@@ -161,8 +160,11 @@ namespace TN_CSDLPT_NOV09.views
                 Program.formChinh.toolStripMaUser.Text = Program.maSinhVien;
                 Program.formChinh.toolStripHoTen.Text = Program.mHoTen;
                 Program.formChinh.toolStripNhomPhanQuyen.Text = Program.mGroup;
-            }
 
+            }
+            this.Hide();
+            Program.formChinh.Show();
+            //Program.formChinh.Show();
         }
 
         private void radioButtonGiangVien_CheckedChanged(object sender, EventArgs e)
@@ -173,6 +175,16 @@ namespace TN_CSDLPT_NOV09.views
         private void radioButtonSinhVien_CheckedChanged(object sender, EventArgs e)
         {
             labelTenDangNhap.Text = "Mã sinh viên";
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

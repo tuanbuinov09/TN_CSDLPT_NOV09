@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using TN_CSDLPT_NOV09.views;
 
 namespace TN_CSDLPT_NOV09
 {
@@ -35,7 +36,7 @@ namespace TN_CSDLPT_NOV09
         public static BindingSource bds_DanhSachPhanManh = new BindingSource();
 
         public static FormMain formChinh;
-
+        public static FormDangNhap formDangNhap;
         public static int KetNoi()
         {
             if (Program.conn != null && Program.conn.State == ConnectionState.Open)
@@ -84,6 +85,30 @@ namespace TN_CSDLPT_NOV09
             return dt;
         }
 
+        public static int ExecSqlNonQuery(String strlenh)
+        {
+
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlCommand Sqlcmd = new SqlCommand(strlenh, conn);
+            Sqlcmd.CommandType = CommandType.Text;
+            Sqlcmd.CommandTimeout = 300;// 5 phut 
+            try
+            {
+                Sqlcmd.ExecuteNonQuery();
+
+                return 0;
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                conn.Close();
+                return ex.State; // lấy trạng thái lỗi gởi từ RAISERROR trong SQL Server qua
+            }
+        }
         [STAThread]
 
         static void Main()
@@ -91,9 +116,9 @@ namespace TN_CSDLPT_NOV09
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             formChinh = new FormMain();
-            Application.Run(formChinh);
-            /*Application.Run(new FormMain());*/
-            /*Application.Run(new FormDangNhap());*/
+            formDangNhap = new FormDangNhap();
+            Application.Run(formDangNhap);
+            //Application.Run(formChinh);
         }
     }
 }

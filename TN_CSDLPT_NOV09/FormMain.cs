@@ -18,14 +18,14 @@ namespace TN_CSDLPT_NOV09
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            Form frm = this.CheckExists(typeof(FormDangNhap));
-            if (frm != null) frm.Activate();
-            else
-            {
-                FormDangNhap f = new FormDangNhap();
-                f.MdiParent = this;
-                f.Show();
-            }
+            //Form frm = this.CheckExists(typeof(FormDangNhap));
+            //if (frm != null) frm.Activate();
+            //else
+            //{
+            //    FormDangNhap f = new FormDangNhap();
+            //    f.MdiParent = this;
+            //    f.Show();
+            //}
         }
 
         private Form CheckExists(Type ftype)
@@ -46,6 +46,53 @@ namespace TN_CSDLPT_NOV09
                 f.MdiParent = this;
                 f.Show();
             }
+        }
+        //private void showFormDangNhapTrenFormMain()
+        //{
+        //    Form frm = this.CheckExists(typeof(FormDangNhap));
+        //    if (frm != null) frm.Activate();
+        //    else
+        //    {
+        //        FormDangNhap f = new FormDangNhap();
+        //        f.MdiParent = this;
+        //        f.Show();
+        //    }
+        //}
+        private void barButtonQuanLyMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //if (Program.mGroup == "")
+            //{
+            //    showFormDangNhap();
+            //    return;
+            //}
+            Form frm = this.CheckExists(typeof(FormMonHoc));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormMonHoc f = new FormMonHoc();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Program.username = "";
+            Program.maSinhVien = "";
+            Program.mHoTen = "";
+            Program.mGroup = "";
+            Program.mlogin = "";
+            Program.password = "";
+            Program.mLoginDN = "";
+            Program.passwordDN = "";
+            this.Hide();
+            Program.formDangNhap.textBoxMatKhau.Text = "";
+            Program.formDangNhap.Show();
+        }
+
+        private void ribbonControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

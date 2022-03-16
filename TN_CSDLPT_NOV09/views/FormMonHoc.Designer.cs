@@ -40,9 +40,9 @@
             this.barButtonGhi = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonXoa = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonPhucHoi = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonReload = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonThoat = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonHuy = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -60,14 +60,14 @@
             this.tableAdapterGiaoVienDangKy = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
             this.monHocGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControlNhapLieu = new DevExpress.XtraEditors.PanelControl();
             this.textBoxTenMonHoc = new System.Windows.Forms.TextBox();
             this.textBoxMaMonHoc = new System.Windows.Forms.TextBox();
             this.bindingSourceGiaoVienDangKy = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceBoDe = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceBangDiem = new System.Windows.Forms.BindingSource(this.components);
+            this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
             mAMHLabel = new System.Windows.Forms.Label();
             tENMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -190,6 +190,14 @@
             this.barButtonPhucHoi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonPhucHoi.ImageOptions.Image")));
             this.barButtonPhucHoi.Name = "barButtonPhucHoi";
             // 
+            // barButtonHuy
+            // 
+            this.barButtonHuy.Caption = "Hủy";
+            this.barButtonHuy.Id = 8;
+            this.barButtonHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonHuy.ImageOptions.Image")));
+            this.barButtonHuy.Name = "barButtonHuy";
+            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
+            // 
             // barButtonReload
             // 
             this.barButtonReload.Caption = "Reload";
@@ -204,14 +212,6 @@
             this.barButtonThoat.Id = 6;
             this.barButtonThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonThoat.ImageOptions.Image")));
             this.barButtonThoat.Name = "barButtonThoat";
-            // 
-            // barButtonHuy
-            // 
-            this.barButtonHuy.Caption = "Hủy";
-            this.barButtonHuy.Id = 8;
-            this.barButtonHuy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonHuy.ImageOptions.Image")));
-            this.barButtonHuy.Name = "barButtonHuy";
-            this.barButtonHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonHuy_ItemClick);
             // 
             // barDockControl1
             // 
@@ -342,20 +342,6 @@
             this.gridView1.GridControl = this.monHocGridControl;
             this.gridView1.Name = "gridView1";
             // 
-            // colMAMH
-            // 
-            this.colMAMH.FieldName = "MAMH";
-            this.colMAMH.Name = "colMAMH";
-            this.colMAMH.Visible = true;
-            this.colMAMH.VisibleIndex = 0;
-            // 
-            // colTENMH
-            // 
-            this.colTENMH.FieldName = "TENMH";
-            this.colTENMH.Name = "colTENMH";
-            this.colTENMH.Visible = true;
-            this.colTENMH.VisibleIndex = 1;
-            // 
             // panelControlNhapLieu
             // 
             this.panelControlNhapLieu.Controls.Add(tENMHLabel);
@@ -398,6 +384,20 @@
             // 
             this.bindingSourceBangDiem.DataMember = "FK_BANGDIEM_MONHOC";
             this.bindingSourceBangDiem.DataSource = this.bindingSourceMonHoc;
+            // 
+            // colMAMH
+            // 
+            this.colMAMH.FieldName = "MAMH";
+            this.colMAMH.Name = "colMAMH";
+            this.colMAMH.Visible = true;
+            this.colMAMH.VisibleIndex = 0;
+            // 
+            // colTENMH
+            // 
+            this.colTENMH.FieldName = "TENMH";
+            this.colTENMH.Name = "colTENMH";
+            this.colTENMH.Visible = true;
+            this.colTENMH.VisibleIndex = 1;
             // 
             // FormMonHoc
             // 
@@ -461,8 +461,6 @@
         private TN_CSDLPT_DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl monHocGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAMH;
-        private DevExpress.XtraGrid.Columns.GridColumn colTENMH;
         private DevExpress.XtraEditors.PanelControl panelControlNhapLieu;
         private System.Windows.Forms.TextBox textBoxTenMonHoc;
         private System.Windows.Forms.TextBox textBoxMaMonHoc;
@@ -473,5 +471,7 @@
         private TN_CSDLPT_DataSetTableAdapters.BANGDIEMTableAdapter tableAdapterBangDiem;
         private System.Windows.Forms.BindingSource bindingSourceBangDiem;
         private DevExpress.XtraBars.BarButtonItem barButtonHuy;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAMH;
+        private DevExpress.XtraGrid.Columns.GridColumn colTENMH;
     }
 }
