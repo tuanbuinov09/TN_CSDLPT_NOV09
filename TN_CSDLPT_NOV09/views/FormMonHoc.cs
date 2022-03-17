@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.XtraGrid.Views.Base;
+using System;
+using System.Collections;
 using System.Data;
 using System.Windows.Forms;
 
@@ -11,6 +13,9 @@ namespace TN_CSDLPT_NOV09.views
             InitializeComponent();
         }
 
+        ArrayList undoCommands = new ArrayList();
+        ArrayList redoCommands = new ArrayList();
+
         private void mONHOCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -18,7 +23,7 @@ namespace TN_CSDLPT_NOV09.views
             this.tableAdapterManager.UpdateAll(this.TN_CSDLPT_DataSet);
 
         }
-
+        String mode = "";
         int vitri = -1;
         String maCoSo;
 
@@ -57,7 +62,17 @@ namespace TN_CSDLPT_NOV09.views
                 comboBoxCoSo.Enabled = false;
 
                 barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled
-                     = barButtonGhi.Enabled = barButtonPhucHoi.Enabled = true;
+                     = barButtonGhi.Enabled = true;
+
+                if (undoCommands.Count > 0)
+                {
+                    barButtonPhucHoi.Enabled = true;
+                }
+                else
+                {
+                    barButtonPhucHoi.Enabled = false;
+                }
+
                 barButtonHuy.Enabled = false;
             }
             panelControlNhapLieu.Enabled = false;
@@ -71,24 +86,44 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            mode = "them";
             vitri = bindingSourceMonHoc.Position;
             panelControlNhapLieu.Enabled = true;
             bindingSourceMonHoc.AddNew();
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
-            barButtonGhi.Enabled = barButtonPhucHoi.Enabled = true;
+            barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
             textBoxMaMonHoc.Enabled = true;
             monHocGridControl.Enabled = false;
         }
         
         private void barButtonSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            mode = "sua";
             vitri = bindingSourceMonHoc.Position;
             panelControlNhapLieu.Enabled = true;
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
-            barButtonGhi.Enabled = barButtonPhucHoi.Enabled = true;
+            barButtonGhi.Enabled = true;
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
+
             barButtonHuy.Enabled = true;
 
             textBoxMaMonHoc.Enabled = false;
@@ -167,7 +202,9 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            mode = "xoa";
             String maMonHoc = "";
+            String tenMonHoc = "";
             if (bindingSourceBangDiem.Count > 0)
             {
                 MessageBox.Show("Không thể xóa môn này vì đã có bảng điểm", "", MessageBoxButtons.OK);
@@ -185,12 +222,13 @@ namespace TN_CSDLPT_NOV09.views
             }
             
             int xacNhanXoa = (int) MessageBox.Show("Bạn có chắc muốn xóa môn học này?", "Xác nhận", MessageBoxButtons.OKCancel);
-            if(xacNhanXoa == (int)DialogResult.OK)
+            if(xacNhanXoa == (int) DialogResult.OK)
             {
                 try
                 {
                     maMonHoc = (String)((DataRowView)bindingSourceMonHoc[bindingSourceMonHoc.Position])["MAMH"].ToString();
-
+                    //lấy tên môn học để undo redo
+                    tenMonHoc = (String)((DataRowView)bindingSourceMonHoc[bindingSourceMonHoc.Position])["TENMH"].ToString(); 
                     bindingSourceMonHoc.RemoveCurrent();
                     this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
@@ -207,40 +245,63 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonXoa.Enabled = false;
             }
+
+            undoCommands.Add("EXEC SP_THEM_MONHOC '" + maMonHoc + "','" + tenMonHoc + "'");
+
+            mode = "";
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
         }
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (textBoxMaMonHoc.Text.Trim() == "")
+            String maMonHoc = textBoxMaMonHoc.Text.Trim();
+            String tenMonHocLucChuaSua  = (String)((DataRowView)bindingSourceMonHoc[bindingSourceMonHoc.Position])["TENMH"].ToString();
+            String tenMonHocChuanBiSua = textBoxTenMonHoc.Text.Trim();
+            if (maMonHoc == "")
             {
                 MessageBox.Show("Mã môn học không được bỏ trống", "", MessageBoxButtons.OK);
                 textBoxMaMonHoc.Focus();
                 return;
             }
-            if (textBoxTenMonHoc.Text.Trim() == "")
+            // lưu ý tenMonHocChuanBiSua cũng là chuẩn bị thêm
+            if (tenMonHocChuanBiSua == "")
             {
                 MessageBox.Show("Tên môn học không được bỏ trống", "", MessageBoxButtons.OK);
                 textBoxMaMonHoc.Focus();
                 return;
             }
 
-            //check trùng mã môn học
-            String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + textBoxMaMonHoc.Text.Trim() +"'";
-
-            int kq = Program.ExecSqlNonQuery(strLenh);
-            if (kq == 1)
+            //check trùng mã môn học khi thêm
+            if (mode == "them")
             {
-                textBoxMaMonHoc.Focus();
-                return;
+                String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + maMonHoc + "', '"+tenMonHocChuanBiSua+"'";
+
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1)
+                {
+                    textBoxMaMonHoc.Focus();
+                    return;
+                }
+                if(kq == 2)
+                {
+                    textBoxTenMonHoc.Focus();
+                    return;
+                }
             }
-          
+            
             try
             {
                 bindingSourceMonHoc.EndEdit();
                 bindingSourceMonHoc.ResetCurrentItem();
                 this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
                 this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
-
             }
             catch (Exception ex)
             {
@@ -249,13 +310,98 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
+            if (mode == "them")
+            {
+                undoCommands.Add("EXEC SP_XOA_MONHOC '" + maMonHoc + "'");
+            }
+            if (mode == "sua")
+            {
+                undoCommands.Add("EXEC SP_SUA_MONHOC '" + maMonHoc + "','" + tenMonHocLucChuaSua + "'");
+            }
+            
+            mode = "";
+
+           
+
             panelControlNhapLieu.Enabled = false;
             monHocGridControl.Enabled = true;
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
-            barButtonPhucHoi.Enabled = true;
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
             barButtonHuy.Enabled = false;
+        }
+
+        private void barButtonPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String strLenh = (String) undoCommands[undoCommands.Count-1];
+           
+            try
+            {
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+                Program.myReader.Read();
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                return;
+            }
+
+            // lấy ra mã môn học bị ảnh hưởng khi undo
+            String affected_id = "";
+            try
+            {
+                affected_id = Program.myReader.GetString(0).Trim();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Không lấy được mã môn bị ảnh hưởng\n" + ex.Message, "", MessageBoxButtons.OK);
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                //return;
+            }
+           
+
+            Program.myReader.Close();
+            Program.conn.Close();
+
+            //hiển thị lại bảng
+            try
+            {
+                this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+            
+
+            if (affected_id != "" || affected_id != null)
+            {
+               int row = gridViewMonHoc.LocateByValue("MAMH" ,affected_id);
+               gridViewMonHoc.FocusedRowHandle = row;
+               bindingSourceMonHoc.Position = bindingSourceMonHoc.Find("MAMH", affected_id);
+            }
+            
+            //loại bỏ lệnh cần undo ở cuối undoCommands
+            undoCommands.RemoveAt(undoCommands.Count - 1);
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
         }
     }
 }

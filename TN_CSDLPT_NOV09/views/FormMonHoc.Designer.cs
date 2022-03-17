@@ -59,15 +59,15 @@
             this.tableAdapterBoDe = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.BODETableAdapter();
             this.tableAdapterGiaoVienDangKy = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
             this.monHocGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewMonHoc = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControlNhapLieu = new DevExpress.XtraEditors.PanelControl();
             this.textBoxTenMonHoc = new System.Windows.Forms.TextBox();
             this.textBoxMaMonHoc = new System.Windows.Forms.TextBox();
             this.bindingSourceGiaoVienDangKy = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceBoDe = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceBangDiem = new System.Windows.Forms.BindingSource(this.components);
-            this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTENMH = new DevExpress.XtraGrid.Columns.GridColumn();
             mAMHLabel = new System.Windows.Forms.Label();
             tENMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -76,7 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TN_CSDLPT_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monHocGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewMonHoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNhapLieu)).BeginInit();
             this.panelControlNhapLieu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGiaoVienDangKy)).BeginInit();
@@ -189,6 +189,7 @@
             this.barButtonPhucHoi.Id = 4;
             this.barButtonPhucHoi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonPhucHoi.ImageOptions.Image")));
             this.barButtonPhucHoi.Name = "barButtonPhucHoi";
+            this.barButtonPhucHoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonPhucHoi_ItemClick);
             // 
             // barButtonHuy
             // 
@@ -326,21 +327,35 @@
             this.monHocGridControl.DataSource = this.bindingSourceMonHoc;
             this.monHocGridControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.monHocGridControl.Location = new System.Drawing.Point(0, 78);
-            this.monHocGridControl.MainView = this.gridView1;
+            this.monHocGridControl.MainView = this.gridViewMonHoc;
             this.monHocGridControl.MenuManager = this.barManager1;
             this.monHocGridControl.Name = "monHocGridControl";
             this.monHocGridControl.Size = new System.Drawing.Size(779, 220);
             this.monHocGridControl.TabIndex = 7;
             this.monHocGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridViewMonHoc});
             // 
-            // gridView1
+            // gridViewMonHoc
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewMonHoc.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMAMH,
             this.colTENMH});
-            this.gridView1.GridControl = this.monHocGridControl;
-            this.gridView1.Name = "gridView1";
+            this.gridViewMonHoc.GridControl = this.monHocGridControl;
+            this.gridViewMonHoc.Name = "gridViewMonHoc";
+            // 
+            // colMAMH
+            // 
+            this.colMAMH.FieldName = "MAMH";
+            this.colMAMH.Name = "colMAMH";
+            this.colMAMH.Visible = true;
+            this.colMAMH.VisibleIndex = 0;
+            // 
+            // colTENMH
+            // 
+            this.colTENMH.FieldName = "TENMH";
+            this.colTENMH.Name = "colTENMH";
+            this.colTENMH.Visible = true;
+            this.colTENMH.VisibleIndex = 1;
             // 
             // panelControlNhapLieu
             // 
@@ -385,20 +400,6 @@
             this.bindingSourceBangDiem.DataMember = "FK_BANGDIEM_MONHOC";
             this.bindingSourceBangDiem.DataSource = this.bindingSourceMonHoc;
             // 
-            // colMAMH
-            // 
-            this.colMAMH.FieldName = "MAMH";
-            this.colMAMH.Name = "colMAMH";
-            this.colMAMH.Visible = true;
-            this.colMAMH.VisibleIndex = 0;
-            // 
-            // colTENMH
-            // 
-            this.colTENMH.FieldName = "TENMH";
-            this.colTENMH.Name = "colTENMH";
-            this.colTENMH.Visible = true;
-            this.colTENMH.VisibleIndex = 1;
-            // 
             // FormMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -423,7 +424,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TN_CSDLPT_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceMonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.monHocGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewMonHoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNhapLieu)).EndInit();
             this.panelControlNhapLieu.ResumeLayout(false);
             this.panelControlNhapLieu.PerformLayout();
@@ -460,7 +461,7 @@
         private TN_CSDLPT_DataSetTableAdapters.MONHOCTableAdapter tableAdapterMonHoc;
         private TN_CSDLPT_DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl monHocGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewMonHoc;
         private DevExpress.XtraEditors.PanelControl panelControlNhapLieu;
         private System.Windows.Forms.TextBox textBoxTenMonHoc;
         private System.Windows.Forms.TextBox textBoxMaMonHoc;
