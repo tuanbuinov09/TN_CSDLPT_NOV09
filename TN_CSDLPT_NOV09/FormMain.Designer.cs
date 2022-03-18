@@ -44,15 +44,15 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageQuanLy = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageBoDe = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageThi = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -88,9 +88,9 @@
             this.ribbonPageCategory1});
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
-            this.ribbonPage2,
-            this.ribbonPage4,
-            this.ribbonPage3});
+            this.ribbonPageQuanLy,
+            this.ribbonPageBoDe,
+            this.ribbonPageThi});
             this.ribbonControl1.Size = new System.Drawing.Size(825, 158);
             this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
@@ -150,6 +150,7 @@
             this.barButtonQuanLyGiaoVien.Caption = "Giáo viên";
             this.barButtonQuanLyGiaoVien.Id = 9;
             this.barButtonQuanLyGiaoVien.Name = "barButtonQuanLyGiaoVien";
+            this.barButtonQuanLyGiaoVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonQuanLyGiaoVien_ItemClick);
             // 
             // barButtonQuanLyCauHoi
             // 
@@ -184,16 +185,16 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "_________";
             // 
-            // ribbonPage2
+            // ribbonPageQuanLy
             // 
-            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageQuanLy.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup4,
             this.ribbonPageGroup5,
             this.ribbonPageGroup6,
             this.ribbonPageGroup7,
             this.ribbonPageGroup8});
-            this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "Quản lý";
+            this.ribbonPageQuanLy.Name = "ribbonPageQuanLy";
+            this.ribbonPageQuanLy.Text = "Quản lý";
             // 
             // ribbonPageGroup4
             // 
@@ -230,12 +231,12 @@
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             this.ribbonPageGroup8.Text = "_________";
             // 
-            // ribbonPage4
+            // ribbonPageBoDe
             // 
-            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageBoDe.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup10});
-            this.ribbonPage4.Name = "ribbonPage4";
-            this.ribbonPage4.Text = "Bộ đề";
+            this.ribbonPageBoDe.Name = "ribbonPageBoDe";
+            this.ribbonPageBoDe.Text = "Bộ đề";
             // 
             // ribbonPageGroup10
             // 
@@ -244,12 +245,12 @@
             this.ribbonPageGroup10.Name = "ribbonPageGroup10";
             this.ribbonPageGroup10.Text = "_________";
             // 
-            // ribbonPage3
+            // ribbonPageThi
             // 
-            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageThi.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup9});
-            this.ribbonPage3.Name = "ribbonPage3";
-            this.ribbonPage3.Text = "Thi";
+            this.ribbonPageThi.Name = "ribbonPageThi";
+            this.ribbonPageThi.Text = "Thi";
             // 
             // ribbonPageGroup9
             // 
@@ -330,7 +331,7 @@
         public  System.Windows.Forms.ToolStripMenuItem toolStripMaUser;
         public  System.Windows.Forms.ToolStripMenuItem toolStripHoTen;
         public  System.Windows.Forms.ToolStripMenuItem toolStripNhomPhanQuyen;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageQuanLy;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem barButtonQuanLyMonHoc;
         private DevExpress.XtraBars.BarButtonItem barButtonQuanLyKhoa;
@@ -342,9 +343,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonQuanLyGiaoVien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.BarButtonItem barButtonQuanLyCauHoi;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageBoDe;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageThi;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
     }
 }
