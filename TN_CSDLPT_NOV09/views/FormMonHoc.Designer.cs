@@ -97,7 +97,7 @@
             // tENMHLabel
             // 
             tENMHLabel.AutoSize = true;
-            tENMHLabel.Location = new System.Drawing.Point(38, 111);
+            tENMHLabel.Location = new System.Drawing.Point(452, 53);
             tENMHLabel.Name = "tENMHLabel";
             tENMHLabel.Size = new System.Drawing.Size(45, 13);
             tENMHLabel.TabIndex = 2;
@@ -373,7 +373,7 @@
             // textBoxTenMonHoc
             // 
             this.textBoxTenMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceMonHoc, "TENMH", true));
-            this.textBoxTenMonHoc.Location = new System.Drawing.Point(89, 108);
+            this.textBoxTenMonHoc.Location = new System.Drawing.Point(503, 50);
             this.textBoxTenMonHoc.Name = "textBoxTenMonHoc";
             this.textBoxTenMonHoc.Size = new System.Drawing.Size(214, 21);
             this.textBoxTenMonHoc.TabIndex = 3;
