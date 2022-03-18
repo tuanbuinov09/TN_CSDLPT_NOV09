@@ -8,14 +8,16 @@ namespace TN_CSDLPT_NOV09.views
 {
     public partial class FormMonHoc : DevExpress.XtraEditors.XtraForm
     {
+        ArrayList undoCommands = new ArrayList();
+        //ArrayList redoCommands = new ArrayList();
+        String mode = "";
+        int vitri = -1;
+        String maCoSo;
         public FormMonHoc()
         {
             InitializeComponent();
         }
-
-        ArrayList undoCommands = new ArrayList();
-        ArrayList redoCommands = new ArrayList();
-
+       
         private void mONHOCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -23,10 +25,7 @@ namespace TN_CSDLPT_NOV09.views
             this.tableAdapterManager.UpdateAll(this.TN_CSDLPT_DataSet);
 
         }
-        String mode = "";
-        int vitri = -1;
-        String maCoSo;
-
+        
         private void FormMonHoc_Load(object sender, EventArgs e)
         {
             TN_CSDLPT_DataSet.EnforceConstraints = false;
@@ -197,7 +196,6 @@ namespace TN_CSDLPT_NOV09.views
                 //maCoSo = ((DataRowView)bindingSourceMonHoc[0])["MACS"].ToString();
             }
 
-
         }
 
         private void barButtonXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -245,7 +243,6 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonXoa.Enabled = false;
             }
-
             undoCommands.Add("EXEC SP_THEM_MONHOC '" + maMonHoc + "','" + tenMonHoc + "'");
 
             mode = "";
@@ -310,6 +307,7 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
+            // nếu là thêm thì khi undo (xóa nó đi) thì lấy mã của nó trên bảng để sau quay trở về
             if (mode == "them")
             {
                 undoCommands.Add("EXEC SP_XOA_MONHOC '" + maMonHoc + "'");
@@ -320,8 +318,6 @@ namespace TN_CSDLPT_NOV09.views
             }
             
             mode = "";
-
-           
 
             panelControlNhapLieu.Enabled = false;
             monHocGridControl.Enabled = true;
@@ -342,7 +338,7 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             String strLenh = (String) undoCommands[undoCommands.Count-1];
-           
+
             try
             {
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
@@ -354,7 +350,7 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
-            // lấy ra mã môn học bị ảnh hưởng khi undo
+            // lấy ra mã môn học bị ảnh hưởng khi undo 
             String affected_id = "";
             try
             {
@@ -366,11 +362,10 @@ namespace TN_CSDLPT_NOV09.views
                 //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
                 //return;
             }
-           
 
             Program.myReader.Close();
             Program.conn.Close();
-
+        
             //hiển thị lại bảng
             try
             {
@@ -383,15 +378,16 @@ namespace TN_CSDLPT_NOV09.views
                 MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
             }
             
-
+            // chuyển dòng được chọn trên gridview thành dòng có mã bị ảnh hưởng (affected_id)
             if (affected_id != "" || affected_id != null)
             {
                int row = gridViewMonHoc.LocateByValue("MAMH" ,affected_id);
-               gridViewMonHoc.FocusedRowHandle = row;
+               //gridViewMonHoc.FocusedRowHandle = row; 
                bindingSourceMonHoc.Position = bindingSourceMonHoc.Find("MAMH", affected_id);
             }
             
-            //loại bỏ lệnh cần undo ở cuối undoCommands
+            
+            //loại bỏ lệnh vừa undo ở cuối undoCommands
             undoCommands.RemoveAt(undoCommands.Count - 1);
 
             if (undoCommands.Count > 0)
@@ -402,6 +398,11 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonPhucHoi.Enabled = false;
             }
+        }
+
+        private void barButtonThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

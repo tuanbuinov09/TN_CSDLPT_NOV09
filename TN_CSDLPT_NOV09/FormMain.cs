@@ -94,5 +94,17 @@ namespace TN_CSDLPT_NOV09
         {
 
         }
+
+        private void barButtonQuanLyGiaoVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormGiaoVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormGiaoVien f = new FormGiaoVien();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }
