@@ -128,6 +128,10 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
 
+            //disable combobox chọn khoa, 
+            //vì sửa = sp_sua_giaovien_ignore_fk, ta hoàn toàn có thể sửa mã khoa không có tại site hiện tại
+            //nhưng v khá vô lý
+
             comboBoxMaKhoa.Enabled = false;
 
             if (undoCommands.Count > 0)
@@ -273,7 +277,67 @@ namespace TN_CSDLPT_NOV09.views
                 bindingSourceGiaoVien.EndEdit();
                 bindingSourceGiaoVien.ResetCurrentItem();
                 this.tableAdapterGiaoVien.Connection.ConnectionString = Program.connstr;
-                this.tableAdapterGiaoVien.Update(this.TN_CSDLPT_DataSet.GIAOVIEN);
+                // vì không thể sửa giáo viên nếu khoa thuộc site khác (dù đã disable field nhập mã khoa)
+                // giải quyết = sử dụng sp_sua_giao_vien_ignore_ fk // ignore ràng buộc khóa ngoại
+                // chi tiết xem trong sp đó
+                if (mode == "sua")
+                {
+                    String strLenh = "EXEC SP_SUA_GIAOVIEN_IGNORE_FK '" + maGiaoVien + "', N'"
+                        + hoChuanBiSua + "', N'" + tenChuanBiSua + "', N'" + diaChiChuanBiSua + "', '" + maKhoaChuanBiSua + "'";
+                    try
+                    {
+                        Program.myReader = Program.ExecSqlDataReader(strLenh);
+                        Program.myReader.Read();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Không thể ghi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                        this.tableAdapterGiaoVien.Update(this.TN_CSDLPT_DataSet.GIAOVIEN);
+                        return;
+                    }
+
+                    // lấy ra mã giáo viên bị ảnh hưởng khi undo 
+                    String affected_id = "";
+                    try
+                    {
+                        affected_id = Program.myReader.GetString(0).Trim();
+                    }
+                    catch (Exception ex)
+                    {
+                        //MessageBox.Show("Không lấy được mã môn bị ảnh hưởng\n" + ex.Message, "", MessageBoxButtons.OK);
+                        //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                        //return;
+                    }
+
+                    Program.myReader.Close();
+                    Program.conn.Close();
+
+                    // cập nhật lại bảng
+                    try
+                    {
+                        this.tableAdapterGiaoVien.Connection.ConnectionString = Program.connstr;
+                        //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                        tableAdapterGiaoVien.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+                    }
+
+                    // chuyển dòng được chọn trên gridview thành dòng có mã bị ảnh hưởng (affected_id)
+                    if (affected_id != "" || affected_id != null)
+                    {
+                        int row = gridViewGiaoVien.LocateByValue("MAGV", affected_id);
+                        //gridViewMonHoc.FocusedRowHandle = row; 
+                        bindingSourceGiaoVien.Position = bindingSourceGiaoVien.Find("MAGV", affected_id);
+                    }
+
+
+                }
+                else //mode= "them"
+                {
+                    this.tableAdapterGiaoVien.Update(this.TN_CSDLPT_DataSet.GIAOVIEN);
+                }
             }
             catch (Exception ex)
             {
