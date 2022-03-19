@@ -13,6 +13,7 @@ namespace TN_CSDLPT_NOV09.views
         String mode = "";
         int vitri = -1;
         String maCoSo;
+
         public FormMonHoc()
         {
             InitializeComponent();
@@ -48,9 +49,17 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxCoSo.ValueMember = "TENSERVER";
             comboBoxCoSo.SelectedIndex = Program.mCoSo;
 
-            if (Program.mGroup == "TRUONG"||Program.mGroup=="GIANGVIEN")
+            if (Program.mGroup == "TRUONG"|| Program.mGroup == "GIANGVIEN"|| Program.mGroup == "SINHVIEN")
             {
-                comboBoxCoSo.Enabled = true;
+                if(Program.mGroup == "TRUONG")
+                {
+                    comboBoxCoSo.Enabled = true;
+                }
+                else
+                {
+                    comboBoxCoSo.Enabled = false;
+                }
+                
 
                 barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled
                     = barButtonGhi.Enabled = barButtonPhucHoi.Enabled = barButtonHuy.Enabled = false;
@@ -58,7 +67,6 @@ namespace TN_CSDLPT_NOV09.views
             }
             else
             {
-                comboBoxCoSo.Enabled = false;
 
                 barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled
                      = barButtonGhi.Enabled = true;

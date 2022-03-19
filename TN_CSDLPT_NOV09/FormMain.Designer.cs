@@ -157,6 +157,7 @@
             this.barButtonQuanLyCauHoi.Caption = "Câu hỏi";
             this.barButtonQuanLyCauHoi.Id = 10;
             this.barButtonQuanLyCauHoi.Name = "barButtonQuanLyCauHoi";
+            this.barButtonQuanLyCauHoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonQuanLyCauHoi_ItemClick);
             // 
             // ribbonPageCategory1
             // 

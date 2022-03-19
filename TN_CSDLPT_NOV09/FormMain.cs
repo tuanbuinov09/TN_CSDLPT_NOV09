@@ -106,5 +106,17 @@ namespace TN_CSDLPT_NOV09
                 f.Show();
             }
         }
+
+        private void barButtonQuanLyCauHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormBoDe));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormBoDe f = new FormBoDe();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }
