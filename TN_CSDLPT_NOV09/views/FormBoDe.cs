@@ -304,10 +304,12 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonXoa.Enabled = false;
             }
 
-            undoCommands.Add("EXEC SP_THEM_GIAOVIEN '" + maGiaoVien + "', N'" + ho + "'"
-                + ", N'" + ten + "'" + ", N'" + diaChi + "'" + ", '" + maKhoa + "'");
+            undoCommands.Add("EXEC SP_THEM_CAUHOI " + idCauHoi + ", '" + maMonHoc 
+                + "', '" + trinhDo + "', '" + noiDung + "', '" 
+                + a + "', '"+b+"', '"+c+"', '"+d+"', '"+dapAn+"', '"+maGiaoVien+"'");
 
             mode = "";
+
             if (undoCommands.Count > 0)
             {
                 barButtonPhucHoi.Enabled = true;
@@ -316,6 +318,119 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonPhucHoi.Enabled = false;
             }
+        }
+
+        private void barButtonReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                tableAdapterBoDe.Fill(this.TN_CSDLPT_DataSet.BODE);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+        }
+
+        private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String maGiaoVien = textBoxMaGiaoVien.Text.Trim();
+            int idCauHoi = int.Parse(spinEditCauHoi.Text);
+            String maMonHocChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAMH"].ToString();
+            String maMonHocChuanBiSua = comboBoxMaMonHoc.SelectedValue.ToString();
+            String trinhDoChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["TRINHDO"].ToString();
+            String trinhDoChuanBiSua = comboBoxTrinhDo.SelectedValue.ToString();
+            String noiDungChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["NOIDUNG"].ToString();
+            String noiDungChuanBiSua = textBoxNoiDung.Text.Trim();
+            String aChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["A"].ToString();
+            String aChuanBiSua = textBoxA.Text.Trim();
+            String bChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["B"].ToString();
+            String bChuanBiSua = textBoxB.Text.Trim();
+            String cChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["C"].ToString();
+            String cChuanBiSua = textBoxC.Text.Trim();
+            String dChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["D"].ToString();
+            String dChuanBiSua = textBoxD.Text.Trim();
+            String dapAnChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["DAP_AN"].ToString();
+            String dapAnChuanBiSua = comboBoxDapAn.SelectedValue.ToString();
+
+            // lưu ý tenChuanBiSua cũng là chuẩn bị thêm
+            if (noiDungChuanBiSua == "")
+            {
+                MessageBox.Show("Nội dung câu hỏi không được bỏ trống", "", MessageBoxButtons.OK);
+                textBoxNoiDung.Focus();
+                return;
+            }
+            if (aChuanBiSua == "")
+            {
+                MessageBox.Show("Nội dung đáp án A không được bỏ trống", "", MessageBoxButtons.OK);
+                textBoxA.Focus();
+                return;
+            }
+            if (bChuanBiSua == "")
+            {
+                MessageBox.Show("Nội dung đáp án B không được bỏ trống", "", MessageBoxButtons.OK);
+                textBoxB.Focus();
+                return;
+            }
+            if (cChuanBiSua == "")
+            {
+                MessageBox.Show("Nội dung đáp án C không được bỏ trống", "", MessageBoxButtons.OK);
+                textBoxC.Focus();
+                return;
+            }
+            if (dChuanBiSua == "")
+            {
+                MessageBox.Show("Nội dung đáp án D không được bỏ trống", "", MessageBoxButtons.OK);
+                textBoxD.Focus();
+                return;
+            }
+
+            //id câu hỏi tự tạo khỏi cần check mã
+
+            try
+            {
+                bindingSourceBoDe.EndEdit();
+                bindingSourceBoDe.ResetCurrentItem();
+                this.tableAdapterBoDe.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterBoDe.Update(this.TN_CSDLPT_DataSet.BODE);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể ghi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterBoDe.Update(this.TN_CSDLPT_DataSet.BODE);
+                return;
+            }
+
+            if (mode == "them")
+            {
+                undoCommands.Add("EXEC SP_XOA_CAUHOI " + idCauHoi);
+            }
+
+            if (mode == "sua")
+            {
+                undoCommands.Add("EXEC SP_SUA_CAUHOI " + idCauHoi + ", '" + maMonHocChuaSua
+                + "', '" + trinhDoChuaSua + "', '" + noiDungChuaSua + "', '"
+                + aChuaSua + "', '" + bChuaSua + "', '" + cChuaSua + "', '" + dChuaSua 
+                + "', '" + dapAnChuaSua + "', '" + maGiaoVien + "'"); //tính ra khỏi cần sửa mã giáo viên cũng đc, vì có chỉnh sửa gì đâu nó bị disable r mà
+            }
+
+            mode = "";
+
+            panelControlNhapLieu.Enabled = false;
+            gridControlBoDe.Enabled = true;
+
+            barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
+            barButtonGhi.Enabled = false;
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
+            barButtonHuy.Enabled = false;
         }
     }
 }
