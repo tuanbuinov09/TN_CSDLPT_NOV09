@@ -73,8 +73,8 @@
             this.textBoxA = new DevExpress.XtraEditors.TextEdit();
             this.textBoxNoiDung = new DevExpress.XtraEditors.TextEdit();
             this.comboBoxTrinhDo = new System.Windows.Forms.ComboBox();
-            this.spinEditCauHoi = new DevExpress.XtraEditors.SpinEdit();
             this.comboBoxMaMonHoc = new System.Windows.Forms.ComboBox();
+            this.spinEditCauHoi = new DevExpress.XtraEditors.SpinEdit();
             cAUHOILabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             tRINHDOLabel = new System.Windows.Forms.Label();
@@ -253,6 +253,7 @@
             this.barButtonGhi.Id = 2;
             this.barButtonGhi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonGhi.ImageOptions.Image")));
             this.barButtonGhi.Name = "barButtonGhi";
+            this.barButtonGhi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonGhi_ItemClick);
             // 
             // barButtonXoa
             // 
@@ -283,6 +284,7 @@
             this.barButtonReload.Id = 5;
             this.barButtonReload.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonReload.ImageOptions.Image")));
             this.barButtonReload.Name = "barButtonReload";
+            this.barButtonReload.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonReload_ItemClick);
             // 
             // barButtonThoat
             // 
@@ -506,6 +508,15 @@
             this.comboBoxTrinhDo.TabIndex = 5;
             this.comboBoxTrinhDo.SelectedIndexChanged += new System.EventHandler(this.tRINHDOComboBox_SelectedIndexChanged);
             // 
+            // comboBoxMaMonHoc
+            // 
+            this.comboBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceBoDe, "MAMH", true));
+            this.comboBoxMaMonHoc.FormattingEnabled = true;
+            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(109, 57);
+            this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
+            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(205, 21);
+            this.comboBoxMaMonHoc.TabIndex = 3;
+            // 
             // spinEditCauHoi
             // 
             this.spinEditCauHoi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceBoDe, "CAUHOI", true));
@@ -521,15 +532,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spinEditCauHoi.Size = new System.Drawing.Size(205, 20);
             this.spinEditCauHoi.TabIndex = 1;
-            // 
-            // comboBoxMaMonHoc
-            // 
-            this.comboBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceBoDe, "MAMH", true));
-            this.comboBoxMaMonHoc.FormattingEnabled = true;
-            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(109, 57);
-            this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
-            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(205, 21);
-            this.comboBoxMaMonHoc.TabIndex = 3;
             // 
             // FormBoDe
             // 
