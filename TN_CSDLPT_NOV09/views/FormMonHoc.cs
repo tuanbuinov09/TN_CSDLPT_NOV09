@@ -49,18 +49,18 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxCoSo.ValueMember = "TENSERVER";
             comboBoxCoSo.SelectedIndex = Program.mCoSo;
 
+            if (Program.mGroup == "TRUONG")
+            {
+                comboBoxCoSo.Enabled = true;
+            }
+            else
+            {
+                comboBoxCoSo.Enabled = false;
+            }
+
             if (Program.mGroup == "TRUONG"|| Program.mGroup == "GIANGVIEN"|| Program.mGroup == "SINHVIEN")
             {
-                if(Program.mGroup == "TRUONG")
-                {
-                    comboBoxCoSo.Enabled = true;
-                }
-                else
-                {
-                    comboBoxCoSo.Enabled = false;
-                }
                 
-
                 barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled
                     = barButtonGhi.Enabled = barButtonPhucHoi.Enabled = barButtonHuy.Enabled = false;
 
@@ -101,6 +101,7 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
+
             if (undoCommands.Count > 0)
             {
                 barButtonPhucHoi.Enabled = true;
@@ -362,6 +363,8 @@ namespace TN_CSDLPT_NOV09.views
             {
                 MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
                 this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                Program.myReader.Close();
+                Program.conn.Close();
                 return;
             }
 
@@ -369,6 +372,7 @@ namespace TN_CSDLPT_NOV09.views
             String affected_id = "";
             try
             {
+                //lay AFFECTED_ID tu sp
                 affected_id = Program.myReader.GetString(0).Trim();
             }
             catch (Exception ex)

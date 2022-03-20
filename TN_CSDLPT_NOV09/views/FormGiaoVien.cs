@@ -46,16 +46,17 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxCoSo.ValueMember = "TENSERVER";
             comboBoxCoSo.SelectedIndex = Program.mCoSo;
 
+            if (Program.mGroup == "TRUONG")
+            {
+                comboBoxCoSo.Enabled = true;
+            }
+            else
+            {
+                comboBoxCoSo.Enabled = false;
+            }
+
             if (Program.mGroup == "TRUONG" || Program.mGroup == "GIANGVIEN"||Program.mGroup == "SINHVIEN")
             {
-                if (Program.mGroup == "TRUONG")
-                {
-                    comboBoxCoSo.Enabled = true;
-                }
-                else
-                {
-                    comboBoxCoSo.Enabled = false;
-                }
 
                 barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled
                     = barButtonGhi.Enabled = barButtonPhucHoi.Enabled = barButtonHuy.Enabled = false;
@@ -174,7 +175,7 @@ namespace TN_CSDLPT_NOV09.views
             }
          
 
-            int xacNhanXoa = (int)MessageBox.Show("Bạn có chắc muốn xóa môn học này?", "Xác nhận", MessageBoxButtons.OKCancel);
+            int xacNhanXoa = (int)MessageBox.Show("Bạn có chắc muốn xóa giáo viên này?", "Xác nhận", MessageBoxButtons.OKCancel);
             if (xacNhanXoa == (int)DialogResult.OK)
             {
                 try
@@ -192,7 +193,7 @@ namespace TN_CSDLPT_NOV09.views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xóa môn học thất bại, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Xóa giáo viên thất bại, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
                     this.tableAdapterGiaoVien.Update(this.TN_CSDLPT_DataSet.GIAOVIEN);
                     bindingSourceGiaoVien.Position = bindingSourceGiaoVien.Find("MAGV", maGiaoVien);
                     return;
@@ -524,6 +525,11 @@ namespace TN_CSDLPT_NOV09.views
                 //Dùng sau
                 //maCoSo = ((DataRowView)bindingSourceMonHoc[0])["MACS"].ToString();
             }
+        }
+
+        private void comboBoxMaKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
