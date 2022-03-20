@@ -33,8 +33,8 @@
             System.Windows.Forms.Label hOLabel;
             System.Windows.Forms.Label tENLabel;
             System.Windows.Forms.Label dIACHILabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoVien));
             System.Windows.Forms.Label mAKHLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoVien));
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -63,6 +63,7 @@
             this.gridControlGiaoVien = new DevExpress.XtraGrid.GridControl();
             this.gridViewGiaoVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControlNhapLieu = new DevExpress.XtraEditors.PanelControl();
+            this.comboBoxMaKhoa = new System.Windows.Forms.ComboBox();
             this.textBoxDiaChi = new System.Windows.Forms.TextBox();
             this.textBoxTen = new System.Windows.Forms.TextBox();
             this.textBoxHo = new System.Windows.Forms.TextBox();
@@ -71,7 +72,6 @@
             this.bindingSourceBoDe = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceKhoa = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterKhoa = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.KHOATableAdapter();
-            this.comboBoxMaKhoa = new System.Windows.Forms.ComboBox();
             mAGVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -127,6 +127,15 @@
             dIACHILabel.Size = new System.Drawing.Size(47, 13);
             dIACHILabel.TabIndex = 6;
             dIACHILabel.Text = "DIACHI:";
+            // 
+            // mAKHLabel
+            // 
+            mAKHLabel.AutoSize = true;
+            mAKHLabel.Location = new System.Drawing.Point(32, 79);
+            mAKHLabel.Name = "mAKHLabel";
+            mAKHLabel.Size = new System.Drawing.Size(39, 13);
+            mAKHLabel.TabIndex = 8;
+            mAKHLabel.Text = "MAKH:";
             // 
             // barDockControl1
             // 
@@ -380,6 +389,16 @@
             this.panelControlNhapLieu.Size = new System.Drawing.Size(879, 390);
             this.panelControlNhapLieu.TabIndex = 16;
             // 
+            // comboBoxMaKhoa
+            // 
+            this.comboBoxMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien, "MAKH", true));
+            this.comboBoxMaKhoa.FormattingEnabled = true;
+            this.comboBoxMaKhoa.Location = new System.Drawing.Point(90, 76);
+            this.comboBoxMaKhoa.Name = "comboBoxMaKhoa";
+            this.comboBoxMaKhoa.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxMaKhoa.TabIndex = 9;
+            this.comboBoxMaKhoa.SelectedIndexChanged += new System.EventHandler(this.comboBoxMaKhoa_SelectedIndexChanged);
+            // 
             // textBoxDiaChi
             // 
             this.textBoxDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien, "DIACHI", true));
@@ -431,24 +450,6 @@
             // tableAdapterKhoa
             // 
             this.tableAdapterKhoa.ClearBeforeFill = true;
-            // 
-            // mAKHLabel
-            // 
-            mAKHLabel.AutoSize = true;
-            mAKHLabel.Location = new System.Drawing.Point(32, 79);
-            mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(39, 13);
-            mAKHLabel.TabIndex = 8;
-            mAKHLabel.Text = "MAKH:";
-            // 
-            // comboBoxMaKhoa
-            // 
-            this.comboBoxMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien, "MAKH", true));
-            this.comboBoxMaKhoa.FormattingEnabled = true;
-            this.comboBoxMaKhoa.Location = new System.Drawing.Point(90, 76);
-            this.comboBoxMaKhoa.Name = "comboBoxMaKhoa";
-            this.comboBoxMaKhoa.Size = new System.Drawing.Size(190, 21);
-            this.comboBoxMaKhoa.TabIndex = 9;
             // 
             // FormGiaoVien
             // 
