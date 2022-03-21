@@ -269,6 +269,7 @@
             this.barButtonPhucHoi.Id = 4;
             this.barButtonPhucHoi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonPhucHoi.ImageOptions.Image")));
             this.barButtonPhucHoi.Name = "barButtonPhucHoi";
+            this.barButtonPhucHoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonPhucHoi_ItemClick);
             // 
             // barButtonHuy
             // 
@@ -438,6 +439,7 @@
             // comboBoxDapAn
             // 
             this.comboBoxDapAn.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceBoDe, "DAP_AN", true));
+            this.comboBoxDapAn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDapAn.FormattingEnabled = true;
             this.comboBoxDapAn.Location = new System.Drawing.Point(979, 12);
             this.comboBoxDapAn.Name = "comboBoxDapAn";
@@ -501,6 +503,7 @@
             // comboBoxTrinhDo
             // 
             this.comboBoxTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceBoDe, "TRINHDO", true));
+            this.comboBoxTrinhDo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTrinhDo.FormattingEnabled = true;
             this.comboBoxTrinhDo.Location = new System.Drawing.Point(109, 97);
             this.comboBoxTrinhDo.Name = "comboBoxTrinhDo";
@@ -511,6 +514,7 @@
             // comboBoxMaMonHoc
             // 
             this.comboBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceBoDe, "MAMH", true));
+            this.comboBoxMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaMonHoc.FormattingEnabled = true;
             this.comboBoxMaMonHoc.Location = new System.Drawing.Point(109, 57);
             this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";

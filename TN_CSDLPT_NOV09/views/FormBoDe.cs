@@ -67,7 +67,7 @@ namespace TN_CSDLPT_NOV09.views
             {
                 
                 barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled
-                     = barButtonGhi.Enabled = true;
+                     =  true;
 
                 if (undoCommands.Count > 0)
                 {
@@ -85,7 +85,7 @@ namespace TN_CSDLPT_NOV09.views
             //và lúc sửa thì k cho sửa mã giáo viên nốt, nên ta disable nó từ đầu
             textBoxMaGiaoVien.Enabled = false;
             spinEditCauHoi.Enabled = false;
-
+            barButtonGhi.Enabled = false;
             //load danh sách môn học vào comboBox
             DataTable dt = Program.ExecSqlDataTable("EXEC SP_LAY_DS_MONHOC");
             comboBoxMaMonHoc.DataSource = dt;
@@ -156,16 +156,14 @@ namespace TN_CSDLPT_NOV09.views
             //mã giáo viên tạo câu hỏi là mã giáo viên đang đăng nhập
             textBoxMaGiaoVien.Text = Program.username;
 
-            comboBoxMaMonHoc.Text = "Chọn mã môn";
+            comboBoxMaMonHoc.SelectedIndex = 0;
 
+            //comboBoxDapAn.Text = "Chọn đáp án";
+            comboBoxDapAn.SelectedIndex = 0;
 
-            comboBoxDapAn.Text = "Chọn đáp án";
-            //comboBoxDapAn.SelectedIndex = 0;
+            //comboBoxTrinhDo.Text = "Chọn trình độ";
 
-
-            comboBoxTrinhDo.Text = "Chọn trình độ";
-
-            //comboBoxTrinhDo.SelectedIndex = 0;
+            comboBoxTrinhDo.SelectedIndex = 0;
 
             gridControlBoDe.Enabled = false;
         }
@@ -193,7 +191,7 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            String maGiaoVien = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAGV"].ToString();
+            String maGiaoVien = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAGV"].ToString().Trim();
 
             if (maGiaoVien != Program.username)
             {
@@ -237,7 +235,7 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            String maGiaoVien = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAGV"].ToString();
+            String maGiaoVien = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAGV"].ToString().Trim();
 
             if (maGiaoVien != Program.username)
             {
@@ -337,9 +335,9 @@ namespace TN_CSDLPT_NOV09.views
             String maGiaoVien = textBoxMaGiaoVien.Text.Trim();
             int idCauHoi = int.Parse(spinEditCauHoi.Text);
             String maMonHocChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAMH"].ToString();
-            String maMonHocChuanBiSua = comboBoxMaMonHoc.SelectedValue.ToString();
+            String maMonHocChuanBiSua = comboBoxMaMonHoc.SelectedText.ToString();
             String trinhDoChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["TRINHDO"].ToString();
-            String trinhDoChuanBiSua = comboBoxTrinhDo.SelectedValue.ToString();
+            String trinhDoChuanBiSua = comboBoxTrinhDo.SelectedText.ToString();
             String noiDungChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["NOIDUNG"].ToString();
             String noiDungChuanBiSua = textBoxNoiDung.Text.Trim();
             String aChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["A"].ToString();
@@ -351,7 +349,7 @@ namespace TN_CSDLPT_NOV09.views
             String dChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["D"].ToString();
             String dChuanBiSua = textBoxD.Text.Trim();
             String dapAnChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["DAP_AN"].ToString();
-            String dapAnChuanBiSua = comboBoxDapAn.SelectedValue.ToString();
+            String dapAnChuanBiSua = comboBoxDapAn.SelectedText.ToString();
 
             // lưu ý tenChuanBiSua cũng là chuẩn bị thêm
             if (noiDungChuanBiSua == "")
@@ -431,6 +429,76 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonPhucHoi.Enabled = false;
             }
             barButtonHuy.Enabled = false;
+        }
+
+        private void barButtonPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String strLenh = (String)undoCommands[undoCommands.Count - 1];
+
+            try
+            {
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+                Program.myReader.Read();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterBoDe.Update(this.TN_CSDLPT_DataSet.BODE);
+                Program.myReader.Close();
+                Program.conn.Close();
+                return;
+            }
+
+            // lấy ra mã caau hoir bị ảnh hưởng khi undo 
+            int affected_id = -1;
+
+            try
+            {
+                //lay AFFECTED_ID tu sp
+                affected_id = Program.myReader.GetInt32(0);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Không lấy được mã môn bị ảnh hưởng\n" + ex.Message, "", MessageBoxButtons.OK);
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                //return;
+            }
+
+            Program.myReader.Close();
+            Program.conn.Close();
+
+            //hiển thị lại bảng
+            try
+            {
+                this.tableAdapterBoDe.Connection.ConnectionString = Program.connstr;
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                tableAdapterBoDe.Fill(this.TN_CSDLPT_DataSet.BODE);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+
+            // chuyển dòng được chọn trên gridview thành dòng có mã bị ảnh hưởng (affected_id)
+            if (affected_id != -1)
+            {
+                int row = gridViewBoDe.LocateByValue("CAUHOI", affected_id);
+                //gridViewMonHoc.FocusedRowHandle = row; 
+                bindingSourceBoDe.Position = bindingSourceBoDe.Find("CAUHOI", affected_id);
+            }
+
+
+            //loại bỏ lệnh vừa undo ở cuối undoCommands
+            undoCommands.RemoveAt(undoCommands.Count - 1);
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
         }
     }
 }
