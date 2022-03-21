@@ -44,7 +44,8 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
             comboBoxCoSo.DisplayMember = "TENCS";
             comboBoxCoSo.ValueMember = "TENSERVER";
-            comboBoxCoSo.SelectedIndex = Program.mCoSo;
+            //chọn sẵn cơ sở khi đăng nhập
+            comboBoxCoSo.SelectedIndex = Program.indexCoSo;
 
             if (Program.mGroup == "TRUONG")
             {
@@ -113,14 +114,17 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxMaKhoa.ValueMember = "MAKH";
             comboBoxMaKhoa.SelectedIndex = 0;
 
-            if (undoCommands.Count > 0)
-            {
-                barButtonPhucHoi.Enabled = true;
-            }
-            else
-            {
-                barButtonPhucHoi.Enabled = false;
-            }
+            barButtonPhucHoi.Enabled = false;
+
+            // khi đang thêm sửa thì k thể ấn phục hồi
+            //if (undoCommands.Count > 0)
+            //{
+            //    barButtonPhucHoi.Enabled = true;
+            //}
+            //else
+            //{
+            //    barButtonPhucHoi.Enabled = false;
+            //}
             textBoxMaGiaoVien.Enabled = true;
             gridControlGiaoVien.Enabled = false;
         }
@@ -140,14 +144,17 @@ namespace TN_CSDLPT_NOV09.views
 
             comboBoxMaKhoa.Enabled = false;
 
-            if (undoCommands.Count > 0)
-            {
-                barButtonPhucHoi.Enabled = true;
-            }
-            else
-            {
-                barButtonPhucHoi.Enabled = false;
-            }
+            barButtonPhucHoi.Enabled = false;
+
+            // khi đang thêm sửa thì k thể ấn phục hồi
+            //if (undoCommands.Count > 0)
+            //{
+            //    barButtonPhucHoi.Enabled = true;
+            //}
+            //else
+            //{
+            //    barButtonPhucHoi.Enabled = false;
+            //}
 
             barButtonHuy.Enabled = true;
 
@@ -491,7 +498,7 @@ namespace TN_CSDLPT_NOV09.views
             }
 
             Program.servername = comboBoxCoSo.SelectedValue.ToString();
-            if (comboBoxCoSo.SelectedIndex != Program.mCoSo)
+            if (comboBoxCoSo.SelectedIndex != Program.indexCoSo)
             {
                 Program.mlogin = Program.remoteLogin;
                 Program.password = Program.remotePassword;

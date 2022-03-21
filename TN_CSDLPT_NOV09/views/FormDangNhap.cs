@@ -76,6 +76,11 @@ namespace TN_CSDLPT_NOV09.views
                 MessageBox.Show("Tên đăng nhập và mật khẩu không được bỏ trống", "", MessageBoxButtons.OK);
                 return;
             }
+            // lấy mã cơ sở
+            // lấy vị trí của mã đã chọn trên combobox
+            Program.maCoSo = comboBoxCoSo.Text.Split('-')[0].ToString().Trim();
+            Program.indexCoSo = comboBoxCoSo.SelectedIndex;
+
             if (radioButtonGiangVien.Checked)
             {
                 Program.mlogin = textBoxTenDangNhap.Text.Trim();
@@ -84,7 +89,7 @@ namespace TN_CSDLPT_NOV09.views
                 {
                     return;
                 }
-                Program.mCoSo = comboBoxCoSo.SelectedIndex;
+               
                 Program.mLoginDN = Program.mlogin;
                 Program.passwordDN = Program.password;
                 String strLenh = "EXEC SP_LAY_TT_GIANGVIEN_LOGIN '" + Program.mlogin + "'";
@@ -119,7 +124,6 @@ namespace TN_CSDLPT_NOV09.views
                 {
                     return;
                 }
-                Program.mCoSo = comboBoxCoSo.SelectedIndex;
                 Program.mLoginDN = Program.mlogin;
                 Program.passwordDN = Program.password;
                 String strLenh = "EXEC SP_LAY_TT_SV '" 

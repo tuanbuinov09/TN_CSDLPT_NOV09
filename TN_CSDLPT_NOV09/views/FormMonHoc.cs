@@ -47,7 +47,7 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
             comboBoxCoSo.DisplayMember = "TENCS";
             comboBoxCoSo.ValueMember = "TENSERVER";
-            comboBoxCoSo.SelectedIndex = Program.mCoSo;
+            comboBoxCoSo.SelectedIndex = Program.indexCoSo;
 
             if (Program.mGroup == "TRUONG")
             {
@@ -102,16 +102,19 @@ namespace TN_CSDLPT_NOV09.views
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
 
-            if (undoCommands.Count > 0)
-            {
-                barButtonPhucHoi.Enabled = true;
-            }
-            else
-            {
-                barButtonPhucHoi.Enabled = false;
-            }
+            barButtonPhucHoi.Enabled = false;
+
+            // khi đang thêm sửa thì k thể ấn phục hồi
+            //if (undoCommands.Count > 0)
+            //{
+            //    barButtonPhucHoi.Enabled = true;
+            //}
+            //else
+            //{
+            //    barButtonPhucHoi.Enabled = false;
+            //}
             textBoxMaMonHoc.Enabled = true;
-            monHocGridControl.Enabled = false;
+            gridControlMonHoc.Enabled = false;
         }
         
         private void barButtonSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -123,19 +126,22 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
 
-            if (undoCommands.Count > 0)
-            {
-                barButtonPhucHoi.Enabled = true;
-            }
-            else
-            {
-                barButtonPhucHoi.Enabled = false;
-            }
+            barButtonPhucHoi.Enabled = false;
+
+            // khi đang thêm sửa thì k thể ấn phục hồi
+            //if (undoCommands.Count > 0)
+            //{
+            //    barButtonPhucHoi.Enabled = true;
+            //}
+            //else
+            //{
+            //    barButtonPhucHoi.Enabled = false;
+            //}
 
             barButtonHuy.Enabled = true;
 
             textBoxMaMonHoc.Enabled = false;
-            monHocGridControl.Enabled = false;
+            gridControlMonHoc.Enabled = false;
         }
 
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -143,7 +149,7 @@ namespace TN_CSDLPT_NOV09.views
             bindingSourceMonHoc.CancelEdit();
             bindingSourceMonHoc.Position = vitri;
             panelControlNhapLieu.Enabled = false;
-            monHocGridControl.Enabled = true;
+            gridControlMonHoc.Enabled = true;
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
@@ -176,7 +182,7 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
             Program.servername = comboBoxCoSo.SelectedValue.ToString();
-            if (comboBoxCoSo.SelectedIndex != Program.mCoSo)
+            if (comboBoxCoSo.SelectedIndex != Program.indexCoSo)
             {
                 Program.mlogin = Program.remoteLogin;
                 Program.password = Program.remotePassword;
@@ -336,7 +342,7 @@ namespace TN_CSDLPT_NOV09.views
             mode = "";
 
             panelControlNhapLieu.Enabled = false;
-            monHocGridControl.Enabled = true;
+            gridControlMonHoc.Enabled = true;
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;

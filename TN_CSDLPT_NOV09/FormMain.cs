@@ -118,5 +118,17 @@ namespace TN_CSDLPT_NOV09
                 f.Show();
             }
         }
+
+        private void barButtonQuanLyKhoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormKhoa));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormKhoa f = new FormKhoa();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }
