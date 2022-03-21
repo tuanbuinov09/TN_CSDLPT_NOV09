@@ -90,6 +90,12 @@
     <Compile Include="views\FormGiaoVien.Designer.cs">
       <DependentUpon>FormGiaoVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\FormKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\FormKhoa.Designer.cs">
+      <DependentUpon>FormKhoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\FormMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormGiaoVien.resx">
       <DependentUpon>FormGiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\FormKhoa.resx">
+      <DependentUpon>FormKhoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormMonHoc.resx">
       <DependentUpon>FormMonHoc.cs</DependentUpon>

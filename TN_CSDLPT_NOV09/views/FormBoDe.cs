@@ -44,7 +44,7 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
             comboBoxCoSo.DisplayMember = "TENCS";
             comboBoxCoSo.ValueMember = "TENSERVER";
-            comboBoxCoSo.SelectedIndex = Program.mCoSo;
+            comboBoxCoSo.SelectedIndex = Program.indexCoSo;
 
             if (Program.mGroup == "TRUONG")
             {
@@ -125,14 +125,18 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
-            if (undoCommands.Count > 0)
-            {
-                barButtonPhucHoi.Enabled = true;
-            }
-            else
-            {
-                barButtonPhucHoi.Enabled = false;
-            }
+
+            barButtonPhucHoi.Enabled = false;
+
+            // khi đang thêm sửa thì k thể ấn phục hồi
+            //if (undoCommands.Count > 0)
+            //{
+            //    barButtonPhucHoi.Enabled = true;
+            //}
+            //else
+            //{
+            //    barButtonPhucHoi.Enabled = false;
+            //}
 
             String strLenh = "EXEC [SP_LAY_STT_CAUHOI_TIEPTHEO]";
 
@@ -178,14 +182,17 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
 
-            if (undoCommands.Count > 0)
-            {
-                barButtonPhucHoi.Enabled = true;
-            }
-            else
-            {
-                barButtonPhucHoi.Enabled = false;
-            }
+            barButtonPhucHoi.Enabled = false;
+
+            // khi đang thêm sửa thì k thể ấn phục hồi
+            //if (undoCommands.Count > 0)
+            //{
+            //    barButtonPhucHoi.Enabled = true;
+            //}
+            //else
+            //{
+            //    barButtonPhucHoi.Enabled = false;
+            //}
             barButtonHuy.Enabled = false;
         }
 
@@ -498,6 +505,41 @@ namespace TN_CSDLPT_NOV09.views
             else
             {
                 barButtonPhucHoi.Enabled = false;
+            }
+        }
+
+        private void comboBoxCoSo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxCoSo.SelectedValue.ToString() == "System.Data.DataRowView")
+            {
+                return;
+            }
+
+            Program.servername = comboBoxCoSo.SelectedValue.ToString();
+            if (comboBoxCoSo.SelectedIndex != Program.indexCoSo)
+            {
+                Program.mlogin = Program.remoteLogin;
+                Program.password = Program.remotePassword;
+            }
+            else
+            {
+                Program.mlogin = Program.mLoginDN;
+                Program.password = Program.passwordDN;
+            }
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối tới cơ sở " + comboBoxCoSo.Text, "", MessageBoxButtons.OK);
+                return;
+            }
+            else
+            {
+                TN_CSDLPT_DataSet.EnforceConstraints = false;
+                // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.KHOA' table. You can move, or remove it, as needed.
+                this.tableAdapterBoDe.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterBoDe.Fill(this.TN_CSDLPT_DataSet.BODE);
+
+                //Dùng sau
+                //maCoSo = ((DataRowView)bindingSourceMonHoc[0])["MACS"].ToString();
             }
         }
     }

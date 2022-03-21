@@ -132,6 +132,7 @@
             this.barButtonQuanLyKhoa.Caption = "Khoa";
             this.barButtonQuanLyKhoa.Id = 6;
             this.barButtonQuanLyKhoa.Name = "barButtonQuanLyKhoa";
+            this.barButtonQuanLyKhoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonQuanLyKhoa_ItemClick);
             // 
             // barButtonQuanLyLop
             // 

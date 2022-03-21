@@ -352,6 +352,7 @@
             this.comboBoxCoSo.Name = "comboBoxCoSo";
             this.comboBoxCoSo.Size = new System.Drawing.Size(190, 21);
             this.comboBoxCoSo.TabIndex = 1;
+            this.comboBoxCoSo.SelectedIndexChanged += new System.EventHandler(this.comboBoxCoSo_SelectedIndexChanged);
             // 
             // label1
             // 

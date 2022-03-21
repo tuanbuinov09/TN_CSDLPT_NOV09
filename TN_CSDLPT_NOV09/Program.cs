@@ -30,7 +30,8 @@ namespace TN_CSDLPT_NOV09
         public static String passwordDN = "";
         public static String mGroup = "";
         public static String mHoTen = "";
-        public static int mCoSo = -1;
+        public static String maCoSo = "";
+        public static int indexCoSo = -1;
 
         public static String maSinhVien = "";
         public static BindingSource bds_DanhSachPhanManh = new BindingSource();
