@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKhoa));
             System.Windows.Forms.Label mAKHLabel;
             System.Windows.Forms.Label tENKHLabel;
             System.Windows.Forms.Label mACSLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKhoa));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonThem = new DevExpress.XtraBars.BarButtonItem();
@@ -55,16 +55,16 @@
             this.bindingSourceKhoa = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterKhoa = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.KHOATableAdapter();
             this.tableAdapterManager = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.TableAdapterManager();
+            this.tableAdapterGiaoVien = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.GIAOVIENTableAdapter();
+            this.tableAdapterLop = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.LOPTableAdapter();
             this.gridControlKhoa = new DevExpress.XtraGrid.GridControl();
             this.gridViewKhoa = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControlNhapLieu = new DevExpress.XtraEditors.PanelControl();
-            this.textBoxMaKhoa = new DevExpress.XtraEditors.TextEdit();
-            this.textBoxTenKhoa = new DevExpress.XtraEditors.TextEdit();
             this.textBoxMaCoSo = new DevExpress.XtraEditors.TextEdit();
+            this.textBoxTenKhoa = new DevExpress.XtraEditors.TextEdit();
+            this.textBoxMaKhoa = new DevExpress.XtraEditors.TextEdit();
             this.bindingSourceLop = new System.Windows.Forms.BindingSource(this.components);
-            this.tableAdapterLop = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.LOPTableAdapter();
             this.bindingSourceGiaoVien = new System.Windows.Forms.BindingSource(this.components);
-            this.tableAdapterGiaoVien = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.GIAOVIENTableAdapter();
             mAKHLabel = new System.Windows.Forms.Label();
             tENKHLabel = new System.Windows.Forms.Label();
             mACSLabel = new System.Windows.Forms.Label();
@@ -77,12 +77,39 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewKhoa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNhapLieu)).BeginInit();
             this.panelControlNhapLieu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxMaKhoa.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxTenKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxMaCoSo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxTenKhoa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxMaKhoa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGiaoVien)).BeginInit();
             this.SuspendLayout();
+            // 
+            // mAKHLabel
+            // 
+            mAKHLabel.AutoSize = true;
+            mAKHLabel.Location = new System.Drawing.Point(31, 38);
+            mAKHLabel.Name = "mAKHLabel";
+            mAKHLabel.Size = new System.Drawing.Size(51, 13);
+            mAKHLabel.TabIndex = 0;
+            mAKHLabel.Text = "Mã khoa:";
+            // 
+            // tENKHLabel
+            // 
+            tENKHLabel.AutoSize = true;
+            tENKHLabel.Location = new System.Drawing.Point(31, 74);
+            tENKHLabel.Name = "tENKHLabel";
+            tENKHLabel.Size = new System.Drawing.Size(55, 13);
+            tENKHLabel.TabIndex = 2;
+            tENKHLabel.Text = "Tên khoa:";
+            // 
+            // mACSLabel
+            // 
+            mACSLabel.AutoSize = true;
+            mACSLabel.Location = new System.Drawing.Point(31, 110);
+            mACSLabel.Name = "mACSLabel";
+            mACSLabel.Size = new System.Drawing.Size(53, 13);
+            mACSLabel.TabIndex = 4;
+            mACSLabel.Text = "Mã cơ sở:";
             // 
             // barManager1
             // 
@@ -160,6 +187,7 @@
             this.barButtonPhucHoi.Id = 4;
             this.barButtonPhucHoi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonPhucHoi.ImageOptions.Image")));
             this.barButtonPhucHoi.Name = "barButtonPhucHoi";
+            this.barButtonPhucHoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonPhucHoi_ItemClick);
             // 
             // barButtonHuy
             // 
@@ -281,6 +309,14 @@
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // tableAdapterGiaoVien
+            // 
+            this.tableAdapterGiaoVien.ClearBeforeFill = true;
+            // 
+            // tableAdapterLop
+            // 
+            this.tableAdapterLop.ClearBeforeFill = true;
+            // 
             // gridControlKhoa
             // 
             this.gridControlKhoa.DataSource = this.bindingSourceKhoa;
@@ -313,77 +349,42 @@
             this.panelControlNhapLieu.Size = new System.Drawing.Size(784, 197);
             this.panelControlNhapLieu.TabIndex = 18;
             // 
-            // mAKHLabel
+            // textBoxMaCoSo
             // 
-            mAKHLabel.AutoSize = true;
-            mAKHLabel.Location = new System.Drawing.Point(54, 56);
-            mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(51, 13);
-            mAKHLabel.TabIndex = 0;
-            mAKHLabel.Text = "Mã khoa:";
-            // 
-            // textBoxMaKhoa
-            // 
-            this.textBoxMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceKhoa, "MAKH", true));
-            this.textBoxMaKhoa.Location = new System.Drawing.Point(111, 53);
-            this.textBoxMaKhoa.MenuManager = this.barManager1;
-            this.textBoxMaKhoa.Name = "textBoxMaKhoa";
-            this.textBoxMaKhoa.Size = new System.Drawing.Size(100, 20);
-            this.textBoxMaKhoa.TabIndex = 1;
-            // 
-            // tENKHLabel
-            // 
-            tENKHLabel.AutoSize = true;
-            tENKHLabel.Location = new System.Drawing.Point(31, 106);
-            tENKHLabel.Name = "tENKHLabel";
-            tENKHLabel.Size = new System.Drawing.Size(55, 13);
-            tENKHLabel.TabIndex = 2;
-            tENKHLabel.Text = "Tên khoa:";
+            this.textBoxMaCoSo.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceKhoa, "MACS", true));
+            this.textBoxMaCoSo.Location = new System.Drawing.Point(111, 107);
+            this.textBoxMaCoSo.MenuManager = this.barManager1;
+            this.textBoxMaCoSo.Name = "textBoxMaCoSo";
+            this.textBoxMaCoSo.Size = new System.Drawing.Size(169, 20);
+            this.textBoxMaCoSo.TabIndex = 5;
             // 
             // textBoxTenKhoa
             // 
             this.textBoxTenKhoa.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceKhoa, "TENKH", true));
-            this.textBoxTenKhoa.Location = new System.Drawing.Point(111, 103);
+            this.textBoxTenKhoa.Location = new System.Drawing.Point(111, 71);
             this.textBoxTenKhoa.MenuManager = this.barManager1;
             this.textBoxTenKhoa.Name = "textBoxTenKhoa";
-            this.textBoxTenKhoa.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTenKhoa.Size = new System.Drawing.Size(169, 20);
             this.textBoxTenKhoa.TabIndex = 3;
             // 
-            // mACSLabel
+            // textBoxMaKhoa
             // 
-            mACSLabel.AutoSize = true;
-            mACSLabel.Location = new System.Drawing.Point(511, 60);
-            mACSLabel.Name = "mACSLabel";
-            mACSLabel.Size = new System.Drawing.Size(49, 13);
-            mACSLabel.TabIndex = 4;
-            mACSLabel.Text = "Mã cơ sở";
-            // 
-            // textBoxMaCoSo
-            // 
-            this.textBoxMaCoSo.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceKhoa, "MACS", true));
-            this.textBoxMaCoSo.Location = new System.Drawing.Point(585, 56);
-            this.textBoxMaCoSo.MenuManager = this.barManager1;
-            this.textBoxMaCoSo.Name = "textBoxMaCoSo";
-            this.textBoxMaCoSo.Size = new System.Drawing.Size(100, 20);
-            this.textBoxMaCoSo.TabIndex = 5;
+            this.textBoxMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceKhoa, "MAKH", true));
+            this.textBoxMaKhoa.Location = new System.Drawing.Point(111, 35);
+            this.textBoxMaKhoa.MenuManager = this.barManager1;
+            this.textBoxMaKhoa.Name = "textBoxMaKhoa";
+            this.textBoxMaKhoa.Size = new System.Drawing.Size(169, 20);
+            this.textBoxMaKhoa.TabIndex = 1;
             // 
             // bindingSourceLop
             // 
             this.bindingSourceLop.DataMember = "FK_LOP_KHOA";
             this.bindingSourceLop.DataSource = this.bindingSourceKhoa;
             // 
-            // tableAdapterLop
-            // 
-            this.tableAdapterLop.ClearBeforeFill = true;
-            // 
             // bindingSourceGiaoVien
             // 
             this.bindingSourceGiaoVien.DataMember = "FK_GIAOVIEN_KHOA";
             this.bindingSourceGiaoVien.DataSource = this.bindingSourceKhoa;
-            // 
-            // tableAdapterGiaoVien
-            // 
-            this.tableAdapterGiaoVien.ClearBeforeFill = true;
             // 
             // FormKhoa
             // 
@@ -411,9 +412,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNhapLieu)).EndInit();
             this.panelControlNhapLieu.ResumeLayout(false);
             this.panelControlNhapLieu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxMaKhoa.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxTenKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBoxMaCoSo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxTenKhoa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxMaKhoa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGiaoVien)).EndInit();
             this.ResumeLayout(false);

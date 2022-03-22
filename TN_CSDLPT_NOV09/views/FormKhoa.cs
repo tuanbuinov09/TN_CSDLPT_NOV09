@@ -95,7 +95,6 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonHuy.Enabled = false;
             }
 
-            textBoxMaCoSo.Text = Program.maCoSo;
             // đăng nhập ở đâu thì mã cơ sở mặc định ở đấy, nên ta khỏi cần enable nó để nhập liệu làm gì
             textBoxMaCoSo.Enabled = false;
             barButtonGhi.Enabled = false;
@@ -191,6 +190,8 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
+            //mã cơ sở mặc định là chỗ ta đang đứng
+            textBoxMaCoSo.Text = Program.maCoSo;
 
             // khi đang thêm sửa thì k thể ấn phục hồi
             barButtonPhucHoi.Enabled = false;
@@ -259,7 +260,7 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonXoa.Enabled = false;
             }
-            undoCommands.Add("EXEC SP_THEM_KHOA '" + maKhoa + "','" + tenKhoa + "', '"+Program.maCoSo+"'");
+            undoCommands.Add("EXEC SP_THEM_KHOA '" + maKhoa + "', N'" + tenKhoa + "', '"+Program.maCoSo+"'");
 
             mode = "";
             if (undoCommands.Count > 0)
@@ -291,14 +292,15 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
-            //check trùng mã môn học khi thêm
+            //check trùng mã, tên khoa khi thêm
             if (mode == "them")
             {
-                String strLenh = "EXEC SP_KT_KHOA_DATONTAI '" + maKhoa + "', '" + tenKhoaChuanBiSua + "'";
+                String strLenh = "EXEC SP_KT_KHOA_DATONTAI '" + maKhoa + "', N'" + tenKhoaChuanBiSua + "', 'KTRATHEM'";
 
                 int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1)
+                if (kq == 1) //
                 {
+                    //tự raiserror, ta chỉ cần focus về field nhập
                     textBoxMaKhoa.Focus();
                     return;
                 }
@@ -308,7 +310,26 @@ namespace TN_CSDLPT_NOV09.views
                     return;
                 }
             }
+            //check trùng tên khoa khi sửa (trường hợp mã khoa tên khoa đều giống nhau ta cho là đúng
+            // trường hợp mã khoa khác, tên khoa giống thì báo k thể sửa)
+            if (mode == "sua")
+            {
+                String strLenh = "EXEC SP_KT_KHOA_DATONTAI '" + maKhoa + "', N'" + tenKhoaChuanBiSua + "', 'KTRSUA'";
 
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                //if (kq == 1) //
+                //{
+                //    //tự raiserror, ta chỉ cần focus về field nhập
+                //    textBoxMaKhoa.Focus();
+                //    return;
+                //}
+                if (kq == 2)
+                {
+                    //tên khoa trùng khoa khác
+                    textBoxTenKhoa.Focus();
+                    return;
+                }
+            }
             try
             {
                 bindingSourceKhoa.EndEdit();
@@ -330,7 +351,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             if (mode == "sua")
             {
-                undoCommands.Add("EXEC SP_SUA_KHOA '" + maKhoa + "','" + tenKhoaLucChuaSua + "'");
+                undoCommands.Add("EXEC SP_SUA_KHOA '" + maKhoa + "', N'" + tenKhoaLucChuaSua + "'");
             }
 
             mode = "";
@@ -349,6 +370,76 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonPhucHoi.Enabled = false;
             }
             barButtonHuy.Enabled = false;
+        }
+
+        private void barButtonPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String strLenh = (String)undoCommands[undoCommands.Count - 1];
+
+            try
+            {
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+                Program.myReader.Read();
+            }
+            catch (Exception ex)
+            {
+                //cos raiserror thoong baso r
+                //MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterKhoa.Update(this.TN_CSDLPT_DataSet.KHOA);
+                Program.myReader.Close();
+                Program.conn.Close();
+                return;
+            }
+
+            // lấy ra mã môn học bị ảnh hưởng khi undo 
+            String affected_id = "";
+            try
+            {
+                //lay AFFECTED_ID tu sp
+                affected_id = Program.myReader.GetString(0).Trim();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Không lấy được mã môn bị ảnh hưởng\n" + ex.Message, "", MessageBoxButtons.OK);
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                //return;
+            }
+
+            Program.myReader.Close();
+            Program.conn.Close();
+
+            //hiển thị lại bảng
+            try
+            {
+                this.tableAdapterKhoa.Connection.ConnectionString = Program.connstr;
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                tableAdapterKhoa.Fill(this.TN_CSDLPT_DataSet.KHOA);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+
+            // chuyển dòng được chọn trên gridview thành dòng có mã bị ảnh hưởng (affected_id)
+            if (affected_id != "" || affected_id != null)
+            {
+                //int row = gridViewKhoa.LocateByValue("MAKH", affected_id);
+                //gridViewMonHoc.FocusedRowHandle = row; 
+                bindingSourceKhoa.Position = bindingSourceKhoa.Find("MAKH", affected_id);
+            }
+
+
+            //loại bỏ lệnh vừa undo ở cuối undoCommands
+            undoCommands.RemoveAt(undoCommands.Count - 1);
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
         }
     }
 }
