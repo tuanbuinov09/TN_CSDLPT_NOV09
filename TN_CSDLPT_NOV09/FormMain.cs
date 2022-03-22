@@ -83,8 +83,9 @@ namespace TN_CSDLPT_NOV09
             Program.mGroup = "";
             Program.mlogin = "";
             Program.password = "";
-            Program.mLoginDN = "";
-            Program.passwordDN = "";
+            //Program.mLoginDN = "";
+            //Program.passwordDN = "";
+            //Program.conn.Close();
             this.Hide();
             Program.formDangNhap.textBoxMatKhau.Text = "";
             Program.formDangNhap.Show();
@@ -126,6 +127,18 @@ namespace TN_CSDLPT_NOV09
             else
             {
                 FormKhoa f = new FormKhoa();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonQuanLyLop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormLop));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormLop f = new FormLop();
                 f.MdiParent = this;
                 f.Show();
             }
