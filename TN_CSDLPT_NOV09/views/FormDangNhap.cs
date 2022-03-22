@@ -166,9 +166,9 @@ namespace TN_CSDLPT_NOV09.views
                 Program.formChinh.toolStripNhomPhanQuyen.Text = Program.mGroup;
 
             }
+
             this.Hide();
             Program.formChinh.Show();
-            //Program.formChinh.Show();
         }
 
         private void radioButtonGiangVien_CheckedChanged(object sender, EventArgs e)

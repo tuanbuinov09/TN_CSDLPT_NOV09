@@ -300,21 +300,40 @@ namespace TN_CSDLPT_NOV09.views
             //check trùng mã môn học khi thêm
             if (mode == "them")
             {
-                String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + maMonHoc + "', '"+tenMonHocChuanBiSua+"'";
+                String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + maMonHoc + "', '"+tenMonHocChuanBiSua+"', 'KTRATHEM'";
 
                 int kq = Program.ExecSqlNonQuery(strLenh);
+                //lỗi mã môn
                 if (kq == 1)
                 {
                     textBoxMaMonHoc.Focus();
                     return;
                 }
+                // lỗi tên môn
                 if(kq == 2)
                 {
                     textBoxTenMonHoc.Focus();
                     return;
                 }
             }
-            
+            if (mode == "sua")
+            {
+                String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + maMonHoc + "', '" + tenMonHocChuanBiSua + "', 'KTRASUA'";
+
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                //lỗi mã môn
+                //if (kq == 1)
+               // {
+               //     textBoxMaMonHoc.Focus();
+               //     return;
+                //}
+                // lỗi tên môn
+                if (kq == 2)
+                {
+                    textBoxTenMonHoc.Focus();
+                    return;
+                }
+            }
             try
             {
                 bindingSourceMonHoc.EndEdit();

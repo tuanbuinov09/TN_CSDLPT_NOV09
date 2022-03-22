@@ -139,6 +139,7 @@
             this.barButtonQuanLyLop.Caption = "Lớp";
             this.barButtonQuanLyLop.Id = 7;
             this.barButtonQuanLyLop.Name = "barButtonQuanLyLop";
+            this.barButtonQuanLyLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonQuanLyLop_ItemClick);
             // 
             // barButtonQuanLySinhVien
             // 

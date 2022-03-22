@@ -250,7 +250,7 @@ namespace TN_CSDLPT_NOV09.views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xóa môn học thất bại, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Xóa khoa thất bại, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
                     this.tableAdapterKhoa.Update(this.TN_CSDLPT_DataSet.KHOA);
                     bindingSourceKhoa.Position = bindingSourceKhoa.Find("MAKH", maKhoa);
                     return;
@@ -383,8 +383,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             catch (Exception ex)
             {
-                //cos raiserror thoong baso r
-                //MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
                 this.tableAdapterKhoa.Update(this.TN_CSDLPT_DataSet.KHOA);
                 Program.myReader.Close();
                 Program.conn.Close();

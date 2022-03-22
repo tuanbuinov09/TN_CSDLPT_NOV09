@@ -96,6 +96,12 @@
     <Compile Include="views\FormKhoa.Designer.cs">
       <DependentUpon>FormKhoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\FormLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\FormLop.Designer.cs">
+      <DependentUpon>FormLop.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\FormMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormKhoa.resx">
       <DependentUpon>FormKhoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\FormLop.resx">
+      <DependentUpon>FormLop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormMonHoc.resx">
       <DependentUpon>FormMonHoc.cs</DependentUpon>
