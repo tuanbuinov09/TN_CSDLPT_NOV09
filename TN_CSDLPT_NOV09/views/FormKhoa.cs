@@ -390,7 +390,7 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
-            // lấy ra mã môn học bị ảnh hưởng khi undo 
+            // lấy ra mã khoa bị ảnh hưởng khi undo 
             String affected_id = "";
             try
             {

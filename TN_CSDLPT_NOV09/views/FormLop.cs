@@ -79,6 +79,12 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonHuy.Enabled = false;
             }
 
+            //load danh sách khoa vào comboBox
+            DataTable dt = Program.ExecSqlDataTable("EXEC SP_LAY_DS_KHOA");
+            comboBoxMaKhoa.DataSource = dt;
+            comboBoxMaKhoa.DisplayMember = "MAKH";
+            comboBoxMaKhoa.ValueMember = "MAKH";
+
             barButtonGhi.Enabled = false;
             panelControlNhapLieu.Enabled = false;
 
@@ -133,6 +139,12 @@ namespace TN_CSDLPT_NOV09.views
                 //Dùng sau
                 //maCoSo = ((DataRowView)bindingSourceMonHoc[0])["MACS"].ToString();
             }
+            // mỗi khi chuyển site, cái combobox mã khoa sẽ bị mất dữ liệu
+            // mỗi khi chuyển ta lấy lại dữ liệu vào combobox
+            DataTable dt = Program.ExecSqlDataTable("EXEC SP_LAY_DS_KHOA");
+            comboBoxMaKhoa.DataSource = dt;
+            comboBoxMaKhoa.DisplayMember = "MAKH";
+            comboBoxMaKhoa.ValueMember = "MAKH";
         }
 
         private void barButtonThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -145,7 +157,7 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
-
+            comboBoxMaKhoa.SelectedIndex = 0;
             // khi đang thêm sửa thì k thể ấn phục hồi
             barButtonPhucHoi.Enabled = false;
             // khi thêm cho nhập mã khoa, khi sửa không cho sửa mã khoa
@@ -158,14 +170,17 @@ namespace TN_CSDLPT_NOV09.views
             mode = "sua";
             vitri = bindingSourceLop.Position;
             panelControlNhapLieu.Enabled = true;
-
+            // khi ấn sửa lấy mã khoa chưa sửa chọn ở combobox khoa
+            String maKhoa = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MAKH"].ToString().Trim();
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
-
+            comboBoxMaKhoa.SelectedValue = maKhoa;
             // khi đang thêm sửa thì k thể ấn phục hồi
             barButtonPhucHoi.Enabled = false;
             barButtonHuy.Enabled = true;
 
+            // không cho sửa mã lớp
+            textBoxMaLop.Enabled = false;
             gridControlLop.Enabled = false;
         }
 
@@ -182,26 +197,26 @@ namespace TN_CSDLPT_NOV09.views
             }
             if (bindingSourceGiaoVien_DangKy.Count > 0)
             {
-                MessageBox.Show("Không thể xóa khoa này vì đã đăng ký thi", "", MessageBoxButtons.OK);
+                MessageBox.Show("Không thể xóa lớp này vì đã đăng ký thi", "", MessageBoxButtons.OK);
                 return;
             }
 
-            int xacNhanXoa = (int)MessageBox.Show("Bạn có chắc muốn xóa khoa này?", "Xác nhận", MessageBoxButtons.OKCancel);
+            int xacNhanXoa = (int)MessageBox.Show("Bạn có chắc muốn xóa lớp này?", "Xác nhận", MessageBoxButtons.OKCancel);
             if (xacNhanXoa == (int)DialogResult.OK)
             {
                 try
                 {
-                    maLop = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MALOP"].ToString();
+                    maLop = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MALOP"].ToString().Trim();
                     //lấy thông tin lớp để undo redo
-                    tenLop = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["TENLOP"].ToString();
-                    maKhoa = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MAKH"].ToString();
+                    tenLop = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["TENLOP"].ToString().Trim();
+                    maKhoa = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MAKH"].ToString().Trim();
                     bindingSourceLop.RemoveCurrent();
                     this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterLop.Update(this.TN_CSDLPT_DataSet.LOP);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Xóa môn học thất bại, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                    MessageBox.Show("Xóa lớp thất bại, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
                     this.tableAdapterLop.Update(this.TN_CSDLPT_DataSet.LOP);
                     bindingSourceLop.Position = bindingSourceLop.Find("MAKH", maKhoa);
                     return;
@@ -222,6 +237,213 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonPhucHoi.Enabled = false;
             }
+        }
+
+        private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String maLop = textBoxMaLop.Text.Trim();
+            String tenLopLucChuaSua = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["TENLOP"].ToString();
+            String tenLopChuanBiSua = textBoxTenLop.Text.Trim();
+            String maKhoaLucChuaSua = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MAKH"].ToString();
+            String maKhoaChuanBiSua = comboBoxMaKhoa.Text.Trim();
+            if (maLop == "")
+            {
+                MessageBox.Show("Mã lớp không được bỏ trống", "", MessageBoxButtons.OK);
+                textBoxMaLop.Focus();
+                return;
+            }
+            // lưu ý chuẩn bị sửa cũng là chuẩn bị thêm
+            if (tenLopChuanBiSua == "")
+            {
+                MessageBox.Show("Tên lớp không được bỏ trống", "", MessageBoxButtons.OK);
+                textBoxTenLop.Focus();
+                return;
+            }
+
+            //check trùng mã, tên lớp khi thêm
+            if (mode == "them")
+            {
+                String strLenh = "EXEC SP_KT_LOP_DATONTAI '" + maLop + "', N'" + tenLopChuanBiSua +"', '" + maKhoaChuanBiSua +"', 'KTRATHEM'";
+
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1) //
+                {
+                    //tự raiserror, ta chỉ cần focus về field nhập
+                    textBoxMaLop.Focus();
+                    return;
+                }
+                if (kq == 2)
+                {
+                    textBoxTenLop.Focus();
+                    return;
+                }
+            }
+            //check trùng tên lớp khi sửa (trường hợp mã lớp tên lớp đều giống nhau ta cho là đúng
+            // trường hợp mã lớp khác, tên lớp giống thì báo k thể sửa)
+            if (mode == "sua")
+            {
+                String strLenh = "EXEC SP_KT_LOP_DATONTAI '" + maLop + "', N'" + tenLopChuanBiSua + "', '" + maKhoaChuanBiSua + "', 'KTRASUA'";
+
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                //if (kq == 1) //
+                //{
+                //    //tự raiserror, ta chỉ cần focus về field nhập
+                //    textBoxMaKhoa.Focus();
+                //    return;
+                //}
+                if (kq == 2)
+                {
+                    //tên khoa trùng khoa khác
+                    textBoxTenLop.Focus();
+                    return;
+                }
+            }
+            try
+            {
+                bindingSourceLop.EndEdit();
+                bindingSourceLop.ResetCurrentItem();
+                this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterLop.Update(this.TN_CSDLPT_DataSet.LOP);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể ghi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterLop.Update(this.TN_CSDLPT_DataSet.LOP);
+                return;
+            }
+
+            // nếu là thêm thì khi undo (xóa nó đi) thì lấy mã của nó trên bảng để sau quay trở về
+            if (mode == "them")
+            {
+                undoCommands.Add("EXEC SP_XOA_LOP '" + maLop + "'");
+            }
+            if (mode == "sua")
+            {
+                undoCommands.Add("EXEC SP_SUA_LOP '" + maLop + "', N'" + tenLopLucChuaSua + "', '"+maKhoaLucChuaSua+"'");
+            }
+
+            mode = "";
+
+            panelControlNhapLieu.Enabled = false;
+            gridControlLop.Enabled = true;
+
+            barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
+            barButtonGhi.Enabled = false;
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
+            barButtonHuy.Enabled = false;
+        }
+
+        private void barButtonPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String strLenh = (String)undoCommands[undoCommands.Count - 1];
+
+            try
+            {
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+                Program.myReader.Read();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterLop.Update(this.TN_CSDLPT_DataSet.LOP);
+                Program.myReader.Close();
+                Program.conn.Close();
+                return;
+            }
+
+            // lấy ra mã lớp bị ảnh hưởng khi undo 
+            String affected_id = "";
+            try
+            {
+                //lay AFFECTED_ID tu sp
+                affected_id = Program.myReader.GetString(0).Trim();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Không lấy được mã môn bị ảnh hưởng\n" + ex.Message, "", MessageBoxButtons.OK);
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                //return;
+            }
+
+            Program.myReader.Close();
+            Program.conn.Close();
+
+            //hiển thị lại bảng
+            try
+            {
+                this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                this.tableAdapterLop.Fill(this.TN_CSDLPT_DataSet.LOP);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+
+            // chuyển dòng được chọn trên gridview thành dòng có mã bị ảnh hưởng (affected_id)
+            if (affected_id != "" || affected_id != null)
+            {
+                //int row = gridViewKhoa.LocateByValue("MAKH", affected_id);
+                //gridViewMonHoc.FocusedRowHandle = row; 
+                bindingSourceLop.Position = bindingSourceLop.Find("MALOP", affected_id);
+            }
+
+
+            //loại bỏ lệnh vừa undo ở cuối undoCommands
+            undoCommands.RemoveAt(undoCommands.Count - 1);
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
+        }
+
+        private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bindingSourceLop.CancelEdit();
+            bindingSourceLop.Position = vitri;
+            panelControlNhapLieu.Enabled = false;
+            gridControlLop.Enabled = true;
+
+            barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
+            barButtonGhi.Enabled = false;
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
+            barButtonHuy.Enabled = false;
+        }
+
+        private void barButtonReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                tableAdapterLop.Fill(this.TN_CSDLPT_DataSet.LOP);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+        }
+
+        private void barButtonThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
