@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonDangNhap = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -138,14 +139,19 @@
             // 
             this.barButtonQuanLyLop.Caption = "Lớp";
             this.barButtonQuanLyLop.Id = 7;
+            this.barButtonQuanLyLop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonQuanLyLop.ImageOptions.Image")));
             this.barButtonQuanLyLop.Name = "barButtonQuanLyLop";
+            this.barButtonQuanLyLop.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonQuanLyLop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonQuanLyLop_ItemClick);
             // 
             // barButtonQuanLySinhVien
             // 
             this.barButtonQuanLySinhVien.Caption = "Sinh viên";
             this.barButtonQuanLySinhVien.Id = 8;
+            this.barButtonQuanLySinhVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonQuanLySinhVien.ImageOptions.Image")));
             this.barButtonQuanLySinhVien.Name = "barButtonQuanLySinhVien";
+            this.barButtonQuanLySinhVien.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonQuanLySinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonQuanLySinhVien_ItemClick);
             // 
             // barButtonQuanLyGiaoVien
             // 
