@@ -157,9 +157,11 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
+
             comboBoxMaKhoa.SelectedIndex = 0;
             // khi đang thêm sửa thì k thể ấn phục hồi
             barButtonPhucHoi.Enabled = false;
+            barButtonReload.Enabled = false;
             // khi thêm cho nhập mã khoa, khi sửa không cho sửa mã khoa
             textBoxMaLop.Enabled = true;
             gridControlLop.Enabled = false;
@@ -178,7 +180,7 @@ namespace TN_CSDLPT_NOV09.views
             // khi đang thêm sửa thì k thể ấn phục hồi
             barButtonPhucHoi.Enabled = false;
             barButtonHuy.Enabled = true;
-
+            barButtonReload.Enabled = false;
             // không cho sửa mã lớp
             textBoxMaLop.Enabled = false;
             gridControlLop.Enabled = false;
@@ -329,6 +331,7 @@ namespace TN_CSDLPT_NOV09.views
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
+            barButtonReload.Enabled = true;
             if (undoCommands.Count > 0)
             {
                 barButtonPhucHoi.Enabled = true;
@@ -412,6 +415,11 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bindingSourceLop.CancelEdit();
+            if (mode == "them")
+            {
+                //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
+                gridViewLop.DeleteRow(gridViewLop.FocusedRowHandle);
+            }
             bindingSourceLop.Position = vitri;
             panelControlNhapLieu.Enabled = false;
             gridControlLop.Enabled = true;
@@ -426,6 +434,7 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonPhucHoi.Enabled = false;
             }
+            barButtonReload.Enabled = true;
             barButtonHuy.Enabled = false;
         }
 

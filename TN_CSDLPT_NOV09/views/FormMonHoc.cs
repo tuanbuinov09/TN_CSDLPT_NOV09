@@ -101,7 +101,7 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
-
+            barButtonReload.Enabled = false;
             barButtonPhucHoi.Enabled = false;
 
             // khi đang thêm sửa thì k thể ấn phục hồi
@@ -125,7 +125,7 @@ namespace TN_CSDLPT_NOV09.views
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
-
+            barButtonReload.Enabled = false;
             barButtonPhucHoi.Enabled = false;
 
             // khi đang thêm sửa thì k thể ấn phục hồi
@@ -147,6 +147,11 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bindingSourceMonHoc.CancelEdit();
+            if (mode == "them")
+            {
+                //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
+                gridViewMonHoc.DeleteRow(gridViewMonHoc.FocusedRowHandle);
+            }
             bindingSourceMonHoc.Position = vitri;
             panelControlNhapLieu.Enabled = false;
             gridControlMonHoc.Enabled = true;
@@ -161,6 +166,7 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonPhucHoi.Enabled = false;
             }
+            barButtonReload.Enabled = true;
             barButtonHuy.Enabled = false;
         }
 
@@ -300,7 +306,7 @@ namespace TN_CSDLPT_NOV09.views
             //check trùng mã môn học khi thêm
             if (mode == "them")
             {
-                String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + maMonHoc + "', '"+tenMonHocChuanBiSua+"', 'KTRATHEM'";
+                String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + maMonHoc + "', N'"+tenMonHocChuanBiSua+"', 'KTRATHEM'";
 
                 int kq = Program.ExecSqlNonQuery(strLenh);
                 //lỗi mã môn
@@ -318,7 +324,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             if (mode == "sua")
             {
-                String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + maMonHoc + "', '" + tenMonHocChuanBiSua + "', 'KTRASUA'";
+                String strLenh = "EXEC SP_KT_MONHOC_DATONTAI '" + maMonHoc + "', N'" + tenMonHocChuanBiSua + "', 'KTRASUA'";
 
                 int kq = Program.ExecSqlNonQuery(strLenh);
                 //lỗi mã môn
@@ -355,7 +361,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             if (mode == "sua")
             {
-                undoCommands.Add("EXEC SP_SUA_MONHOC '" + maMonHoc + "','" + tenMonHocLucChuaSua + "'");
+                undoCommands.Add("EXEC SP_SUA_MONHOC '" + maMonHoc + "', N'" + tenMonHocLucChuaSua + "'");
             }
             
             mode = "";
@@ -373,6 +379,7 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonPhucHoi.Enabled = false;
             }
+            barButtonReload.Enabled = true;
             barButtonHuy.Enabled = false;
         }
 
