@@ -104,8 +104,9 @@ namespace TN_CSDLPT_NOV09.views
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
             comboBoxMaLop.SelectedIndex = 0;
-            // khi đang thêm sửa thì k thể ấn phục hồi
+            // khi đang thêm sửa thì k thể ấn phục hồi, reload
             barButtonPhucHoi.Enabled = false;
+            barButtonReload.Enabled = false;
             // khi thêm cho nhập mã sinh viene, khi sửa không cho sửa mã 
             textBoxMaSinhVien.Enabled = true;
             gridControlSinhVien.Enabled = false;
@@ -120,12 +121,12 @@ namespace TN_CSDLPT_NOV09.views
             String maLop = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MALOP"].ToString().Trim();
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
+            barButtonHuy.Enabled = true;
 
             comboBoxMaLop.SelectedValue = maLop;
             // khi đang thêm sửa thì k thể ấn phục hồi
             barButtonPhucHoi.Enabled = false;
-            barButtonHuy.Enabled = true;
-
+            barButtonReload.Enabled = false;
             // không cho sửa mã sinh viene
             textBoxMaSinhVien.Enabled = false;
             gridControlSinhVien.Enabled = false;
@@ -209,6 +210,10 @@ namespace TN_CSDLPT_NOV09.views
 
             String ngaySinhChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["NGAYSINH"].ToString().Trim();
             String ngaySinhChuanBiSua = dateEditNgaySinh.Text.Trim();
+
+            //format thành định dạng date của sql để undo sửa
+            DateTime myDateTime = DateTime.Parse(ngaySinhChuaSua);
+            String ngaySinhChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
 
             String diaChiChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["DIACHI"].ToString().Trim();
             String diaChiChuanBiSua = textBoxDiaChi.Text.Trim();
@@ -313,7 +318,7 @@ namespace TN_CSDLPT_NOV09.views
             if (mode == "sua")
             {
                 undoCommands.Add("EXEC SP_SUA_SINHVIEN '" + maSinhVien + "', N'"  + hoChuaSua 
-                    + "', N'" + tenChuaSua + "', '" + ngaySinhChuaSua + "', N'" + diaChiChuaSua + "', '" + matKhauChuaSua + "', '" + maLopChuaSua + "'");
+                    + "', N'" + tenChuaSua + "', '" + ngaySinhChuaSuaSQLFormat + "', N'" + diaChiChuaSua + "', '" + matKhauChuaSua + "', '" + maLopChuaSua + "'");
             }
 
             mode = "";
@@ -323,6 +328,7 @@ namespace TN_CSDLPT_NOV09.views
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
+            barButtonReload.Enabled = true;
 
             if (undoCommands.Count > 0)
             {
@@ -382,12 +388,19 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bindingSourceSinhVien.CancelEdit();
+            if (mode == "them")
+            {
+                //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
+                gridViewSinhVien.DeleteRow(gridViewSinhVien.FocusedRowHandle);
+            }
+           
             bindingSourceSinhVien.Position = vitri;
             panelControlNhapLieu.Enabled = false;
             gridControlSinhVien.Enabled = true;
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
+            barButtonReload.Enabled = true;
             if (undoCommands.Count > 0)
             {
                 barButtonPhucHoi.Enabled = true;
@@ -414,6 +427,73 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Dispose();
+        }
+
+        private void barButtonPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String strLenh = (String)undoCommands[undoCommands.Count - 1];
+
+            try
+            {
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+                Program.myReader.Read();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterSinhVien.Update(this.TN_CSDLPT_DataSet.SINHVIEN);
+                Program.myReader.Close();
+                Program.conn.Close();
+                return;
+            }
+
+            // lấy ra mã sinh viên bị ảnh hưởng khi undo 
+            String affected_id = "";
+            try
+            {
+                //lay AFFECTED_ID tu sp
+                affected_id = Program.myReader.GetString(0).Trim();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Không lấy được mã môn bị ảnh hưởng\n" + ex.Message, "", MessageBoxButtons.OK);
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                //return;
+            }
+
+            Program.myReader.Close();
+            Program.conn.Close();
+
+            //hiển thị lại bảng
+            try
+            {
+                this.tableAdapterSinhVien.Connection.ConnectionString = Program.connstr;
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                this.tableAdapterSinhVien.Fill(this.TN_CSDLPT_DataSet.SINHVIEN);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+
+            // chuyển dòng được chọn trên gridview thành dòng có mã bị ảnh hưởng (affected_id)
+            if (affected_id != "" || affected_id != null)
+            {
+                bindingSourceSinhVien.Position = bindingSourceSinhVien.Find("MASV", affected_id);
+            }
+
+
+            //loại bỏ lệnh vừa undo ở cuối undoCommands
+            undoCommands.RemoveAt(undoCommands.Count - 1);
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
         }
     }
 }

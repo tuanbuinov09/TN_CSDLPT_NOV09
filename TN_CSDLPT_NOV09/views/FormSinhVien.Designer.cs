@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSinhVien));
             System.Windows.Forms.Label mASVLabel;
             System.Windows.Forms.Label hOLabel;
             System.Windows.Forms.Label tENLabel;
@@ -37,6 +36,7 @@
             System.Windows.Forms.Label dIACHILabel;
             System.Windows.Forms.Label mATKHAULabel;
             System.Windows.Forms.Label mALOPLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSinhVien));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonThem = new DevExpress.XtraBars.BarButtonItem();
@@ -59,18 +59,18 @@
             this.bindingSourceSinhVien = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterSinhVien = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.SINHVIENTableAdapter();
             this.tableAdapterManager = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.TableAdapterManager();
+            this.tableAdapterBangDiem = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.BANGDIEMTableAdapter();
             this.gridControlSinhVien = new DevExpress.XtraGrid.GridControl();
             this.gridViewSinhVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControlNhapLieu = new DevExpress.XtraEditors.PanelControl();
-            this.textBoxMaSinhVien = new DevExpress.XtraEditors.TextEdit();
-            this.textBoxHo = new DevExpress.XtraEditors.TextEdit();
-            this.textBoxTen = new DevExpress.XtraEditors.TextEdit();
-            this.dateEditNgaySinh = new DevExpress.XtraEditors.DateEdit();
-            this.textBoxDiaChi = new DevExpress.XtraEditors.TextEdit();
-            this.textBoxMatKhau = new DevExpress.XtraEditors.TextEdit();
-            this.bindingSourceBangDiem = new System.Windows.Forms.BindingSource(this.components);
-            this.tableAdapterBangDiem = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.BANGDIEMTableAdapter();
             this.comboBoxMaLop = new System.Windows.Forms.ComboBox();
+            this.textBoxMatKhau = new DevExpress.XtraEditors.TextEdit();
+            this.textBoxDiaChi = new DevExpress.XtraEditors.TextEdit();
+            this.dateEditNgaySinh = new DevExpress.XtraEditors.DateEdit();
+            this.textBoxTen = new DevExpress.XtraEditors.TextEdit();
+            this.textBoxHo = new DevExpress.XtraEditors.TextEdit();
+            this.textBoxMaSinhVien = new DevExpress.XtraEditors.TextEdit();
+            this.bindingSourceBangDiem = new System.Windows.Forms.BindingSource(this.components);
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -87,15 +87,78 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSinhVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNhapLieu)).BeginInit();
             this.panelControlNhapLieu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxMaSinhVien.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxHo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxTen.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxMatKhau.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxDiaChi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgaySinh.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgaySinh.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxDiaChi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxMatKhau.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxTen.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxHo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxMaSinhVien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceBangDiem)).BeginInit();
             this.SuspendLayout();
+            // 
+            // mASVLabel
+            // 
+            mASVLabel.AutoSize = true;
+            mASVLabel.Location = new System.Drawing.Point(34, 36);
+            mASVLabel.Name = "mASVLabel";
+            mASVLabel.Size = new System.Drawing.Size(38, 13);
+            mASVLabel.TabIndex = 0;
+            mASVLabel.Text = "MASV:";
+            // 
+            // hOLabel
+            // 
+            hOLabel.AutoSize = true;
+            hOLabel.Location = new System.Drawing.Point(34, 70);
+            hOLabel.Name = "hOLabel";
+            hOLabel.Size = new System.Drawing.Size(26, 13);
+            hOLabel.TabIndex = 2;
+            hOLabel.Text = "HO:";
+            // 
+            // tENLabel
+            // 
+            tENLabel.AutoSize = true;
+            tENLabel.Location = new System.Drawing.Point(228, 70);
+            tENLabel.Name = "tENLabel";
+            tENLabel.Size = new System.Drawing.Size(30, 13);
+            tENLabel.TabIndex = 4;
+            tENLabel.Text = "TEN:";
+            // 
+            // nGAYSINHLabel
+            // 
+            nGAYSINHLabel.AutoSize = true;
+            nGAYSINHLabel.Location = new System.Drawing.Point(489, 36);
+            nGAYSINHLabel.Name = "nGAYSINHLabel";
+            nGAYSINHLabel.Size = new System.Drawing.Size(62, 13);
+            nGAYSINHLabel.TabIndex = 6;
+            nGAYSINHLabel.Text = "NGAYSINH:";
+            // 
+            // dIACHILabel
+            // 
+            dIACHILabel.AutoSize = true;
+            dIACHILabel.Location = new System.Drawing.Point(34, 110);
+            dIACHILabel.Name = "dIACHILabel";
+            dIACHILabel.Size = new System.Drawing.Size(47, 13);
+            dIACHILabel.TabIndex = 8;
+            dIACHILabel.Text = "DIACHI:";
+            // 
+            // mATKHAULabel
+            // 
+            mATKHAULabel.AutoSize = true;
+            mATKHAULabel.Location = new System.Drawing.Point(489, 70);
+            mATKHAULabel.Name = "mATKHAULabel";
+            mATKHAULabel.Size = new System.Drawing.Size(59, 13);
+            mATKHAULabel.TabIndex = 10;
+            mATKHAULabel.Text = "MATKHAU:";
+            // 
+            // mALOPLabel
+            // 
+            mALOPLabel.AutoSize = true;
+            mALOPLabel.Location = new System.Drawing.Point(489, 110);
+            mALOPLabel.Name = "mALOPLabel";
+            mALOPLabel.Size = new System.Drawing.Size(45, 13);
+            mALOPLabel.TabIndex = 12;
+            mALOPLabel.Text = "MALOP:";
             // 
             // barManager1
             // 
@@ -173,6 +236,7 @@
             this.barButtonPhucHoi.Id = 4;
             this.barButtonPhucHoi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonPhucHoi.ImageOptions.Image")));
             this.barButtonPhucHoi.Name = "barButtonPhucHoi";
+            this.barButtonPhucHoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonPhucHoi_ItemClick);
             // 
             // barButtonHuy
             // 
@@ -206,31 +270,31 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager1;
-            this.barDockControl1.Size = new System.Drawing.Size(863, 40);
+            this.barDockControl1.Size = new System.Drawing.Size(873, 44);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 499);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 501);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(863, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(873, 0);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 459);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 457);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(863, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(873, 44);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 459);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 457);
             // 
             // barButtonItem1
             // 
@@ -243,9 +307,9 @@
             this.panelControl1.Controls.Add(this.comboBoxCoSo);
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 40);
+            this.panelControl1.Location = new System.Drawing.Point(0, 44);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(863, 38);
+            this.panelControl1.Size = new System.Drawing.Size(873, 38);
             this.panelControl1.TabIndex = 18;
             // 
             // comboBoxCoSo
@@ -294,15 +358,19 @@
             this.tableAdapterManager.SINHVIENTableAdapter = this.tableAdapterSinhVien;
             this.tableAdapterManager.UpdateOrder = TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // tableAdapterBangDiem
+            // 
+            this.tableAdapterBangDiem.ClearBeforeFill = true;
+            // 
             // gridControlSinhVien
             // 
             this.gridControlSinhVien.DataSource = this.bindingSourceSinhVien;
             this.gridControlSinhVien.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControlSinhVien.Location = new System.Drawing.Point(0, 78);
+            this.gridControlSinhVien.Location = new System.Drawing.Point(0, 82);
             this.gridControlSinhVien.MainView = this.gridViewSinhVien;
             this.gridControlSinhVien.MenuManager = this.barManager1;
             this.gridControlSinhVien.Name = "gridControlSinhVien";
-            this.gridControlSinhVien.Size = new System.Drawing.Size(863, 220);
+            this.gridControlSinhVien.Size = new System.Drawing.Size(873, 220);
             this.gridControlSinhVien.TabIndex = 19;
             this.gridControlSinhVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSinhVien});
@@ -329,73 +397,41 @@
             this.panelControlNhapLieu.Controls.Add(mASVLabel);
             this.panelControlNhapLieu.Controls.Add(this.textBoxMaSinhVien);
             this.panelControlNhapLieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControlNhapLieu.Location = new System.Drawing.Point(0, 298);
+            this.panelControlNhapLieu.Location = new System.Drawing.Point(0, 302);
             this.panelControlNhapLieu.Name = "panelControlNhapLieu";
-            this.panelControlNhapLieu.Size = new System.Drawing.Size(863, 201);
+            this.panelControlNhapLieu.Size = new System.Drawing.Size(873, 199);
             this.panelControlNhapLieu.TabIndex = 20;
             // 
-            // mASVLabel
+            // comboBoxMaLop
             // 
-            mASVLabel.AutoSize = true;
-            mASVLabel.Location = new System.Drawing.Point(34, 36);
-            mASVLabel.Name = "mASVLabel";
-            mASVLabel.Size = new System.Drawing.Size(38, 13);
-            mASVLabel.TabIndex = 0;
-            mASVLabel.Text = "MASV:";
+            this.comboBoxMaLop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxMaLop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxMaLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceSinhVien, "MALOP", true));
+            this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMaLop.FormattingEnabled = true;
+            this.comboBoxMaLop.Location = new System.Drawing.Point(562, 107);
+            this.comboBoxMaLop.Name = "comboBoxMaLop";
+            this.comboBoxMaLop.Size = new System.Drawing.Size(142, 21);
+            this.comboBoxMaLop.TabIndex = 13;
             // 
-            // textBoxMaSinhVien
+            // textBoxMatKhau
             // 
-            this.textBoxMaSinhVien.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "MASV", true));
-            this.textBoxMaSinhVien.Location = new System.Drawing.Point(90, 33);
-            this.textBoxMaSinhVien.MenuManager = this.barManager1;
-            this.textBoxMaSinhVien.Name = "textBoxMaSinhVien";
-            this.textBoxMaSinhVien.Size = new System.Drawing.Size(274, 20);
-            this.textBoxMaSinhVien.TabIndex = 1;
+            this.textBoxMatKhau.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "MATKHAU", true));
+            this.textBoxMatKhau.EditValue = "123";
+            this.textBoxMatKhau.Location = new System.Drawing.Point(562, 67);
+            this.textBoxMatKhau.MenuManager = this.barManager1;
+            this.textBoxMatKhau.Name = "textBoxMatKhau";
+            this.textBoxMatKhau.Size = new System.Drawing.Size(142, 20);
+            this.textBoxMatKhau.TabIndex = 11;
             // 
-            // hOLabel
+            // textBoxDiaChi
             // 
-            hOLabel.AutoSize = true;
-            hOLabel.Location = new System.Drawing.Point(34, 70);
-            hOLabel.Name = "hOLabel";
-            hOLabel.Size = new System.Drawing.Size(26, 13);
-            hOLabel.TabIndex = 2;
-            hOLabel.Text = "HO:";
-            // 
-            // textBoxHo
-            // 
-            this.textBoxHo.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "HO", true));
-            this.textBoxHo.Location = new System.Drawing.Point(90, 67);
-            this.textBoxHo.MenuManager = this.barManager1;
-            this.textBoxHo.Name = "textBoxHo";
-            this.textBoxHo.Size = new System.Drawing.Size(123, 20);
-            this.textBoxHo.TabIndex = 3;
-            // 
-            // tENLabel
-            // 
-            tENLabel.AutoSize = true;
-            tENLabel.Location = new System.Drawing.Point(228, 70);
-            tENLabel.Name = "tENLabel";
-            tENLabel.Size = new System.Drawing.Size(30, 13);
-            tENLabel.TabIndex = 4;
-            tENLabel.Text = "TEN:";
-            // 
-            // textBoxTen
-            // 
-            this.textBoxTen.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "TEN", true));
-            this.textBoxTen.Location = new System.Drawing.Point(264, 67);
-            this.textBoxTen.MenuManager = this.barManager1;
-            this.textBoxTen.Name = "textBoxTen";
-            this.textBoxTen.Size = new System.Drawing.Size(100, 20);
-            this.textBoxTen.TabIndex = 5;
-            // 
-            // nGAYSINHLabel
-            // 
-            nGAYSINHLabel.AutoSize = true;
-            nGAYSINHLabel.Location = new System.Drawing.Point(489, 36);
-            nGAYSINHLabel.Name = "nGAYSINHLabel";
-            nGAYSINHLabel.Size = new System.Drawing.Size(62, 13);
-            nGAYSINHLabel.TabIndex = 6;
-            nGAYSINHLabel.Text = "NGAYSINH:";
+            this.textBoxDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "DIACHI", true));
+            this.textBoxDiaChi.Location = new System.Drawing.Point(90, 107);
+            this.textBoxDiaChi.MenuManager = this.barManager1;
+            this.textBoxDiaChi.Name = "textBoxDiaChi";
+            this.textBoxDiaChi.Size = new System.Drawing.Size(274, 20);
+            this.textBoxDiaChi.TabIndex = 9;
             // 
             // dateEditNgaySinh
             // 
@@ -411,78 +447,43 @@
             this.dateEditNgaySinh.Size = new System.Drawing.Size(142, 20);
             this.dateEditNgaySinh.TabIndex = 7;
             // 
-            // dIACHILabel
+            // textBoxTen
             // 
-            dIACHILabel.AutoSize = true;
-            dIACHILabel.Location = new System.Drawing.Point(34, 110);
-            dIACHILabel.Name = "dIACHILabel";
-            dIACHILabel.Size = new System.Drawing.Size(47, 13);
-            dIACHILabel.TabIndex = 8;
-            dIACHILabel.Text = "DIACHI:";
+            this.textBoxTen.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "TEN", true));
+            this.textBoxTen.Location = new System.Drawing.Point(264, 67);
+            this.textBoxTen.MenuManager = this.barManager1;
+            this.textBoxTen.Name = "textBoxTen";
+            this.textBoxTen.Size = new System.Drawing.Size(100, 20);
+            this.textBoxTen.TabIndex = 5;
             // 
-            // textBoxDiaChi
+            // textBoxHo
             // 
-            this.textBoxDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "DIACHI", true));
-            this.textBoxDiaChi.Location = new System.Drawing.Point(90, 107);
-            this.textBoxDiaChi.MenuManager = this.barManager1;
-            this.textBoxDiaChi.Name = "textBoxDiaChi";
-            this.textBoxDiaChi.Size = new System.Drawing.Size(274, 20);
-            this.textBoxDiaChi.TabIndex = 9;
+            this.textBoxHo.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "HO", true));
+            this.textBoxHo.Location = new System.Drawing.Point(90, 67);
+            this.textBoxHo.MenuManager = this.barManager1;
+            this.textBoxHo.Name = "textBoxHo";
+            this.textBoxHo.Size = new System.Drawing.Size(123, 20);
+            this.textBoxHo.TabIndex = 3;
             // 
-            // mATKHAULabel
+            // textBoxMaSinhVien
             // 
-            mATKHAULabel.AutoSize = true;
-            mATKHAULabel.Location = new System.Drawing.Point(489, 70);
-            mATKHAULabel.Name = "mATKHAULabel";
-            mATKHAULabel.Size = new System.Drawing.Size(59, 13);
-            mATKHAULabel.TabIndex = 10;
-            mATKHAULabel.Text = "MATKHAU:";
-            // 
-            // textBoxMatKhau
-            // 
-            this.textBoxMatKhau.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "MATKHAU", true));
-            this.textBoxMatKhau.EditValue = "123";
-            this.textBoxMatKhau.Location = new System.Drawing.Point(562, 67);
-            this.textBoxMatKhau.MenuManager = this.barManager1;
-            this.textBoxMatKhau.Name = "textBoxMatKhau";
-            this.textBoxMatKhau.Size = new System.Drawing.Size(142, 20);
-            this.textBoxMatKhau.TabIndex = 11;
+            this.textBoxMaSinhVien.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "MASV", true));
+            this.textBoxMaSinhVien.Location = new System.Drawing.Point(90, 33);
+            this.textBoxMaSinhVien.MenuManager = this.barManager1;
+            this.textBoxMaSinhVien.Name = "textBoxMaSinhVien";
+            this.textBoxMaSinhVien.Size = new System.Drawing.Size(274, 20);
+            this.textBoxMaSinhVien.TabIndex = 1;
             // 
             // bindingSourceBangDiem
             // 
             this.bindingSourceBangDiem.DataMember = "FK_BANGDIEM_SINHVIEN1";
             this.bindingSourceBangDiem.DataSource = this.bindingSourceSinhVien;
             // 
-            // tableAdapterBangDiem
-            // 
-            this.tableAdapterBangDiem.ClearBeforeFill = true;
-            // 
-            // mALOPLabel
-            // 
-            mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(489, 110);
-            mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(45, 13);
-            mALOPLabel.TabIndex = 12;
-            mALOPLabel.Text = "MALOP:";
-            // 
-            // comboBoxMaLop
-            // 
-            this.comboBoxMaLop.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxMaLop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxMaLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceSinhVien, "MALOP", true));
-            this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMaLop.FormattingEnabled = true;
-            this.comboBoxMaLop.Location = new System.Drawing.Point(562, 107);
-            this.comboBoxMaLop.Name = "comboBoxMaLop";
-            this.comboBoxMaLop.Size = new System.Drawing.Size(142, 21);
-            this.comboBoxMaLop.TabIndex = 13;
-            // 
             // FormSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 499);
+            this.ClientSize = new System.Drawing.Size(873, 501);
             this.Controls.Add(this.panelControlNhapLieu);
             this.Controls.Add(this.gridControlSinhVien);
             this.Controls.Add(this.panelControl1);
@@ -504,13 +505,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNhapLieu)).EndInit();
             this.panelControlNhapLieu.ResumeLayout(false);
             this.panelControlNhapLieu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxMaSinhVien.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxHo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxTen.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxMatKhau.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxDiaChi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgaySinh.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgaySinh.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxDiaChi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBoxMatKhau.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxTen.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxHo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textBoxMaSinhVien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceBangDiem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

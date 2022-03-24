@@ -125,7 +125,7 @@ namespace TN_CSDLPT_NOV09.views
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
-
+            barButtonReload.Enabled = false;
             barButtonPhucHoi.Enabled = false;
 
             // khi đang thêm sửa thì k thể ấn phục hồi
@@ -175,13 +175,18 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bindingSourceBoDe.CancelEdit();
+            if (mode == "them")
+            {
+                //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
+                gridViewBoDe.DeleteRow(gridViewBoDe.FocusedRowHandle);
+            }
             bindingSourceBoDe.Position = vitri;
             panelControlNhapLieu.Enabled = false;
             gridControlBoDe.Enabled = true;
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
-
+            barButtonReload.Enabled = true;
             barButtonPhucHoi.Enabled = false;
 
             // khi đang thêm sửa thì k thể ấn phục hồi
@@ -235,7 +240,7 @@ namespace TN_CSDLPT_NOV09.views
             //comboBoxTrinhDo.SelectedIndex = 0;
 
             barButtonHuy.Enabled = true;
-
+            barButtonReload.Enabled = false;
             textBoxMaGiaoVien.Enabled = false;
             gridControlBoDe.Enabled = false;
         }
@@ -427,6 +432,7 @@ namespace TN_CSDLPT_NOV09.views
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
+            barButtonReload.Enabled = true;
             if (undoCommands.Count > 0)
             {
                 barButtonPhucHoi.Enabled = true;

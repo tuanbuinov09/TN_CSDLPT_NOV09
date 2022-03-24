@@ -115,7 +115,8 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxMaKhoa.SelectedIndex = 0;
 
             barButtonPhucHoi.Enabled = false;
-
+            // khi đang thêm sửa k cho reload vì ấn reload sẽ tự động chọn dòng trên grid, ảnh hưởng tới panel nhập liệu
+            barButtonReload.Enabled = false;
             // khi đang thêm sửa thì k thể ấn phục hồi
             //if (undoCommands.Count > 0)
             //{
@@ -155,7 +156,7 @@ namespace TN_CSDLPT_NOV09.views
             //{
             //    barButtonPhucHoi.Enabled = false;
             //}
-
+            barButtonReload.Enabled = false;
             barButtonHuy.Enabled = true;
 
             textBoxMaGiaoVien.Enabled = false;
@@ -378,6 +379,7 @@ namespace TN_CSDLPT_NOV09.views
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
+            barButtonReload.Enabled = true;
             if (undoCommands.Count > 0)
             {
                 barButtonPhucHoi.Enabled = true;
@@ -392,6 +394,11 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bindingSourceGiaoVien.CancelEdit();
+            if (mode == "them")
+            {
+                //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
+                gridViewGiaoVien.DeleteRow(gridViewGiaoVien.FocusedRowHandle);
+            }
             bindingSourceGiaoVien.Position = vitri;
             panelControlNhapLieu.Enabled = false;
             gridControlGiaoVien.Enabled = true;
@@ -409,7 +416,7 @@ namespace TN_CSDLPT_NOV09.views
             }
 
             barButtonHuy.Enabled = false;
-
+            barButtonReload.Enabled = true;
         }
 
         private void barButtonReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
