@@ -316,7 +316,161 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //lấy thông tin gvien_dangky để undo redo
+            String maGiaoVienChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAGV"].ToString().Trim();
+            String maGiaoVienChuanBiSua = comboBoxMaGiaoVien.SelectedValue.ToString().Trim();
 
+            //không cho sửa mã lớp, mã môn và lần
+            String maLop = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MALOP"].ToString().Trim();
+            //String maLopChuanBiThem = comboBoxMaLop.SelectedValue.ToString().Trim();
+
+            String maMonHoc = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAMH"].ToString().Trim();
+            //String maMonHocChuanBiThem = comboBoxMaMonHoc.SelectedValue.ToString().Trim();
+
+            String trinhDoChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["TRINHDO"].ToString().Trim();
+            String trinhDoChuanBiSua = comboBoxTrinhDo.SelectedValue.ToString().Trim();
+
+            String ngayThiChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["NGAYTHI"].ToString().Trim();
+            String ngayThiChuanBiSua = dateEditNgayThi.Text.Trim();
+
+            //format thành định dạng date của sql để undo sửa
+            DateTime myDateTime = DateTime.Parse(ngayThiChuaSua);
+            String ngaySinhChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
+
+            // ta k cho sửa lần thi
+            int lan = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["LAN"].ToString().Trim());
+
+            int soCauThiChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["SOCAUTHI"].ToString().Trim());
+            int soCauThiChuanBiSua = int.Parse(spinEditSoCauThi.Value.ToString());
+
+            int thoiGianChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["THOIGIAN"].ToString().Trim());
+            int thoiGianChuanBiSua = int.Parse(spinEditThoiGian.Value.ToString());
+
+
+            // lưu ý chuẩn bị sửa cũng là chuẩn bị thêm
+            // những combobox load dữ liệu lên từ csdl ta k cần check vì nó có chắc r
+            if (lan < 1 || lan >2)
+            {
+                MessageBox.Show("Một môn chỉ thi tối đa 2 lần", "", MessageBoxButtons.OK);
+                spinEditThoiGian.Focus();
+                return;
+            }
+            if (soCauThiChuanBiSua < 20||soCauThiChuanBiSua>100)
+            {
+                MessageBox.Show("Đề thi phải có tối thiểu 20 câu, tối đa 100 câu", "", MessageBoxButtons.OK);
+                spinEditSoCauThi.Focus();
+                return;
+            }
+            if (thoiGianChuanBiSua < 30)
+            {
+                MessageBox.Show("Thời gian thi phải lớn hơn 30 phút", "", MessageBoxButtons.OK);
+                spinEditThoiGian.Focus();
+                return;
+            }
+            if (dateEditNgayThi.Text=="")
+            {
+                MessageBox.Show("Hãy nhập ngày thi", "", MessageBoxButtons.OK);
+                dateEditNgayThi.Focus();
+                return;
+            }
+            if (dateEditNgayThi.DateTime.DayOfWeek == DayOfWeek.Sunday)
+            {
+                MessageBox.Show("Chủ nhật thì không tổ chức thi", "", MessageBoxButtons.OK);
+                dateEditNgayThi.Focus();
+                return;
+            }
+            if (dateEditNgayThi.DateTime < DateTime.Now.AddDays(7))
+            {
+                MessageBox.Show("Ngày thi phải cách ngày đăng kí ít nhất 1 tuần", "", MessageBoxButtons.OK);
+                dateEditNgayThi.Focus();
+                return;
+            }
+
+
+            //check trùng mã, tên lớp khi thêm
+            if (mode == "them")
+            {
+                String strLenh = "EXEC SP_KT_GIAOVIEN_DANGKY_DATONTAI '" + maMonHoc + "', '"+maLop+"', "+lan+"";
+
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1) //
+                {
+                    //tự raiserror, ta chỉ cần focus về field nhập
+                    spinEditLan.Focus();
+                    return;
+                }
+                //vì ngoài mã thông tin của sinh viên hoàn toàn có thể giống nhau
+
+                //if (kq == 2)
+                //{
+                //    textBoxTenLop.Focus();
+                //    return;
+                //}
+            }
+
+            if (mode == "sua")
+            {
+                // vì mã sinh viên k cho sửa, nên cũng k cần kiểm tra sinh viên tồn tại chưa
+                //String strLenh = "EXEC SP_KT_SINHVIEN_DATONTAI '" + maSinhVien;
+
+                //int kq = Program.ExecSqlNonQuery(strLenh);
+                ////if (kq == 1) //
+                ////{
+                ////    //tự raiserror, ta chỉ cần focus về field nhập
+                ////    textBoxMaKhoa.Focus();
+                ////    return;
+                ////}
+                //if (kq == 2)
+                //{
+                //    //tên khoa trùng khoa khác
+                //    textBoxTenLop.Focus();
+                //    return;
+                //}
+            }
+            try
+            {
+                bindingSourceGiaoVien_DangKy.EndEdit();
+                bindingSourceGiaoVien_DangKy.ResetCurrentItem();
+                this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể ghi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                return;
+            }
+
+            // nếu là thêm thì khi undo (xóa nó đi) thì lấy mã của nó trên bảng để sau quay trở về
+            if (mode == "them")
+            {
+                undoCommands.Add("EXEC SP_XOA_GIAOVIEN_DANGKY '" + maMonHoc + "', '" + maLop + "', "+lan+"");
+            }
+            // đăngký thi chỉ cho sửa ngày thi, giáo viên coi thi số câu thi, trình độ, thời gian, k cho sửa môn học
+            if (mode == "sua")
+            {
+                undoCommands.Add("EXEC SP_SUA_GIAOVIEN_DANGKY '" + maSinhVien + "', N'" + hoChuaSua
+                    + "', N'" + tenChuaSua + "', '" + ngaySinhChuaSuaSQLFormat + "', N'" + diaChiChuaSua + "', '" + matKhauChuaSua + "', '" + maLopChuaSua + "'");
+            }
+
+            mode = "";
+
+            panelControlNhapLieu.Enabled = false;
+            gridControlSinhVien.Enabled = true;
+
+            barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
+            barButtonGhi.Enabled = false;
+            barButtonReload.Enabled = true;
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
+            barButtonHuy.Enabled = false;
         }
     }
 }
