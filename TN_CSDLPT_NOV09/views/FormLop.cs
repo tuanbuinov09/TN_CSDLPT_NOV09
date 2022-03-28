@@ -247,10 +247,17 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            String tenLopLucChuaSua = "";
+            String maKhoaLucChuaSua = "";
+            if (mode == "sua")
+            {
+                tenLopLucChuaSua = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["TENLOP"].ToString();
+                maKhoaLucChuaSua = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MAKH"].ToString();
+            }
             String maLop = textBoxMaLop.Text.Trim();
-            String tenLopLucChuaSua = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["TENLOP"].ToString();
+            //String tenLopLucChuaSua = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["TENLOP"].ToString();
             String tenLopChuanBiSua = textBoxTenLop.Text.Trim();
-            String maKhoaLucChuaSua = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MAKH"].ToString();
+            //String maKhoaLucChuaSua = (String)((DataRowView)bindingSourceLop[bindingSourceLop.Position])["MAKH"].ToString();
             String maKhoaChuanBiSua = comboBoxMaKhoa.Text.Trim();
             if (maLop == "")
             {
@@ -299,7 +306,7 @@ namespace TN_CSDLPT_NOV09.views
                 //}
                 if (kq == 2)
                 {
-                    //tên khoa trùng khoa khác
+                    //tên lớp trùng lớp khác
                     textBoxTenLop.Focus();
                     return;
                 }

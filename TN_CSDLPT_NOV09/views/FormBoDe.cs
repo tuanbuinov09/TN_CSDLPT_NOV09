@@ -348,23 +348,43 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            String maMonHocChuaSua = "";
+            String trinhDoChuaSua = "";
+            String noiDungChuaSua ="";
+            String aChuaSua = "";
+            String bChuaSua = "";
+            String cChuaSua = "";
+            String dChuaSua = "";
+            String dapAnChuaSua = "";
+            if (mode == "sua") // lấy dữ liệu để undo sửa
+            {
+                maMonHocChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAMH"].ToString();
+                trinhDoChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["TRINHDO"].ToString();
+                noiDungChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["NOIDUNG"].ToString();
+                aChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["A"].ToString();
+                bChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["B"].ToString();
+                cChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["C"].ToString();
+                dChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["D"].ToString();
+                dapAnChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["DAP_AN"].ToString();
+
+            }
             String maGiaoVien = textBoxMaGiaoVien.Text.Trim();
             int idCauHoi = int.Parse(spinEditCauHoi.Text);
-            String maMonHocChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAMH"].ToString();
+            //String maMonHocChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["MAMH"].ToString();
             String maMonHocChuanBiSua = comboBoxMaMonHoc.SelectedText.ToString();
-            String trinhDoChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["TRINHDO"].ToString();
+            //String trinhDoChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["TRINHDO"].ToString();
             String trinhDoChuanBiSua = comboBoxTrinhDo.SelectedText.ToString();
-            String noiDungChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["NOIDUNG"].ToString();
+            //String noiDungChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["NOIDUNG"].ToString();
             String noiDungChuanBiSua = textBoxNoiDung.Text.Trim();
-            String aChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["A"].ToString();
+            //String aChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["A"].ToString();
             String aChuanBiSua = textBoxA.Text.Trim();
-            String bChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["B"].ToString();
+            //String bChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["B"].ToString();
             String bChuanBiSua = textBoxB.Text.Trim();
-            String cChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["C"].ToString();
+            //String cChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["C"].ToString();
             String cChuanBiSua = textBoxC.Text.Trim();
-            String dChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["D"].ToString();
+            //String dChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["D"].ToString();
             String dChuanBiSua = textBoxD.Text.Trim();
-            String dapAnChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["DAP_AN"].ToString();
+            //String dapAnChuaSua = (String)((DataRowView)bindingSourceBoDe[bindingSourceBoDe.Position])["DAP_AN"].ToString();
             String dapAnChuanBiSua = comboBoxDapAn.SelectedText.ToString();
 
             // lưu ý tenChuanBiSua cũng là chuẩn bị thêm

@@ -202,30 +202,55 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            String hoChuaSua = "";
+            String tenChuaSua = "";
+            String ngaySinhChuaSua = "";
+            //format thành định dạng date của sql để undo sửa
+            DateTime myDateTime = new DateTime();
+            String ngaySinhChuaSuaSQLFormat = "";
+
+            String diaChiChuaSua = "";
+            String matKhauChuaSua = "";
+            String maLopChuaSua = "";
+
+            if (mode == "sua")
+            {
+                hoChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["HO"].ToString().Trim();
+                tenChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["TEN"].ToString().Trim();
+                ngaySinhChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["NGAYSINH"].ToString().Trim();
+                //format thành định dạng date của sql để undo sửa
+                myDateTime = DateTime.Parse(ngaySinhChuaSua);
+                ngaySinhChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
+
+                diaChiChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["DIACHI"].ToString().Trim();
+                matKhauChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MATKHAU"].ToString().Trim();
+                maLopChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MALOP"].ToString().Trim();
+
+            }
             //String maSinhVien = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MASV"].ToString().Trim();
             String maSinhVien = textBoxMaSinhVien.Text.Trim();
 
             //lấy thông tin sinh viên để undo redo
-            String hoChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["HO"].ToString().Trim();
+            //String hoChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["HO"].ToString().Trim();
             String hoChuanBiSua = textBoxHo.Text.Trim();
 
-            String tenChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["TEN"].ToString().Trim();
+            //String tenChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["TEN"].ToString().Trim();
             String tenChuanBiSua = textBoxTen.Text.Trim();
 
-            String ngaySinhChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["NGAYSINH"].ToString().Trim();
+            //String ngaySinhChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["NGAYSINH"].ToString().Trim();
             String ngaySinhChuanBiSua = dateEditNgaySinh.Text.Trim();
 
             //format thành định dạng date của sql để undo sửa
-            DateTime myDateTime = DateTime.Parse(ngaySinhChuaSua);
-            String ngaySinhChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
+            //DateTime myDateTime = DateTime.Parse(ngaySinhChuaSua);
+            //String ngaySinhChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
 
-            String diaChiChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["DIACHI"].ToString().Trim();
+            //String diaChiChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["DIACHI"].ToString().Trim();
             String diaChiChuanBiSua = textBoxDiaChi.Text.Trim();
 
-            String matKhauChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MATKHAU"].ToString().Trim();
+            //String matKhauChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MATKHAU"].ToString().Trim();
             String matKhauChuanBiSua = textBoxMatKhau.Text.Trim();
 
-            String maLopChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MALOP"].ToString().Trim();
+            //String maLopChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MALOP"].ToString().Trim();
             String maLopChuanBiSua = comboBoxMaLop.Text.Trim();
 
             if (maSinhVien == "")

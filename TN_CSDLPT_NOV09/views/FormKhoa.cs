@@ -286,8 +286,13 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            String tenKhoaLucChuaSua = "";
+            if (mode == "sua")
+            {
+                tenKhoaLucChuaSua = (String)((DataRowView)bindingSourceKhoa[bindingSourceKhoa.Position])["TENKH"].ToString();
+            }
             String maKhoa = textBoxMaKhoa.Text.Trim();
-            String tenKhoaLucChuaSua = (String)((DataRowView)bindingSourceKhoa[bindingSourceKhoa.Position])["TENKH"].ToString();
+            //String tenKhoaLucChuaSua = (String)((DataRowView)bindingSourceKhoa[bindingSourceKhoa.Position])["TENKH"].ToString();
             String tenKhoaChuanBiSua = textBoxTenKhoa.Text.Trim();
             if (maKhoa == "")
             {

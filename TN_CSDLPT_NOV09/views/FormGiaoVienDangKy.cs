@@ -303,12 +303,7 @@ namespace TN_CSDLPT_NOV09.views
                     this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
 
                     //quay về dòng có 3 dữ liệu bên dưới
-                    int index = bindingSourceGiaoVien_DangKy.Find(
-                        new Key { PropertyName = "LAN", Value = lan },
-                        new Key { PropertyName = "MALOP", Value = maLop },
-                        new Key { PropertyName = "MAMH", Value = maMonHoc }
-                        );
-
+                    int index = bindingSourceGiaoVien_DangKy.Find("LAN", lan) + bindingSourceGiaoVien_DangKy.Find("MALOP", maLop) + bindingSourceGiaoVien_DangKy.Find("MAMH", maMonHoc);
                     bindingSourceGiaoVien_DangKy.Position = index;
                     return;
                 }
@@ -478,8 +473,8 @@ namespace TN_CSDLPT_NOV09.views
             // đăngký thi chỉ cho sửa ngày thi, giáo viên coi thi số câu thi, trình độ, thời gian, k cho sửa môn học
             if (mode == "sua")
             {
-                undoCommands.Add("EXEC SP_SUA_GIAOVIEN_DANGKY '" + maGiaoVienChuaSua + "', '" + trinhDoChuaSua
-                    + "', '" + ngayThiChuaSuaSQLFormat + "', " + soCauThiChuaSua + ", " + thoiGianChuaSua + "");
+                undoCommands.Add("EXEC SP_SUA_GIAOVIEN_DANGKY '" + maGiaoVienChuaSua + "', '" + maMonHoc + "', '" + maLop + "', '" + trinhDoChuaSua
+                    + "', '" + ngayThiChuaSuaSQLFormat + "', " +lan + ", " + soCauThiChuaSua + ", " + thoiGianChuaSua + "");
             }
 
             mode = "";
@@ -500,6 +495,88 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonPhucHoi.Enabled = false;
             }
             barButtonHuy.Enabled = false;
+        }
+
+        private void barButtonPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String strLenh = (String)undoCommands[undoCommands.Count - 1];
+
+            try
+            {
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+                Program.myReader.Read();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                Program.myReader.Close();
+                Program.conn.Close();
+                return;
+            }
+
+            // lấy ra mã sinh viên bị ảnh hưởng khi undo 
+            String affected_id = "";
+            String affected_maMonHoc = "";
+            String affected_maLop = "";
+            int affected_lan = -1;
+            try
+            {
+                //lay AFFECTED_ID tu sp
+                affected_id = Program.myReader.GetString(0).Trim(); // không dùng
+                affected_maMonHoc = Program.myReader.GetString(1).Trim();
+                affected_maLop = Program.myReader.GetString(2).Trim();
+                affected_lan = Program.myReader.GetInt16(3);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Không lấy được mã môn bị ảnh hưởng\n" + ex.Message, "", MessageBoxButtons.OK);
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                //return;
+            }
+
+            Program.myReader.Close();
+            Program.conn.Close();
+
+            //hiển thị lại bảng
+            try
+            {
+                this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                this.tableAdapterGiaoVien_DangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+
+            // chuyển dòng được chọn trên gridview thành dòng có mã bị ảnh hưởng (affected_id)
+            if (affected_id != "" || affected_id != null)
+            {
+                //bindingSourceSinhVien.Position = bindingSourceSinhVien.Find("MASV", affected_id);
+                
+                //quay về dòng có 3 dữ liệu bên dưới
+                int index = bindingSourceGiaoVien_DangKy.Find("LAN", affected_lan) + bindingSourceGiaoVien_DangKy.Find("MALOP", affected_maLop) + bindingSourceGiaoVien_DangKy.Find("MAMH", affected_maMonHoc);
+                bindingSourceGiaoVien_DangKy.Position = index;
+
+            }
+
+            //loại bỏ lệnh vừa undo ở cuối undoCommands
+            undoCommands.RemoveAt(undoCommands.Count - 1);
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
+        }
+
+        private void barButtonThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
