@@ -79,7 +79,11 @@ namespace TN_CSDLPT_NOV09.views
                 {
                     barButtonPhucHoi.Enabled = false;
                 }
-
+                // nếu trong dữ liệu k có dòng nào disable nút thêm xóa
+                if (bindingSourceMonHoc.Count == 0)
+                {
+                    barButtonSua.Enabled = barButtonXoa.Enabled = false;
+                }
                 barButtonHuy.Enabled = false;
             }
             panelControlNhapLieu.Enabled = false;
@@ -286,8 +290,13 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            String tenMonHocLucChuaSua = "";
+            if (mode == "sua")
+            {
+                tenMonHocLucChuaSua = (String)((DataRowView)bindingSourceMonHoc[bindingSourceMonHoc.Position])["TENMH"].ToString();
+            }
             String maMonHoc = textBoxMaMonHoc.Text.Trim();
-            String tenMonHocLucChuaSua  = (String)((DataRowView)bindingSourceMonHoc[bindingSourceMonHoc.Position])["TENMH"].ToString();
+            //String tenMonHocLucChuaSua  = (String)((DataRowView)bindingSourceMonHoc[bindingSourceMonHoc.Position])["TENMH"].ToString();
             String tenMonHocChuanBiSua = textBoxTenMonHoc.Text.Trim();
             if (maMonHoc == "")
             {

@@ -37,6 +37,7 @@ namespace TN_CSDLPT_NOV09.views
             // bỏ các ràng buộc để load dữ liệu lên grid view k bị lỗi
             this.TN_CSDLPT_DataSet.EnforceConstraints = false;
             // TODO: This line of code loads data into the 'tN_CSDLPT_DataSet.GIAOVIEN_DANGKY' table. You can move, or remove it, as needed.
+            this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
             this.tableAdapterGiaoVien_DangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
 
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
@@ -91,7 +92,7 @@ namespace TN_CSDLPT_NOV09.views
             DataTable dtDSMonHoc = Program.ExecSqlDataTable("EXEC SP_LAY_DS_MONHOC");
             comboBoxMaMonHoc.DataSource = dtDSMonHoc;
             comboBoxMaMonHoc.DisplayMember = "MAMH";
-            comboBoxMaMonHoc.ValueMember = "MANH";
+            comboBoxMaMonHoc.ValueMember = "MAMH";
 
             comboBoxTrinhDo.Items.Add("A");
             comboBoxTrinhDo.Items.Add("B");
@@ -99,6 +100,11 @@ namespace TN_CSDLPT_NOV09.views
 
             barButtonGhi.Enabled = false;
             panelControlNhapLieu.Enabled = false;
+
+            if (bindingSourceGiaoVien_DangKy.Count == 0)
+            {
+                barButtonSua.Enabled = barButtonXoa.Enabled = false;
+            }
         }
 
         private void comboBoxCoSo_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,6 +135,7 @@ namespace TN_CSDLPT_NOV09.views
                 // bỏ các ràng buộc để load dữ liệu lên grid view k bị lỗi
                 this.TN_CSDLPT_DataSet.EnforceConstraints = false;
                 // TODO: This line of code loads data into the 'tN_CSDLPT_DataSet.GIAOVIEN_DANGKY' table. You can move, or remove it, as needed.
+                this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
                 this.tableAdapterGiaoVien_DangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
 
                 //Dùng sau
@@ -174,6 +181,15 @@ namespace TN_CSDLPT_NOV09.views
             barButtonPhucHoi.Enabled = false;
             barButtonReload.Enabled = false;
 
+            comboBoxMaGiaoVien.SelectedIndex = 0;
+            comboBoxMaMonHoc.SelectedIndex = 0;
+            comboBoxMaLop.SelectedIndex = 0;
+            comboBoxTrinhDo.SelectedIndex = 0;
+
+            comboBoxMaMonHoc.Enabled = true;
+            comboBoxMaLop.Enabled = true;
+            spinEditLan.Enabled = true;
+
             gridControlGiaoVienDangKy.Enabled = false;
         }
 
@@ -197,8 +213,10 @@ namespace TN_CSDLPT_NOV09.views
             barButtonPhucHoi.Enabled = false;
             barButtonReload.Enabled = false;
 
-            //khỏi cho sữa mã nhỉ
-            //textBoxMaSinhVien.Enabled = false;
+            comboBoxMaMonHoc.Enabled = false;
+            comboBoxMaLop.Enabled = false;
+            spinEditLan.Enabled = false;
+
             gridControlGiaoVienDangKy.Enabled = false;
         }
 
@@ -261,7 +279,7 @@ namespace TN_CSDLPT_NOV09.views
             //    return;
             //}
 
-            int xacNhanXoa = (int)MessageBox.Show("Bạn có chắc muốn xóa sinh viên này?", "Xác nhận", MessageBoxButtons.OKCancel);
+            int xacNhanXoa = (int)MessageBox.Show("Bạn có chắc muốn xóa đăng ký thi này này?", "Xác nhận", MessageBoxButtons.OKCancel);
             if (xacNhanXoa == (int)DialogResult.OK)
             {
                 try
@@ -285,12 +303,7 @@ namespace TN_CSDLPT_NOV09.views
                     this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
 
                     //quay về dòng có 3 dữ liệu bên dưới
-                    int index = bindingSourceGiaoVien_DangKy.Find(
-                        new Key { PropertyName = "LAN", Value = lan },
-                        new Key { PropertyName = "MALOP", Value = maLop },
-                        new Key { PropertyName = "MAMH", Value = maMonHoc }
-                        );
-
+                    int index = bindingSourceGiaoVien_DangKy.Find("LAN", lan) + bindingSourceGiaoVien_DangKy.Find("MALOP", maLop) + bindingSourceGiaoVien_DangKy.Find("MAMH", maMonHoc);
                     bindingSourceGiaoVien_DangKy.Position = index;
                     return;
                 }
@@ -316,40 +329,51 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //lấy thông tin gvien_dangky để undo redo
-            String maGiaoVienChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAGV"].ToString().Trim();
+            String maGiaoVienChuaSua = "";
+            String trinhDoChuaSua = "";
+            String ngayThiChuaSua = "";
+
+            DateTime myDateTime = new DateTime();
+            String ngayThiChuaSuaSQLFormat = "";
+            int soCauThiChuaSua = -1;
+            int thoiGianChuaSua = -1;
+
+            if (mode == "sua")
+            {
+                //lấy thông tin gvien_dangky để undo redo
+                maGiaoVienChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAGV"].ToString().Trim();
+                trinhDoChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["TRINHDO"].ToString().Trim();
+                ngayThiChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["NGAYTHI"].ToString().Trim();
+
+                //format thành định dạng date của sql để undo sửa
+                myDateTime = DateTime.Parse(ngayThiChuaSua);
+                ngayThiChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
+                soCauThiChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["SOCAUTHI"].ToString().Trim());
+                thoiGianChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["THOIGIAN"].ToString().Trim());
+            }
+
             String maGiaoVienChuanBiSua = comboBoxMaGiaoVien.SelectedValue.ToString().Trim();
 
             //không cho sửa mã lớp, mã môn và lần
-            String maLop = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MALOP"].ToString().Trim();
+            //String maLop = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MALOP"].ToString().Trim();
             //String maLopChuanBiThem = comboBoxMaLop.SelectedValue.ToString().Trim();
+            String maLop = comboBoxMaLop.Text.Trim();
 
-            String maMonHoc = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAMH"].ToString().Trim();
+            //String maMonHoc = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAMH"].ToString().Trim();
             //String maMonHocChuanBiThem = comboBoxMaMonHoc.SelectedValue.ToString().Trim();
-
-            String trinhDoChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["TRINHDO"].ToString().Trim();
-            String trinhDoChuanBiSua = comboBoxTrinhDo.SelectedValue.ToString().Trim();
-
-            String ngayThiChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["NGAYTHI"].ToString().Trim();
+            String maMonHoc = comboBoxMaMonHoc.Text.Trim();
+            String trinhDoChuanBiSua = comboBoxTrinhDo.Text.Trim();
             String ngayThiChuanBiSua = dateEditNgayThi.Text.Trim();
 
-            //format thành định dạng date của sql để undo sửa
-            DateTime myDateTime = DateTime.Parse(ngayThiChuaSua);
-            String ngaySinhChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
-
             // ta k cho sửa lần thi
-            int lan = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["LAN"].ToString().Trim());
-
-            int soCauThiChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["SOCAUTHI"].ToString().Trim());
+            int lan = int.Parse(spinEditLan.Value.ToString());
             int soCauThiChuanBiSua = int.Parse(spinEditSoCauThi.Value.ToString());
-
-            int thoiGianChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["THOIGIAN"].ToString().Trim());
             int thoiGianChuanBiSua = int.Parse(spinEditThoiGian.Value.ToString());
 
 
             // lưu ý chuẩn bị sửa cũng là chuẩn bị thêm
             // những combobox load dữ liệu lên từ csdl ta k cần check vì nó có chắc r
-            if (lan < 1 || lan >2)
+            if (lan < 1 || lan > 2)
             {
                 MessageBox.Show("Một môn chỉ thi tối đa 2 lần", "", MessageBoxButtons.OK);
                 spinEditThoiGian.Focus();
@@ -379,7 +403,7 @@ namespace TN_CSDLPT_NOV09.views
                 dateEditNgayThi.Focus();
                 return;
             }
-            if (dateEditNgayThi.DateTime < DateTime.Now.AddDays(7))
+            if (dateEditNgayThi.DateTime <= DateTime.Now.AddDays(7))
             {
                 MessageBox.Show("Ngày thi phải cách ngày đăng kí ít nhất 1 tuần", "", MessageBoxButtons.OK);
                 dateEditNgayThi.Focus();
@@ -390,7 +414,7 @@ namespace TN_CSDLPT_NOV09.views
             //check trùng mã, tên lớp khi thêm
             if (mode == "them")
             {
-                String strLenh = "EXEC SP_KT_GIAOVIEN_DANGKY_DATONTAI '" + maMonHoc + "', '"+maLop+"', "+lan+"";
+                String strLenh = "EXEC SP_KT_GIAOVIEN_DANGKY_DATONTAI '" + maLop + "', '" +maMonHoc+ "', "+lan+"";
 
                 int kq = Program.ExecSqlNonQuery(strLenh);
                 if (kq == 1) //
@@ -449,14 +473,14 @@ namespace TN_CSDLPT_NOV09.views
             // đăngký thi chỉ cho sửa ngày thi, giáo viên coi thi số câu thi, trình độ, thời gian, k cho sửa môn học
             if (mode == "sua")
             {
-                undoCommands.Add("EXEC SP_SUA_GIAOVIEN_DANGKY '" + maSinhVien + "', N'" + hoChuaSua
-                    + "', N'" + tenChuaSua + "', '" + ngaySinhChuaSuaSQLFormat + "', N'" + diaChiChuaSua + "', '" + matKhauChuaSua + "', '" + maLopChuaSua + "'");
+                undoCommands.Add("EXEC SP_SUA_GIAOVIEN_DANGKY '" + maGiaoVienChuaSua + "', '" + maMonHoc + "', '" + maLop + "', '" + trinhDoChuaSua
+                    + "', '" + ngayThiChuaSuaSQLFormat + "', " +lan + ", " + soCauThiChuaSua + ", " + thoiGianChuaSua + "");
             }
 
             mode = "";
 
             panelControlNhapLieu.Enabled = false;
-            gridControlSinhVien.Enabled = true;
+            gridControlGiaoVienDangKy.Enabled = true;
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = true;
             barButtonGhi.Enabled = false;
@@ -471,6 +495,88 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonPhucHoi.Enabled = false;
             }
             barButtonHuy.Enabled = false;
+        }
+
+        private void barButtonPhucHoi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            String strLenh = (String)undoCommands[undoCommands.Count - 1];
+
+            try
+            {
+                Program.myReader = Program.ExecSqlDataReader(strLenh);
+                Program.myReader.Read();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
+                this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                Program.myReader.Close();
+                Program.conn.Close();
+                return;
+            }
+
+            // lấy ra mã sinh viên bị ảnh hưởng khi undo 
+            String affected_id = "";
+            String affected_maMonHoc = "";
+            String affected_maLop = "";
+            int affected_lan = -1;
+            try
+            {
+                //lay AFFECTED_ID tu sp
+                affected_id = Program.myReader.GetString(0).Trim(); // không dùng
+                affected_maMonHoc = Program.myReader.GetString(1).Trim();
+                affected_maLop = Program.myReader.GetString(2).Trim();
+                affected_lan = Program.myReader.GetInt16(3);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Không lấy được mã môn bị ảnh hưởng\n" + ex.Message, "", MessageBoxButtons.OK);
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                //return;
+            }
+
+            Program.myReader.Close();
+            Program.conn.Close();
+
+            //hiển thị lại bảng
+            try
+            {
+                this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
+                //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
+                this.tableAdapterGiaoVien_DangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi reload: " + ex.Message, "", MessageBoxButtons.OK);
+            }
+
+            // chuyển dòng được chọn trên gridview thành dòng có mã bị ảnh hưởng (affected_id)
+            if (affected_id != "" || affected_id != null)
+            {
+                //bindingSourceSinhVien.Position = bindingSourceSinhVien.Find("MASV", affected_id);
+                
+                //quay về dòng có 3 dữ liệu bên dưới
+                int index = bindingSourceGiaoVien_DangKy.Find("LAN", affected_lan) + bindingSourceGiaoVien_DangKy.Find("MALOP", affected_maLop) + bindingSourceGiaoVien_DangKy.Find("MAMH", affected_maMonHoc);
+                bindingSourceGiaoVien_DangKy.Position = index;
+
+            }
+
+            //loại bỏ lệnh vừa undo ở cuối undoCommands
+            undoCommands.RemoveAt(undoCommands.Count - 1);
+
+            if (undoCommands.Count > 0)
+            {
+                barButtonPhucHoi.Enabled = true;
+            }
+            else
+            {
+                barButtonPhucHoi.Enabled = false;
+            }
+        }
+
+        private void barButtonThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

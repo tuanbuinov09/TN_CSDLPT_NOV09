@@ -41,7 +41,7 @@
             this.barButtonQuanLySinhVien = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonQuanLyGiaoVien = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonQuanLyCauHoi = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonChuanBiThi = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonGiaoVien_DangKy = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonThi = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -84,7 +84,7 @@
             this.barButtonQuanLySinhVien,
             this.barButtonQuanLyGiaoVien,
             this.barButtonQuanLyCauHoi,
-            this.barButtonChuanBiThi,
+            this.barButtonGiaoVien_DangKy,
             this.barButtonThi});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaximumSize = new System.Drawing.Size(2000, 1500);
@@ -192,14 +192,15 @@
             this.barButtonQuanLyCauHoi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.barButtonQuanLyCauHoi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonQuanLyCauHoi_ItemClick);
             // 
-            // barButtonChuanBiThi
+            // barButtonGiaoVien_DangKy
             // 
-            this.barButtonChuanBiThi.Caption = "Chuẩn bị thi";
-            this.barButtonChuanBiThi.Id = 11;
-            this.barButtonChuanBiThi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonChuanBiThi.ImageOptions.Image")));
-            this.barButtonChuanBiThi.LargeWidth = 80;
-            this.barButtonChuanBiThi.Name = "barButtonChuanBiThi";
-            this.barButtonChuanBiThi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonGiaoVien_DangKy.Caption = "Giáo viên đăng ký";
+            this.barButtonGiaoVien_DangKy.Id = 11;
+            this.barButtonGiaoVien_DangKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonChuanBiThi.ImageOptions.Image")));
+            this.barButtonGiaoVien_DangKy.LargeWidth = 80;
+            this.barButtonGiaoVien_DangKy.Name = "barButtonGiaoVien_DangKy";
+            this.barButtonGiaoVien_DangKy.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonGiaoVien_DangKy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonGiaoVien_DangKy_ItemClick);
             // 
             // barButtonThi
             // 
@@ -307,7 +308,7 @@
             // 
             // ribbonPageGroup9
             // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonChuanBiThi);
+            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonGiaoVien_DangKy);
             this.ribbonPageGroup9.Name = "ribbonPageGroup9";
             this.ribbonPageGroup9.Text = "_____";
             // 
@@ -407,7 +408,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageThi;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
-        private DevExpress.XtraBars.BarButtonItem barButtonChuanBiThi;
+        private DevExpress.XtraBars.BarButtonItem barButtonGiaoVien_DangKy;
         private DevExpress.XtraBars.BarButtonItem barButtonThi;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }

@@ -48,7 +48,7 @@
             // 
             this.comboBoxCoSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCoSo.FormattingEnabled = true;
-            this.comboBoxCoSo.Location = new System.Drawing.Point(149, 95);
+            this.comboBoxCoSo.Location = new System.Drawing.Point(166, 96);
             this.comboBoxCoSo.Name = "comboBoxCoSo";
             this.comboBoxCoSo.Size = new System.Drawing.Size(232, 21);
             this.comboBoxCoSo.TabIndex = 0;
@@ -58,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 98);
+            this.label1.Location = new System.Drawing.Point(41, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 14);
             this.label1.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             // textBoxTenDangNhap
             // 
-            this.textBoxTenDangNhap.Location = new System.Drawing.Point(149, 184);
+            this.textBoxTenDangNhap.Location = new System.Drawing.Point(166, 187);
             this.textBoxTenDangNhap.Name = "textBoxTenDangNhap";
             this.textBoxTenDangNhap.Size = new System.Drawing.Size(231, 21);
             this.textBoxTenDangNhap.TabIndex = 2;
@@ -85,7 +85,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 226);
+            this.label3.Location = new System.Drawing.Point(41, 236);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 14);
             this.label3.TabIndex = 5;
@@ -93,10 +93,10 @@
             // 
             // buttonDangNhap
             // 
-            this.buttonDangNhap.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDangNhap.Location = new System.Drawing.Point(43, 267);
+            this.buttonDangNhap.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDangNhap.Location = new System.Drawing.Point(43, 294);
             this.buttonDangNhap.Name = "buttonDangNhap";
-            this.buttonDangNhap.Size = new System.Drawing.Size(338, 31);
+            this.buttonDangNhap.Size = new System.Drawing.Size(354, 31);
             this.buttonDangNhap.TabIndex = 7;
             this.buttonDangNhap.Text = "ĐĂNG NHẬP";
             this.buttonDangNhap.UseVisualStyleBackColor = true;
@@ -104,7 +104,7 @@
             // 
             // textBoxMatKhau
             // 
-            this.textBoxMatKhau.Location = new System.Drawing.Point(150, 224);
+            this.textBoxMatKhau.Location = new System.Drawing.Point(166, 234);
             this.textBoxMatKhau.Name = "textBoxMatKhau";
             this.textBoxMatKhau.Size = new System.Drawing.Size(231, 21);
             this.textBoxMatKhau.TabIndex = 9;
@@ -139,7 +139,7 @@
             // 
             this.panel1.Controls.Add(this.radioButtonGiangVien);
             this.panel1.Controls.Add(this.radioButtonSinhVien);
-            this.panel1.Location = new System.Drawing.Point(150, 131);
+            this.panel1.Location = new System.Drawing.Point(165, 131);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(232, 36);
             this.panel1.TabIndex = 17;
@@ -151,10 +151,10 @@
             this.label2.ForeColor = System.Drawing.Color.SteelBlue;
             this.label2.Image = global::TN_CSDLPT_NOV09.Properties.Resources.icons8_maybe_64px_3;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(38, 9);
+            this.label2.Location = new System.Drawing.Point(83, 8);
             this.label2.MaximumSize = new System.Drawing.Size(1000, 200);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 77);
+            this.label2.Size = new System.Drawing.Size(71, 77);
             this.label2.TabIndex = 18;
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -163,7 +163,7 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.SteelBlue;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(144, 29);
+            this.label4.Location = new System.Drawing.Point(160, 29);
             this.label4.MaximumSize = new System.Drawing.Size(1000, 200);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(237, 37);
@@ -186,7 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 355);
+            this.ClientSize = new System.Drawing.Size(450, 384);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);

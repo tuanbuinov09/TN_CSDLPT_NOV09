@@ -108,90 +108,90 @@
             cAUHOILabel.AutoSize = true;
             cAUHOILabel.Location = new System.Drawing.Point(20, 19);
             cAUHOILabel.Name = "cAUHOILabel";
-            cAUHOILabel.Size = new System.Drawing.Size(51, 13);
+            cAUHOILabel.Size = new System.Drawing.Size(47, 13);
             cAUHOILabel.TabIndex = 0;
-            cAUHOILabel.Text = "CAUHOI:";
+            cAUHOILabel.Text = "Câu hỏi:";
             // 
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
             mAMHLabel.Location = new System.Drawing.Point(20, 60);
             mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(41, 13);
+            mAMHLabel.Size = new System.Drawing.Size(68, 13);
             mAMHLabel.TabIndex = 2;
-            mAMHLabel.Text = "MAMH:";
+            mAMHLabel.Text = "Mã môn học:";
             // 
             // tRINHDOLabel
             // 
             tRINHDOLabel.AutoSize = true;
             tRINHDOLabel.Location = new System.Drawing.Point(20, 100);
             tRINHDOLabel.Name = "tRINHDOLabel";
-            tRINHDOLabel.Size = new System.Drawing.Size(57, 13);
+            tRINHDOLabel.Size = new System.Drawing.Size(50, 13);
             tRINHDOLabel.TabIndex = 4;
-            tRINHDOLabel.Text = "TRINHDO:";
+            tRINHDOLabel.Text = "Trình độ:";
             // 
             // nOIDUNGLabel
             // 
             nOIDUNGLabel.AutoSize = true;
             nOIDUNGLabel.Location = new System.Drawing.Point(386, 19);
             nOIDUNGLabel.Name = "nOIDUNGLabel";
-            nOIDUNGLabel.Size = new System.Drawing.Size(58, 13);
+            nOIDUNGLabel.Size = new System.Drawing.Size(53, 13);
             nOIDUNGLabel.TabIndex = 6;
-            nOIDUNGLabel.Text = "NOIDUNG:";
+            nOIDUNGLabel.Text = "Nội dung:";
             // 
             // aLabel
             // 
             aLabel.AutoSize = true;
             aLabel.Location = new System.Drawing.Point(386, 60);
             aLabel.Name = "aLabel";
-            aLabel.Size = new System.Drawing.Size(18, 13);
+            aLabel.Size = new System.Drawing.Size(59, 13);
             aLabel.TabIndex = 8;
-            aLabel.Text = "A:";
+            aLabel.Text = "Đáp án  A:";
             // 
             // bLabel
             // 
             bLabel.AutoSize = true;
             bLabel.Location = new System.Drawing.Point(386, 100);
             bLabel.Name = "bLabel";
-            bLabel.Size = new System.Drawing.Size(17, 13);
+            bLabel.Size = new System.Drawing.Size(58, 13);
             bLabel.TabIndex = 10;
-            bLabel.Text = "B:";
+            bLabel.Text = "Đáp án  B:";
             // 
             // cLabel
             // 
             cLabel.AutoSize = true;
             cLabel.Location = new System.Drawing.Point(386, 143);
             cLabel.Name = "cLabel";
-            cLabel.Size = new System.Drawing.Size(18, 13);
+            cLabel.Size = new System.Drawing.Size(59, 13);
             cLabel.TabIndex = 12;
-            cLabel.Text = "C:";
+            cLabel.Text = "Đáp án  C:";
             // 
             // dLabel
             // 
             dLabel.AutoSize = true;
             dLabel.Location = new System.Drawing.Point(386, 183);
             dLabel.Name = "dLabel";
-            dLabel.Size = new System.Drawing.Size(18, 13);
+            dLabel.Size = new System.Drawing.Size(59, 13);
             dLabel.TabIndex = 14;
-            dLabel.Text = "D:";
+            dLabel.Text = "Đáp án  D:";
             // 
             // mAGVLabel
             // 
             mAGVLabel.AutoSize = true;
             mAGVLabel.Location = new System.Drawing.Point(20, 143);
             mAGVLabel.Name = "mAGVLabel";
-            mAGVLabel.Size = new System.Drawing.Size(39, 13);
+            mAGVLabel.Size = new System.Drawing.Size(71, 13);
             mAGVLabel.TabIndex = 16;
-            mAGVLabel.Text = "MAGV:";
+            mAGVLabel.Text = "Mã giáo viên:";
             // 
             // dAP_ANLabel
             // 
             dAP_ANLabel.AutoSize = true;
-            dAP_ANLabel.Location = new System.Drawing.Point(894, 15);
+            dAP_ANLabel.Location = new System.Drawing.Point(894, 19);
             dAP_ANLabel.Name = "dAP_ANLabel";
-            dAP_ANLabel.Size = new System.Drawing.Size(48, 13);
+            dAP_ANLabel.Size = new System.Drawing.Size(46, 13);
             dAP_ANLabel.TabIndex = 18;
-            dAP_ANLabel.Text = "DAP AN:";
+            dAP_ANLabel.Text = "Đáp án:";
             // 
             // barManager1
             // 
@@ -303,7 +303,7 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager1;
-            this.barDockControl1.Size = new System.Drawing.Size(1150, 40);
+            this.barDockControl1.Size = new System.Drawing.Size(1150, 44);
             // 
             // barDockControlBottom
             // 
@@ -317,17 +317,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 529);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 525);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1150, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(1150, 44);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 529);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 525);
             // 
             // barButtonItem1
             // 
@@ -340,7 +340,7 @@
             this.panelControl1.Controls.Add(this.comboBoxCoSo);
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 40);
+            this.panelControl1.Location = new System.Drawing.Point(0, 44);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1150, 38);
             this.panelControl1.TabIndex = 15;
@@ -395,7 +395,7 @@
             // 
             this.gridControlBoDe.DataSource = this.bindingSourceBoDe;
             this.gridControlBoDe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControlBoDe.Location = new System.Drawing.Point(0, 78);
+            this.gridControlBoDe.Location = new System.Drawing.Point(0, 82);
             this.gridControlBoDe.MainView = this.gridViewBoDe;
             this.gridControlBoDe.MenuManager = this.barManager1;
             this.gridControlBoDe.Name = "gridControlBoDe";
@@ -432,9 +432,9 @@
             this.panelControlNhapLieu.Controls.Add(cAUHOILabel);
             this.panelControlNhapLieu.Controls.Add(this.spinEditCauHoi);
             this.panelControlNhapLieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControlNhapLieu.Location = new System.Drawing.Point(0, 279);
+            this.panelControlNhapLieu.Location = new System.Drawing.Point(0, 283);
             this.panelControlNhapLieu.Name = "panelControlNhapLieu";
-            this.panelControlNhapLieu.Size = new System.Drawing.Size(1150, 290);
+            this.panelControlNhapLieu.Size = new System.Drawing.Size(1150, 286);
             this.panelControlNhapLieu.TabIndex = 17;
             // 
             // comboBoxDapAn
@@ -442,7 +442,7 @@
             this.comboBoxDapAn.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceBoDe, "DAP_AN", true));
             this.comboBoxDapAn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDapAn.FormattingEnabled = true;
-            this.comboBoxDapAn.Location = new System.Drawing.Point(979, 12);
+            this.comboBoxDapAn.Location = new System.Drawing.Point(979, 16);
             this.comboBoxDapAn.Name = "comboBoxDapAn";
             this.comboBoxDapAn.Size = new System.Drawing.Size(121, 21);
             this.comboBoxDapAn.TabIndex = 19;

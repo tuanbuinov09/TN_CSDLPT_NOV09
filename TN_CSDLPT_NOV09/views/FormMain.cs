@@ -155,5 +155,17 @@ namespace TN_CSDLPT_NOV09
                 f.Show();
             }
         }
+
+        private void barButtonGiaoVien_DangKy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormGiaoVienDangKy));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormGiaoVienDangKy f = new FormGiaoVienDangKy();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

@@ -76,7 +76,11 @@ namespace TN_CSDLPT_NOV09.views
                 {
                     barButtonPhucHoi.Enabled = false;
                 }
-
+                // nếu trong dữ liệu k có dòng nào disable nút thêm xóa
+                if (bindingSourceGiaoVien.Count == 0)
+                {
+                    barButtonSua.Enabled = barButtonXoa.Enabled = false;
+                }
                 barButtonHuy.Enabled = false;
             }
             panelControlNhapLieu.Enabled = false;
@@ -238,14 +242,26 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            String hoLucChuaSua = "";
+            String tenLucChuaSua = "";
+            String diaChiLucChuaSua = "";
+            String maKhoaLucChuaSua = "";
+            if (mode == "sua")
+            {
+                hoLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["HO"].ToString();
+                tenLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["TEN"].ToString();
+                diaChiLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["DIACHI"].ToString();
+                maKhoaLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["MAKH"].ToString();
+
+            }
             String maGiaoVien = textBoxMaGiaoVien.Text.Trim();
-            String hoLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["HO"].ToString();
+            //String hoLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["HO"].ToString();
             String hoChuanBiSua = textBoxHo.Text.Trim();
-            String tenLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["TEN"].ToString();
+            //String tenLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["TEN"].ToString();
             String tenChuanBiSua = textBoxTen.Text.Trim();
-            String diaChiLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["DIACHI"].ToString();
+            //String diaChiLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["DIACHI"].ToString();
             String diaChiChuanBiSua = textBoxDiaChi.Text.Trim();
-            String maKhoaLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["MAKH"].ToString();
+            //String maKhoaLucChuaSua = (String)((DataRowView)bindingSourceGiaoVien[bindingSourceGiaoVien.Position])["MAKH"].ToString();
             String maKhoaChuanBiSua = comboBoxMaKhoa.Text.Trim();
             if (maGiaoVien == "")
             {
