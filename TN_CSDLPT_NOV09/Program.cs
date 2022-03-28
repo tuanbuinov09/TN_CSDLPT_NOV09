@@ -136,7 +136,7 @@ namespace TN_CSDLPT_NOV09
 
             for (int i = 0; i < keys.Length; i++)
             {
-                properties[i] = props.Find(keys[i].PropertyName, true, true); // will throw if the property isn't found
+                properties[i] = props.Find(keys[i].PropertyName, true); // will throw if the property isn't found
             }
 
             for (int i = 0; i < source.Count; i++)

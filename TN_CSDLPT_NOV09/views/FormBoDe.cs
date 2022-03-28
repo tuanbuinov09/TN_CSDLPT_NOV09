@@ -77,7 +77,11 @@ namespace TN_CSDLPT_NOV09.views
                 {
                     barButtonPhucHoi.Enabled = false;
                 }
-
+                // nếu trong dữ liệu k có dòng nào disable nút thêm xóa
+                if (bindingSourceBoDe.Count == 0)
+                {
+                    barButtonSua.Enabled = barButtonXoa.Enabled = false;
+                }
                 barButtonHuy.Enabled = false;
             }
 
