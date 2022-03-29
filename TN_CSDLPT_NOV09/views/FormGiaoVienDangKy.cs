@@ -368,11 +368,20 @@ namespace TN_CSDLPT_NOV09.views
             String trinhDoChuanBiSua = comboBoxTrinhDo.Text.Trim();
             String ngayThiChuanBiSua = dateEditNgayThi.Text.Trim();
 
+            DateTime myDateTimeCBSua = new DateTime();
+            String ngayThiChuanBiSuaSQLFormat = "";
+
+            if (ngayThiChuanBiSua != "")
+            {
+                myDateTimeCBSua = DateTime.Parse(ngayThiChuanBiSua);
+                ngayThiChuanBiSuaSQLFormat = myDateTimeCBSua.ToString("yyyy-MM-dd");
+            }
+            
+
             // ta k cho sửa lần thi
             int lan = int.Parse(spinEditLan.Value.ToString());
             int soCauThiChuanBiSua = int.Parse(spinEditSoCauThi.Value.ToString());
             int thoiGianChuanBiSua = int.Parse(spinEditThoiGian.Value.ToString());
-
 
             // lưu ý chuẩn bị sửa cũng là chuẩn bị thêm
             // những combobox load dữ liệu lên từ csdl ta k cần check vì nó có chắc r
@@ -417,7 +426,7 @@ namespace TN_CSDLPT_NOV09.views
             //check trùng mã, tên lớp khi thêm
             if (mode == "them")
             {
-                String strLenh = "EXEC SP_KT_GIAOVIEN_DANGKY_DATONTAI '" + maLop + "', '" +maMonHoc+ "', "+lan+"";
+                String strLenh = "EXEC SP_KT_GIAOVIEN_DANGKY_DATONTAI '" + maLop + "', '" +maMonHoc+ "', "+lan+", '"+ ngayThiChuanBiSuaSQLFormat + "'";
 
                 int kq = Program.ExecSqlNonQuery(strLenh);
                 if (kq == 1) //
@@ -426,13 +435,13 @@ namespace TN_CSDLPT_NOV09.views
                     spinEditLan.Focus();
                     return;
                 }
-                //vì ngoài mã thông tin của sinh viên hoàn toàn có thể giống nhau
 
-                //if (kq == 2)
-                //{
-                //    textBoxTenLop.Focus();
-                //    return;
-                //}
+                if (kq == 2) //
+                {
+                    //tự raiserror, ta chỉ cần focus về field nhập
+                    spinEditLan.Focus();
+                    return;
+                }
             }
 
             if (mode == "sua")
