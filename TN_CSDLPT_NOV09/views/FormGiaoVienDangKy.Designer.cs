@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label mAGVLabel;
-            System.Windows.Forms.Label mAMHLabel;
-            System.Windows.Forms.Label mALOPLabel;
-            System.Windows.Forms.Label tRINHDOLabel;
-            System.Windows.Forms.Label nGAYTHILabel;
-            System.Windows.Forms.Label lANLabel;
-            System.Windows.Forms.Label sOCAUTHILabel;
-            System.Windows.Forms.Label tHOIGIANLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoVienDangKy));
+            System.Windows.Forms.Label tHOIGIANLabel;
+            System.Windows.Forms.Label sOCAUTHILabel;
+            System.Windows.Forms.Label lANLabel;
+            System.Windows.Forms.Label nGAYTHILabel;
+            System.Windows.Forms.Label tRINHDOLabel;
+            System.Windows.Forms.Label mALOPLabel;
+            System.Windows.Forms.Label mAMHLabel;
+            System.Windows.Forms.Label mAGVLabel;
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonThem = new DevExpress.XtraBars.BarButtonItem();
@@ -60,8 +60,8 @@
             this.bindingSourceGiaoVien_DangKy = new System.Windows.Forms.BindingSource(this.components);
             this.tableAdapterGiaoVien_DangKy = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter();
             this.tableAdapterManager = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.TableAdapterManager();
-            this.gridControlGiaoVienDangKy = new DevExpress.XtraGrid.GridControl();
             this.gridViewGiaoVienDangKy = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlGiaoVienDangKy = new DevExpress.XtraGrid.GridControl();
             this.panelControlNhapLieu = new DevExpress.XtraEditors.PanelControl();
             this.spinEditThoiGian = new DevExpress.XtraEditors.SpinEdit();
             this.spinEditSoCauThi = new DevExpress.XtraEditors.SpinEdit();
@@ -71,21 +71,21 @@
             this.comboBoxMaLop = new System.Windows.Forms.ComboBox();
             this.comboBoxMaMonHoc = new System.Windows.Forms.ComboBox();
             this.comboBoxMaGiaoVien = new System.Windows.Forms.ComboBox();
-            mAGVLabel = new System.Windows.Forms.Label();
-            mAMHLabel = new System.Windows.Forms.Label();
-            mALOPLabel = new System.Windows.Forms.Label();
-            tRINHDOLabel = new System.Windows.Forms.Label();
-            nGAYTHILabel = new System.Windows.Forms.Label();
-            lANLabel = new System.Windows.Forms.Label();
-            sOCAUTHILabel = new System.Windows.Forms.Label();
             tHOIGIANLabel = new System.Windows.Forms.Label();
+            sOCAUTHILabel = new System.Windows.Forms.Label();
+            lANLabel = new System.Windows.Forms.Label();
+            nGAYTHILabel = new System.Windows.Forms.Label();
+            tRINHDOLabel = new System.Windows.Forms.Label();
+            mALOPLabel = new System.Windows.Forms.Label();
+            mAMHLabel = new System.Windows.Forms.Label();
+            mAGVLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TN_CSDLPT_DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGiaoVien_DangKy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlGiaoVienDangKy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGiaoVienDangKy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlGiaoVienDangKy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNhapLieu)).BeginInit();
             this.panelControlNhapLieu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditThoiGian.Properties)).BeginInit();
@@ -94,78 +94,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayThi.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayThi.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // mAGVLabel
-            // 
-            mAGVLabel.AutoSize = true;
-            mAGVLabel.Location = new System.Drawing.Point(23, 25);
-            mAGVLabel.Name = "mAGVLabel";
-            mAGVLabel.Size = new System.Drawing.Size(71, 13);
-            mAGVLabel.TabIndex = 0;
-            mAGVLabel.Text = "Mã giáo viên:";
-            // 
-            // mAMHLabel
-            // 
-            mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(23, 71);
-            mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(68, 13);
-            mAMHLabel.TabIndex = 2;
-            mAMHLabel.Text = "Mã môn học:";
-            // 
-            // mALOPLabel
-            // 
-            mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(23, 118);
-            mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(42, 13);
-            mALOPLabel.TabIndex = 4;
-            mALOPLabel.Text = "Mã lớp:";
-            // 
-            // tRINHDOLabel
-            // 
-            tRINHDOLabel.AutoSize = true;
-            tRINHDOLabel.Location = new System.Drawing.Point(23, 165);
-            tRINHDOLabel.Name = "tRINHDOLabel";
-            tRINHDOLabel.Size = new System.Drawing.Size(50, 13);
-            tRINHDOLabel.TabIndex = 6;
-            tRINHDOLabel.Text = "Trình độ:";
-            // 
-            // nGAYTHILabel
-            // 
-            nGAYTHILabel.AutoSize = true;
-            nGAYTHILabel.Location = new System.Drawing.Point(420, 26);
-            nGAYTHILabel.Name = "nGAYTHILabel";
-            nGAYTHILabel.Size = new System.Drawing.Size(51, 13);
-            nGAYTHILabel.TabIndex = 8;
-            nGAYTHILabel.Text = "Ngày thi:";
-            // 
-            // lANLabel
-            // 
-            lANLabel.AutoSize = true;
-            lANLabel.Location = new System.Drawing.Point(420, 71);
-            lANLabel.Name = "lANLabel";
-            lANLabel.Size = new System.Drawing.Size(43, 13);
-            lANLabel.TabIndex = 10;
-            lANLabel.Text = "Lần thi:";
-            // 
-            // sOCAUTHILabel
-            // 
-            sOCAUTHILabel.AutoSize = true;
-            sOCAUTHILabel.Location = new System.Drawing.Point(420, 118);
-            sOCAUTHILabel.Name = "sOCAUTHILabel";
-            sOCAUTHILabel.Size = new System.Drawing.Size(58, 13);
-            sOCAUTHILabel.TabIndex = 12;
-            sOCAUTHILabel.Text = "Số câu thi:";
-            // 
-            // tHOIGIANLabel
-            // 
-            tHOIGIANLabel.AutoSize = true;
-            tHOIGIANLabel.Location = new System.Drawing.Point(420, 165);
-            tHOIGIANLabel.Name = "tHOIGIANLabel";
-            tHOIGIANLabel.Size = new System.Drawing.Size(69, 13);
-            tHOIGIANLabel.TabIndex = 14;
-            tHOIGIANLabel.Text = "Thời gian thi:";
             // 
             // barManager1
             // 
@@ -277,15 +205,15 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager1;
-            this.barDockControl1.Size = new System.Drawing.Size(799, 44);
+            this.barDockControl1.Size = new System.Drawing.Size(819, 44);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 523);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 543);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(799, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(819, 0);
             // 
             // barDockControlLeft
             // 
@@ -293,15 +221,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 479);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 499);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(799, 44);
+            this.barDockControlRight.Location = new System.Drawing.Point(819, 44);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 479);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 499);
             // 
             // barButtonItem1
             // 
@@ -316,7 +244,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 44);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(799, 38);
+            this.panelControl1.Size = new System.Drawing.Size(819, 38);
             this.panelControl1.TabIndex = 19;
             // 
             // comboBoxCoSo
@@ -365,6 +293,11 @@
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // gridViewGiaoVienDangKy
+            // 
+            this.gridViewGiaoVienDangKy.GridControl = this.gridControlGiaoVienDangKy;
+            this.gridViewGiaoVienDangKy.Name = "gridViewGiaoVienDangKy";
+            // 
             // gridControlGiaoVienDangKy
             // 
             this.gridControlGiaoVienDangKy.DataSource = this.bindingSourceGiaoVien_DangKy;
@@ -373,147 +306,254 @@
             this.gridControlGiaoVienDangKy.MainView = this.gridViewGiaoVienDangKy;
             this.gridControlGiaoVienDangKy.MenuManager = this.barManager1;
             this.gridControlGiaoVienDangKy.Name = "gridControlGiaoVienDangKy";
-            this.gridControlGiaoVienDangKy.Size = new System.Drawing.Size(799, 220);
-            this.gridControlGiaoVienDangKy.TabIndex = 20;
+            this.gridControlGiaoVienDangKy.Size = new System.Drawing.Size(819, 220);
+            this.gridControlGiaoVienDangKy.TabIndex = 25;
             this.gridControlGiaoVienDangKy.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewGiaoVienDangKy});
             // 
-            // gridViewGiaoVienDangKy
-            // 
-            this.gridViewGiaoVienDangKy.GridControl = this.gridControlGiaoVienDangKy;
-            this.gridViewGiaoVienDangKy.Name = "gridViewGiaoVienDangKy";
-            // 
             // panelControlNhapLieu
             // 
-            this.panelControlNhapLieu.Controls.Add(tHOIGIANLabel);
             this.panelControlNhapLieu.Controls.Add(this.spinEditThoiGian);
-            this.panelControlNhapLieu.Controls.Add(sOCAUTHILabel);
             this.panelControlNhapLieu.Controls.Add(this.spinEditSoCauThi);
-            this.panelControlNhapLieu.Controls.Add(lANLabel);
             this.panelControlNhapLieu.Controls.Add(this.spinEditLan);
-            this.panelControlNhapLieu.Controls.Add(nGAYTHILabel);
             this.panelControlNhapLieu.Controls.Add(this.dateEditNgayThi);
-            this.panelControlNhapLieu.Controls.Add(tRINHDOLabel);
             this.panelControlNhapLieu.Controls.Add(this.comboBoxTrinhDo);
-            this.panelControlNhapLieu.Controls.Add(mALOPLabel);
             this.panelControlNhapLieu.Controls.Add(this.comboBoxMaLop);
-            this.panelControlNhapLieu.Controls.Add(mAMHLabel);
             this.panelControlNhapLieu.Controls.Add(this.comboBoxMaMonHoc);
-            this.panelControlNhapLieu.Controls.Add(mAGVLabel);
             this.panelControlNhapLieu.Controls.Add(this.comboBoxMaGiaoVien);
+            this.panelControlNhapLieu.Controls.Add(tHOIGIANLabel);
+            this.panelControlNhapLieu.Controls.Add(sOCAUTHILabel);
+            this.panelControlNhapLieu.Controls.Add(lANLabel);
+            this.panelControlNhapLieu.Controls.Add(nGAYTHILabel);
+            this.panelControlNhapLieu.Controls.Add(tRINHDOLabel);
+            this.panelControlNhapLieu.Controls.Add(mALOPLabel);
+            this.panelControlNhapLieu.Controls.Add(mAMHLabel);
+            this.panelControlNhapLieu.Controls.Add(mAGVLabel);
             this.panelControlNhapLieu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControlNhapLieu.Location = new System.Drawing.Point(0, 302);
             this.panelControlNhapLieu.Name = "panelControlNhapLieu";
-            this.panelControlNhapLieu.Size = new System.Drawing.Size(799, 221);
-            this.panelControlNhapLieu.TabIndex = 21;
+            this.panelControlNhapLieu.Size = new System.Drawing.Size(819, 241);
+            this.panelControlNhapLieu.TabIndex = 26;
             // 
             // spinEditThoiGian
             // 
             this.spinEditThoiGian.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceGiaoVien_DangKy, "THOIGIAN", true));
             this.spinEditThoiGian.EditValue = new decimal(new int[] {
-            0,
+            20,
             0,
             0,
             0});
-            this.spinEditThoiGian.Location = new System.Drawing.Point(525, 162);
+            this.spinEditThoiGian.Location = new System.Drawing.Point(515, 162);
             this.spinEditThoiGian.MenuManager = this.barManager1;
             this.spinEditThoiGian.Name = "spinEditThoiGian";
             this.spinEditThoiGian.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEditThoiGian.Size = new System.Drawing.Size(208, 20);
-            this.spinEditThoiGian.TabIndex = 15;
+            this.spinEditThoiGian.Properties.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.spinEditThoiGian.Properties.MaxValue = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.spinEditThoiGian.Properties.MinValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditThoiGian.Size = new System.Drawing.Size(174, 20);
+            this.spinEditThoiGian.TabIndex = 22;
             // 
             // spinEditSoCauThi
             // 
             this.spinEditSoCauThi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceGiaoVien_DangKy, "SOCAUTHI", true));
             this.spinEditSoCauThi.EditValue = new decimal(new int[] {
-            0,
+            10,
             0,
             0,
             0});
-            this.spinEditSoCauThi.Location = new System.Drawing.Point(525, 115);
+            this.spinEditSoCauThi.Location = new System.Drawing.Point(515, 115);
             this.spinEditSoCauThi.MenuManager = this.barManager1;
             this.spinEditSoCauThi.Name = "spinEditSoCauThi";
             this.spinEditSoCauThi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEditSoCauThi.Size = new System.Drawing.Size(208, 20);
-            this.spinEditSoCauThi.TabIndex = 13;
+            this.spinEditSoCauThi.Properties.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.spinEditSoCauThi.Properties.MaxValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.spinEditSoCauThi.Properties.MinValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.spinEditSoCauThi.Size = new System.Drawing.Size(174, 20);
+            this.spinEditSoCauThi.TabIndex = 21;
             // 
             // spinEditLan
             // 
             this.spinEditLan.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceGiaoVien_DangKy, "LAN", true));
             this.spinEditLan.EditValue = new decimal(new int[] {
-            0,
+            1,
             0,
             0,
             0});
-            this.spinEditLan.Location = new System.Drawing.Point(525, 69);
+            this.spinEditLan.Location = new System.Drawing.Point(515, 68);
             this.spinEditLan.MenuManager = this.barManager1;
             this.spinEditLan.Name = "spinEditLan";
             this.spinEditLan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEditLan.Size = new System.Drawing.Size(208, 20);
-            this.spinEditLan.TabIndex = 11;
+            this.spinEditLan.Properties.MaxValue = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.spinEditLan.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinEditLan.Size = new System.Drawing.Size(174, 20);
+            this.spinEditLan.TabIndex = 20;
             // 
             // dateEditNgayThi
             // 
             this.dateEditNgayThi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceGiaoVien_DangKy, "NGAYTHI", true));
             this.dateEditNgayThi.EditValue = null;
-            this.dateEditNgayThi.Location = new System.Drawing.Point(525, 23);
+            this.dateEditNgayThi.Location = new System.Drawing.Point(515, 23);
             this.dateEditNgayThi.MenuManager = this.barManager1;
             this.dateEditNgayThi.Name = "dateEditNgayThi";
             this.dateEditNgayThi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditNgayThi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditNgayThi.Size = new System.Drawing.Size(208, 20);
-            this.dateEditNgayThi.TabIndex = 9;
+            this.dateEditNgayThi.Size = new System.Drawing.Size(174, 20);
+            this.dateEditNgayThi.TabIndex = 19;
             // 
             // comboBoxTrinhDo
             // 
             this.comboBoxTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien_DangKy, "TRINHDO", true));
             this.comboBoxTrinhDo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTrinhDo.FormattingEnabled = true;
-            this.comboBoxTrinhDo.Location = new System.Drawing.Point(122, 162);
+            this.comboBoxTrinhDo.Location = new System.Drawing.Point(135, 162);
             this.comboBoxTrinhDo.Name = "comboBoxTrinhDo";
-            this.comboBoxTrinhDo.Size = new System.Drawing.Size(208, 21);
-            this.comboBoxTrinhDo.TabIndex = 7;
+            this.comboBoxTrinhDo.Size = new System.Drawing.Size(176, 21);
+            this.comboBoxTrinhDo.TabIndex = 18;
             // 
             // comboBoxMaLop
             // 
             this.comboBoxMaLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien_DangKy, "MALOP", true));
             this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaLop.FormattingEnabled = true;
-            this.comboBoxMaLop.Location = new System.Drawing.Point(122, 115);
+            this.comboBoxMaLop.Location = new System.Drawing.Point(135, 115);
             this.comboBoxMaLop.Name = "comboBoxMaLop";
-            this.comboBoxMaLop.Size = new System.Drawing.Size(208, 21);
-            this.comboBoxMaLop.TabIndex = 5;
+            this.comboBoxMaLop.Size = new System.Drawing.Size(176, 21);
+            this.comboBoxMaLop.TabIndex = 17;
             // 
             // comboBoxMaMonHoc
             // 
             this.comboBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien_DangKy, "MAMH", true));
             this.comboBoxMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaMonHoc.FormattingEnabled = true;
-            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(122, 68);
+            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(135, 68);
             this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
-            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(208, 21);
-            this.comboBoxMaMonHoc.TabIndex = 3;
+            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(176, 21);
+            this.comboBoxMaMonHoc.TabIndex = 16;
             // 
             // comboBoxMaGiaoVien
             // 
             this.comboBoxMaGiaoVien.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien_DangKy, "MAGV", true));
             this.comboBoxMaGiaoVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaGiaoVien.FormattingEnabled = true;
-            this.comboBoxMaGiaoVien.Location = new System.Drawing.Point(122, 22);
+            this.comboBoxMaGiaoVien.Location = new System.Drawing.Point(135, 22);
             this.comboBoxMaGiaoVien.Name = "comboBoxMaGiaoVien";
-            this.comboBoxMaGiaoVien.Size = new System.Drawing.Size(208, 21);
-            this.comboBoxMaGiaoVien.TabIndex = 1;
+            this.comboBoxMaGiaoVien.Size = new System.Drawing.Size(176, 21);
+            this.comboBoxMaGiaoVien.TabIndex = 15;
+            // 
+            // tHOIGIANLabel
+            // 
+            tHOIGIANLabel.AutoSize = true;
+            tHOIGIANLabel.Location = new System.Drawing.Point(420, 165);
+            tHOIGIANLabel.Name = "tHOIGIANLabel";
+            tHOIGIANLabel.Size = new System.Drawing.Size(69, 13);
+            tHOIGIANLabel.TabIndex = 14;
+            tHOIGIANLabel.Text = "Thời gian thi:";
+            // 
+            // sOCAUTHILabel
+            // 
+            sOCAUTHILabel.AutoSize = true;
+            sOCAUTHILabel.Location = new System.Drawing.Point(420, 118);
+            sOCAUTHILabel.Name = "sOCAUTHILabel";
+            sOCAUTHILabel.Size = new System.Drawing.Size(58, 13);
+            sOCAUTHILabel.TabIndex = 12;
+            sOCAUTHILabel.Text = "Số câu thi:";
+            // 
+            // lANLabel
+            // 
+            lANLabel.AutoSize = true;
+            lANLabel.Location = new System.Drawing.Point(420, 71);
+            lANLabel.Name = "lANLabel";
+            lANLabel.Size = new System.Drawing.Size(43, 13);
+            lANLabel.TabIndex = 10;
+            lANLabel.Text = "Lần thi:";
+            // 
+            // nGAYTHILabel
+            // 
+            nGAYTHILabel.AutoSize = true;
+            nGAYTHILabel.Location = new System.Drawing.Point(420, 26);
+            nGAYTHILabel.Name = "nGAYTHILabel";
+            nGAYTHILabel.Size = new System.Drawing.Size(51, 13);
+            nGAYTHILabel.TabIndex = 8;
+            nGAYTHILabel.Text = "Ngày thi:";
+            // 
+            // tRINHDOLabel
+            // 
+            tRINHDOLabel.AutoSize = true;
+            tRINHDOLabel.Location = new System.Drawing.Point(23, 165);
+            tRINHDOLabel.Name = "tRINHDOLabel";
+            tRINHDOLabel.Size = new System.Drawing.Size(50, 13);
+            tRINHDOLabel.TabIndex = 6;
+            tRINHDOLabel.Text = "Trình độ:";
+            // 
+            // mALOPLabel
+            // 
+            mALOPLabel.AutoSize = true;
+            mALOPLabel.Location = new System.Drawing.Point(23, 118);
+            mALOPLabel.Name = "mALOPLabel";
+            mALOPLabel.Size = new System.Drawing.Size(42, 13);
+            mALOPLabel.TabIndex = 4;
+            mALOPLabel.Text = "Mã lớp:";
+            // 
+            // mAMHLabel
+            // 
+            mAMHLabel.AutoSize = true;
+            mAMHLabel.Location = new System.Drawing.Point(23, 71);
+            mAMHLabel.Name = "mAMHLabel";
+            mAMHLabel.Size = new System.Drawing.Size(68, 13);
+            mAMHLabel.TabIndex = 2;
+            mAMHLabel.Text = "Mã môn học:";
+            // 
+            // mAGVLabel
+            // 
+            mAGVLabel.AutoSize = true;
+            mAGVLabel.Location = new System.Drawing.Point(23, 25);
+            mAGVLabel.Name = "mAGVLabel";
+            mAGVLabel.Size = new System.Drawing.Size(71, 13);
+            mAGVLabel.TabIndex = 0;
+            mAGVLabel.Text = "Mã giáo viên:";
             // 
             // FormGiaoVienDangKy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 523);
+            this.ClientSize = new System.Drawing.Size(819, 543);
             this.Controls.Add(this.panelControlNhapLieu);
             this.Controls.Add(this.gridControlGiaoVienDangKy);
             this.Controls.Add(this.panelControl1);
@@ -530,8 +570,8 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TN_CSDLPT_DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceGiaoVien_DangKy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlGiaoVienDangKy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewGiaoVienDangKy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlGiaoVienDangKy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlNhapLieu)).EndInit();
             this.panelControlNhapLieu.ResumeLayout(false);
             this.panelControlNhapLieu.PerformLayout();
@@ -570,8 +610,6 @@
         private TN_CSDLPT_DataSetTableAdapters.GIAOVIEN_DANGKYTableAdapter tableAdapterGiaoVien_DangKy;
         private TN_CSDLPT_DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraEditors.PanelControl panelControlNhapLieu;
-        private DevExpress.XtraGrid.GridControl gridControlGiaoVienDangKy;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewGiaoVienDangKy;
         private DevExpress.XtraEditors.SpinEdit spinEditThoiGian;
         private DevExpress.XtraEditors.SpinEdit spinEditSoCauThi;
         private DevExpress.XtraEditors.SpinEdit spinEditLan;
@@ -580,5 +618,7 @@
         private System.Windows.Forms.ComboBox comboBoxMaLop;
         private System.Windows.Forms.ComboBox comboBoxMaMonHoc;
         private System.Windows.Forms.ComboBox comboBoxMaGiaoVien;
+        private DevExpress.XtraGrid.GridControl gridControlGiaoVienDangKy;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewGiaoVienDangKy;
     }
 }
