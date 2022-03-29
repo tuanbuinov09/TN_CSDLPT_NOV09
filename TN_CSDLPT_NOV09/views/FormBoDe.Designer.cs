@@ -408,6 +408,7 @@
             // 
             this.gridViewBoDe.GridControl = this.gridControlBoDe;
             this.gridViewBoDe.Name = "gridViewBoDe";
+            this.gridViewBoDe.OptionsBehavior.Editable = false;
             // 
             // panelControlNhapLieu
             // 

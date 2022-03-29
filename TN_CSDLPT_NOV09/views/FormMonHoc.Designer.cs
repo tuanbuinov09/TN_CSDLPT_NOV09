@@ -109,7 +109,7 @@
             this.barDockControlTop.Appearance.Options.UseFont = true;
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 44);
             this.barDockControlTop.Manager = null;
             this.barDockControlTop.Size = new System.Drawing.Size(779, 0);
             // 
@@ -223,7 +223,7 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager1;
-            this.barDockControl1.Size = new System.Drawing.Size(779, 40);
+            this.barDockControl1.Size = new System.Drawing.Size(779, 44);
             // 
             // barDockControlBottom
             // 
@@ -237,17 +237,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 544);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 540);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(779, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(779, 44);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 544);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 540);
             // 
             // barButtonItem1
             // 
@@ -260,7 +260,7 @@
             this.panelControl1.Controls.Add(this.comboBoxCoSo);
             this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 40);
+            this.panelControl1.Location = new System.Drawing.Point(0, 44);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(779, 38);
             this.panelControl1.TabIndex = 6;
@@ -327,7 +327,7 @@
             // 
             this.gridControlMonHoc.DataSource = this.bindingSourceMonHoc;
             this.gridControlMonHoc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gridControlMonHoc.Location = new System.Drawing.Point(0, 78);
+            this.gridControlMonHoc.Location = new System.Drawing.Point(0, 82);
             this.gridControlMonHoc.MainView = this.gridViewMonHoc;
             this.gridControlMonHoc.MenuManager = this.barManager1;
             this.gridControlMonHoc.Name = "gridControlMonHoc";
@@ -343,6 +343,7 @@
             this.colTENMH});
             this.gridViewMonHoc.GridControl = this.gridControlMonHoc;
             this.gridViewMonHoc.Name = "gridViewMonHoc";
+            this.gridViewMonHoc.OptionsBehavior.Editable = false;
             // 
             // colMAMH
             // 
@@ -365,9 +366,9 @@
             this.panelControlNhapLieu.Controls.Add(mAMHLabel);
             this.panelControlNhapLieu.Controls.Add(this.textBoxMaMonHoc);
             this.panelControlNhapLieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControlNhapLieu.Location = new System.Drawing.Point(0, 298);
+            this.panelControlNhapLieu.Location = new System.Drawing.Point(0, 302);
             this.panelControlNhapLieu.Name = "panelControlNhapLieu";
-            this.panelControlNhapLieu.Size = new System.Drawing.Size(779, 286);
+            this.panelControlNhapLieu.Size = new System.Drawing.Size(779, 282);
             this.panelControlNhapLieu.TabIndex = 8;
             // 
             // textBoxTenMonHoc
