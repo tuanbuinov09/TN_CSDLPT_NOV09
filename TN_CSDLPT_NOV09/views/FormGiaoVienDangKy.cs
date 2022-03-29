@@ -202,6 +202,7 @@ namespace TN_CSDLPT_NOV09.views
             String maLop = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MALOP"].ToString().Trim();
             String maGiaoVien = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAGV"].ToString().Trim();
             String maMonHoc = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAMH"].ToString().Trim();
+            String trinhDo = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["TRINHDO"].ToString().Trim();
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
@@ -209,6 +210,8 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxMaLop.SelectedValue = maLop;
             comboBoxMaMonHoc.SelectedValue = maMonHoc;
             comboBoxMaGiaoVien.SelectedValue = maGiaoVien;
+            comboBoxTrinhDo.SelectedValue = trinhDo;
+
             // khi đang thêm sửa thì k thể ấn phục hồi
             barButtonPhucHoi.Enabled = false;
             barButtonReload.Enabled = false;
