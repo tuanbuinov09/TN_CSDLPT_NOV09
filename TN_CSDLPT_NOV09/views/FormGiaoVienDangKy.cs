@@ -181,14 +181,20 @@ namespace TN_CSDLPT_NOV09.views
             barButtonPhucHoi.Enabled = false;
             barButtonReload.Enabled = false;
 
+            comboBoxMaMonHoc.Enabled = true;
+            comboBoxMaLop.Enabled = true;
+            spinEditLan.Enabled = true;
+
             comboBoxMaGiaoVien.SelectedIndex = 0;
             comboBoxMaMonHoc.SelectedIndex = 0;
             comboBoxMaLop.SelectedIndex = 0;
             comboBoxTrinhDo.SelectedIndex = 0;
 
-            comboBoxMaMonHoc.Enabled = true;
-            comboBoxMaLop.Enabled = true;
-            spinEditLan.Enabled = true;
+            dateEditNgayThi.DateTime = DateTime.Now;
+
+            spinEditLan.Value = 1;
+            spinEditSoCauThi.Value = 20;
+            spinEditThoiGian.Value = 30;
 
             gridControlGiaoVienDangKy.Enabled = false;
         }
@@ -273,7 +279,6 @@ namespace TN_CSDLPT_NOV09.views
             int lan = -1;
             int soCauThi = -1;
             int thoiGian = -1;
-
 
             // sau này có thể có bảng khác khóa ngoại tới bảng này
             //if (bindingSourceChiTietBaiThi.Count > 0)
@@ -416,9 +421,9 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
-            if (dateEditNgayThi.DateTime <= DateTime.Now)
+            if (dateEditNgayThi.DateTime.Date <= DateTime.Now.Date)
             {
-                MessageBox.Show("Không thể nhập ngày trước ngày hiện tại", "", MessageBoxButtons.OK);
+                MessageBox.Show("Không thể nhập ngày hiện tại trở về trước", "", MessageBoxButtons.OK);
                 dateEditNgayThi.Focus();
                 return;
             }
