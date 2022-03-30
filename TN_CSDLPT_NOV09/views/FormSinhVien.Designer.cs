@@ -379,6 +379,7 @@
             // 
             this.gridViewSinhVien.GridControl = this.gridControlSinhVien;
             this.gridViewSinhVien.Name = "gridViewSinhVien";
+            this.gridViewSinhVien.OptionsBehavior.Editable = false;
             // 
             // panelControlNhapLieu
             // 

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoVienDangKy));
             System.Windows.Forms.Label tHOIGIANLabel;
             System.Windows.Forms.Label sOCAUTHILabel;
             System.Windows.Forms.Label lANLabel;
@@ -38,6 +37,7 @@
             System.Windows.Forms.Label mALOPLabel;
             System.Windows.Forms.Label mAMHLabel;
             System.Windows.Forms.Label mAGVLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoVienDangKy));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonThem = new DevExpress.XtraBars.BarButtonItem();
@@ -94,6 +94,78 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayThi.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEditNgayThi.Properties)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tHOIGIANLabel
+            // 
+            tHOIGIANLabel.AutoSize = true;
+            tHOIGIANLabel.Location = new System.Drawing.Point(420, 165);
+            tHOIGIANLabel.Name = "tHOIGIANLabel";
+            tHOIGIANLabel.Size = new System.Drawing.Size(69, 13);
+            tHOIGIANLabel.TabIndex = 14;
+            tHOIGIANLabel.Text = "Thời gian thi:";
+            // 
+            // sOCAUTHILabel
+            // 
+            sOCAUTHILabel.AutoSize = true;
+            sOCAUTHILabel.Location = new System.Drawing.Point(420, 118);
+            sOCAUTHILabel.Name = "sOCAUTHILabel";
+            sOCAUTHILabel.Size = new System.Drawing.Size(58, 13);
+            sOCAUTHILabel.TabIndex = 12;
+            sOCAUTHILabel.Text = "Số câu thi:";
+            // 
+            // lANLabel
+            // 
+            lANLabel.AutoSize = true;
+            lANLabel.Location = new System.Drawing.Point(420, 71);
+            lANLabel.Name = "lANLabel";
+            lANLabel.Size = new System.Drawing.Size(43, 13);
+            lANLabel.TabIndex = 10;
+            lANLabel.Text = "Lần thi:";
+            // 
+            // nGAYTHILabel
+            // 
+            nGAYTHILabel.AutoSize = true;
+            nGAYTHILabel.Location = new System.Drawing.Point(420, 26);
+            nGAYTHILabel.Name = "nGAYTHILabel";
+            nGAYTHILabel.Size = new System.Drawing.Size(51, 13);
+            nGAYTHILabel.TabIndex = 8;
+            nGAYTHILabel.Text = "Ngày thi:";
+            // 
+            // tRINHDOLabel
+            // 
+            tRINHDOLabel.AutoSize = true;
+            tRINHDOLabel.Location = new System.Drawing.Point(23, 165);
+            tRINHDOLabel.Name = "tRINHDOLabel";
+            tRINHDOLabel.Size = new System.Drawing.Size(50, 13);
+            tRINHDOLabel.TabIndex = 6;
+            tRINHDOLabel.Text = "Trình độ:";
+            // 
+            // mALOPLabel
+            // 
+            mALOPLabel.AutoSize = true;
+            mALOPLabel.Location = new System.Drawing.Point(23, 118);
+            mALOPLabel.Name = "mALOPLabel";
+            mALOPLabel.Size = new System.Drawing.Size(42, 13);
+            mALOPLabel.TabIndex = 4;
+            mALOPLabel.Text = "Mã lớp:";
+            // 
+            // mAMHLabel
+            // 
+            mAMHLabel.AutoSize = true;
+            mAMHLabel.Location = new System.Drawing.Point(23, 71);
+            mAMHLabel.Name = "mAMHLabel";
+            mAMHLabel.Size = new System.Drawing.Size(68, 13);
+            mAMHLabel.TabIndex = 2;
+            mAMHLabel.Text = "Mã môn học:";
+            // 
+            // mAGVLabel
+            // 
+            mAGVLabel.AutoSize = true;
+            mAGVLabel.Location = new System.Drawing.Point(23, 25);
+            mAGVLabel.Name = "mAGVLabel";
+            mAGVLabel.Size = new System.Drawing.Size(71, 13);
+            mAGVLabel.TabIndex = 0;
+            mAGVLabel.Text = "Mã giáo viên:";
             // 
             // barManager1
             // 
@@ -297,6 +369,7 @@
             // 
             this.gridViewGiaoVienDangKy.GridControl = this.gridControlGiaoVienDangKy;
             this.gridViewGiaoVienDangKy.Name = "gridViewGiaoVienDangKy";
+            this.gridViewGiaoVienDangKy.OptionsBehavior.Editable = false;
             // 
             // gridControlGiaoVienDangKy
             // 
@@ -476,78 +549,6 @@
             this.comboBoxMaGiaoVien.Name = "comboBoxMaGiaoVien";
             this.comboBoxMaGiaoVien.Size = new System.Drawing.Size(176, 21);
             this.comboBoxMaGiaoVien.TabIndex = 15;
-            // 
-            // tHOIGIANLabel
-            // 
-            tHOIGIANLabel.AutoSize = true;
-            tHOIGIANLabel.Location = new System.Drawing.Point(420, 165);
-            tHOIGIANLabel.Name = "tHOIGIANLabel";
-            tHOIGIANLabel.Size = new System.Drawing.Size(69, 13);
-            tHOIGIANLabel.TabIndex = 14;
-            tHOIGIANLabel.Text = "Thời gian thi:";
-            // 
-            // sOCAUTHILabel
-            // 
-            sOCAUTHILabel.AutoSize = true;
-            sOCAUTHILabel.Location = new System.Drawing.Point(420, 118);
-            sOCAUTHILabel.Name = "sOCAUTHILabel";
-            sOCAUTHILabel.Size = new System.Drawing.Size(58, 13);
-            sOCAUTHILabel.TabIndex = 12;
-            sOCAUTHILabel.Text = "Số câu thi:";
-            // 
-            // lANLabel
-            // 
-            lANLabel.AutoSize = true;
-            lANLabel.Location = new System.Drawing.Point(420, 71);
-            lANLabel.Name = "lANLabel";
-            lANLabel.Size = new System.Drawing.Size(43, 13);
-            lANLabel.TabIndex = 10;
-            lANLabel.Text = "Lần thi:";
-            // 
-            // nGAYTHILabel
-            // 
-            nGAYTHILabel.AutoSize = true;
-            nGAYTHILabel.Location = new System.Drawing.Point(420, 26);
-            nGAYTHILabel.Name = "nGAYTHILabel";
-            nGAYTHILabel.Size = new System.Drawing.Size(51, 13);
-            nGAYTHILabel.TabIndex = 8;
-            nGAYTHILabel.Text = "Ngày thi:";
-            // 
-            // tRINHDOLabel
-            // 
-            tRINHDOLabel.AutoSize = true;
-            tRINHDOLabel.Location = new System.Drawing.Point(23, 165);
-            tRINHDOLabel.Name = "tRINHDOLabel";
-            tRINHDOLabel.Size = new System.Drawing.Size(50, 13);
-            tRINHDOLabel.TabIndex = 6;
-            tRINHDOLabel.Text = "Trình độ:";
-            // 
-            // mALOPLabel
-            // 
-            mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(23, 118);
-            mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(42, 13);
-            mALOPLabel.TabIndex = 4;
-            mALOPLabel.Text = "Mã lớp:";
-            // 
-            // mAMHLabel
-            // 
-            mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(23, 71);
-            mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(68, 13);
-            mAMHLabel.TabIndex = 2;
-            mAMHLabel.Text = "Mã môn học:";
-            // 
-            // mAGVLabel
-            // 
-            mAGVLabel.AutoSize = true;
-            mAGVLabel.Location = new System.Drawing.Point(23, 25);
-            mAGVLabel.Name = "mAGVLabel";
-            mAGVLabel.Size = new System.Drawing.Size(71, 13);
-            mAGVLabel.TabIndex = 0;
-            mAGVLabel.Text = "Mã giáo viên:";
             // 
             // FormGiaoVienDangKy
             // 

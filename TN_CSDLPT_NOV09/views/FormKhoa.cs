@@ -166,12 +166,14 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bindingSourceKhoa.CancelEdit();
             if (mode == "them")
             {
                 //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
                 gridViewKhoa.DeleteRow(gridViewKhoa.FocusedRowHandle);
             }
+
+            bindingSourceKhoa.CancelEdit();
+            
             bindingSourceKhoa.Position = vitri;
             panelControlNhapLieu.Enabled = false;
             gridControlKhoa.Enabled = true;

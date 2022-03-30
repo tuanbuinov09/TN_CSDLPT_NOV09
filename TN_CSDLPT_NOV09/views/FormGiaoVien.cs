@@ -409,12 +409,13 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bindingSourceGiaoVien.CancelEdit();
             if (mode == "them")
             {
                 //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
                 gridViewGiaoVien.DeleteRow(gridViewGiaoVien.FocusedRowHandle);
             }
+            bindingSourceGiaoVien.CancelEdit();
+            
             bindingSourceGiaoVien.Position = vitri;
             panelControlNhapLieu.Enabled = false;
             gridControlGiaoVien.Enabled = true;

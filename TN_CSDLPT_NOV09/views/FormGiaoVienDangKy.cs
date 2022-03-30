@@ -181,14 +181,20 @@ namespace TN_CSDLPT_NOV09.views
             barButtonPhucHoi.Enabled = false;
             barButtonReload.Enabled = false;
 
+            comboBoxMaMonHoc.Enabled = true;
+            comboBoxMaLop.Enabled = true;
+            spinEditLan.Enabled = true;
+
             comboBoxMaGiaoVien.SelectedIndex = 0;
             comboBoxMaMonHoc.SelectedIndex = 0;
             comboBoxMaLop.SelectedIndex = 0;
             comboBoxTrinhDo.SelectedIndex = 0;
 
-            comboBoxMaMonHoc.Enabled = true;
-            comboBoxMaLop.Enabled = true;
-            spinEditLan.Enabled = true;
+            dateEditNgayThi.DateTime = DateTime.Now;
+
+            spinEditLan.Value = 1;
+            spinEditSoCauThi.Value = 20;
+            spinEditThoiGian.Value = 30;
 
             gridControlGiaoVienDangKy.Enabled = false;
         }
@@ -225,12 +231,12 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            bindingSourceGiaoVien_DangKy.CancelEdit();
             if (mode == "them")
             {
                 //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
                 gridViewGiaoVienDangKy.DeleteRow(gridViewGiaoVienDangKy.FocusedRowHandle);
             }
+            bindingSourceGiaoVien_DangKy.CancelEdit();
 
             bindingSourceGiaoVien_DangKy.Position = vitri;
             panelControlNhapLieu.Enabled = false;
@@ -273,7 +279,6 @@ namespace TN_CSDLPT_NOV09.views
             int lan = -1;
             int soCauThi = -1;
             int thoiGian = -1;
-
 
             // sau này có thể có bảng khác khóa ngoại tới bảng này
             //if (bindingSourceChiTietBaiThi.Count > 0)
@@ -415,12 +420,22 @@ namespace TN_CSDLPT_NOV09.views
                 dateEditNgayThi.Focus();
                 return;
             }
+
+            if (dateEditNgayThi.DateTime.Date <= DateTime.Now.Date)
+            {
+                MessageBox.Show("Không thể nhập ngày hiện tại trở về trước", "", MessageBoxButtons.OK);
+                dateEditNgayThi.Focus();
+                return;
+            }
+
             if (dateEditNgayThi.DateTime <= DateTime.Now.AddDays(7))
             {
                 MessageBox.Show("Ngày thi phải cách ngày đăng kí ít nhất 1 tuần", "", MessageBoxButtons.OK);
                 dateEditNgayThi.Focus();
                 return;
             }
+
+            
 
 
             //check trùng mã, tên lớp khi thêm
@@ -440,6 +455,13 @@ namespace TN_CSDLPT_NOV09.views
                 {
                     //tự raiserror, ta chỉ cần focus về field nhập
                     spinEditLan.Focus();
+                    return;
+                }
+
+                if (kq == 3) //
+                {
+                    //tự raiserror, ta chỉ cần focus về field nhập
+                    dateEditNgayThi.Focus();
                     return;
                 }
             }
