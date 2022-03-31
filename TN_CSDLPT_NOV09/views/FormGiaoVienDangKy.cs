@@ -27,7 +27,7 @@ namespace TN_CSDLPT_NOV09.views
         private void gIAOVIEN_DANGKYBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.bindingSourceGiaoVien_DangKy.EndEdit();
+            this.bindingSourceGiaoVienDangKy.EndEdit();
             this.tableAdapterManager.UpdateAll(this.TN_CSDLPT_DataSet);
 
         }
@@ -36,9 +36,22 @@ namespace TN_CSDLPT_NOV09.views
         {
             // bỏ các ràng buộc để load dữ liệu lên grid view k bị lỗi
             this.TN_CSDLPT_DataSet.EnforceConstraints = false;
+          
+
+            //những cái này để đổ dữ liệu vào combobox
+            // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.LOP' table. You can move, or remove it, as needed.
+            this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.lOPTableAdapter.Fill(this.TN_CSDLPT_DataSet.LOP);
+            // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.GIAOVIEN' table. You can move, or remove it, as needed.
+            this.gIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.gIAOVIENTableAdapter.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN);
+            // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.MONHOC' table. You can move, or remove it, as needed.
+            this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
+
             // TODO: This line of code loads data into the 'tN_CSDLPT_DataSet.GIAOVIEN_DANGKY' table. You can move, or remove it, as needed.
-            this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterGiaoVien_DangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+            this.tableAdapterGiaoVienDangKy.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterGiaoVienDangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
 
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
             comboBoxCoSo.DisplayMember = "TENCS";
@@ -79,29 +92,33 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonHuy.Enabled = false;
             }
             //load cacs danh sachs mã vào các combobox
-            DataTable dtDSLop = Program.ExecSqlDataTable("EXEC SP_LAY_DS_LOP");
-            comboBoxMaLop.DataSource = dtDSLop;
-            comboBoxMaLop.DisplayMember = "MALOP";
-            comboBoxMaLop.ValueMember = "MALOP";
+            // thay vì làm cách này, ta kéo thả binding source các bảng cần lấy mã vào
+            // rồi vào properties của combobox tương ứng chọn bindingsource đó, chọn dipslay member, value member
+            //DataTable dtDSLop = Program.ExecSqlDataTable("EXEC SP_LAY_DS_LOP");
+            //comboBoxMaLop.DataSource = dtDSLop;
+            //comboBoxMaLop.DisplayMember = "MALOP";
+            //comboBoxMaLop.ValueMember = "MALOP";
 
-            DataTable dtDSGiaoVien = Program.ExecSqlDataTable("EXEC SP_LAY_DS_GIAOVIEN");
-            comboBoxMaGiaoVien.DataSource = dtDSGiaoVien;
-            comboBoxMaGiaoVien.DisplayMember = "MAGV";
-            comboBoxMaGiaoVien.ValueMember = "MAGV";
+            //DataTable dtDSGiaoVien = Program.ExecSqlDataTable("EXEC SP_LAY_DS_GIAOVIEN");
+            //comboBoxMaGiaoVien.DataSource = dtDSGiaoVien;
+            //comboBoxMaGiaoVien.DisplayMember = "MAGV";
+            //comboBoxMaGiaoVien.ValueMember = "MAGV";
 
-            DataTable dtDSMonHoc = Program.ExecSqlDataTable("EXEC SP_LAY_DS_MONHOC");
-            comboBoxMaMonHoc.DataSource = dtDSMonHoc;
-            comboBoxMaMonHoc.DisplayMember = "MAMH";
-            comboBoxMaMonHoc.ValueMember = "MAMH";
+            //DataTable dtDSMonHoc = Program.ExecSqlDataTable("EXEC SP_LAY_DS_MONHOC");
+            //comboBoxMaMonHoc.DataSource = dtDSMonHoc;
+            //comboBoxMaMonHoc.DisplayMember = "MAMH";
+            //comboBoxMaMonHoc.ValueMember = "MAMH";
 
             comboBoxTrinhDo.Items.Add("A");
             comboBoxTrinhDo.Items.Add("B");
             comboBoxTrinhDo.Items.Add("C");
 
+            comboBoxTrinhDo.SelectedValue = "A";
+
             barButtonGhi.Enabled = false;
             panelControlNhapLieu.Enabled = false;
 
-            if (bindingSourceGiaoVien_DangKy.Count == 0)
+            if (bindingSourceGiaoVienDangKy.Count == 0)
             {
                 barButtonSua.Enabled = barButtonXoa.Enabled = false;
             }
@@ -135,8 +152,19 @@ namespace TN_CSDLPT_NOV09.views
                 // bỏ các ràng buộc để load dữ liệu lên grid view k bị lỗi
                 this.TN_CSDLPT_DataSet.EnforceConstraints = false;
                 // TODO: This line of code loads data into the 'tN_CSDLPT_DataSet.GIAOVIEN_DANGKY' table. You can move, or remove it, as needed.
-                this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
-                this.tableAdapterGiaoVien_DangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                this.tableAdapterGiaoVienDangKy.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterGiaoVienDangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+
+                //những cái này để đổ dữ liệu vào combobox
+                // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.LOP' table. You can move, or remove it, as needed.
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.lOPTableAdapter.Fill(this.TN_CSDLPT_DataSet.LOP);
+                // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.GIAOVIEN' table. You can move, or remove it, as needed.
+                this.gIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.gIAOVIENTableAdapter.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN);
+                // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.MONHOC' table. You can move, or remove it, as needed.
+                this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
 
                 //Dùng sau
                 //maCoSo = ((DataRowView)bindingSourceMonHoc[0])["MACS"].ToString();
@@ -144,20 +172,20 @@ namespace TN_CSDLPT_NOV09.views
             // mỗi khi chuyển site, cái combobox mã lớp sẽ bị mất dữ liệu nếu dữ liệu trong combobox phân mảnh ngang
             // mỗi khi chuyển ta lấy lại dữ liệu vào combobox
 
-            DataTable dtDSLop = Program.ExecSqlDataTable("EXEC SP_LAY_DS_LOP");
-            comboBoxMaLop.DataSource = dtDSLop;
-            comboBoxMaLop.DisplayMember = "MALOP";
-            comboBoxMaLop.ValueMember = "MALOP";
+            //DataTable dtDSLop = Program.ExecSqlDataTable("EXEC SP_LAY_DS_LOP");
+            //comboBoxMaLop.DataSource = dtDSLop;
+            //comboBoxMaLop.DisplayMember = "MALOP";
+            //comboBoxMaLop.ValueMember = "MALOP";
 
-            DataTable dtDSGiaoVien = Program.ExecSqlDataTable("EXEC SP_LAY_DS_GIAOVIEN");
-            comboBoxMaGiaoVien.DataSource = dtDSGiaoVien;
-            comboBoxMaGiaoVien.DisplayMember = "MAGV";
-            comboBoxMaGiaoVien.ValueMember = "MAGV";
+            //DataTable dtDSGiaoVien = Program.ExecSqlDataTable("EXEC SP_LAY_DS_GIAOVIEN");
+            //comboBoxMaGiaoVien.DataSource = dtDSGiaoVien;
+            //comboBoxMaGiaoVien.DisplayMember = "MAGV";
+            //comboBoxMaGiaoVien.ValueMember = "MAGV";
 
-            DataTable dtDSMonHoc = Program.ExecSqlDataTable("EXEC SP_LAY_DS_MONHOC");
-            comboBoxMaMonHoc.DataSource = dtDSMonHoc;
-            comboBoxMaMonHoc.DisplayMember = "MAMH";
-            comboBoxMaMonHoc.ValueMember = "MANH";
+            //DataTable dtDSMonHoc = Program.ExecSqlDataTable("EXEC SP_LAY_DS_MONHOC");
+            //comboBoxMaMonHoc.DataSource = dtDSMonHoc;
+            //comboBoxMaMonHoc.DisplayMember = "MAMH";
+            //comboBoxMaMonHoc.ValueMember = "MANH";
 
             //combobox trinh do khỏi cần load lại
             //comboBoxTrinhDo.Items.Add("A");
@@ -169,14 +197,13 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             mode = "them";
-            vitri = bindingSourceGiaoVien_DangKy.Position;
+            vitri = bindingSourceGiaoVienDangKy.Position;
             panelControlNhapLieu.Enabled = true;
-            bindingSourceGiaoVien_DangKy.AddNew();
+            bindingSourceGiaoVienDangKy.AddNew();
 
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
-            comboBoxMaLop.SelectedIndex = 0;
             // khi đang thêm sửa thì k thể ấn phục hồi, reload
             barButtonPhucHoi.Enabled = false;
             barButtonReload.Enabled = false;
@@ -185,10 +212,19 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxMaLop.Enabled = true;
             spinEditLan.Enabled = true;
 
-            comboBoxMaGiaoVien.SelectedIndex = 0;
-            comboBoxMaMonHoc.SelectedIndex = 0;
-            comboBoxMaLop.SelectedIndex = 0;
+            
             comboBoxTrinhDo.SelectedIndex = 0;
+            //nếu k làm vầy thì lúc thêm, nếu không chọn giá trị khác trên combobox thì gridcontrol auto lấy giá trị null
+            comboBoxTrinhDo.Text = comboBoxTrinhDo.SelectedText;
+            comboBoxMaGiaoVien.SelectedIndex = 0;
+            //nếu k làm vầy thì lúc thêm, nếu không chọn giá trị khác trên combobox thì gridcontrol auto lấy giá trị null
+            comboBoxMaGiaoVien.Text = comboBoxMaGiaoVien.SelectedText;
+            comboBoxMaMonHoc.SelectedIndex = 0;
+            //nếu k làm vầy thì lúc thêm, nếu không chọn giá trị khác trên combobox thì gridcontrol auto lấy giá trị null
+            comboBoxMaMonHoc.Text = comboBoxMaMonHoc.SelectedText;
+            comboBoxMaLop.SelectedIndex = 0;
+            //nếu k làm vầy thì lúc thêm, nếu không chọn giá trị khác trên combobox thì gridcontrol auto lấy giá trị null
+            comboBoxMaLop.Text = comboBoxMaLop.SelectedText;
 
             dateEditNgayThi.DateTime = DateTime.Now;
 
@@ -202,13 +238,13 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             mode = "sua";
-            vitri = bindingSourceGiaoVien_DangKy.Position;
+            vitri = bindingSourceGiaoVienDangKy.Position;
             panelControlNhapLieu.Enabled = true;
             // khi ấn sửa lấy mã lớp, mã môn, mã giáo viên để set trên combobox chưa sửa chọn ở combobox lớp
-            String maLop = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MALOP"].ToString().Trim();
-            String maGiaoVien = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAGV"].ToString().Trim();
-            String maMonHoc = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAMH"].ToString().Trim();
-            String trinhDo = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["TRINHDO"].ToString().Trim();
+            String maLop = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["MALOP"].ToString().Trim();
+            String maGiaoVien = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["MAGV"].ToString().Trim();
+            String maMonHoc = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["MAMH"].ToString().Trim();
+            String trinhDo = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["TRINHDO"].ToString().Trim();
             barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled = barButtonThoat.Enabled = false;
             barButtonGhi.Enabled = true;
             barButtonHuy.Enabled = true;
@@ -236,9 +272,9 @@ namespace TN_CSDLPT_NOV09.views
                 //xóa cái dòng được tạo từ bindingSource.addNew khi ấn thêm trên gridview
                 gridViewGiaoVienDangKy.DeleteRow(gridViewGiaoVienDangKy.FocusedRowHandle);
             }
-            bindingSourceGiaoVien_DangKy.CancelEdit();
+            bindingSourceGiaoVienDangKy.CancelEdit();
 
-            bindingSourceGiaoVien_DangKy.Position = vitri;
+            bindingSourceGiaoVienDangKy.Position = vitri;
             panelControlNhapLieu.Enabled = false;
             gridControlGiaoVienDangKy.Enabled = true;
 
@@ -260,7 +296,11 @@ namespace TN_CSDLPT_NOV09.views
         {
             try
             {
-                tableAdapterGiaoVien_DangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                tableAdapterGiaoVienDangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                // load lại luôn đề phòng có thay đổi
+                this.lOPTableAdapter.Fill(this.TN_CSDLPT_DataSet.LOP);
+                this.gIAOVIENTableAdapter.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN);
+                this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
             }
             catch (Exception ex)
             {
@@ -292,31 +332,45 @@ namespace TN_CSDLPT_NOV09.views
             {
                 try
                 {
-                    maLop = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MALOP"].ToString().Trim();
-                    maGiaoVien = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAGV"].ToString().Trim();
-                    maMonHoc = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAMH"].ToString().Trim();
-                    trinhDo = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["TRINHDO"].ToString().Trim();
-                    ngayThi = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["NGAYTHI"].ToString().Trim();
-                    lan = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["LAN"].ToString().Trim());
-                    soCauThi = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["SOCAUTHI"].ToString().Trim());
-                    thoiGian = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["THOIGIAN"].ToString().Trim());
+                    maLop = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["MALOP"].ToString().Trim();
+                    maGiaoVien = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["MAGV"].ToString().Trim();
+                    maMonHoc = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["MAMH"].ToString().Trim();
+                    trinhDo = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["TRINHDO"].ToString().Trim();
+                    ngayThi = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["NGAYTHI"].ToString().Trim();
+                    lan = int.Parse((String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["LAN"].ToString().Trim());
+                    soCauThi = int.Parse((String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["SOCAUTHI"].ToString().Trim());
+                    thoiGian = int.Parse((String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["THOIGIAN"].ToString().Trim());
 
-                    bindingSourceGiaoVien_DangKy.RemoveCurrent();
-                    this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
-                    this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                    // chạy sp ktra, nếu là xóa lần 1 thì phải k có lần 2
+
+                        String strLenh = "EXEC SP_KT_XOA_GIAOVIEN_DANGKY '" + maLop + "', '" + maMonHoc + "', " + lan + ", '" + ngayThi + "'";
+
+                        int kq = Program.ExecSqlNonQuery(strLenh);
+     
+                        if (kq == 2) //
+                        {
+                            //tự raiserror, ta chỉ cần focus về field nhập
+                            return;
+                        }
+
+                   
+
+                    bindingSourceGiaoVienDangKy.RemoveCurrent();
+                    this.tableAdapterGiaoVienDangKy.Connection.ConnectionString = Program.connstr;
+                    this.tableAdapterGiaoVienDangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Xóa đăng ký thi thất bại, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                    this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                    this.tableAdapterGiaoVienDangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
 
                     //quay về dòng có 3 dữ liệu bên dưới
-                    int index = bindingSourceGiaoVien_DangKy.Find("LAN", lan) + bindingSourceGiaoVien_DangKy.Find("MALOP", maLop) + bindingSourceGiaoVien_DangKy.Find("MAMH", maMonHoc);
-                    bindingSourceGiaoVien_DangKy.Position = index;
+                    int index = bindingSourceGiaoVienDangKy.Find("LAN", lan) + bindingSourceGiaoVienDangKy.Find("MALOP", maLop) + bindingSourceGiaoVienDangKy.Find("MAMH", maMonHoc);
+                    bindingSourceGiaoVienDangKy.Position = index;
                     return;
                 }
             }
-            if (bindingSourceGiaoVien_DangKy.Count == 0)
+            if (bindingSourceGiaoVienDangKy.Count == 0)
             {
                 barButtonXoa.Enabled = false;
             }
@@ -349,18 +403,18 @@ namespace TN_CSDLPT_NOV09.views
             if (mode == "sua")
             {
                 //lấy thông tin gvien_dangky để undo redo
-                maGiaoVienChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAGV"].ToString().Trim();
-                trinhDoChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["TRINHDO"].ToString().Trim();
-                ngayThiChuaSua = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["NGAYTHI"].ToString().Trim();
+                maGiaoVienChuaSua = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["MAGV"].ToString().Trim();
+                trinhDoChuaSua = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["TRINHDO"].ToString().Trim();
+                ngayThiChuaSua = (String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["NGAYTHI"].ToString().Trim();
 
                 //format thành định dạng date của sql để undo sửa
                 myDateTime = DateTime.Parse(ngayThiChuaSua);
                 ngayThiChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
-                soCauThiChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["SOCAUTHI"].ToString().Trim());
-                thoiGianChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["THOIGIAN"].ToString().Trim());
+                soCauThiChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["SOCAUTHI"].ToString().Trim());
+                thoiGianChuaSua = int.Parse((String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["THOIGIAN"].ToString().Trim());
             }
 
-            String maGiaoVienChuanBiSua = comboBoxMaGiaoVien.SelectedValue.ToString().Trim();
+            String maGiaoVienChuanBiSua = comboBoxMaGiaoVien.Text.ToString().Trim();
 
             //không cho sửa mã lớp, mã môn và lần
             //String maLop = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MALOP"].ToString().Trim();
@@ -421,14 +475,14 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
-            if (dateEditNgayThi.DateTime.Date <= DateTime.Now.Date)
-            {
-                MessageBox.Show("Không thể nhập ngày hiện tại trở về trước", "", MessageBoxButtons.OK);
-                dateEditNgayThi.Focus();
-                return;
-            }
+            //if (dateEditNgayThi.DateTime.Date <= DateTime.Now.Date)
+            //{
+            //    MessageBox.Show("Không thể nhập ngày hiện tại trở về trước", "", MessageBoxButtons.OK);
+            //    dateEditNgayThi.Focus();
+            //    return;
+            //}
 
-            if (dateEditNgayThi.DateTime <= DateTime.Now.AddDays(7))
+            if (dateEditNgayThi.DateTime <= DateTime.Now.AddDays(7) || dateEditNgayThi.DateTime.Date <= DateTime.Now.Date)
             {
                 MessageBox.Show("Ngày thi phải cách ngày đăng kí ít nhất 1 tuần", "", MessageBoxButtons.OK);
                 dateEditNgayThi.Focus();
@@ -468,34 +522,29 @@ namespace TN_CSDLPT_NOV09.views
 
             if (mode == "sua")
             {
-                // vì mã sinh viên k cho sửa, nên cũng k cần kiểm tra sinh viên tồn tại chưa
-                //String strLenh = "EXEC SP_KT_SINHVIEN_DATONTAI '" + maSinhVien;
+                
+                String strLenh = "EXEC SP_KT_SUA_GIAOVIEN_DANGKY '" + maLop + "', '" + maMonHoc + "', " + lan + ", '" + ngayThiChuanBiSuaSQLFormat + "'";
 
-                //int kq = Program.ExecSqlNonQuery(strLenh);
-                ////if (kq == 1) //
-                ////{
-                ////    //tự raiserror, ta chỉ cần focus về field nhập
-                ////    textBoxMaKhoa.Focus();
-                ////    return;
-                ////}
-                //if (kq == 2)
-                //{
-                //    //tên khoa trùng khoa khác
-                //    textBoxTenLop.Focus();
-                //    return;
-                //}
+                int kq = Program.ExecSqlNonQuery(strLenh);
+
+                if (kq == 3) //
+                {
+                    //tự raiserror, ta chỉ cần focus về field nhập
+                    dateEditNgayThi.Focus();
+                    return;
+                }
             }
             try
             {
-                bindingSourceGiaoVien_DangKy.EndEdit();
-                bindingSourceGiaoVien_DangKy.ResetCurrentItem();
-                this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
-                this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                bindingSourceGiaoVienDangKy.EndEdit();
+                bindingSourceGiaoVienDangKy.ResetCurrentItem();
+                this.tableAdapterGiaoVienDangKy.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterGiaoVienDangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Không thể ghi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                this.tableAdapterGiaoVienDangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
                 return;
             }
 
@@ -543,7 +592,7 @@ namespace TN_CSDLPT_NOV09.views
             catch (Exception ex)
             {
                 MessageBox.Show("Không thể phục hồi, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                this.tableAdapterGiaoVien_DangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                this.tableAdapterGiaoVienDangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
                 Program.myReader.Close();
                 Program.conn.Close();
                 return;
@@ -575,9 +624,9 @@ namespace TN_CSDLPT_NOV09.views
             //hiển thị lại bảng
             try
             {
-                this.tableAdapterGiaoVien_DangKy.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterGiaoVienDangKy.Connection.ConnectionString = Program.connstr;
                 //this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
-                this.tableAdapterGiaoVien_DangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+                this.tableAdapterGiaoVienDangKy.Fill(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
             }
             catch (Exception ex)
             {
@@ -590,8 +639,8 @@ namespace TN_CSDLPT_NOV09.views
                 //bindingSourceSinhVien.Position = bindingSourceSinhVien.Find("MASV", affected_id);
                 
                 //quay về dòng có 3 dữ liệu bên dưới
-                int index = bindingSourceGiaoVien_DangKy.Find("LAN", affected_lan) + bindingSourceGiaoVien_DangKy.Find("MALOP", affected_maLop) + bindingSourceGiaoVien_DangKy.Find("MAMH", affected_maMonHoc);
-                bindingSourceGiaoVien_DangKy.Position = index;
+                int index = bindingSourceGiaoVienDangKy.Find("LAN", affected_lan) + bindingSourceGiaoVienDangKy.Find("MALOP", affected_maLop) + bindingSourceGiaoVienDangKy.Find("MAMH", affected_maMonHoc);
+                bindingSourceGiaoVienDangKy.Position = index;
 
             }
 

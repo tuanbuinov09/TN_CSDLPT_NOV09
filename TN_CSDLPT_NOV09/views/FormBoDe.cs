@@ -573,5 +573,10 @@ namespace TN_CSDLPT_NOV09.views
                 //maCoSo = ((DataRowView)bindingSourceMonHoc[0])["MACS"].ToString();
             }
         }
+
+        private void comboBoxMaMonHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
