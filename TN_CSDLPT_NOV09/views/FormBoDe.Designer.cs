@@ -347,6 +347,7 @@
             // 
             // comboBoxCoSo
             // 
+            this.comboBoxCoSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCoSo.FormattingEnabled = true;
             this.comboBoxCoSo.Location = new System.Drawing.Point(90, 10);
             this.comboBoxCoSo.Name = "comboBoxCoSo";
@@ -522,6 +523,7 @@
             this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
             this.comboBoxMaMonHoc.Size = new System.Drawing.Size(205, 21);
             this.comboBoxMaMonHoc.TabIndex = 3;
+            this.comboBoxMaMonHoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxMaMonHoc_SelectedIndexChanged);
             // 
             // spinEditCauHoi
             // 
