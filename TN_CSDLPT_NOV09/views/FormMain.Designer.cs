@@ -196,7 +196,7 @@
             // 
             this.barButtonGiaoVien_DangKy.Caption = "Giáo viên đăng ký";
             this.barButtonGiaoVien_DangKy.Id = 11;
-            this.barButtonGiaoVien_DangKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonChuanBiThi.ImageOptions.Image")));
+            this.barButtonGiaoVien_DangKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonGiaoVien_DangKy.ImageOptions.Image")));
             this.barButtonGiaoVien_DangKy.LargeWidth = 80;
             this.barButtonGiaoVien_DangKy.Name = "barButtonGiaoVien_DangKy";
             this.barButtonGiaoVien_DangKy.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
@@ -210,6 +210,7 @@
             this.barButtonThi.LargeWidth = 70;
             this.barButtonThi.Name = "barButtonThi";
             this.barButtonThi.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonThi_ItemClick);
             // 
             // ribbonPageCategory1
             // 

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Collections;
-using TN_CSDLPT_NOV09.model;
 
 namespace TN_CSDLPT_NOV09.views
 {

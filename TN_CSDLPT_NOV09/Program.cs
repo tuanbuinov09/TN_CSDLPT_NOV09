@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
-using TN_CSDLPT_NOV09.model;
 using TN_CSDLPT_NOV09.views;
 
 namespace TN_CSDLPT_NOV09
@@ -36,6 +35,9 @@ namespace TN_CSDLPT_NOV09
         public static int indexCoSo = -1;
 
         public static String maSinhVien = "";
+        public static String maLop = "";
+        public static String tenLop = "";
+
         public static BindingSource bds_DanhSachPhanManh = new BindingSource();
 
         public static FormMain formChinh;
