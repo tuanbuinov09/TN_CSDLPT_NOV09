@@ -142,6 +142,8 @@ namespace TN_CSDLPT_NOV09.views
                 {
                     Program.maSinhVien = Program.myReader.GetString(0);
                     Program.mHoTen = Program.myReader.GetString(1);
+                    Program.maLop = Program.myReader.GetString(2);
+                    Program.tenLop = Program.myReader.GetString(3);
                     Program.mGroup = "SINHVIEN";
                 }
                 catch (Exception ex)

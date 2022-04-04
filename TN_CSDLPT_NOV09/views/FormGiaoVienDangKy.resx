@@ -129,38 +129,20 @@
   <metadata name="tHOIGIANLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="tRINHDOLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="mAGVLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="bindingSourceGiaoVienDangKy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>302, 17</value>
-  </metadata>
-  <metadata name="mALOPLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="bindingSourceGiaoVienDangKy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>302, 17</value>
-  </metadata>
-  <metadata name="TN_CSDLPT_DataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>142, 17</value>
-  </metadata>
-  <metadata name="bindingSourceLop.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>196, 58</value>
   </metadata>
   <metadata name="mAMHLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="monHocBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>188, 56</value>
-  </metadata>
-  <metadata name="mAGVLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="mALOPLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="bindingSourceGiaoVien.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>553, 56</value>
+  <metadata name="tRINHDOLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="barButtonThem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -222,6 +204,25 @@
         C0YdMOqAUTAKsAIGBgDSIPxb1KFGHQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="barButtonHuy.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAzNJREFUWEft
+        l0lrFEEUxwMquO96cAFx1+CQTFd1dc0o9CcQRfIBxG8gCC43QfEgETwILgge9OAHUGOiEQVNwExPT4ya
+        eNA4RonoJRpRMMb3qv8zTNKz1ESDCPnBY3reVku/fl3dMMN/RZgW20JPHM964hFJf+CJTyx8ndXyYajl
+        sazrboX73yP0nCQN3E4DjVuJFm1BSjYhfOp0+v5sSnieZCxKLodpMpcC7ezLStmY2dO8ioWvs9rdH3jy
+        Mvl9jHxNTCvnQLr6CPympSWr/h4o5/TLdHoRzBXpUmoxTfQMx5hY2o2njrMEZjsoYA4F38fg41klD8Jk
+        TaiSHg3+Hjk6OCdMteFtRuDP6FcO93jJHTBb0yvleoof4hx0ey5AXR2atUsBv0hGzSo8cZsTmNVMocIz
+        riso/hvnzKmkA3VlyLEjGlCe5P+PtZ5XUgv53pSzyTjWAT2qp6Kcog2q8vBzzo78bJcWHN2/+TSJB5jE
+        m8DzNsBkBRchxX02uZXaAnUcGviEGUSLi1AV4Z2gXbmHSeRzUm6EyQqKuWJilXMUqjiFAWi1e6GaQPSI
+        iS6TyHMGMunmNTDVhPsEcrdDFYccXrFTj05uhipGmEgs4LYbTYL8tV4LU1UKt5ekH6o4ZPzCTn1+40Ko
+        yoJ72h0ltNsJrqnIX4xAFYeMX9mJVwlVRUwL1uKZSapE0Kf1cpjKYjkBZ4CdqlZqCbQTK8k/h8Q5/g9T
+        jJx2tsPvBVRxahVhOXj7KcbUDnXMJ1yoME3AqggDLY5EicRVqKwIU4nVlPg5YjO53buWwVQkUOJaZHcO
+        QxWnUiOygZsTTWIQk+jk5gWTfSNieItMErTieuA2TSt8x/Gc57Xvz2V9sRUrecc4VoMqu5mc+TAxytdQ
+        W4Nd/MAD0sC3Ai1TdM0vo7FelUzArTqhEuc4AUk+VGod1NZklNrJr3DkKJymzsJcGxzF7iLBEJ0PFEzW
+        hFocQrzZ+pstLbNgsmPykYxX0O26K2CuCHpDaxRDsVM5khWIH0rFSOjJ63SLDvDhhIuMha9ZR4/aDfaB
+        758dSkv5Z8fyyUz6MHlL8oOFdIP8hpy2D5MZpo+Ght9n0z3S2ILh7AAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="barButtonReload.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAfJJREFUWEft
@@ -245,27 +246,20 @@
         61jd3wN8B6iaSQ2z2Gkd5z6ip7Z60fWT5gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="barButtonHuy.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAzNJREFUWEft
-        l0lrFEEUxwMquO96cAFx1+CQTFd1dc0o9CcQRfIBxG8gCC43QfEgETwILgge9OAHUGOiEQVNwExPT4ya
-        eNA4RonoJRpRMMb3qv8zTNKz1ESDCPnBY3reVku/fl3dMMN/RZgW20JPHM964hFJf+CJTyx8ndXyYajl
-        sazrboX73yP0nCQN3E4DjVuJFm1BSjYhfOp0+v5sSnieZCxKLodpMpcC7ezLStmY2dO8ioWvs9rdH3jy
-        Mvl9jHxNTCvnQLr6CPympSWr/h4o5/TLdHoRzBXpUmoxTfQMx5hY2o2njrMEZjsoYA4F38fg41klD8Jk
-        TaiSHg3+Hjk6OCdMteFtRuDP6FcO93jJHTBb0yvleoof4hx0ey5AXR2atUsBv0hGzSo8cZsTmNVMocIz
-        riso/hvnzKmkA3VlyLEjGlCe5P+PtZ5XUgv53pSzyTjWAT2qp6Kcog2q8vBzzo78bJcWHN2/+TSJB5jE
-        m8DzNsBkBRchxX02uZXaAnUcGviEGUSLi1AV4Z2gXbmHSeRzUm6EyQqKuWJilXMUqjiFAWi1e6GaQPSI
-        iS6TyHMGMunmNTDVhPsEcrdDFYccXrFTj05uhipGmEgs4LYbTYL8tV4LU1UKt5ekH6o4ZPzCTn1+40Ko
-        yoJ72h0ltNsJrqnIX4xAFYeMX9mJVwlVRUwL1uKZSapE0Kf1cpjKYjkBZ4CdqlZqCbQTK8k/h8Q5/g9T
-        jJx2tsPvBVRxahVhOXj7KcbUDnXMJ1yoME3AqggDLY5EicRVqKwIU4nVlPg5YjO53buWwVQkUOJaZHcO
-        QxWnUiOygZsTTWIQk+jk5gWTfSNieItMErTieuA2TSt8x/Gc57Xvz2V9sRUrecc4VoMqu5mc+TAxytdQ
-        W4Nd/MAD0sC3Ai1TdM0vo7FelUzArTqhEuc4AUk+VGod1NZklNrJr3DkKJymzsJcGxzF7iLBEJ0PFEzW
-        hFocQrzZ+pstLbNgsmPykYxX0O26K2CuCHpDaxRDsVM5khWIH0rFSOjJ63SLDvDhhIuMha9ZR4/aDfaB
-        758dSkv5Z8fyyUz6MHlL8oOFdIP8hpy2D5MZpo+Ght9n0z3S2ILh7AAAAABJRU5ErkJggg==
-</value>
-  </data>
+  <metadata name="bindingSourceGiaoVienDangKy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>302, 17</value>
+  </metadata>
   <metadata name="TN_CSDLPT_DataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>142, 17</value>
+  </metadata>
+  <metadata name="bindingSourceLop.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>196, 58</value>
+  </metadata>
+  <metadata name="monHocBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>188, 56</value>
+  </metadata>
+  <metadata name="bindingSourceGiaoVien.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>553, 56</value>
   </metadata>
   <metadata name="tableAdapterGiaoVienDangKy.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>540, 17</value>

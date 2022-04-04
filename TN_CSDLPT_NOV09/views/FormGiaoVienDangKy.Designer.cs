@@ -33,11 +33,11 @@
             System.Windows.Forms.Label lANLabel;
             System.Windows.Forms.Label sOCAUTHILabel;
             System.Windows.Forms.Label tHOIGIANLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoVienDangKy));
             System.Windows.Forms.Label mAGVLabel;
             System.Windows.Forms.Label mAMHLabel;
             System.Windows.Forms.Label mALOPLabel;
             System.Windows.Forms.Label tRINHDOLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGiaoVienDangKy));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonThem = new DevExpress.XtraBars.BarButtonItem();
@@ -78,13 +78,13 @@
             this.spinEditSoCauThi = new DevExpress.XtraEditors.SpinEdit();
             this.spinEditThoiGian = new DevExpress.XtraEditors.SpinEdit();
             this.panelControlNhapLieu = new DevExpress.XtraEditors.PanelControl();
+            this.comboBoxTrinhDo = new System.Windows.Forms.ComboBox();
+            this.comboBoxMaLop = new System.Windows.Forms.ComboBox();
+            this.comboBoxMaMonHoc = new System.Windows.Forms.ComboBox();
+            this.comboBoxMaGiaoVien = new System.Windows.Forms.ComboBox();
             this.tableAdapterMonHoc = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.MONHOCTableAdapter();
             this.gIAOVIENTableAdapter = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.GIAOVIENTableAdapter();
             this.lOPTableAdapter = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.LOPTableAdapter();
-            this.comboBoxMaGiaoVien = new System.Windows.Forms.ComboBox();
-            this.comboBoxMaMonHoc = new System.Windows.Forms.ComboBox();
-            this.comboBoxMaLop = new System.Windows.Forms.ComboBox();
-            this.comboBoxTrinhDo = new System.Windows.Forms.ComboBox();
             nGAYTHILabel = new System.Windows.Forms.Label();
             lANLabel = new System.Windows.Forms.Label();
             sOCAUTHILabel = new System.Windows.Forms.Label();
@@ -147,6 +147,42 @@
             tHOIGIANLabel.Size = new System.Drawing.Size(69, 13);
             tHOIGIANLabel.TabIndex = 14;
             tHOIGIANLabel.Text = "Thời gian thi:";
+            // 
+            // mAGVLabel
+            // 
+            mAGVLabel.AutoSize = true;
+            mAGVLabel.Location = new System.Drawing.Point(35, 29);
+            mAGVLabel.Name = "mAGVLabel";
+            mAGVLabel.Size = new System.Drawing.Size(71, 13);
+            mAGVLabel.TabIndex = 22;
+            mAGVLabel.Text = "Mã giáo viên:";
+            // 
+            // mAMHLabel
+            // 
+            mAMHLabel.AutoSize = true;
+            mAMHLabel.Location = new System.Drawing.Point(33, 71);
+            mAMHLabel.Name = "mAMHLabel";
+            mAMHLabel.Size = new System.Drawing.Size(68, 13);
+            mAMHLabel.TabIndex = 23;
+            mAMHLabel.Text = "Mã môn học:";
+            // 
+            // mALOPLabel
+            // 
+            mALOPLabel.AutoSize = true;
+            mALOPLabel.Location = new System.Drawing.Point(35, 118);
+            mALOPLabel.Name = "mALOPLabel";
+            mALOPLabel.Size = new System.Drawing.Size(42, 13);
+            mALOPLabel.TabIndex = 24;
+            mALOPLabel.Text = "Mã lớp:";
+            // 
+            // tRINHDOLabel
+            // 
+            tRINHDOLabel.AutoSize = true;
+            tRINHDOLabel.Location = new System.Drawing.Point(35, 165);
+            tRINHDOLabel.Name = "tRINHDOLabel";
+            tRINHDOLabel.Size = new System.Drawing.Size(50, 13);
+            tRINHDOLabel.TabIndex = 25;
+            tRINHDOLabel.Text = "Trình độ:";
             // 
             // barManager1
             // 
@@ -572,6 +608,55 @@
             this.panelControlNhapLieu.Size = new System.Drawing.Size(819, 270);
             this.panelControlNhapLieu.TabIndex = 26;
             // 
+            // comboBoxTrinhDo
+            // 
+            this.comboBoxTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVienDangKy, "TRINHDO", true));
+            this.comboBoxTrinhDo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTrinhDo.FormattingEnabled = true;
+            this.comboBoxTrinhDo.Location = new System.Drawing.Point(128, 161);
+            this.comboBoxTrinhDo.Name = "comboBoxTrinhDo";
+            this.comboBoxTrinhDo.Size = new System.Drawing.Size(192, 21);
+            this.comboBoxTrinhDo.TabIndex = 26;
+            // 
+            // comboBoxMaLop
+            // 
+            this.comboBoxMaLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVienDangKy, "MALOP", true));
+            this.comboBoxMaLop.DataSource = this.bindingSourceLop;
+            this.comboBoxMaLop.DisplayMember = "MALOP";
+            this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMaLop.FormattingEnabled = true;
+            this.comboBoxMaLop.Location = new System.Drawing.Point(128, 115);
+            this.comboBoxMaLop.Name = "comboBoxMaLop";
+            this.comboBoxMaLop.Size = new System.Drawing.Size(192, 21);
+            this.comboBoxMaLop.TabIndex = 25;
+            this.comboBoxMaLop.ValueMember = "MALOP";
+            // 
+            // comboBoxMaMonHoc
+            // 
+            this.comboBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVienDangKy, "MAMH", true));
+            this.comboBoxMaMonHoc.DataSource = this.monHocBindingSource;
+            this.comboBoxMaMonHoc.DisplayMember = "MAMH";
+            this.comboBoxMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMaMonHoc.FormattingEnabled = true;
+            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(128, 68);
+            this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
+            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(192, 21);
+            this.comboBoxMaMonHoc.TabIndex = 24;
+            this.comboBoxMaMonHoc.ValueMember = "MAMH";
+            // 
+            // comboBoxMaGiaoVien
+            // 
+            this.comboBoxMaGiaoVien.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVienDangKy, "MAGV", true));
+            this.comboBoxMaGiaoVien.DataSource = this.bindingSourceGiaoVien;
+            this.comboBoxMaGiaoVien.DisplayMember = "MAGV";
+            this.comboBoxMaGiaoVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMaGiaoVien.FormattingEnabled = true;
+            this.comboBoxMaGiaoVien.Location = new System.Drawing.Point(128, 26);
+            this.comboBoxMaGiaoVien.Name = "comboBoxMaGiaoVien";
+            this.comboBoxMaGiaoVien.Size = new System.Drawing.Size(192, 21);
+            this.comboBoxMaGiaoVien.TabIndex = 23;
+            this.comboBoxMaGiaoVien.ValueMember = "MAGV";
+            // 
             // tableAdapterMonHoc
             // 
             this.tableAdapterMonHoc.ClearBeforeFill = true;
@@ -583,91 +668,6 @@
             // lOPTableAdapter
             // 
             this.lOPTableAdapter.ClearBeforeFill = true;
-            // 
-            // mAGVLabel
-            // 
-            mAGVLabel.AutoSize = true;
-            mAGVLabel.Location = new System.Drawing.Point(79, 29);
-            mAGVLabel.Name = "mAGVLabel";
-            mAGVLabel.Size = new System.Drawing.Size(39, 13);
-            mAGVLabel.TabIndex = 22;
-            mAGVLabel.Text = "MAGV:";
-            // 
-            // comboBoxMaGiaoVien
-            // 
-            this.comboBoxMaGiaoVien.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVienDangKy, "MAGV", true));
-            this.comboBoxMaGiaoVien.DataSource = this.bindingSourceGiaoVien;
-            this.comboBoxMaGiaoVien.DisplayMember = "MAGV";
-            this.comboBoxMaGiaoVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMaGiaoVien.FormattingEnabled = true;
-            this.comboBoxMaGiaoVien.Location = new System.Drawing.Point(124, 26);
-            this.comboBoxMaGiaoVien.Name = "comboBoxMaGiaoVien";
-            this.comboBoxMaGiaoVien.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxMaGiaoVien.TabIndex = 23;
-            this.comboBoxMaGiaoVien.ValueMember = "MAGV";
-            // 
-            // mAMHLabel
-            // 
-            mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(77, 71);
-            mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(41, 13);
-            mAMHLabel.TabIndex = 23;
-            mAMHLabel.Text = "MAMH:";
-            // 
-            // comboBoxMaMonHoc
-            // 
-            this.comboBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVienDangKy, "MAMH", true));
-            this.comboBoxMaMonHoc.DataSource = this.monHocBindingSource;
-            this.comboBoxMaMonHoc.DisplayMember = "MAMH";
-            this.comboBoxMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMaMonHoc.FormattingEnabled = true;
-            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(124, 68);
-            this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
-            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxMaMonHoc.TabIndex = 24;
-            this.comboBoxMaMonHoc.ValueMember = "MAMH";
-            // 
-            // mALOPLabel
-            // 
-            mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(73, 116);
-            mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(45, 13);
-            mALOPLabel.TabIndex = 24;
-            mALOPLabel.Text = "MALOP:";
-            // 
-            // comboBoxMaLop
-            // 
-            this.comboBoxMaLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVienDangKy, "MALOP", true));
-            this.comboBoxMaLop.DataSource = this.bindingSourceLop;
-            this.comboBoxMaLop.DisplayMember = "MALOP";
-            this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMaLop.FormattingEnabled = true;
-            this.comboBoxMaLop.Location = new System.Drawing.Point(124, 113);
-            this.comboBoxMaLop.Name = "comboBoxMaLop";
-            this.comboBoxMaLop.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxMaLop.TabIndex = 25;
-            this.comboBoxMaLop.ValueMember = "MALOP";
-            // 
-            // tRINHDOLabel
-            // 
-            tRINHDOLabel.AutoSize = true;
-            tRINHDOLabel.Location = new System.Drawing.Point(82, 167);
-            tRINHDOLabel.Name = "tRINHDOLabel";
-            tRINHDOLabel.Size = new System.Drawing.Size(57, 13);
-            tRINHDOLabel.TabIndex = 25;
-            tRINHDOLabel.Text = "TRINHDO:";
-            // 
-            // comboBoxTrinhDo
-            // 
-            this.comboBoxTrinhDo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVienDangKy, "TRINHDO", true));
-            this.comboBoxTrinhDo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTrinhDo.FormattingEnabled = true;
-            this.comboBoxTrinhDo.Location = new System.Drawing.Point(145, 164);
-            this.comboBoxTrinhDo.Name = "comboBoxTrinhDo";
-            this.comboBoxTrinhDo.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxTrinhDo.TabIndex = 26;
             // 
             // FormGiaoVienDangKy
             // 
