@@ -35,6 +35,7 @@
             System.Windows.Forms.Label tRINHDOLabel;
             System.Windows.Forms.Label tHOIGIANLabel;
             System.Windows.Forms.Label sOCAUTHILabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormThi));
             this.gIAOVIEN_DANGKYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tN_CSDLPT_DataSet = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSet();
             this.mONHOCBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -63,10 +64,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonThoat = new System.Windows.Forms.Button();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.labelTimer = new System.Windows.Forms.Label();
             this.buttonNopBai = new System.Windows.Forms.Button();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.flowLayoutPanelCauHoiThi = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelTimer = new System.Windows.Forms.Label();
             nGAYTHILabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             lANLabel = new System.Windows.Forms.Label();
@@ -96,54 +97,60 @@
             // nGAYTHILabel
             // 
             nGAYTHILabel.AutoSize = true;
+            nGAYTHILabel.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             nGAYTHILabel.Location = new System.Drawing.Point(25, 60);
             nGAYTHILabel.Name = "nGAYTHILabel";
-            nGAYTHILabel.Size = new System.Drawing.Size(51, 13);
+            nGAYTHILabel.Size = new System.Drawing.Size(65, 14);
             nGAYTHILabel.TabIndex = 2;
             nGAYTHILabel.Text = "Ngày thi:";
             // 
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
+            mAMHLabel.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             mAMHLabel.Location = new System.Drawing.Point(25, 23);
             mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(46, 13);
+            mAMHLabel.Size = new System.Drawing.Size(59, 14);
             mAMHLabel.TabIndex = 0;
             mAMHLabel.Text = "Môn thi:";
             // 
             // lANLabel
             // 
             lANLabel.AutoSize = true;
+            lANLabel.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
             lANLabel.Location = new System.Drawing.Point(25, 97);
             lANLabel.Name = "lANLabel";
-            lANLabel.Size = new System.Drawing.Size(43, 13);
+            lANLabel.Size = new System.Drawing.Size(55, 14);
             lANLabel.TabIndex = 21;
             lANLabel.Text = "Lần thi:";
             // 
             // tRINHDOLabel
             // 
             tRINHDOLabel.AutoSize = true;
-            tRINHDOLabel.Location = new System.Drawing.Point(23, 215);
+            tRINHDOLabel.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
+            tRINHDOLabel.Location = new System.Drawing.Point(23, 206);
             tRINHDOLabel.Name = "tRINHDOLabel";
-            tRINHDOLabel.Size = new System.Drawing.Size(50, 13);
+            tRINHDOLabel.Size = new System.Drawing.Size(64, 14);
             tRINHDOLabel.TabIndex = 34;
             tRINHDOLabel.Text = "Trình độ:";
             // 
             // tHOIGIANLabel
             // 
             tHOIGIANLabel.AutoSize = true;
-            tHOIGIANLabel.Location = new System.Drawing.Point(23, 253);
+            tHOIGIANLabel.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
+            tHOIGIANLabel.Location = new System.Drawing.Point(23, 244);
             tHOIGIANLabel.Name = "tHOIGIANLabel";
-            tHOIGIANLabel.Size = new System.Drawing.Size(69, 13);
+            tHOIGIANLabel.Size = new System.Drawing.Size(92, 14);
             tHOIGIANLabel.TabIndex = 31;
             tHOIGIANLabel.Text = "Thời gian thi:";
             // 
             // sOCAUTHILabel
             // 
             sOCAUTHILabel.AutoSize = true;
-            sOCAUTHILabel.Location = new System.Drawing.Point(23, 179);
+            sOCAUTHILabel.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold);
+            sOCAUTHILabel.Location = new System.Drawing.Point(23, 170);
             sOCAUTHILabel.Name = "sOCAUTHILabel";
-            sOCAUTHILabel.Size = new System.Drawing.Size(58, 13);
+            sOCAUTHILabel.Size = new System.Drawing.Size(75, 14);
             sOCAUTHILabel.TabIndex = 29;
             sOCAUTHILabel.Text = "Số câu thi:";
             // 
@@ -211,15 +218,15 @@
             this.panelControl4.Controls.Add(nGAYTHILabel);
             this.panelControl4.Controls.Add(this.nGAYTHIDateEdit);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(2, 147);
+            this.panelControl4.Location = new System.Drawing.Point(2, 167);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(309, 334);
+            this.panelControl4.Size = new System.Drawing.Size(309, 314);
             this.panelControl4.TabIndex = 7;
             // 
             // buttonBatDauThi
             // 
             this.buttonBatDauThi.Enabled = false;
-            this.buttonBatDauThi.Location = new System.Drawing.Point(206, 280);
+            this.buttonBatDauThi.Location = new System.Drawing.Point(206, 276);
             this.buttonBatDauThi.Name = "buttonBatDauThi";
             this.buttonBatDauThi.Size = new System.Drawing.Size(75, 23);
             this.buttonBatDauThi.TabIndex = 30;
@@ -231,9 +238,9 @@
             // 
             this.comboBoxTrinhDo.Enabled = false;
             this.comboBoxTrinhDo.FormattingEnabled = true;
-            this.comboBoxTrinhDo.Location = new System.Drawing.Point(103, 212);
+            this.comboBoxTrinhDo.Location = new System.Drawing.Point(121, 203);
             this.comboBoxTrinhDo.Name = "comboBoxTrinhDo";
-            this.comboBoxTrinhDo.Size = new System.Drawing.Size(178, 21);
+            this.comboBoxTrinhDo.Size = new System.Drawing.Size(160, 21);
             this.comboBoxTrinhDo.TabIndex = 35;
             // 
             // spinEditThoiGian
@@ -244,7 +251,7 @@
             0,
             0});
             this.spinEditThoiGian.Enabled = false;
-            this.spinEditThoiGian.Location = new System.Drawing.Point(103, 250);
+            this.spinEditThoiGian.Location = new System.Drawing.Point(121, 241);
             this.spinEditThoiGian.Name = "spinEditThoiGian";
             this.spinEditThoiGian.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -263,7 +270,7 @@
             0,
             0,
             0});
-            this.spinEditThoiGian.Size = new System.Drawing.Size(178, 20);
+            this.spinEditThoiGian.Size = new System.Drawing.Size(160, 20);
             this.spinEditThoiGian.TabIndex = 33;
             // 
             // spinEditSoCauThi
@@ -274,7 +281,7 @@
             0,
             0});
             this.spinEditSoCauThi.Enabled = false;
-            this.spinEditSoCauThi.Location = new System.Drawing.Point(103, 176);
+            this.spinEditSoCauThi.Location = new System.Drawing.Point(121, 167);
             this.spinEditSoCauThi.Name = "spinEditSoCauThi";
             this.spinEditSoCauThi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -293,7 +300,7 @@
             0,
             0,
             0});
-            this.spinEditSoCauThi.Size = new System.Drawing.Size(178, 20);
+            this.spinEditSoCauThi.Size = new System.Drawing.Size(160, 20);
             this.spinEditSoCauThi.TabIndex = 32;
             // 
             // buttonTimMonThi
@@ -313,7 +320,7 @@
             0,
             0,
             0});
-            this.spinEditLan.Location = new System.Drawing.Point(103, 94);
+            this.spinEditLan.Location = new System.Drawing.Point(121, 94);
             this.spinEditLan.Name = "spinEditLan";
             this.spinEditLan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -327,7 +334,7 @@
             0,
             0,
             0});
-            this.spinEditLan.Size = new System.Drawing.Size(178, 20);
+            this.spinEditLan.Size = new System.Drawing.Size(160, 20);
             this.spinEditLan.TabIndex = 22;
             // 
             // mAMHComboBox
@@ -337,9 +344,9 @@
             this.mAMHComboBox.DisplayMember = "TENMH";
             this.mAMHComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mAMHComboBox.FormattingEnabled = true;
-            this.mAMHComboBox.Location = new System.Drawing.Point(103, 20);
+            this.mAMHComboBox.Location = new System.Drawing.Point(121, 20);
             this.mAMHComboBox.Name = "mAMHComboBox";
-            this.mAMHComboBox.Size = new System.Drawing.Size(178, 21);
+            this.mAMHComboBox.Size = new System.Drawing.Size(160, 21);
             this.mAMHComboBox.TabIndex = 1;
             this.mAMHComboBox.ValueMember = "MAMH";
             // 
@@ -347,13 +354,13 @@
             // 
             this.nGAYTHIDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.gIAOVIEN_DANGKYBindingSource, "NGAYTHI", true));
             this.nGAYTHIDateEdit.EditValue = null;
-            this.nGAYTHIDateEdit.Location = new System.Drawing.Point(103, 57);
+            this.nGAYTHIDateEdit.Location = new System.Drawing.Point(121, 57);
             this.nGAYTHIDateEdit.Name = "nGAYTHIDateEdit";
             this.nGAYTHIDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.nGAYTHIDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.nGAYTHIDateEdit.Size = new System.Drawing.Size(178, 20);
+            this.nGAYTHIDateEdit.Size = new System.Drawing.Size(160, 20);
             this.nGAYTHIDateEdit.TabIndex = 3;
             // 
             // panelControl2
@@ -370,13 +377,13 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(2, 2);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(309, 145);
+            this.panelControl2.Size = new System.Drawing.Size(309, 165);
             this.panelControl2.TabIndex = 5;
             // 
             // labelTenLop
             // 
             this.labelTenLop.AutoSize = true;
-            this.labelTenLop.Location = new System.Drawing.Point(112, 116);
+            this.labelTenLop.Location = new System.Drawing.Point(134, 125);
             this.labelTenLop.Name = "labelTenLop";
             this.labelTenLop.Size = new System.Drawing.Size(35, 13);
             this.labelTenLop.TabIndex = 8;
@@ -385,7 +392,7 @@
             // labelMaLop
             // 
             this.labelMaLop.AutoSize = true;
-            this.labelMaLop.Location = new System.Drawing.Point(112, 87);
+            this.labelMaLop.Location = new System.Drawing.Point(134, 96);
             this.labelMaLop.Name = "labelMaLop";
             this.labelMaLop.Size = new System.Drawing.Size(35, 13);
             this.labelMaLop.TabIndex = 7;
@@ -394,7 +401,7 @@
             // labelHoTen
             // 
             this.labelHoTen.AutoSize = true;
-            this.labelHoTen.Location = new System.Drawing.Point(112, 58);
+            this.labelHoTen.Location = new System.Drawing.Point(134, 67);
             this.labelHoTen.Name = "labelHoTen";
             this.labelHoTen.Size = new System.Drawing.Size(35, 13);
             this.labelHoTen.TabIndex = 6;
@@ -403,7 +410,7 @@
             // labelMaSinhVien
             // 
             this.labelMaSinhVien.AutoSize = true;
-            this.labelMaSinhVien.Location = new System.Drawing.Point(112, 33);
+            this.labelMaSinhVien.Location = new System.Drawing.Point(134, 42);
             this.labelMaSinhVien.Name = "labelMaSinhVien";
             this.labelMaSinhVien.Size = new System.Drawing.Size(35, 13);
             this.labelMaSinhVien.TabIndex = 5;
@@ -412,51 +419,56 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 87);
+            this.label5.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 96);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.Size = new System.Drawing.Size(54, 14);
             this.label5.TabIndex = 4;
             this.label5.Text = "Mã lớp:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 116);
+            this.label4.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(25, 125);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(57, 14);
             this.label4.TabIndex = 3;
             this.label4.Text = "Tên lớp:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 58);
+            this.label3.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(25, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(53, 14);
             this.label3.TabIndex = 2;
             this.label3.Text = "Họ tên:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 33);
+            this.label2.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(26, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(91, 14);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mã sinh viên:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Roboto", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
             this.label1.Location = new System.Drawing.Point(11, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.Size = new System.Drawing.Size(168, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông tin sinh viên:";
             // 
             // buttonThoat
             // 
-            this.buttonThoat.Location = new System.Drawing.Point(860, 12);
+            this.buttonThoat.Location = new System.Drawing.Point(953, 13);
             this.buttonThoat.Name = "buttonThoat";
             this.buttonThoat.Size = new System.Drawing.Size(75, 23);
             this.buttonThoat.TabIndex = 9;
@@ -472,17 +484,33 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl3.Location = new System.Drawing.Point(313, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(947, 46);
+            this.panelControl3.Size = new System.Drawing.Size(1049, 46);
             this.panelControl3.TabIndex = 6;
+            this.panelControl3.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl3_Paint_1);
+            // 
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTimer.Location = new System.Drawing.Point(19, 18);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(63, 14);
+            this.labelTimer.TabIndex = 10;
+            this.labelTimer.Text = "00:00:00";
             // 
             // buttonNopBai
             // 
-            this.buttonNopBai.Location = new System.Drawing.Point(155, 13);
+            this.buttonNopBai.BackColor = System.Drawing.Color.Transparent;
+            this.buttonNopBai.Image = ((System.Drawing.Image)(resources.GetObject("buttonNopBai.Image")));
+            this.buttonNopBai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonNopBai.Location = new System.Drawing.Point(103, 7);
             this.buttonNopBai.Name = "buttonNopBai";
-            this.buttonNopBai.Size = new System.Drawing.Size(75, 23);
+            this.buttonNopBai.Size = new System.Drawing.Size(87, 34);
             this.buttonNopBai.TabIndex = 0;
             this.buttonNopBai.Text = "Nộp bài";
-            this.buttonNopBai.UseVisualStyleBackColor = true;
+            this.buttonNopBai.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonNopBai.UseVisualStyleBackColor = false;
+            this.buttonNopBai.Click += new System.EventHandler(this.buttonNopBai_Click);
             // 
             // panelControl5
             // 
@@ -490,32 +518,24 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(313, 46);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(947, 437);
+            this.panelControl5.Size = new System.Drawing.Size(1049, 437);
             this.panelControl5.TabIndex = 7;
             // 
             // flowLayoutPanelCauHoiThi
             // 
             this.flowLayoutPanelCauHoiThi.AutoScroll = true;
+            this.flowLayoutPanelCauHoiThi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.flowLayoutPanelCauHoiThi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelCauHoiThi.Location = new System.Drawing.Point(2, 2);
             this.flowLayoutPanelCauHoiThi.Name = "flowLayoutPanelCauHoiThi";
-            this.flowLayoutPanelCauHoiThi.Size = new System.Drawing.Size(943, 433);
+            this.flowLayoutPanelCauHoiThi.Size = new System.Drawing.Size(1045, 433);
             this.flowLayoutPanelCauHoiThi.TabIndex = 0;
-            // 
-            // labelTimer
-            // 
-            this.labelTimer.AutoSize = true;
-            this.labelTimer.Location = new System.Drawing.Point(19, 18);
-            this.labelTimer.Name = "labelTimer";
-            this.labelTimer.Size = new System.Drawing.Size(51, 13);
-            this.labelTimer.TabIndex = 10;
-            this.labelTimer.Text = "00:00:00";
             // 
             // FormThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1260, 483);
+            this.ClientSize = new System.Drawing.Size(1362, 483);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl1);
