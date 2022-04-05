@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraBars;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +27,39 @@ namespace TN_CSDLPT_NOV09
             //    f.MdiParent = this;
             //    f.Show();
             //}
+            
+
+            //nếu là quyền cơ sở tất cả đều enable
+            this.ribbonPageQuanLy.Visible = true;
+            this.ribbonPageGroupDangKy.Visible = true;
+            this.ribbonPageBoDe.Visible = true;
+            this.ribbonPageGroupGiaoVien_DangKy.Visible = true;
+            this.ribbonPageGroupVaoThi.Visible = true;
+
+            if (Program.mGroup == "SINHVIEN")
+            {
+                this.ribbonPageQuanLy.Visible = false;
+                this.ribbonPageGroupDangKy.Visible = false;
+                this.ribbonPageBoDe.Visible = false;
+                this.ribbonPageGroupGiaoVien_DangKy.Visible = false;
+                this.ribbonPageGroupVaoThi.Visible = true;
+
+                return;
+            }
+            if(Program.mGroup == "GIANGVIEN")
+            {
+                this.ribbonPageGroupDangKy.Visible = false;
+
+                return;
+            }
+
+            if (Program.mGroup == "TRUONG")
+            {
+
+                this.ribbonPageGroupVaoThi.Visible = false;
+
+                return;
+            }
         }
 
         private Form CheckExists(Type ftype)
@@ -170,11 +204,11 @@ namespace TN_CSDLPT_NOV09
 
         private void barButtonThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.CheckExists(typeof(FormChonMonThi));
+            Form frm = this.CheckExists(typeof(FormThi));
             if (frm != null) frm.Activate();
             else
             {
-                FormChonMonThi f = new FormChonMonThi();
+                FormThi f = new FormThi();
                 f.MdiParent = this;
                 f.Show();
             }

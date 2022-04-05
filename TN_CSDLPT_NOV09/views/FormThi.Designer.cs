@@ -1,6 +1,6 @@
 ﻿namespace TN_CSDLPT_NOV09.views
 {
-    partial class FormChonMonThi
+    partial class FormThi
     {
         /// <summary>
         /// Required designer variable.
@@ -52,19 +52,21 @@
             this.mAMHComboBox = new System.Windows.Forms.ComboBox();
             this.nGAYTHIDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelTenLop = new System.Windows.Forms.Label();
+            this.labelMaLop = new System.Windows.Forms.Label();
+            this.labelHoTen = new System.Windows.Forms.Label();
+            this.labelMaSinhVien = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonThoat = new System.Windows.Forms.Button();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.buttonNopBai = new System.Windows.Forms.Button();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelCauHoiThi = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelTimer = new System.Windows.Forms.Label();
             nGAYTHILabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             lANLabel = new System.Windows.Forms.Label();
@@ -96,18 +98,18 @@
             nGAYTHILabel.AutoSize = true;
             nGAYTHILabel.Location = new System.Drawing.Point(25, 60);
             nGAYTHILabel.Name = "nGAYTHILabel";
-            nGAYTHILabel.Size = new System.Drawing.Size(55, 13);
+            nGAYTHILabel.Size = new System.Drawing.Size(51, 13);
             nGAYTHILabel.TabIndex = 2;
-            nGAYTHILabel.Text = "NGAYTHI:";
+            nGAYTHILabel.Text = "Ngày thi:";
             // 
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
             mAMHLabel.Location = new System.Drawing.Point(25, 23);
             mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(41, 13);
+            mAMHLabel.Size = new System.Drawing.Size(46, 13);
             mAMHLabel.TabIndex = 0;
-            mAMHLabel.Text = "MAMH:";
+            mAMHLabel.Text = "Môn thi:";
             // 
             // lANLabel
             // 
@@ -209,9 +211,9 @@
             this.panelControl4.Controls.Add(nGAYTHILabel);
             this.panelControl4.Controls.Add(this.nGAYTHIDateEdit);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl4.Location = new System.Drawing.Point(2, 153);
+            this.panelControl4.Location = new System.Drawing.Point(2, 147);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(309, 328);
+            this.panelControl4.Size = new System.Drawing.Size(309, 334);
             this.panelControl4.TabIndex = 7;
             // 
             // buttonBatDauThi
@@ -356,10 +358,10 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.label9);
-            this.panelControl2.Controls.Add(this.label8);
-            this.panelControl2.Controls.Add(this.label7);
-            this.panelControl2.Controls.Add(this.label6);
+            this.panelControl2.Controls.Add(this.labelTenLop);
+            this.panelControl2.Controls.Add(this.labelMaLop);
+            this.panelControl2.Controls.Add(this.labelHoTen);
+            this.panelControl2.Controls.Add(this.labelMaSinhVien);
             this.panelControl2.Controls.Add(this.label5);
             this.panelControl2.Controls.Add(this.label4);
             this.panelControl2.Controls.Add(this.label3);
@@ -368,49 +370,49 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(2, 2);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(309, 151);
+            this.panelControl2.Size = new System.Drawing.Size(309, 145);
             this.panelControl2.TabIndex = 5;
             // 
-            // label9
+            // labelTenLop
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(112, 118);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "label9";
+            this.labelTenLop.AutoSize = true;
+            this.labelTenLop.Location = new System.Drawing.Point(112, 116);
+            this.labelTenLop.Name = "labelTenLop";
+            this.labelTenLop.Size = new System.Drawing.Size(35, 13);
+            this.labelTenLop.TabIndex = 8;
+            this.labelTenLop.Text = "label9";
             // 
-            // label8
+            // labelMaLop
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(112, 91);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "label8";
+            this.labelMaLop.AutoSize = true;
+            this.labelMaLop.Location = new System.Drawing.Point(112, 87);
+            this.labelMaLop.Name = "labelMaLop";
+            this.labelMaLop.Size = new System.Drawing.Size(35, 13);
+            this.labelMaLop.TabIndex = 7;
+            this.labelMaLop.Text = "label8";
             // 
-            // label7
+            // labelHoTen
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(112, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "label7";
+            this.labelHoTen.AutoSize = true;
+            this.labelHoTen.Location = new System.Drawing.Point(112, 58);
+            this.labelHoTen.Name = "labelHoTen";
+            this.labelHoTen.Size = new System.Drawing.Size(35, 13);
+            this.labelHoTen.TabIndex = 6;
+            this.labelHoTen.Text = "label7";
             // 
-            // label6
+            // labelMaSinhVien
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(112, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "label6";
+            this.labelMaSinhVien.AutoSize = true;
+            this.labelMaSinhVien.Location = new System.Drawing.Point(112, 33);
+            this.labelMaSinhVien.Name = "labelMaSinhVien";
+            this.labelMaSinhVien.Size = new System.Drawing.Size(35, 13);
+            this.labelMaSinhVien.TabIndex = 5;
+            this.labelMaSinhVien.Text = "label6";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 91);
+            this.label5.Location = new System.Drawing.Point(22, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 13);
             this.label5.TabIndex = 4;
@@ -419,7 +421,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 118);
+            this.label4.Location = new System.Drawing.Point(22, 116);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 3;
@@ -452,18 +454,30 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông tin sinh viên:";
             // 
+            // buttonThoat
+            // 
+            this.buttonThoat.Location = new System.Drawing.Point(860, 12);
+            this.buttonThoat.Name = "buttonThoat";
+            this.buttonThoat.Size = new System.Drawing.Size(75, 23);
+            this.buttonThoat.TabIndex = 9;
+            this.buttonThoat.Text = "Thoát";
+            this.buttonThoat.UseVisualStyleBackColor = true;
+            this.buttonThoat.Click += new System.EventHandler(this.buttonThoat_Click);
+            // 
             // panelControl3
             // 
+            this.panelControl3.Controls.Add(this.labelTimer);
+            this.panelControl3.Controls.Add(this.buttonThoat);
             this.panelControl3.Controls.Add(this.buttonNopBai);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl3.Location = new System.Drawing.Point(313, 437);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl3.Location = new System.Drawing.Point(313, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(873, 46);
+            this.panelControl3.Size = new System.Drawing.Size(947, 46);
             this.panelControl3.TabIndex = 6;
             // 
             // buttonNopBai
             // 
-            this.buttonNopBai.Location = new System.Drawing.Point(786, 11);
+            this.buttonNopBai.Location = new System.Drawing.Point(155, 13);
             this.buttonNopBai.Name = "buttonNopBai";
             this.buttonNopBai.Size = new System.Drawing.Size(75, 23);
             this.buttonNopBai.TabIndex = 0;
@@ -472,31 +486,40 @@
             // 
             // panelControl5
             // 
-            this.panelControl5.Controls.Add(this.flowLayoutPanel1);
+            this.panelControl5.Controls.Add(this.flowLayoutPanelCauHoiThi);
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl5.Location = new System.Drawing.Point(313, 0);
+            this.panelControl5.Location = new System.Drawing.Point(313, 46);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(873, 437);
+            this.panelControl5.Size = new System.Drawing.Size(947, 437);
             this.panelControl5.TabIndex = 7;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelCauHoiThi
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 2);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(869, 433);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanelCauHoiThi.AutoScroll = true;
+            this.flowLayoutPanelCauHoiThi.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelCauHoiThi.Location = new System.Drawing.Point(2, 2);
+            this.flowLayoutPanelCauHoiThi.Name = "flowLayoutPanelCauHoiThi";
+            this.flowLayoutPanelCauHoiThi.Size = new System.Drawing.Size(943, 433);
+            this.flowLayoutPanelCauHoiThi.TabIndex = 0;
             // 
-            // FormChonMonThi
+            // labelTimer
+            // 
+            this.labelTimer.AutoSize = true;
+            this.labelTimer.Location = new System.Drawing.Point(19, 18);
+            this.labelTimer.Name = "labelTimer";
+            this.labelTimer.Size = new System.Drawing.Size(51, 13);
+            this.labelTimer.TabIndex = 10;
+            this.labelTimer.Text = "00:00:00";
+            // 
+            // FormThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1186, 483);
+            this.ClientSize = new System.Drawing.Size(1260, 483);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl1);
-            this.Name = "FormChonMonThi";
+            this.Name = "FormThi";
             this.Text = "FormChuanBiThi";
             this.Load += new System.EventHandler(this.FormChonMonThi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gIAOVIEN_DANGKYBindingSource)).EndInit();
@@ -517,6 +540,7 @@
             this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
+            this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
             this.panelControl5.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -542,10 +566,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelTenLop;
+        private System.Windows.Forms.Label labelMaLop;
+        private System.Windows.Forms.Label labelHoTen;
+        private System.Windows.Forms.Label labelMaSinhVien;
         private System.Windows.Forms.Button buttonBatDauThi;
         private System.Windows.Forms.ComboBox comboBoxTrinhDo;
         private DevExpress.XtraEditors.SpinEdit spinEditThoiGian;
@@ -553,6 +577,8 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private System.Windows.Forms.Button buttonNopBai;
         private DevExpress.XtraEditors.PanelControl panelControl5;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCauHoiThi;
+        private System.Windows.Forms.Button buttonThoat;
+        private System.Windows.Forms.Label labelTimer;
     }
 }

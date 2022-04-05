@@ -45,7 +45,7 @@
             this.barButtonThi = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupDangKy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageQuanLy = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -56,8 +56,8 @@
             this.ribbonPageBoDe = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageThi = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupGiaoVien_DangKy = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupVaoThi = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMaUser = new System.Windows.Forms.ToolStripMenuItem();
@@ -220,17 +220,17 @@
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2,
+            this.ribbonPageGroupDangKy,
             this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Hệ thống";
             // 
-            // ribbonPageGroup2
+            // ribbonPageGroupDangKy
             // 
-            this.ribbonPageGroup2.AllowTextClipping = false;
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonDangKy);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "_____";
+            this.ribbonPageGroupDangKy.AllowTextClipping = false;
+            this.ribbonPageGroupDangKy.ItemLinks.Add(this.barButtonDangKy);
+            this.ribbonPageGroupDangKy.Name = "ribbonPageGroupDangKy";
+            this.ribbonPageGroupDangKy.Text = "_____";
             // 
             // ribbonPageGroup3
             // 
@@ -302,22 +302,22 @@
             // ribbonPageThi
             // 
             this.ribbonPageThi.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup9,
-            this.ribbonPageGroup1});
+            this.ribbonPageGroupGiaoVien_DangKy,
+            this.ribbonPageGroupVaoThi});
             this.ribbonPageThi.Name = "ribbonPageThi";
             this.ribbonPageThi.Text = "Thi";
             // 
-            // ribbonPageGroup9
+            // ribbonPageGroupGiaoVien_DangKy
             // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.barButtonGiaoVien_DangKy);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            this.ribbonPageGroup9.Text = "_____";
+            this.ribbonPageGroupGiaoVien_DangKy.ItemLinks.Add(this.barButtonGiaoVien_DangKy);
+            this.ribbonPageGroupGiaoVien_DangKy.Name = "ribbonPageGroupGiaoVien_DangKy";
+            this.ribbonPageGroupGiaoVien_DangKy.Text = "_____";
             // 
-            // ribbonPageGroup1
+            // ribbonPageGroupVaoThi
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonThi);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "_____";
+            this.ribbonPageGroupVaoThi.ItemLinks.Add(this.barButtonThi);
+            this.ribbonPageGroupVaoThi.Name = "ribbonPageGroupVaoThi";
+            this.ribbonPageGroupVaoThi.Text = "_____";
             // 
             // xtraTabbedMdiManager1
             // 
@@ -385,7 +385,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonDangKy;
         private DevExpress.XtraBars.BarButtonItem barButtonDangXuat;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupDangKy;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory1;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
@@ -408,10 +408,10 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageBoDe;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageThi;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupGiaoVien_DangKy;
         private DevExpress.XtraBars.BarButtonItem barButtonGiaoVien_DangKy;
         private DevExpress.XtraBars.BarButtonItem barButtonThi;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupVaoThi;
     }
 }
 

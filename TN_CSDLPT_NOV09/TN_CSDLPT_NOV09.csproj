@@ -60,11 +60,11 @@
     <Compile Include="views\CauHoi.Designer.cs">
       <DependentUpon>CauHoi.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\FormChonMonThi.cs">
+    <Compile Include="views\FormThi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FormChonMonThi.Designer.cs">
-      <DependentUpon>FormChonMonThi.cs</DependentUpon>
+    <Compile Include="views\FormThi.Designer.cs">
+      <DependentUpon>FormThi.cs</DependentUpon>
     </Compile>
     <Compile Include="views\FormMain.cs">
       <SubType>Form</SubType>
@@ -135,8 +135,8 @@
     <EmbeddedResource Include="views\CauHoi.resx">
       <DependentUpon>CauHoi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FormChonMonThi.resx">
-      <DependentUpon>FormChonMonThi.cs</DependentUpon>
+    <EmbeddedResource Include="views\FormThi.resx">
+      <DependentUpon>FormThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
