@@ -166,7 +166,6 @@ namespace TN_CSDLPT_NOV09.views
                 Program.formChinh.toolStripMaUser.Text = Program.maSinhVien;
                 Program.formChinh.toolStripHoTen.Text = Program.mHoTen;
                 Program.formChinh.toolStripNhomPhanQuyen.Text = Program.mGroup;
-
             }
 
             this.Hide();
