@@ -8,16 +8,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.Timers;
 
 namespace TN_CSDLPT_NOV09.views
 {
     public partial class FormThi : DevExpress.XtraEditors.XtraForm
     {
+        public List<CauHoi> listCauHoi = new List<CauHoi>();
+        System.Timers.Timer timer;
+        int h, m, s;
         public FormThi()
         {
             InitializeComponent();
         }
-
+        
         private void mONHOCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -25,9 +29,13 @@ namespace TN_CSDLPT_NOV09.views
             this.tableAdapterManager.UpdateAll(this.tN_CSDLPT_DataSet);
 
         }
-
+        
         private void FormChonMonThi_Load(object sender, EventArgs e)
         {
+            timer = new System.Timers.Timer();
+            timer.Interval = 1000; //1s
+            timer.Elapsed += onTimeEvent;
+
             this.labelHoTen.Text = Program.mHoTen;
             this.labelMaSinhVien.Text = Program.maSinhVien;
             this.labelMaLop.Text = Program.maLop;
@@ -46,29 +54,38 @@ namespace TN_CSDLPT_NOV09.views
              
         }
 
-        public int totalsecs = 0;
-
-        private void countdownTimer()
+        private void onTimeEvent(object sender, ElapsedEventArgs e)
         {
-            var startTime = DateTime.Now;
-            var timer = new Timer() { Interval = 1000 };
-            timer.Tick += (obj, args) =>
+            Invoke(new Action(() =>
             {
-                totalsecs = totalsecs - 1;
-                if (totalsecs < 1)
+                if (s == 0)
                 {
-                    MessageBox.Show("HET GIO");
-                    timer.Stop();
                 }
                 else
                 {
-                    labelTimer.Text =
-                   (TimeSpan.FromSeconds(totalsecs) - (DateTime.Now - startTime))
-                       .ToString("hh\\:mm\\:ss");
+                    s = s - 1;
                 }
-            };
 
-            timer.Start();
+                if (s == 0 && m>0)
+                {
+                    s = 59;
+                    m = m - 1;
+                }
+                if (m == 0 && h>0)
+                {
+                    m = 59;
+                    h = h - 1;
+                }
+
+                labelTimer.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
+
+                if (h == 0 && m == 0 && s == 0)
+                {
+                    timer.Stop();
+                    MessageBox.Show("Het me no h r");
+                }
+
+            }));
         }
 
         private void buttonTimMonThi_Click(object sender, EventArgs e)
@@ -150,15 +167,24 @@ namespace TN_CSDLPT_NOV09.views
                     ch.CauD = Program.myReader["D"].ToString();
                     ch.CauDapAn = Program.myReader["DAP_AN"].ToString();
 
+                    listCauHoi.Add(ch);
                     flowLayoutPanelCauHoiThi.Controls.Add(ch);
+
                 }
 
+                int thoiGianGiay = Decimal.ToInt16(spinEditThoiGian.Value)*60;
 
+                //thoiGianGiay = 20; // de test
 
-                //totalsecs = int.Parse(spinEditThoiGian.Value.ToString()) * 60;
-                totalsecs = 60;
-                countdownTimer();
+                h = thoiGianGiay / 3600;
+                thoiGianGiay = thoiGianGiay - h * 3600;
+                m = thoiGianGiay / 60;
+                thoiGianGiay = thoiGianGiay - m * 60;
+                s = thoiGianGiay;
 
+                timer.Start();
+
+                buttonBatDauThi.Enabled = false;
                 mAMHComboBox.Enabled = false;
                 spinEditLan.Enabled = false;
                 nGAYTHIDateEdit.Enabled = false;
@@ -177,9 +203,22 @@ namespace TN_CSDLPT_NOV09.views
                 buttonTimMonThi.Enabled = true;
                 return;
             }
+            //totalsecs = int.Parse(spinEditThoiGian.Value.ToString()) * 60;
+
+           
 
             Program.myReader.Close();
             Program.conn.Close();
+
+        }
+
+        private void buttonNopBai_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelControl3_Paint_1(object sender, PaintEventArgs e)
+        {
 
         }
 
