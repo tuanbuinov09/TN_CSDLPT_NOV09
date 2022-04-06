@@ -219,6 +219,8 @@ namespace TN_CSDLPT_NOV09.views
                     bindingSourceLop.RemoveCurrent();
                     this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterLop.Update(this.TN_CSDLPT_DataSet.LOP);
+                    undoCommands.Add("EXEC SP_THEM_LOP '" + maLop + "', N'" + tenLop + "', '" + maKhoa + "'");
+
                 }
                 catch (Exception ex)
                 {
@@ -232,7 +234,6 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonXoa.Enabled = false;
             }
-            undoCommands.Add("EXEC SP_THEM_LOP '" + maLop + "', N'" + tenLop + "', '" + maKhoa + "'");
 
             mode = "";
             if (undoCommands.Count > 0)

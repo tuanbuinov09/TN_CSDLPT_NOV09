@@ -211,6 +211,7 @@
     <Content Include="Resources\icons8_refresh_32px_6.png" />
     <Content Include="Resources\icons8_save_32px_1.png" />
     <Content Include="Resources\icons8_teacher_32px_2.png" />
+    <Content Include="Resources\icons8_todo_list_32px.png" />
     <Content Include="Resources\icons8_unavailable_32px_1.png" />
     <Content Include="Resources\icons8_undo_32px_2.png" />
     <Content Include="Resources\icons8_unit_32px_3.png" />

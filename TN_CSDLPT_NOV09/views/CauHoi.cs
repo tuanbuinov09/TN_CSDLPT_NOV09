@@ -13,7 +13,7 @@ namespace TN_CSDLPT_NOV09.views
 {
     public partial class CauHoi : DevExpress.XtraEditors.XtraUserControl
     {
-        private int idBaiThi;
+        //private int idBaiThi;
         private int idde;
         private int cauSo;
         private string ndCauHoi;
@@ -23,21 +23,21 @@ namespace TN_CSDLPT_NOV09.views
         private string cauD;
         private string daChon = "";
         private string dapAn = "";
-        private int maBD;
+        //private int maBD;
 
-        [Category("Custom Props")]
-        public int MaBangDiem
-        {
-            get { return maBD; }
-            set { maBD = value; }
-        }
+        //[Category("Custom Props")]
+        //public int MaBangDiem
+        //{
+        //    get { return maBD; }
+        //    set { maBD = value; }
+        //}
 
-        [Category("Custom Props")]
-        public int IDBaiThi
-        {
-            get { return idBaiThi; }
-            set { idBaiThi = value; }
-        }
+        //[Category("Custom Props")]
+        //public int IDBaiThi
+        //{
+        //    get { return idBaiThi; }
+        //    set { idBaiThi = value; }
+        //}
 
         [Category("Custom Props")]
         public int IDDe
@@ -139,22 +139,26 @@ namespace TN_CSDLPT_NOV09.views
 
         private void radioButtonA_CheckedChanged(object sender, EventArgs e)
         {
-            daChon = "A";
+            this.daChon = "A";
+            FormThi.thayDoiChonDapAn(this.CauSo, this.daChon, this.IDDe);
         }
 
         private void radioButtonB_CheckedChanged(object sender, EventArgs e)
         {
-            daChon = "B";
+            this.daChon = "B";
+            FormThi.thayDoiChonDapAn(this.CauSo, this.daChon, this.IDDe);
         }
 
         private void radioButtonC_CheckedChanged(object sender, EventArgs e)
         {
-            daChon = "C";
+            this.daChon = "C";
+            FormThi.thayDoiChonDapAn(this.CauSo, this.daChon, this.IDDe);
         }
 
         private void radioButtonD_CheckedChanged(object sender, EventArgs e)
         {
-            daChon = "D";
+            this.daChon = "D";
+            FormThi.thayDoiChonDapAn(this.CauSo, this.daChon, this.IDDe);
         }
     }
 }

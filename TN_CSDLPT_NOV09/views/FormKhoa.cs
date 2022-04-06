@@ -260,6 +260,8 @@ namespace TN_CSDLPT_NOV09.views
                     bindingSourceKhoa.RemoveCurrent();
                     this.tableAdapterKhoa.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterKhoa.Update(this.TN_CSDLPT_DataSet.KHOA);
+                    undoCommands.Add("EXEC SP_THEM_KHOA '" + maKhoa + "', N'" + tenKhoa + "', '" + Program.maCoSo + "'");
+
                 }
                 catch (Exception ex)
                 {
@@ -273,7 +275,6 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonXoa.Enabled = false;
             }
-            undoCommands.Add("EXEC SP_THEM_KHOA '" + maKhoa + "', N'" + tenKhoa + "', '"+Program.maCoSo+"'");
 
             mode = "";
             if (undoCommands.Count > 0)

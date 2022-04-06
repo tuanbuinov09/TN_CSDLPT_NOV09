@@ -201,7 +201,8 @@ namespace TN_CSDLPT_NOV09.views
                     bindingSourceGiaoVien.RemoveCurrent();
                     this.tableAdapterGiaoVien.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterGiaoVien.Update(this.TN_CSDLPT_DataSet.GIAOVIEN);
-
+                    undoCommands.Add("EXEC SP_THEM_GIAOVIEN '" + maGiaoVien + "', N'" + ho + "'"
+                    + ", N'" + ten + "'" + ", N'" + diaChi + "'" + ", '" + maKhoa + "'");
                 }
                 catch (Exception ex)
                 {
@@ -216,8 +217,7 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonXoa.Enabled = false;
             }
 
-            undoCommands.Add("EXEC SP_THEM_GIAOVIEN '" + maGiaoVien + "', N'" + ho + "'" 
-                + ", N'" + ten + "'" + ", N'" + diaChi + "'" + ", '" + maKhoa + "'");
+           
 
             mode = "";
             if (undoCommands.Count > 0)

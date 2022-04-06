@@ -35,6 +35,10 @@
             this.radioButtonC = new System.Windows.Forms.RadioButton();
             this.radioButtonB = new System.Windows.Forms.RadioButton();
             this.radioButtonA = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             this.SuspendLayout();
@@ -42,23 +46,29 @@
             // labelSoThuTu
             // 
             this.labelSoThuTu.AutoSize = true;
+            this.labelSoThuTu.Font = new System.Drawing.Font("Roboto", 10.5F, System.Drawing.FontStyle.Bold);
             this.labelSoThuTu.Location = new System.Drawing.Point(13, 10);
             this.labelSoThuTu.Name = "labelSoThuTu";
-            this.labelSoThuTu.Size = new System.Drawing.Size(39, 13);
+            this.labelSoThuTu.Size = new System.Drawing.Size(53, 17);
             this.labelSoThuTu.TabIndex = 0;
             this.labelSoThuTu.Text = "Câu: 1";
             // 
             // labelNoiDungCauHoi
             // 
             this.labelNoiDungCauHoi.AutoSize = true;
-            this.labelNoiDungCauHoi.Location = new System.Drawing.Point(31, 38);
+            this.labelNoiDungCauHoi.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNoiDungCauHoi.Location = new System.Drawing.Point(31, 41);
             this.labelNoiDungCauHoi.Name = "labelNoiDungCauHoi";
-            this.labelNoiDungCauHoi.Size = new System.Drawing.Size(86, 13);
+            this.labelNoiDungCauHoi.Size = new System.Drawing.Size(101, 15);
             this.labelNoiDungCauHoi.TabIndex = 1;
             this.labelNoiDungCauHoi.Text = "Nội dung câu hỏi";
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.label4);
+            this.panelControl1.Controls.Add(this.label3);
+            this.panelControl1.Controls.Add(this.label2);
+            this.panelControl1.Controls.Add(this.label1);
             this.panelControl1.Controls.Add(this.radioButtonD);
             this.panelControl1.Controls.Add(this.radioButtonC);
             this.panelControl1.Controls.Add(this.radioButtonB);
@@ -71,9 +81,10 @@
             // radioButtonD
             // 
             this.radioButtonD.AutoSize = true;
-            this.radioButtonD.Location = new System.Drawing.Point(18, 143);
+            this.radioButtonD.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonD.Location = new System.Drawing.Point(47, 143);
             this.radioButtonD.Name = "radioButtonD";
-            this.radioButtonD.Size = new System.Drawing.Size(83, 17);
+            this.radioButtonD.Size = new System.Drawing.Size(87, 18);
             this.radioButtonD.TabIndex = 3;
             this.radioButtonD.TabStop = true;
             this.radioButtonD.Text = "D. Đáp án d";
@@ -83,9 +94,10 @@
             // radioButtonC
             // 
             this.radioButtonC.AutoSize = true;
-            this.radioButtonC.Location = new System.Drawing.Point(18, 100);
+            this.radioButtonC.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonC.Location = new System.Drawing.Point(47, 101);
             this.radioButtonC.Name = "radioButtonC";
-            this.radioButtonC.Size = new System.Drawing.Size(82, 17);
+            this.radioButtonC.Size = new System.Drawing.Size(87, 18);
             this.radioButtonC.TabIndex = 2;
             this.radioButtonC.TabStop = true;
             this.radioButtonC.Text = "C. Đáp án c";
@@ -95,9 +107,10 @@
             // radioButtonB
             // 
             this.radioButtonB.AutoSize = true;
-            this.radioButtonB.Location = new System.Drawing.Point(18, 58);
+            this.radioButtonB.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonB.Location = new System.Drawing.Point(47, 60);
             this.radioButtonB.Name = "radioButtonB";
-            this.radioButtonB.Size = new System.Drawing.Size(82, 17);
+            this.radioButtonB.Size = new System.Drawing.Size(87, 18);
             this.radioButtonB.TabIndex = 1;
             this.radioButtonB.TabStop = true;
             this.radioButtonB.Text = "B. Đáp án b";
@@ -107,14 +120,55 @@
             // radioButtonA
             // 
             this.radioButtonA.AutoSize = true;
-            this.radioButtonA.Location = new System.Drawing.Point(18, 19);
+            this.radioButtonA.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonA.Location = new System.Drawing.Point(47, 20);
             this.radioButtonA.Name = "radioButtonA";
-            this.radioButtonA.Size = new System.Drawing.Size(83, 17);
+            this.radioButtonA.Size = new System.Drawing.Size(88, 18);
             this.radioButtonA.TabIndex = 0;
             this.radioButtonA.TabStop = true;
             this.radioButtonA.Text = "A. Đáp án a";
             this.radioButtonA.UseVisualStyleBackColor = true;
             this.radioButtonA.CheckedChanged += new System.EventHandler(this.radioButtonA_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(21, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 14);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "A.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(21, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 14);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "B.";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(21, 103);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 14);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "C.";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Roboto", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(21, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 14);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "D.";
             // 
             // CauHoi
             // 
@@ -143,5 +197,9 @@
         private System.Windows.Forms.RadioButton radioButtonC;
         private System.Windows.Forms.RadioButton radioButtonB;
         private System.Windows.Forms.RadioButton radioButtonA;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

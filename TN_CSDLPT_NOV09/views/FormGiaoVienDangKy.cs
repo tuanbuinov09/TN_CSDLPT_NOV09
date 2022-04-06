@@ -113,6 +113,7 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxTrinhDo.Items.Add("C");
 
             comboBoxTrinhDo.SelectedValue = "A";
+            comboBoxTrinhDo.Text = comboBoxTrinhDo.SelectedText;
 
             barButtonGhi.Enabled = false;
             panelControlNhapLieu.Enabled = false;
@@ -228,8 +229,8 @@ namespace TN_CSDLPT_NOV09.views
             dateEditNgayThi.DateTime = DateTime.Now;
 
             spinEditLan.Value = 1;
-            spinEditSoCauThi.Value = 20;
-            spinEditThoiGian.Value = 30;
+            spinEditSoCauThi.Value = 10;
+            spinEditThoiGian.Value = 15;
 
             gridControlGiaoVienDangKy.Enabled = false;
         }
@@ -318,7 +319,8 @@ namespace TN_CSDLPT_NOV09.views
             int lan = -1;
             int soCauThi = -1;
             int thoiGian = -1;
-
+            DateTime myDateTime = new DateTime();
+            String ngayThiSQLFormat = "";
             // sau này có thể có bảng khác khóa ngoại tới bảng này
             //if (bindingSourceChiTietBaiThi.Count > 0)
             //{
@@ -340,9 +342,12 @@ namespace TN_CSDLPT_NOV09.views
                     soCauThi = int.Parse((String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["SOCAUTHI"].ToString().Trim());
                     thoiGian = int.Parse((String)((DataRowView)bindingSourceGiaoVienDangKy[bindingSourceGiaoVienDangKy.Position])["THOIGIAN"].ToString().Trim());
 
+                    
+                    myDateTime = DateTime.Parse(ngayThi);
+                    ngayThiSQLFormat = myDateTime.ToString("yyyy-MM-dd");
                     // chạy sp ktra, nếu là xóa lần 1 thì phải k có lần 2
 
-                        String strLenh = "EXEC SP_KT_XOA_GIAOVIEN_DANGKY '" + maLop + "', '" + maMonHoc + "', " + lan + ", '" + ngayThi + "'";
+                    String strLenh = "EXEC SP_KT_XOA_GIAOVIEN_DANGKY '" + maLop + "', '" + maMonHoc + "', " + lan + ", '" + ngayThiSQLFormat + "'";
 
                         int kq = Program.ExecSqlNonQuery(strLenh);
      
@@ -352,11 +357,13 @@ namespace TN_CSDLPT_NOV09.views
                             return;
                         }
 
-                   
-
                     bindingSourceGiaoVienDangKy.RemoveCurrent();
                     this.tableAdapterGiaoVienDangKy.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterGiaoVienDangKy.Update(this.TN_CSDLPT_DataSet.GIAOVIEN_DANGKY);
+
+                    undoCommands.Add("EXEC SP_THEM_GIAOVIEN_DANGKY '" + maGiaoVien + "', '"
+                        + maMonHoc + "', '" + maLop + "', '" + trinhDo + "', '" + ngayThiSQLFormat + "', " + lan + ", " + soCauThi + ", " + thoiGian + "");
+
                 }
                 catch (Exception ex)
                 {
@@ -374,8 +381,6 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonXoa.Enabled = false;
             }
 
-            undoCommands.Add("EXEC SP_THEM_GIAOVIEN_DANGKY '" + maGiaoVien + "', '"
-                + maMonHoc + "', '" + maLop + "', '" + trinhDo + "', '" + ngayThi + "', " + lan + ", " + soCauThi + ", "+thoiGian+"");
 
             mode = "";
             if (undoCommands.Count > 0)
@@ -418,11 +423,11 @@ namespace TN_CSDLPT_NOV09.views
             //không cho sửa mã lớp, mã môn và lần
             //String maLop = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MALOP"].ToString().Trim();
             //String maLopChuanBiThem = comboBoxMaLop.SelectedValue.ToString().Trim();
-            String maLop = comboBoxMaLop.Text.Trim();
+            String maLop = comboBoxMaLop.SelectedValue.ToString().Trim();
 
             //String maMonHoc = (String)((DataRowView)bindingSourceGiaoVien_DangKy[bindingSourceGiaoVien_DangKy.Position])["MAMH"].ToString().Trim();
             //String maMonHocChuanBiThem = comboBoxMaMonHoc.SelectedValue.ToString().Trim();
-            String maMonHoc = comboBoxMaMonHoc.Text.Trim();
+            String maMonHoc = comboBoxMaMonHoc.SelectedValue.ToString().Trim();
             String trinhDoChuanBiSua = comboBoxTrinhDo.Text.Trim();
             String ngayThiChuanBiSua = dateEditNgayThi.Text.Trim();
 
@@ -449,15 +454,15 @@ namespace TN_CSDLPT_NOV09.views
                 spinEditThoiGian.Focus();
                 return;
             }
-            if (soCauThiChuanBiSua < 20||soCauThiChuanBiSua>100)
+            if (soCauThiChuanBiSua < 10||soCauThiChuanBiSua>100)
             {
-                MessageBox.Show("Đề thi phải có tối thiểu 20 câu, tối đa 100 câu", "", MessageBoxButtons.OK);
+                MessageBox.Show("Đề thi phải có tối thiểu 10 câu, tối đa 100 câu", "", MessageBoxButtons.OK);
                 spinEditSoCauThi.Focus();
                 return;
             }
-            if (thoiGianChuanBiSua < 30)
+            if (thoiGianChuanBiSua < 15)
             {
-                MessageBox.Show("Thời gian thi phải lớn hơn 30 phút", "", MessageBoxButtons.OK);
+                MessageBox.Show("Thời gian thi phải lớn hơn 15 phút", "", MessageBoxButtons.OK);
                 spinEditThoiGian.Focus();
                 return;
             }
@@ -481,14 +486,20 @@ namespace TN_CSDLPT_NOV09.views
             //    return;
             //}
 
-            if (dateEditNgayThi.DateTime <= DateTime.Now.AddDays(7) || dateEditNgayThi.DateTime.Date <= DateTime.Now.Date)
+            //if (dateEditNgayThi.DateTime <= DateTime.Now.AddDays(7) || dateEditNgayThi.DateTime.Date <= DateTime.Now.Date)
+            //{
+            //    MessageBox.Show("Ngày thi phải cách ngày đăng kí ít nhất 1 tuần", "", MessageBoxButtons.OK);
+            //    dateEditNgayThi.Focus();
+            //    return;
+            //}
+
+            if (dateEditNgayThi.DateTime.Date < DateTime.Now.Date)
             {
-                MessageBox.Show("Ngày thi phải cách ngày đăng kí ít nhất 1 tuần", "", MessageBoxButtons.OK);
+                MessageBox.Show("Ngày thi không hợp lệ", "", MessageBoxButtons.OK);
                 dateEditNgayThi.Focus();
                 return;
             }
 
-            
 
 
             //check trùng mã, tên lớp khi thêm
