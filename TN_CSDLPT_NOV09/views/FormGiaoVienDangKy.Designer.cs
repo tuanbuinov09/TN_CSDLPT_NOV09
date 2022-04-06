@@ -557,7 +557,7 @@
             // 
             this.spinEditThoiGian.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceGiaoVienDangKy, "THOIGIAN", true));
             this.spinEditThoiGian.EditValue = new decimal(new int[] {
-            20,
+            15,
             0,
             0,
             0});
@@ -572,12 +572,12 @@
             0,
             0});
             this.spinEditThoiGian.Properties.MaxValue = new decimal(new int[] {
-            90,
+            60,
             0,
             0,
             0});
             this.spinEditThoiGian.Properties.MinValue = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});

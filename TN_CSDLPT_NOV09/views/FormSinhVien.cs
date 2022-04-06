@@ -173,6 +173,8 @@ namespace TN_CSDLPT_NOV09.views
                     bindingSourceSinhVien.RemoveCurrent();
                     this.tableAdapterSinhVien.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterSinhVien.Update(this.TN_CSDLPT_DataSet.SINHVIEN);
+                    undoCommands.Add("EXEC SP_THEM_SINHVIEN '" + maSinhVien + "', N'"
+                    + ho + "', N'" + ten + "', '" + ngaySinh + "', N'" + diaChi + "', '" + matKhau + "', '" + maLop + "'");
                 }
                 catch (Exception ex)
                 {
@@ -186,9 +188,7 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonXoa.Enabled = false;
             }
-            undoCommands.Add("EXEC SP_THEM_SINHVIEN '" + maSinhVien + "', N'" 
-                + ho + "', N'" + ten + "', '"+ngaySinh+"', N'"+diaChi + "', '"+matKhau+"', '"+maLop+"'");
-
+            
             mode = "";
             if (undoCommands.Count > 0)
             {

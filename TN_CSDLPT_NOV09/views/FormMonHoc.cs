@@ -263,8 +263,9 @@ namespace TN_CSDLPT_NOV09.views
                     bindingSourceMonHoc.RemoveCurrent();
                     this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
-
-                }catch(Exception ex)
+                    undoCommands.Add("EXEC SP_THEM_MONHOC '" + maMonHoc + "','" + tenMonHoc + "'");
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show("Xóa môn học thất bại, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
                     this.tableAdapterMonHoc.Update(this.TN_CSDLPT_DataSet.MONHOC);
@@ -276,7 +277,6 @@ namespace TN_CSDLPT_NOV09.views
             {
                 barButtonXoa.Enabled = false;
             }
-            undoCommands.Add("EXEC SP_THEM_MONHOC '" + maMonHoc + "','" + tenMonHoc + "'");
 
             mode = "";
             if (undoCommands.Count > 0)

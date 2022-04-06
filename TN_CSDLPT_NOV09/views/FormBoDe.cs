@@ -305,6 +305,11 @@ namespace TN_CSDLPT_NOV09.views
                     this.tableAdapterBoDe.Connection.ConnectionString = Program.connstr;
                     this.tableAdapterBoDe.Update(this.TN_CSDLPT_DataSet.BODE);
 
+                    undoCommands.Add("EXEC SP_THEM_CAUHOI " + idCauHoi + ", '" + maMonHoc
+                + "', '" + trinhDo + "', '" + noiDung + "', '"
+                + a + "', '" + b + "', '" + c + "', '" + d + "', '" + dapAn + "', '" + maGiaoVien + "'");
+
+
                 }
                 catch (Exception ex)
                 {
@@ -319,10 +324,7 @@ namespace TN_CSDLPT_NOV09.views
                 barButtonXoa.Enabled = false;
             }
 
-            undoCommands.Add("EXEC SP_THEM_CAUHOI " + idCauHoi + ", '" + maMonHoc 
-                + "', '" + trinhDo + "', '" + noiDung + "', '" 
-                + a + "', '"+b+"', '"+c+"', '"+d+"', '"+dapAn+"', '"+maGiaoVien+"'");
-
+            
             mode = "";
 
             if (undoCommands.Count > 0)
