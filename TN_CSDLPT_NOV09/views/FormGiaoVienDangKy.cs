@@ -500,8 +500,6 @@ namespace TN_CSDLPT_NOV09.views
                 return;
             }
 
-
-
             //check trùng mã, tên lớp khi thêm
             if (mode == "them")
             {
@@ -528,6 +526,16 @@ namespace TN_CSDLPT_NOV09.views
                     dateEditNgayThi.Focus();
                     return;
                 }
+
+                strLenh = "EXEC MY_SP_LAY_CAUHOI '" + maMonHoc + "', '" + trinhDoChuanBiSua + "', " + soCauThiChuanBiSua;
+
+                kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1 || kq==2) //
+                {
+                    //tự raiserror, ta chỉ cần focus về field nhập
+                    spinEditSoCauThi.Focus();
+                    return;
+                }
             }
 
             if (mode == "sua")
@@ -543,6 +551,17 @@ namespace TN_CSDLPT_NOV09.views
                     dateEditNgayThi.Focus();
                     return;
                 }
+
+                strLenh = "EXEC MY_SP_LAY_CAUHOI '" + maMonHoc + "', '" + trinhDoChuanBiSua + "', " + soCauThiChuanBiSua;
+
+                kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1 || kq == 2) //
+                {
+                    //tự raiserror, ta chỉ cần focus về field nhập
+                    spinEditSoCauThi.Focus();
+                    return;
+                }
+
             }
             try
             {
