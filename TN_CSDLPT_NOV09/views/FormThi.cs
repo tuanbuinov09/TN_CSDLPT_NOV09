@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Timers;
 using System.Data.SqlClient;
+using DevExpress.XtraReports.UI;
 
 namespace TN_CSDLPT_NOV09.views
 {
@@ -18,6 +19,7 @@ namespace TN_CSDLPT_NOV09.views
         public static List<CauHoi> listCauHoi = new List<CauHoi>();
         System.Timers.Timer timer;
         int h, m, s;
+        Boolean daNop = false;
 
         //mỗi khi chọn hay chọn lại đáp án thay đổi vào list câu hỏi
         public static void thayDoiChonDapAn(int cauSo, string dapAnDaChon, int idDe)
@@ -38,9 +40,11 @@ namespace TN_CSDLPT_NOV09.views
             this.tableAdapterManager.UpdateAll(this.TN_CSDLPT_DataSet);
 
         }
-        
+
         private void FormChonMonThi_Load(object sender, EventArgs e)
         {
+            daNop = false;
+
             timer = new System.Timers.Timer();
             timer.Interval = 1000; //1s
             timer.Elapsed += onTimeEvent;
@@ -92,8 +96,8 @@ namespace TN_CSDLPT_NOV09.views
 
                     SqlCommand cmd =
                     new SqlCommand(
-                        "INSERT INTO CT_BAITHI (CAUSO, MASV, MAMH, LAN, CAUHOI, DACHON, DAP_AN) " +
-                        " VALUES (@CAUSO, @MASV, @MAMH, @LAN, @CAUHOI, @DACHON, @DAPAN)");
+                        "INSERT INTO CT_BAITHI (CAUSO, MASV, MAMH, LAN, CAUHOI, DACHON) " +
+                        " VALUES (@CAUSO, @MASV, @MAMH, @LAN, @CAUHOI, @DACHON)");
 
                     cmd.CommandType = CommandType.Text;
                     cmd.Connection = conn;
@@ -104,7 +108,6 @@ namespace TN_CSDLPT_NOV09.views
                     cmd.Parameters.AddWithValue("@LAN", DbType.Int16);
                     cmd.Parameters.AddWithValue("@CAUHOI", DbType.Int16);
                     cmd.Parameters.AddWithValue("@DACHON", DbType.String);
-                    cmd.Parameters.AddWithValue("@DAPAN", DbType.String);
 
                     foreach (var item in listCauHoi)
                     {
@@ -114,8 +117,6 @@ namespace TN_CSDLPT_NOV09.views
                         cmd.Parameters[3].Value = Decimal.ToInt16(spinEditLan.Value);
                         cmd.Parameters[4].Value = item.IDDe;
                         cmd.Parameters[5].Value = item.CauDaChon;
-                        cmd.Parameters[6].Value = item.CauDapAn;
-
 
                         cmd.ExecuteNonQuery();
                     }
@@ -317,7 +318,25 @@ namespace TN_CSDLPT_NOV09.views
 
             ghiVaoBangDiem();
             
-            MessageBox.Show("Chúc mừng kết quả thi của bạn là: " + tinhDiem());
+            int xemChiTiet = (int)MessageBox.Show("Chúc mừng kết quả thi của bạn là: " + tinhDiem() + "\nNhấn OK để xem chi tiết", "Thông báo kết quả", MessageBoxButtons.OKCancel);
+
+            if (xemChiTiet == (int)DialogResult.OK)
+            {
+                XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi(Program.maSinhVien
+                                                                , comboBoxMaMonHoc.SelectedValue.ToString().Trim()
+                                                                , Decimal.ToInt16(spinEditLan.Value));
+                xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN " + this.comboBoxMaMonHoc.Text.Trim() + " CỦA SINH VIÊN " + Program.mHoTen;
+                xtraReportKQThi.xrLabelHoTen.Text = Program.mHoTen;
+                xtraReportKQThi.xrLabelLop.Text = Program.tenLop;
+                xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                xtraReportKQThi.xrLabelMonThi.Text = this.comboBoxMaMonHoc.Text.Trim();
+                xtraReportKQThi.xrLabelLan.Text = this.spinEditLan.Value.ToString();
+
+                ReportPrintTool printTool = new ReportPrintTool(xtraReportKQThi);
+                printTool.ShowPreviewDialog();
+            }
+
+            daNop = true;
 
             barButtonNopBai.Enabled = false;
             comboBoxMaMonHoc.Enabled = true;
@@ -331,6 +350,12 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //neues da nop bai tinh diem r thi thoat luon k can hoi nhieu
+            if(daNop == true)
+            {
+                this.Dispose();
+                return;
+            }
             int xacNhanThoat = (int)MessageBox.Show("Bạn có chắc muốn thoát và tính điểm những câu đã chọn?", "Xác nhận", MessageBoxButtons.OKCancel);
             if (xacNhanThoat == (int)DialogResult.OK)
             {
