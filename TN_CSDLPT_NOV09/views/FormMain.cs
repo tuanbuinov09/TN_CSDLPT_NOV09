@@ -27,7 +27,7 @@ namespace TN_CSDLPT_NOV09
             //    f.MdiParent = this;
             //    f.Show();
             //}
-            
+
 
             //nếu là quyền cơ sở tất cả đều enable
             this.ribbonPageQuanLy.Visible = true;
@@ -46,7 +46,7 @@ namespace TN_CSDLPT_NOV09
 
                 return;
             }
-            if(Program.mGroup == "GIANGVIEN")
+            if (Program.mGroup == "GIANGVIEN")
             {
                 this.ribbonPageGroupDangKy.Visible = false;
 
@@ -111,6 +111,13 @@ namespace TN_CSDLPT_NOV09
 
         private void barButtonDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            // lặp qua các form đang mở trên mdi và đóng tất
+            foreach (Form frm in this.MdiChildren)
+            {
+                frm.Dispose();
+                frm.Close();
+            }
+
             Program.username = "";
             Program.maSinhVien = "";
             Program.mHoTen = "";
