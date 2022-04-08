@@ -78,6 +78,12 @@
     <Compile Include="views\CauHoi.Designer.cs">
       <DependentUpon>CauHoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\FormRpBangDiemMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\FormRpBangDiemMonHoc.Designer.cs">
+      <DependentUpon>FormRpBangDiemMonHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\FormThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,12 @@
     <Compile Include="views\FormSinhVien.Designer.cs">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="XtraReportBangDiemMonHoc.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraReportBangDiemMonHoc.Designer.cs">
+      <DependentUpon>XtraReportBangDiemMonHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="XtraReportKetQuaThi.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -158,6 +170,9 @@
     </Compile>
     <EmbeddedResource Include="views\CauHoi.resx">
       <DependentUpon>CauHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\FormRpBangDiemMonHoc.resx">
+      <DependentUpon>FormRpBangDiemMonHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormThi.resx">
       <DependentUpon>FormThi.cs</DependentUpon>
@@ -195,10 +210,15 @@
     <EmbeddedResource Include="views\FormSinhVien.resx">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="XtraReportBangDiemMonHoc.resx">
+      <DependentUpon>XtraReportBangDiemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="XtraReportKetQuaThi.resx">
       <DependentUpon>XtraReportKetQuaThi.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -223,6 +243,7 @@
   <ItemGroup>
     <Content Include="Resources\icons8_add_32px_6.png" />
     <Content Include="Resources\icons8_add_user_male_32px_1.png" />
+    <Content Include="Resources\icons8_bulleted_list_32px_4.png" />
     <Content Include="Resources\icons8_classroom_32px.png" />
     <Content Include="Resources\icons8_confusion_32px_2.png" />
     <Content Include="Resources\icons8_edit_32px_1.png" />
@@ -232,7 +253,9 @@
     <Content Include="Resources\icons8_logout_rounded_left_32px_3.png" />
     <Content Include="Resources\icons8_math_book_32px_1.png" />
     <Content Include="Resources\icons8_maybe_64px_3.png" />
+    <Content Include="Resources\icons8_moleskine_32px.png" />
     <Content Include="Resources\icons8_multiply_32px_1.png" />
+    <Content Include="Resources\icons8_pass_fail_32px_8.png" />
     <Content Include="Resources\icons8_read_online_32px.png" />
     <Content Include="Resources\icons8_refresh_32px_4.png" />
     <Content Include="Resources\icons8_refresh_32px_6.png" />

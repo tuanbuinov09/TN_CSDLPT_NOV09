@@ -154,7 +154,7 @@
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(489, 110);
+            mALOPLabel.Location = new System.Drawing.Point(489, 109);
             mALOPLabel.Name = "mALOPLabel";
             mALOPLabel.Size = new System.Drawing.Size(45, 13);
             mALOPLabel.TabIndex = 12;
@@ -350,6 +350,7 @@
             this.tableAdapterManager.BANGDIEMTableAdapter = this.tableAdapterBangDiem;
             this.tableAdapterManager.BODETableAdapter = null;
             this.tableAdapterManager.COSOTableAdapter = null;
+            this.tableAdapterManager.CT_BAITHITableAdapter = null;
             this.tableAdapterManager.GIAOVIEN_DANGKYTableAdapter = null;
             this.tableAdapterManager.GIAOVIENTableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
@@ -410,7 +411,7 @@
             this.comboBoxMaLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceSinhVien, "MALOP", true));
             this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaLop.FormattingEnabled = true;
-            this.comboBoxMaLop.Location = new System.Drawing.Point(562, 107);
+            this.comboBoxMaLop.Location = new System.Drawing.Point(562, 106);
             this.comboBoxMaLop.Name = "comboBoxMaLop";
             this.comboBoxMaLop.Size = new System.Drawing.Size(142, 21);
             this.comboBoxMaLop.TabIndex = 13;
