@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -216,6 +217,36 @@ namespace TN_CSDLPT_NOV09
             else
             {
                 FormThi f = new FormThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonXemKetQuaThi_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi("001"
+            //                                                   , "MMTCB"
+            //                                                   , 1);
+            //ReportPrintTool printTool = new ReportPrintTool(xtraReportKQThi);
+            //printTool.ShowPreviewDialog();
+
+            Form frm = this.CheckExists(typeof(FormRpKetQuaThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormRpKetQuaThi f = new FormRpKetQuaThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonXemBangDiemMonHoc_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormRpBangDiemMonHoc));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormRpBangDiemMonHoc f = new FormRpBangDiemMonHoc();
                 f.MdiParent = this;
                 f.Show();
             }

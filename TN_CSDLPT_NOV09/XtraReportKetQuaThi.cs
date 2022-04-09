@@ -22,16 +22,22 @@ namespace TN_CSDLPT_NOV09
             this.sqlDataSource1.Fill();
 
         }
+        //xử lý lựa chọn abcd thành các dòng trong 1 ô trong report
         private void tableCellLuaChon_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            String luaChon = tableCellLuaChon.Text;
+            // lấy nguồn sự kiện thành tablecell
+            XRTableCell cell = sender as XRTableCell;
+            // lấy giá trị trong cell
+            String luaChon = cell.Report.GetCurrentColumnValue("LUACHON").ToString();
+            // phân tách theo dấu ; (khi lấy các lựa chọn trong sql đã concat với ;)
             String[] luaChonArray = luaChon.Split(';');
             luaChon = "";
             foreach (String luaChon1 in luaChonArray)
             {
                 luaChon = luaChon + luaChon1 + Environment.NewLine;
             }
-            tableCellLuaChon.Text = luaChon;
+            //cell.BackColor = Color.Khaki;
+            cell.Text = luaChon;
         }
     }
 }
