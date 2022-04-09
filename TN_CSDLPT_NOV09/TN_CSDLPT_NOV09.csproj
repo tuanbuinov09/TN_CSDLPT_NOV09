@@ -84,6 +84,12 @@
     <Compile Include="views\FormRpBangDiemMonHoc.Designer.cs">
       <DependentUpon>FormRpBangDiemMonHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\FormRpKetQuaThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\FormRpKetQuaThi.Designer.cs">
+      <DependentUpon>FormRpKetQuaThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\FormThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormRpBangDiemMonHoc.resx">
       <DependentUpon>FormRpBangDiemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\FormRpKetQuaThi.resx">
+      <DependentUpon>FormRpKetQuaThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormThi.resx">
       <DependentUpon>FormThi.cs</DependentUpon>
