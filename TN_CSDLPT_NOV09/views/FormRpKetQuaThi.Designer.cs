@@ -64,7 +64,7 @@
             // lANLabel
             // 
             lANLabel.AutoSize = true;
-            lANLabel.Location = new System.Drawing.Point(45, 118);
+            lANLabel.Location = new System.Drawing.Point(41, 105);
             lANLabel.Name = "lANLabel";
             lANLabel.Size = new System.Drawing.Size(43, 13);
             lANLabel.TabIndex = 28;
@@ -73,7 +73,7 @@
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(45, 76);
+            mAMHLabel.Location = new System.Drawing.Point(41, 63);
             mAMHLabel.Name = "mAMHLabel";
             mAMHLabel.Size = new System.Drawing.Size(51, 13);
             mAMHLabel.TabIndex = 25;
@@ -82,7 +82,7 @@
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(45, 35);
+            mALOPLabel.Location = new System.Drawing.Point(41, 22);
             mALOPLabel.Name = "mALOPLabel";
             mALOPLabel.Size = new System.Drawing.Size(70, 13);
             mALOPLabel.TabIndex = 24;
@@ -117,7 +117,7 @@
             // comboBoxCoSo
             // 
             this.comboBoxCoSo.FormattingEnabled = true;
-            this.comboBoxCoSo.Location = new System.Drawing.Point(92, 14);
+            this.comboBoxCoSo.Location = new System.Drawing.Point(115, 16);
             this.comboBoxCoSo.Name = "comboBoxCoSo";
             this.comboBoxCoSo.Size = new System.Drawing.Size(190, 21);
             this.comboBoxCoSo.TabIndex = 1;
@@ -126,7 +126,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 17);
+            this.label1.Location = new System.Drawing.Point(37, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
@@ -149,7 +149,7 @@
             // 
             // buttonPreview
             // 
-            this.buttonPreview.Location = new System.Drawing.Point(119, 167);
+            this.buttonPreview.Location = new System.Drawing.Point(115, 154);
             this.buttonPreview.Name = "buttonPreview";
             this.buttonPreview.Size = new System.Drawing.Size(190, 23);
             this.buttonPreview.TabIndex = 30;
@@ -164,7 +164,7 @@
             0,
             0,
             0});
-            this.spinEditLan.Location = new System.Drawing.Point(119, 115);
+            this.spinEditLan.Location = new System.Drawing.Point(115, 102);
             this.spinEditLan.Name = "spinEditLan";
             this.spinEditLan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -187,7 +187,7 @@
             this.comboBoxMaMonHoc.DisplayMember = "TENMH";
             this.comboBoxMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaMonHoc.FormattingEnabled = true;
-            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(119, 73);
+            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(115, 60);
             this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
             this.comboBoxMaMonHoc.Size = new System.Drawing.Size(190, 21);
             this.comboBoxMaMonHoc.TabIndex = 27;
@@ -209,7 +209,7 @@
             this.comboBoxMaSinhVien.DisplayMember = "MASV";
             this.comboBoxMaSinhVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaSinhVien.FormattingEnabled = true;
-            this.comboBoxMaSinhVien.Location = new System.Drawing.Point(119, 32);
+            this.comboBoxMaSinhVien.Location = new System.Drawing.Point(115, 19);
             this.comboBoxMaSinhVien.Name = "comboBoxMaSinhVien";
             this.comboBoxMaSinhVien.Size = new System.Drawing.Size(190, 21);
             this.comboBoxMaSinhVien.TabIndex = 26;
