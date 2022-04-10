@@ -42,11 +42,12 @@
             this.comboBoxMaLop = new System.Windows.Forms.ComboBox();
             this.comboBoxMaMonHoc = new System.Windows.Forms.ComboBox();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.buttonThoat = new System.Windows.Forms.Button();
             this.comboBoxCoSo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.spinEditLan = new DevExpress.XtraEditors.SpinEdit();
             this.buttonPreview = new System.Windows.Forms.Button();
-            this.buttonThoat = new System.Windows.Forms.Button();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             mALOPLabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             lANLabel = new System.Windows.Forms.Label();
@@ -56,12 +57,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditLan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(45, 72);
+            mALOPLabel.Location = new System.Drawing.Point(43, 34);
             mALOPLabel.Name = "mALOPLabel";
             mALOPLabel.Size = new System.Drawing.Size(28, 13);
             mALOPLabel.TabIndex = 2;
@@ -70,7 +73,7 @@
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(45, 113);
+            mAMHLabel.Location = new System.Drawing.Point(43, 75);
             mAMHLabel.Name = "mAMHLabel";
             mAMHLabel.Size = new System.Drawing.Size(51, 13);
             mAMHLabel.TabIndex = 3;
@@ -79,7 +82,7 @@
             // lANLabel
             // 
             lANLabel.AutoSize = true;
-            lANLabel.Location = new System.Drawing.Point(45, 155);
+            lANLabel.Location = new System.Drawing.Point(43, 117);
             lANLabel.Name = "lANLabel";
             lANLabel.Size = new System.Drawing.Size(43, 13);
             lANLabel.TabIndex = 21;
@@ -130,7 +133,7 @@
             this.comboBoxMaLop.DisplayMember = "TENLOP";
             this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaLop.FormattingEnabled = true;
-            this.comboBoxMaLop.Location = new System.Drawing.Point(114, 69);
+            this.comboBoxMaLop.Location = new System.Drawing.Point(112, 31);
             this.comboBoxMaLop.Name = "comboBoxMaLop";
             this.comboBoxMaLop.Size = new System.Drawing.Size(190, 21);
             this.comboBoxMaLop.TabIndex = 3;
@@ -143,7 +146,7 @@
             this.comboBoxMaMonHoc.DisplayMember = "TENMH";
             this.comboBoxMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaMonHoc.FormattingEnabled = true;
-            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(114, 110);
+            this.comboBoxMaMonHoc.Location = new System.Drawing.Point(112, 72);
             this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
             this.comboBoxMaMonHoc.Size = new System.Drawing.Size(190, 21);
             this.comboBoxMaMonHoc.TabIndex = 4;
@@ -160,10 +163,25 @@
             this.panelControl1.Size = new System.Drawing.Size(838, 50);
             this.panelControl1.TabIndex = 18;
             // 
+            // buttonThoat
+            // 
+            this.buttonThoat.FlatAppearance.BorderSize = 0;
+            this.buttonThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonThoat.Image = ((System.Drawing.Image)(resources.GetObject("buttonThoat.Image")));
+            this.buttonThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonThoat.Location = new System.Drawing.Point(750, 5);
+            this.buttonThoat.Name = "buttonThoat";
+            this.buttonThoat.Size = new System.Drawing.Size(76, 40);
+            this.buttonThoat.TabIndex = 3;
+            this.buttonThoat.Text = "Thoát";
+            this.buttonThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonThoat.UseVisualStyleBackColor = true;
+            this.buttonThoat.Click += new System.EventHandler(this.buttonThoat_Click);
+            // 
             // comboBoxCoSo
             // 
             this.comboBoxCoSo.FormattingEnabled = true;
-            this.comboBoxCoSo.Location = new System.Drawing.Point(95, 16);
+            this.comboBoxCoSo.Location = new System.Drawing.Point(112, 16);
             this.comboBoxCoSo.Name = "comboBoxCoSo";
             this.comboBoxCoSo.Size = new System.Drawing.Size(190, 21);
             this.comboBoxCoSo.TabIndex = 1;
@@ -172,7 +190,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 19);
+            this.label1.Location = new System.Drawing.Point(34, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 0;
@@ -185,7 +203,7 @@
             0,
             0,
             0});
-            this.spinEditLan.Location = new System.Drawing.Point(114, 152);
+            this.spinEditLan.Location = new System.Drawing.Point(112, 114);
             this.spinEditLan.Name = "spinEditLan";
             this.spinEditLan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -204,7 +222,7 @@
             // 
             // buttonPreview
             // 
-            this.buttonPreview.Location = new System.Drawing.Point(114, 204);
+            this.buttonPreview.Location = new System.Drawing.Point(112, 166);
             this.buttonPreview.Name = "buttonPreview";
             this.buttonPreview.Size = new System.Drawing.Size(190, 23);
             this.buttonPreview.TabIndex = 23;
@@ -212,34 +230,28 @@
             this.buttonPreview.UseVisualStyleBackColor = true;
             this.buttonPreview.Click += new System.EventHandler(this.buttonPreview_Click);
             // 
-            // buttonThoat
+            // panelControl2
             // 
-            this.buttonThoat.FlatAppearance.BorderSize = 0;
-            this.buttonThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonThoat.Image = ((System.Drawing.Image)(resources.GetObject("buttonThoat.Image")));
-            this.buttonThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonThoat.Location = new System.Drawing.Point(750, 5);
-            this.buttonThoat.Name = "buttonThoat";
-            this.buttonThoat.Size = new System.Drawing.Size(76, 40);
-            this.buttonThoat.TabIndex = 3;
-            this.buttonThoat.Text = "Thoát";
-            this.buttonThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonThoat.UseVisualStyleBackColor = true;
-            this.buttonThoat.Click += new System.EventHandler(this.buttonThoat_Click);
+            this.panelControl2.Controls.Add(this.buttonPreview);
+            this.panelControl2.Controls.Add(this.comboBoxMaLop);
+            this.panelControl2.Controls.Add(this.spinEditLan);
+            this.panelControl2.Controls.Add(mALOPLabel);
+            this.panelControl2.Controls.Add(lANLabel);
+            this.panelControl2.Controls.Add(this.comboBoxMaMonHoc);
+            this.panelControl2.Controls.Add(mAMHLabel);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl2.Location = new System.Drawing.Point(0, 50);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(838, 342);
+            this.panelControl2.TabIndex = 24;
             // 
             // FormRpBangDiemMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 392);
-            this.Controls.Add(this.buttonPreview);
-            this.Controls.Add(this.spinEditLan);
-            this.Controls.Add(lANLabel);
+            this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
-            this.Controls.Add(mAMHLabel);
-            this.Controls.Add(this.comboBoxMaMonHoc);
-            this.Controls.Add(mALOPLabel);
-            this.Controls.Add(this.comboBoxMaLop);
             this.Name = "FormRpBangDiemMonHoc";
             this.Text = "FormRpBangDiemMonHoc";
             this.Load += new System.EventHandler(this.FormRpBangDiemMonHoc_Load);
@@ -250,8 +262,10 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditLan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -271,5 +285,6 @@
         private DevExpress.XtraEditors.SpinEdit spinEditLan;
         private System.Windows.Forms.Button buttonPreview;
         private System.Windows.Forms.Button buttonThoat;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
     }
 }
