@@ -96,18 +96,19 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(882, 50);
+            this.panelControl1.Size = new System.Drawing.Size(682, 50);
             this.panelControl1.TabIndex = 19;
             // 
             // buttonThoat
             // 
+            this.buttonThoat.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonThoat.FlatAppearance.BorderSize = 0;
             this.buttonThoat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonThoat.Image = ((System.Drawing.Image)(resources.GetObject("buttonThoat.Image")));
             this.buttonThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonThoat.Location = new System.Drawing.Point(772, 5);
+            this.buttonThoat.Location = new System.Drawing.Point(607, 2);
             this.buttonThoat.Name = "buttonThoat";
-            this.buttonThoat.Size = new System.Drawing.Size(73, 40);
+            this.buttonThoat.Size = new System.Drawing.Size(73, 46);
             this.buttonThoat.TabIndex = 2;
             this.buttonThoat.Text = "Thoát";
             this.buttonThoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -144,7 +145,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 50);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(882, 312);
+            this.panelControl2.Size = new System.Drawing.Size(682, 312);
             this.panelControl2.TabIndex = 20;
             // 
             // buttonPreview
@@ -247,7 +248,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 362);
+            this.ClientSize = new System.Drawing.Size(682, 362);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Name = "FormRpKetQuaThi";

@@ -251,6 +251,7 @@
             this.barButtonXemDSGiaoVienDangKy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonXemDSGiaoVienDangKy.ImageOptions.Image")));
             this.barButtonXemDSGiaoVienDangKy.Name = "barButtonXemDSGiaoVienDangKy";
             this.barButtonXemDSGiaoVienDangKy.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonXemDSGiaoVienDangKy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonXemDSGiaoVienDangKy_ItemClick);
             // 
             // ribbonPageCategory1
             // 

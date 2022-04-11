@@ -68,12 +68,12 @@
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.labelTimer = new DevExpress.XtraBars.BarHeaderItem();
             this.barButtonNopBai = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonThoat = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.flowLayoutPanelCauHoiThi = new System.Windows.Forms.FlowLayoutPanel();
@@ -184,6 +184,7 @@
             this.tableAdapterManager.BANGDIEMTableAdapter = null;
             this.tableAdapterManager.BODETableAdapter = null;
             this.tableAdapterManager.COSOTableAdapter = null;
+            this.tableAdapterManager.CT_BAITHITableAdapter = null;
             this.tableAdapterManager.GIAOVIEN_DANGKYTableAdapter = null;
             this.tableAdapterManager.GIAOVIENTableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
@@ -346,7 +347,7 @@
             this.spinEditLan.Size = new System.Drawing.Size(160, 20);
             this.spinEditLan.TabIndex = 22;
             // 
-            // mAMHComboBox
+            // comboBoxMaMonHoc
             // 
             this.comboBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceMonHoc, "MAMH", true));
             this.comboBoxMaMonHoc.DataSource = this.bindingSourceMonHoc;
@@ -354,14 +355,14 @@
             this.comboBoxMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaMonHoc.FormattingEnabled = true;
             this.comboBoxMaMonHoc.Location = new System.Drawing.Point(121, 20);
-            this.comboBoxMaMonHoc.Name = "mAMHComboBox";
+            this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
             this.comboBoxMaMonHoc.Size = new System.Drawing.Size(160, 21);
             this.comboBoxMaMonHoc.TabIndex = 1;
             this.comboBoxMaMonHoc.ValueMember = "MAMH";
             // 
             // dateEditNgayThi
             // 
-            this.dateEditNgayThi.EditValue = null;
+            this.dateEditNgayThi.EditValue = new System.DateTime(2022, 4, 11, 17, 6, 48, 0);
             this.dateEditNgayThi.Location = new System.Drawing.Point(121, 57);
             this.dateEditNgayThi.Name = "dateEditNgayThi";
             this.dateEditNgayThi.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -563,12 +564,6 @@
             this.barButtonNopBai.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonNopBai.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonNopBai_ItemClick);
             // 
-            // barStaticItem2
-            // 
-            this.barStaticItem2.Caption = "      ";
-            this.barStaticItem2.Id = 4;
-            this.barStaticItem2.Name = "barStaticItem2";
-            // 
             // barButtonThoat
             // 
             this.barButtonThoat.Caption = "Thoát";
@@ -609,6 +604,12 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1362, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 483);
+            // 
+            // barStaticItem2
+            // 
+            this.barStaticItem2.Caption = "      ";
+            this.barStaticItem2.Id = 4;
+            this.barStaticItem2.Name = "barStaticItem2";
             // 
             // barStaticItem3
             // 
