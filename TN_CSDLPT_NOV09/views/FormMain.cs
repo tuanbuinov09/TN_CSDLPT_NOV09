@@ -251,5 +251,17 @@ namespace TN_CSDLPT_NOV09
                 f.Show();
             }
         }
+
+        private void barButtonXemDSGiaoVienDangKy_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormRpDSDangKyThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormRpDSDangKyThi f = new FormRpDSDangKyThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

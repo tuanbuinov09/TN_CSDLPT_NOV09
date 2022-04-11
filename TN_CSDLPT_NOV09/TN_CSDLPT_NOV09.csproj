@@ -84,6 +84,12 @@
     <Compile Include="views\FormRpBangDiemMonHoc.Designer.cs">
       <DependentUpon>FormRpBangDiemMonHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\FormRpDSDangKyThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\FormRpDSDangKyThi.Designer.cs">
+      <DependentUpon>FormRpDSDangKyThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\FormRpKetQuaThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,17 +168,17 @@
     <Compile Include="views\FormSinhVien.Designer.cs">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\FromRpDSDangKiThi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\FromRpDSDangKiThi.Designer.cs">
-      <DependentUpon>FromRpDSDangKiThi.cs</DependentUpon>
-    </Compile>
     <Compile Include="XtraReportBangDiemMonHoc.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="XtraReportBangDiemMonHoc.Designer.cs">
       <DependentUpon>XtraReportBangDiemMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XtraReportDSDangKyThiTracNghiem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraReportDSDangKyThiTracNghiem.Designer.cs">
+      <DependentUpon>XtraReportDSDangKyThiTracNghiem.cs</DependentUpon>
     </Compile>
     <Compile Include="XtraReportKetQuaThi.cs">
       <SubType>Component</SubType>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormRpBangDiemMonHoc.resx">
       <DependentUpon>FormRpBangDiemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\FormRpDSDangKyThi.resx">
+      <DependentUpon>FormRpDSDangKyThi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormRpKetQuaThi.resx">
       <DependentUpon>FormRpKetQuaThi.cs</DependentUpon>
@@ -225,11 +234,11 @@
     <EmbeddedResource Include="views\FormSinhVien.resx">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FromRpDSDangKiThi.resx">
-      <DependentUpon>FromRpDSDangKiThi.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="XtraReportBangDiemMonHoc.resx">
       <DependentUpon>XtraReportBangDiemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraReportDSDangKyThiTracNghiem.resx">
+      <DependentUpon>XtraReportDSDangKyThiTracNghiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XtraReportKetQuaThi.resx">
       <DependentUpon>XtraReportKetQuaThi.cs</DependentUpon>

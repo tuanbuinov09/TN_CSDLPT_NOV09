@@ -61,7 +61,7 @@ namespace TN_CSDLPT_NOV09.views
 
             spinEditSoCauThi.Enabled = spinEditThoiGian.Enabled = comboBoxTrinhDo.Enabled;
             barButtonNopBai.Enabled = buttonBatDauThi.Enabled = false;
-             
+            dateEditNgayThi.DateTime = DateTime.Now;
         }
 
         private Boolean kiemTraChuaChonDapAn()
@@ -193,7 +193,7 @@ namespace TN_CSDLPT_NOV09.views
                 MessageBox.Show("Hãy chọn ngày thi cần tìm","Lỗi", MessageBoxButtons.OK);
                 return;
             }
-            String strLenh = "EXEC SP_TIM_MONTHI '"+ comboBoxMaMonHoc.SelectedValue.ToString()+"', '"+ 
+            String strLenh = "EXEC SP_TIM_MONTHI '"+Program.maSinhVien+"', '"+ comboBoxMaMonHoc.SelectedValue.ToString()+"', '"+ 
              dateEditNgayThi.DateTime.ToString("yyyy-MM-dd") + "', "+spinEditLan.Value;
             try
             {
