@@ -97,7 +97,7 @@ namespace TN_CSDLPT_NOV09.views
         {
             String hoTenSinhVien = "";
             String tenLop = "";
-
+            String daThi = "";
             String strLenh = "EXEC SP_REPORT_KETQUATHI_THONGTIN_SINHVIEN '" + comboBoxMaSinhVien.SelectedValue.ToString() + "', '" +
             comboBoxMaMonHoc.SelectedValue.ToString() + "', " + spinEditLan.Value;
             try
@@ -117,10 +117,17 @@ namespace TN_CSDLPT_NOV09.views
             {
                 hoTenSinhVien = Program.myReader.GetString(1).Trim();
                 tenLop = Program.myReader.GetString(0).Trim();
+                daThi = Program.myReader.GetString(2).Trim();
+
+                if (daThi == "")
+                {
+                    MessageBox.Show("Sinh viên chưa thi lần "+ spinEditLan.Value +" của môn này");
+                    return;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không tìm thấy");
+                MessageBox.Show("Không tìm thấy kết quả thi");
                 return;
             }
             finally
@@ -132,11 +139,11 @@ namespace TN_CSDLPT_NOV09.views
             XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi(comboBoxMaSinhVien.SelectedValue.ToString().Trim()
                                                               , comboBoxMaMonHoc.SelectedValue.ToString().Trim()
                                                               , Decimal.ToInt16(spinEditLan.Value));
-            xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN " + this.comboBoxMaMonHoc.Text.Trim() + " CỦA SINH VIÊN " + hoTenSinhVien;
+            xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN: " + this.comboBoxMaMonHoc.Text.Trim() + " \nSINH VIÊN: " + hoTenSinhVien;
             xtraReportKQThi.xrLabelHoTen.Text = hoTenSinhVien;
             xtraReportKQThi.xrLabelLop.Text = tenLop;
 
-            xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy") + "cần hỏi thầy ngày là lấy ngày của gv đăng kí?";
+            xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy") /*+ "cần hỏi thầy ngày là lấy ngày của gv đăng kí?"*/;
             xtraReportKQThi.xrLabelMonThi.Text = this.comboBoxMaMonHoc.Text.Trim();
             xtraReportKQThi.xrLabelLan.Text = this.spinEditLan.Value.ToString();
 

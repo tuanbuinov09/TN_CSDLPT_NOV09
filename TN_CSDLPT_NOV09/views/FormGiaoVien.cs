@@ -268,6 +268,11 @@ namespace TN_CSDLPT_NOV09.views
                 MessageBox.Show("Mã giáo viên không được bỏ trống", "", MessageBoxButtons.OK);
                 textBoxMaGiaoVien.Focus();
                 return;
+            }else if (maGiaoVien.Length>5)
+            {
+                MessageBox.Show("Mã giáo viên không vượt quá 5 kí tự", "", MessageBoxButtons.OK);
+                textBoxMaGiaoVien.Focus();
+                return;
             }
             // lưu ý tenChuanBiSua cũng là chuẩn bị thêm
             if (hoChuanBiSua == "")

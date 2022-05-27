@@ -104,7 +104,6 @@ namespace TN_CSDLPT_NOV09
             try
             {
                 Sqlcmd.ExecuteNonQuery();
-
                 return 0;
 
             }
