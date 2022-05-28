@@ -144,6 +144,49 @@ namespace TN_CSDLPT_NOV09.views
                 conn.Close();
             }
         }
+        public void themChiTietBaiThiGiaoVienThiThu()
+        {
+            string connectionString = Program.connstr;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                // tạo transaction
+                using (SqlTransaction trans = conn.BeginTransaction())
+                {
+
+                    SqlCommand cmd =
+                    new SqlCommand(
+                        "INSERT INTO CT_BAITHI (CAUSO, MASV, MAMH, LAN, CAUHOI, DACHON) " +
+                        " VALUES (@CAUSO, @MASV, @MAMH, @LAN, @CAUHOI, @DACHON)");
+
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Connection = conn;
+                    cmd.Transaction = trans;
+                    cmd.Parameters.AddWithValue("@CAUSO", DbType.Int16);
+                    cmd.Parameters.AddWithValue("@MASV", DbType.String);
+                    cmd.Parameters.AddWithValue("@MAMH", DbType.String);
+                    cmd.Parameters.AddWithValue("@LAN", DbType.Int16);
+                    cmd.Parameters.AddWithValue("@CAUHOI", DbType.Int16);
+                    cmd.Parameters.AddWithValue("@DACHON", DbType.String);
+
+                    foreach (var item in listCauHoi)
+                    {
+                        cmd.Parameters[0].Value = item.CauSo;
+                        cmd.Parameters[1].Value = Program.maSinhVien.Trim();
+                        cmd.Parameters[2].Value = comboBoxMaMonHoc.SelectedValue.ToString().Trim();
+                        cmd.Parameters[3].Value = Decimal.ToInt16(spinEditLan.Value);
+                        cmd.Parameters[4].Value = item.IDDe;
+                        cmd.Parameters[5].Value = item.CauDaChon;
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    trans.Commit();
+                }
+                conn.Close();
+            }
+        }
         private void onTimeEvent(object sender, ElapsedEventArgs e)
         {
             Invoke(new Action(() =>
@@ -168,19 +211,52 @@ namespace TN_CSDLPT_NOV09.views
                 }
 
                 labelTimer.Caption = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
-
+                // khi hết giờ
                 if (h == 0 && m == 0 && s == 0)
                 {
+                    //timer.Stop();
+                    //if (ghiVaoBangDiem())
+                    //{
+                    //    MessageBox.Show("Hết giờ, điểm thi: " + tinhDiem());
+
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Ghi điểm thất bại: " + tinhDiem());
+                    //}
                     timer.Stop();
-                    if (ghiVaoBangDiem())
+
+                    themChiTietBaiThi();
+
+                    ghiVaoBangDiem();
+
+                    int xemChiTiet = -99;
+                    if (Program.mGroup == "GIANGVIEN")
                     {
-                        MessageBox.Show("Hết giờ, điểm thi: " + tinhDiem());
+                        xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
+                        return;
+                    }
+                    if (Program.mGroup == "SINHVIEN")
+                    {
+                        xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem() + "\nNhấn OK để xem chi tiết", "Thông báo kết quả", MessageBoxButtons.OKCancel);
 
                     }
-                    else
+
+                    if (xemChiTiet == (int)DialogResult.OK)
                     {
-                        MessageBox.Show("Ghi điểm thất bại: " + tinhDiem());
+                        this.moXtraReportKetQuaThi();
                     }
+
+                    daNop = true;
+
+                    barButtonNopBai.Enabled = false;
+                    comboBoxMaMonHoc.Enabled = true;
+                    spinEditLan.Enabled = true;
+                    dateEditNgayThi.Enabled = true;
+                    buttonBatDauThi.Enabled = false;
+                    buttonTimMonThi.Enabled = true;
+                    flowLayoutPanelCauHoiThi.Enabled = false;
+                    labelTimer.Caption = "00:00:00";
                 }
 
             }));
@@ -303,7 +379,7 @@ namespace TN_CSDLPT_NOV09.views
 
                 int thoiGianGiay = Decimal.ToInt16(spinEditThoiGian.Value) * 60;
 
-                //thoiGianGiay = 20; // de test
+                //thoiGianGiay = 100; // de test
 
                 h = thoiGianGiay / 3600;
                 thoiGianGiay = thoiGianGiay - h * 3600;
@@ -388,7 +464,7 @@ namespace TN_CSDLPT_NOV09.views
 
             if (xemChiTiet == (int)DialogResult.OK)
             {
-                //this.moXtraReportKetQuaThi();
+                this.moXtraReportKetQuaThi();
             }
 
             daNop = true;
@@ -447,7 +523,7 @@ namespace TN_CSDLPT_NOV09.views
 
             if (xemChiTiet == (int)DialogResult.OK)
             {
-                //this.moXtraReportKetQuaThi();
+                this.moXtraReportKetQuaThi();
             }
 
             daNop = true;

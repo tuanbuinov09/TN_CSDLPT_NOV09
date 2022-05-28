@@ -42,7 +42,7 @@ namespace TN_CSDLPT_NOV09.views
                 comboBoxMaSinhVien.SelectedValue = Program.maSinhVien.Trim();
                 comboBoxMaSinhVien.Enabled = false;
             }
-            
+
             //load dữ liệu vào combobox cơ sở
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
             comboBoxCoSo.DisplayMember = "TENCS";
