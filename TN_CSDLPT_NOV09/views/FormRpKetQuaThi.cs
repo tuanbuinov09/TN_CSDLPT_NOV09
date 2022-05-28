@@ -18,7 +18,6 @@ namespace TN_CSDLPT_NOV09.views
         {
             InitializeComponent();
         }
-
         private void mONHOCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -30,19 +29,28 @@ namespace TN_CSDLPT_NOV09.views
         private void FormRpKetQuaThi_Load(object sender, EventArgs e)
         {
             TN_CSDLPT_DataSet.EnforceConstraints = false;
-            // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.SINHVIEN' table. You can move, or remove it, as needed.
-            this.tableAdapterSinhVien.Connection.ConnectionString = Program.connstr;
-            this.tableAdapterSinhVien.Fill(this.TN_CSDLPT_DataSet.SINHVIEN);
+
             // TODO: This line of code loads data into the 'tN_CSDLPT_DataSet.MONHOC' table. You can move, or remove it, as needed.
             this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
             this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
+            // TODO: This line of code loads data into the 'TN_CSDLPT_DataSet.SINHVIEN' table. You can move, or remove it, as needed.
+            this.tableAdapterSinhVien.Connection.ConnectionString = Program.connstr;
+            this.tableAdapterSinhVien.Fill(this.TN_CSDLPT_DataSet.SINHVIEN);
 
+            if (Program.mGroup == "SINHVIEN")
+            {
+                comboBoxMaSinhVien.SelectedValue = Program.maSinhVien.Trim();
+                comboBoxMaSinhVien.Enabled = false;
+            }
+            
             //load dữ liệu vào combobox cơ sở
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
             comboBoxCoSo.DisplayMember = "TENCS";
             comboBoxCoSo.ValueMember = "TENSERVER";
             comboBoxCoSo.SelectedIndex = Program.indexCoSo;
+
             //chỉ trường mới có quyền xem trên cơ sở khác
+            
             if (Program.mGroup == "TRUONG")
             {
                 comboBoxCoSo.Enabled = true;
