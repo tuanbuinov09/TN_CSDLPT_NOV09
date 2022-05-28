@@ -82,7 +82,7 @@ namespace TN_CSDLPT_NOV09.views
             dateEditNgayThi.DateTime = DateTime.Now;
         }
 
-        private Boolean kiemTraChuaChonDapAn()
+        private String kiemTraChuaChonDapAn()
         {
             String msg = "Các câu chưa chọn đáp án: ";
             foreach (CauHoi ch in listCauHoi)
@@ -93,12 +93,12 @@ namespace TN_CSDLPT_NOV09.views
                 }
                 continue;
             }
-            if (msg != "Các câu chưa chọn đáp án: ")
-            {
-                MessageBox.Show(msg);
-                return true;
-            }
-            return false;
+            //if (msg != "Các câu chưa chọn đáp án: ")
+            //{
+            //    MessageBox.Show(msg);
+            //    return true;
+            //}
+            return msg;
         }
 
         public void themChiTietBaiThi()
@@ -188,8 +188,13 @@ namespace TN_CSDLPT_NOV09.views
 
         private Boolean ghiVaoBangDiem()
         {
+            DateTime myDateTime = DateTime.Parse(dateEditNgayThi.DateTime.ToString());
+            String ngayThiSQLFormat = myDateTime.ToString("yyyy-MM-dd");
+
             String strLenh = "EXEC SP_GHI_VAO_BANGDIEM '" + labelMaSinhVien.Text.Trim() + "', '"
-                + comboBoxMaMonHoc.SelectedValue.ToString().Trim() + "', " + spinEditLan.Value + ", '" + dateEditNgayThi.DateTime.ToString("yyyy-dd-MM") + "', " + tinhDiem();
+                + comboBoxMaMonHoc.SelectedValue.ToString().Trim() + "', " + spinEditLan.Value + ", '" + ngayThiSQLFormat + "', " + tinhDiem();
+            //String strLenh = "EXEC SP_GHI_VAO_BANGDIEM '" + labelMaSinhVien.Text.Trim() + "', '"
+            //    + comboBoxMaMonHoc.SelectedValue.ToString().Trim() + "', " + spinEditLan.Value + ", '" + dateEditNgayThi.DateTime.ToString("yyyy-dd-MM") + "', " + tinhDiem();
             int kq = Program.ExecSqlNonQuery(strLenh);
             if (kq == 1)
             {
@@ -336,9 +341,18 @@ namespace TN_CSDLPT_NOV09.views
         private void barButtonNopBai_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //kiemTraChuaChonDapAn();
-            if (kiemTraChuaChonDapAn())
+            String msg = kiemTraChuaChonDapAn();
+            if (msg != "Các câu chưa chọn đáp án: ")
             {
-                return;
+                int confirm  = (int)MessageBox.Show(msg + "\n OK để nộp và tính điểm các câu đã chọn, Cancel để làm tiếp bài thi", "Xác nhận", MessageBoxButtons.OKCancel);
+                if (confirm == (int)DialogResult.OK)
+                {
+
+                }// nếu ấn cancel, thoát dialog r làm bài thi tiếp
+                else if(confirm == (int)DialogResult.Cancel)
+                {
+                    return;
+                }
             }
             timer.Stop();
 
@@ -350,6 +364,7 @@ namespace TN_CSDLPT_NOV09.views
             if (Program.mGroup == "GIANGVIEN")
             {
                 xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
+                return;
             }
             if (Program.mGroup == "SINHVIEN")
             {
@@ -359,13 +374,14 @@ namespace TN_CSDLPT_NOV09.views
 
             if (xemChiTiet == (int)DialogResult.OK)
             {
-                XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi(Program.maSinhVien
-                                                                , comboBoxMaMonHoc.SelectedValue.ToString().Trim()
-                                                                , Decimal.ToInt16(spinEditLan.Value));
-                xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN: " + this.comboBoxMaMonHoc.Text.Trim() + "'\n SINH VIÊN: " + Program.mHoTen;
+                XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi(Program.maSinhVien.ToString().Trim()
+                                                             , comboBoxMaMonHoc.SelectedValue.ToString().Trim()
+                                                             , Decimal.ToInt16(spinEditLan.Value));
+                xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN " + this.comboBoxMaMonHoc.Text.Trim() + " CỦA SINH VIÊN " + Program.mHoTen;
                 xtraReportKQThi.xrLabelHoTen.Text = Program.mHoTen;
                 xtraReportKQThi.xrLabelLop.Text = Program.tenLop;
-                xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+                xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy") /*+ "cần hỏi thầy ngày là lấy ngày của gv đăng kí?"*/;
                 xtraReportKQThi.xrLabelMonThi.Text = this.comboBoxMaMonHoc.Text.Trim();
                 xtraReportKQThi.xrLabelLan.Text = this.spinEditLan.Value.ToString();
 
@@ -387,66 +403,69 @@ namespace TN_CSDLPT_NOV09.views
 
         private void barButtonThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //neues da nop bai tinh diem r thi thoat luon k can hoi nhieu
+            //neues da nop bai tính điểm r thì đóng form thi luon k can hoi nhieu
             if (daNop == true)
             {
                 this.Dispose();
                 return;
             }
-            int xacNhanThoat = (int)MessageBox.Show("Bạn có chắc muốn thoát và tính điểm những câu đã chọn?", "Xác nhận", MessageBoxButtons.OKCancel);
-            if (xacNhanThoat == (int)DialogResult.OK)
+            String msg = kiemTraChuaChonDapAn();
+            if (msg != "Các câu chưa chọn đáp án: ")
             {
-                //timer.Stop();
-                //MessageBox.Show("" + tinhDiem());
-                if (kiemTraChuaChonDapAn())
+                int confirm = (int)MessageBox.Show(msg + "\n OK để thoát và tính điểm các câu đã chọn, Cancel để làm tiếp bài thi", "Xác nhận", MessageBoxButtons.OKCancel);
+                if (confirm == (int)DialogResult.OK)
+                {
+                    timer.Stop();
+
+                    themChiTietBaiThi();
+
+                    ghiVaoBangDiem();
+
+                    int xemChiTiet = -99;
+                    if (Program.mGroup == "GIANGVIEN")
+                    {
+                        xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
+                        return;
+                    }
+                    if (Program.mGroup == "SINHVIEN")
+                    {
+                        xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem() + "\nNhấn OK để xem chi tiết", "Thông báo kết quả", MessageBoxButtons.OKCancel);
+
+                    }
+
+                    if (xemChiTiet == (int)DialogResult.OK)
+                    {
+                        XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi(Program.maSinhVien
+                                                                        , comboBoxMaMonHoc.SelectedValue.ToString().Trim()
+                                                                        , Decimal.ToInt16(spinEditLan.Value));
+                        xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN: " + this.comboBoxMaMonHoc.Text.Trim() + "'\n SINH VIÊN: " + Program.mHoTen;
+                        xtraReportKQThi.xrLabelHoTen.Text = Program.mHoTen;
+                        xtraReportKQThi.xrLabelLop.Text = Program.tenLop;
+                        xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                        xtraReportKQThi.xrLabelMonThi.Text = this.comboBoxMaMonHoc.Text.Trim();
+                        xtraReportKQThi.xrLabelLan.Text = this.spinEditLan.Value.ToString();
+
+                        ReportPrintTool printTool = new ReportPrintTool(xtraReportKQThi);
+                        printTool.ShowPreviewDialog();
+                    }
+
+                    daNop = true;
+
+                    barButtonNopBai.Enabled = false;
+                    comboBoxMaMonHoc.Enabled = true;
+                    spinEditLan.Enabled = true;
+                    dateEditNgayThi.Enabled = true;
+                    buttonBatDauThi.Enabled = false;
+                    buttonTimMonThi.Enabled = true;
+                    flowLayoutPanelCauHoiThi.Enabled = false;
+                    labelTimer.Caption = "00:00:00";
+                }// nếu ấn cancel, thoát dialog r làm bài thi tiếp
+                else if (confirm == (int)DialogResult.Cancel)
                 {
                     return;
                 }
-
-                timer.Stop();
-
-                themChiTietBaiThi();
-
-                ghiVaoBangDiem();
-
-                int xemChiTiet = -99;
-                if (Program.mGroup == "GIANGVIEN")
-                {
-                    xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
-                }
-                if (Program.mGroup == "SINHVIEN")
-                {
-                    xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem() + "\nNhấn OK để xem chi tiết", "Thông báo kết quả", MessageBoxButtons.OKCancel);
-
-                }
-
-                if (xemChiTiet == (int)DialogResult.OK)
-                {
-                    XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi(Program.maSinhVien
-                                                                    , comboBoxMaMonHoc.SelectedValue.ToString().Trim()
-                                                                    , Decimal.ToInt16(spinEditLan.Value));
-                    xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN: " + this.comboBoxMaMonHoc.Text.Trim() + "'\n SINH VIÊN: " + Program.mHoTen;
-                    xtraReportKQThi.xrLabelHoTen.Text = Program.mHoTen;
-                    xtraReportKQThi.xrLabelLop.Text = Program.tenLop;
-                    xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                    xtraReportKQThi.xrLabelMonThi.Text = this.comboBoxMaMonHoc.Text.Trim();
-                    xtraReportKQThi.xrLabelLan.Text = this.spinEditLan.Value.ToString();
-
-                    ReportPrintTool printTool = new ReportPrintTool(xtraReportKQThi);
-                    printTool.ShowPreviewDialog();
-                }
-
-                daNop = true;
-
-                barButtonNopBai.Enabled = false;
-                comboBoxMaMonHoc.Enabled = true;
-                spinEditLan.Enabled = true;
-                dateEditNgayThi.Enabled = true;
-                buttonBatDauThi.Enabled = false;
-                buttonTimMonThi.Enabled = true;
-                flowLayoutPanelCauHoiThi.Enabled = false;
-                labelTimer.Caption = "00:00:00";
             }
+
             this.Dispose();
         }
     }

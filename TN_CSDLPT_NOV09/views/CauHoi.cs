@@ -23,21 +23,7 @@ namespace TN_CSDLPT_NOV09.views
         private string cauD;
         private string daChon = "";
         private string dapAn = "";
-        //private int maBD;
 
-        //[Category("Custom Props")]
-        //public int MaBangDiem
-        //{
-        //    get { return maBD; }
-        //    set { maBD = value; }
-        //}
-
-        //[Category("Custom Props")]
-        //public int IDBaiThi
-        //{
-        //    get { return idBaiThi; }
-        //    set { idBaiThi = value; }
-        //}
 
         [Category("Custom Props")]
         public int IDDe
