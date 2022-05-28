@@ -29,6 +29,10 @@ namespace TN_CSDLPT_NOV09
             //    f.Show();
             //}
 
+            FormMainLoadHandler();
+        }
+        public void FormMainLoadHandler()
+        {
 
             //nếu là quyền cơ sở tất cả đều enable
             this.ribbonPageQuanLy.Visible = true;
@@ -49,6 +53,7 @@ namespace TN_CSDLPT_NOV09
             }
             if (Program.mGroup == "GIANGVIEN")
             {
+
                 this.ribbonPageGroupDangKy.Visible = false;
 
                 return;
@@ -62,7 +67,6 @@ namespace TN_CSDLPT_NOV09
                 return;
             }
         }
-
         private Form CheckExists(Type ftype)
         {
             foreach (Form f in this.MdiChildren)

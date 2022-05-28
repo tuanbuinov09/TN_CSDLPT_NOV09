@@ -170,6 +170,8 @@ namespace TN_CSDLPT_NOV09.views
 
             this.Hide();
             Program.formChinh.Show();
+            //chạy lại để ẩn hiện các button
+            Program.formChinh.FormMainLoadHandler();
         }
 
         private void radioButtonGiangVien_CheckedChanged(object sender, EventArgs e)

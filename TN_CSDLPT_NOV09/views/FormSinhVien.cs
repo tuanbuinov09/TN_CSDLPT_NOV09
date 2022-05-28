@@ -284,7 +284,12 @@ namespace TN_CSDLPT_NOV09.views
                 comboBoxMaLop.Focus();
                 return;
             }
-
+            if (matKhauChuanBiSua == "")
+            {
+                MessageBox.Show("Mật khẩu không được bỏ trống", "", MessageBoxButtons.OK);
+                textBoxMatKhau.Focus();
+                return;
+            }
             //check trùng mã, tên lớp khi thêm
             if (mode == "them")
             {

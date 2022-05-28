@@ -135,11 +135,11 @@ namespace TN_CSDLPT_NOV09.views
                 Program.myReader.Close();
                 Program.conn.Close();
             }
-
+            // nếu không bận lỗi gì:
             XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi(comboBoxMaSinhVien.SelectedValue.ToString().Trim()
                                                               , comboBoxMaMonHoc.SelectedValue.ToString().Trim()
                                                               , Decimal.ToInt16(spinEditLan.Value));
-            xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN: " + this.comboBoxMaMonHoc.Text.Trim() + " \nSINH VIÊN: " + hoTenSinhVien;
+            xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN " + this.comboBoxMaMonHoc.Text.Trim() + " CỦA SINH VIÊN " + hoTenSinhVien;
             xtraReportKQThi.xrLabelHoTen.Text = hoTenSinhVien;
             xtraReportKQThi.xrLabelLop.Text = tenLop;
 
