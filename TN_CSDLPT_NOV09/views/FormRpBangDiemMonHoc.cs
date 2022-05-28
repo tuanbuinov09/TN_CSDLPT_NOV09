@@ -19,14 +19,6 @@ namespace TN_CSDLPT_NOV09.views
             InitializeComponent();
         }
 
-        private void mONHOCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.bindingSourceMonHoc.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.TN_CSDLPT_DataSet);
-
-        }
-
         private void FormRpBangDiemMonHoc_Load(object sender, EventArgs e)
         {
             TN_CSDLPT_DataSet.EnforceConstraints = false;
@@ -50,7 +42,6 @@ namespace TN_CSDLPT_NOV09.views
             else
             {
                 comboBoxCoSo.Enabled = false;
-
             }
         }
 
@@ -84,12 +75,10 @@ namespace TN_CSDLPT_NOV09.views
                 this.tableAdapterLop.Connection.ConnectionString = Program.connstr;
                 this.tableAdapterLop.Fill(this.TN_CSDLPT_DataSet.LOP);
                 // TODO: This line of code loads data into the 'tN_CSDLPT_DataSet.MONHOC' table. You can move, or remove it, as needed.
-                //vif môn học nhân bản nên khi chuyển cơ sở dữ liệu trong combobox cũng k thay đổi
-                //this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
-                //this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
+                //vif môn học nhân bản nên khi chuyển cơ sở dữ liệu trong combobox cũng k thay đổi, nhưng cứ thêm cho chắc
+                this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
+                this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
 
-                //Dùng sau
-                //maCoSo = ((DataRowView)bindingSourceMonHoc[0])["MACS"].ToString();
             }
         }
 
@@ -106,21 +95,11 @@ namespace TN_CSDLPT_NOV09.views
 
             String strLenh = "EXEC SP_REPORT_BANGDIEM_MONHOC_THONGTIN_LOPMON '" + comboBoxMaLop.SelectedValue.ToString() + "', '" +
             comboBoxMaMonHoc.SelectedValue.ToString() + "', " + spinEditLan.Value;
+            
             try
             {
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
                 Program.myReader.Read();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không tìm thấy sinh viên, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                Program.myReader.Close();
-                Program.conn.Close();
-                return;
-            }
-            try
-            {
                 maLop = Program.myReader.GetString(0).Trim();
                 tenLop = Program.myReader.GetString(1).Trim();
             }

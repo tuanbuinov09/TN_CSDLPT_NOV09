@@ -40,6 +40,10 @@ namespace TN_CSDLPT_NOV09
             this.ribbonPageBoDe.Visible = true;
             this.ribbonPageGroupGiaoVien_DangKy.Visible = true;
             this.ribbonPageGroupVaoThi.Visible = true;
+            // vì xem danh sách đăng kí cả 2 cơ sở nên chỉ cho trường xem
+            this.ribbonPageGroupXemRpDsDangKyThi.Visible = false;
+
+            this.ribbonPageGroupXemRpBangDiem.Visible = true;
 
             if (Program.mGroup == "SINHVIEN")
             {
@@ -48,6 +52,7 @@ namespace TN_CSDLPT_NOV09
                 this.ribbonPageBoDe.Visible = false;
                 this.ribbonPageGroupGiaoVien_DangKy.Visible = false;
                 this.ribbonPageGroupVaoThi.Visible = true;
+                this.ribbonPageGroupXemRpBangDiem.Visible = false;
 
                 return;
             }
@@ -61,7 +66,8 @@ namespace TN_CSDLPT_NOV09
 
             if (Program.mGroup == "TRUONG")
             {
-
+                // report danh sách đăng kí thi cả 2 cơ sở, nên chỉ cho trường xem
+                this.ribbonPageGroupXemRpDsDangKyThi.Visible = true;
                 this.ribbonPageGroupVaoThi.Visible = false;
 
                 return;
@@ -263,6 +269,18 @@ namespace TN_CSDLPT_NOV09
             else
             {
                 FormRpDSDangKyThi f = new FormRpDSDangKyThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonDangKy_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(FormDangKy));
+            if (frm != null) frm.Activate();
+            else
+            {
+                FormDangKy f = new FormDangKy();
                 f.MdiParent = this;
                 f.Show();
             }

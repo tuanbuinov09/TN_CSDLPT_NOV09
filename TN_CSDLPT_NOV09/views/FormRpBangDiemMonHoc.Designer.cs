@@ -39,7 +39,6 @@
             this.tableAdapterManager = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.TableAdapterManager();
             this.tableAdapterLop = new TN_CSDLPT_NOV09.TN_CSDLPT_DataSetTableAdapters.LOPTableAdapter();
             this.bindingSourceLop = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBoxMaLop = new System.Windows.Forms.ComboBox();
             this.comboBoxMaMonHoc = new System.Windows.Forms.ComboBox();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.buttonThoat = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@
             this.spinEditLan = new DevExpress.XtraEditors.SpinEdit();
             this.buttonPreview = new System.Windows.Forms.Button();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.comboBoxMaLop = new System.Windows.Forms.ComboBox();
             mALOPLabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             lANLabel = new System.Windows.Forms.Label();
@@ -125,19 +125,6 @@
             // 
             this.bindingSourceLop.DataMember = "LOP";
             this.bindingSourceLop.DataSource = this.TN_CSDLPT_DataSet;
-            // 
-            // comboBoxMaLop
-            // 
-            this.comboBoxMaLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceLop, "MALOP", true));
-            this.comboBoxMaLop.DataSource = this.bindingSourceLop;
-            this.comboBoxMaLop.DisplayMember = "TENLOP";
-            this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMaLop.FormattingEnabled = true;
-            this.comboBoxMaLop.Location = new System.Drawing.Point(112, 31);
-            this.comboBoxMaLop.Name = "comboBoxMaLop";
-            this.comboBoxMaLop.Size = new System.Drawing.Size(190, 21);
-            this.comboBoxMaLop.TabIndex = 3;
-            this.comboBoxMaLop.ValueMember = "MALOP";
             // 
             // comboBoxMaMonHoc
             // 
@@ -234,8 +221,8 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.buttonPreview);
             this.panelControl2.Controls.Add(this.comboBoxMaLop);
+            this.panelControl2.Controls.Add(this.buttonPreview);
             this.panelControl2.Controls.Add(this.spinEditLan);
             this.panelControl2.Controls.Add(mALOPLabel);
             this.panelControl2.Controls.Add(lANLabel);
@@ -246,6 +233,19 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(660, 342);
             this.panelControl2.TabIndex = 24;
+            // 
+            // comboBoxMaLop
+            // 
+            this.comboBoxMaLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceLop, "MALOP", true));
+            this.comboBoxMaLop.DataSource = this.bindingSourceLop;
+            this.comboBoxMaLop.DisplayMember = "MALOP";
+            this.comboBoxMaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMaLop.FormattingEnabled = true;
+            this.comboBoxMaLop.Location = new System.Drawing.Point(112, 34);
+            this.comboBoxMaLop.Name = "comboBoxMaLop";
+            this.comboBoxMaLop.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxMaLop.TabIndex = 24;
+            this.comboBoxMaLop.ValueMember = "MALOP";
             // 
             // FormRpBangDiemMonHoc
             // 
@@ -279,7 +279,6 @@
         private TN_CSDLPT_DataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private TN_CSDLPT_DataSetTableAdapters.LOPTableAdapter tableAdapterLop;
         private System.Windows.Forms.BindingSource bindingSourceLop;
-        private System.Windows.Forms.ComboBox comboBoxMaLop;
         private System.Windows.Forms.ComboBox comboBoxMaMonHoc;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.ComboBox comboBoxCoSo;
@@ -288,5 +287,6 @@
         private System.Windows.Forms.Button buttonPreview;
         private System.Windows.Forms.Button buttonThoat;
         private DevExpress.XtraEditors.PanelControl panelControl2;
+        private System.Windows.Forms.ComboBox comboBoxMaLop;
     }
 }

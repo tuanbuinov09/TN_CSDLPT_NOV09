@@ -108,21 +108,11 @@ namespace TN_CSDLPT_NOV09.views
             String daThi = "";
             String strLenh = "EXEC SP_REPORT_KETQUATHI_THONGTIN_SINHVIEN '" + comboBoxMaSinhVien.SelectedValue.ToString() + "', '" +
             comboBoxMaMonHoc.SelectedValue.ToString() + "', " + spinEditLan.Value;
+           
             try
             {
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
                 Program.myReader.Read();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không tìm thấy sinh viên, hãy thử lại\n" + ex.Message, "", MessageBoxButtons.OK);
-                Program.myReader.Close();
-                Program.conn.Close();
-                return;
-            }
-            try
-            {
                 hoTenSinhVien = Program.myReader.GetString(1).Trim();
                 tenLop = Program.myReader.GetString(0).Trim();
                 daThi = Program.myReader.GetString(2).Trim();

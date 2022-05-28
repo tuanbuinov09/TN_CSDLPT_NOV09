@@ -301,6 +301,7 @@
             // 
             // comboBoxCoSo
             // 
+            this.comboBoxCoSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCoSo.FormattingEnabled = true;
             this.comboBoxCoSo.Location = new System.Drawing.Point(90, 10);
             this.comboBoxCoSo.Name = "comboBoxCoSo";
@@ -337,6 +338,7 @@
             this.tableAdapterManager.BANGDIEMTableAdapter = null;
             this.tableAdapterManager.BODETableAdapter = this.tableAdapterBoDe;
             this.tableAdapterManager.COSOTableAdapter = null;
+            this.tableAdapterManager.CT_BAITHITableAdapter = null;
             this.tableAdapterManager.GIAOVIEN_DANGKYTableAdapter = this.tableAdapterGiaoVien_DangKy;
             this.tableAdapterManager.GIAOVIENTableAdapter = this.tableAdapterGiaoVien;
             this.tableAdapterManager.KHOATableAdapter = null;
