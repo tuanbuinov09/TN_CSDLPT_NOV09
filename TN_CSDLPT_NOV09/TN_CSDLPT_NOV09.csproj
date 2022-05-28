@@ -78,6 +78,12 @@
     <Compile Include="views\CauHoi.Designer.cs">
       <DependentUpon>CauHoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\FormDangKy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\FormDangKy.designer.cs">
+      <DependentUpon>FormDangKy.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\FormRpBangDiemMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </Compile>
     <EmbeddedResource Include="views\CauHoi.resx">
       <DependentUpon>CauHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\FormDangKy.resx">
+      <DependentUpon>FormDangKy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormRpBangDiemMonHoc.resx">
       <DependentUpon>FormRpBangDiemMonHoc.cs</DependentUpon>
