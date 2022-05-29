@@ -174,6 +174,12 @@
     <Compile Include="views\FormSinhVien.Designer.cs">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="XtraReportDSDangKyThi2CoSo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraReportDSDangKyThi2CoSo.Designer.cs">
+      <DependentUpon>XtraReportDSDangKyThi2CoSo.cs</DependentUpon>
+    </Compile>
     <Compile Include="XtraReportBangDiemMonHoc.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\FormSinhVien.resx">
       <DependentUpon>FormSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraReportDSDangKyThi2CoSo.resx">
+      <DependentUpon>XtraReportDSDangKyThi2CoSo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XtraReportBangDiemMonHoc.resx">
       <DependentUpon>XtraReportBangDiemMonHoc.cs</DependentUpon>
