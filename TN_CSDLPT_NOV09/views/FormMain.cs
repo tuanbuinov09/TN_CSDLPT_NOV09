@@ -40,8 +40,8 @@ namespace TN_CSDLPT_NOV09
             this.ribbonPageBoDe.Visible = true;
             this.ribbonPageGroupGiaoVien_DangKy.Visible = true;
             this.ribbonPageGroupVaoThi.Visible = true;
-            // vì xem danh sách đăng kí cả 2 cơ sở nên chỉ cho trường xem
-            this.ribbonPageGroupXemRpDsDangKyThi.Visible = false;
+            // vì xem danh sách đăng kí cả 2 cơ sở nên chỉ cho trường xem, nhưng cứ cho, dễ test
+            this.ribbonPageGroupXemRpDsDangKyThi.Visible = true;
 
             this.ribbonPageGroupXemRpBangDiem.Visible = true;
 

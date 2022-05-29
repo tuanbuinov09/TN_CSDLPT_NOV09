@@ -76,17 +76,33 @@ namespace TN_CSDLPT_NOV09.views
 
         private void buttonPreview_Click(object sender, EventArgs e)
         {
-            XtraReportDSDangKyThiTracNghiem xtraReportKQThi = new XtraReportDSDangKyThiTracNghiem(
+            if (this.dateEditTuNgay.Text == "")
+            {
+                MessageBox.Show("Hãy nhập ngày bắt đầu của khoảng thời gian muốn xem", "", MessageBoxButtons.OK);
+                this.dateEditTuNgay.Focus();
+                return;
+            }
+            if (this.dateEditDenNgay.Text == "")
+            {
+                MessageBox.Show("Hãy nhập ngày kết thúc của khoảng thời gian muốn xem", "", MessageBoxButtons.OK);
+                this.dateEditDenNgay.Focus();
+                return;
+            }
+
+            if (this.dateEditDenNgay.DateTime.Date < this.dateEditTuNgay.DateTime.Date)
+            {
+                MessageBox.Show("Ngày không hợp lệ", "", MessageBoxButtons.OK);
+                dateEditTuNgay.Focus();
+                return;
+            }
+            //XtraReportDSDangKyThiTracNghiem xtraReportKQThi = new XtraReportDSDangKyThiTracNghiem(
+            //    this.dateEditTuNgay.DateTime, dateEditDenNgay.DateTime);
+            XtraReportDSDangKyThi2CoSo xtraReportDSDKThi = new XtraReportDSDangKyThi2CoSo(
                 this.dateEditTuNgay.DateTime, dateEditDenNgay.DateTime);
-            //xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN " + this.comboBoxMaMonHoc.Text.Trim() + " CỦA SINH VIÊN " + hoTenSinhVien;
-            //xtraReportKQThi.xrLabelHoTen.Text = hoTenSinhVien;
-            //xtraReportKQThi.xrLabelLop.Text = tenLop;
+            xtraReportDSDKThi.labelTieuDe.Text = "DANH SÁCH ĐĂNG KÝ THI TRẮC NGHIỆM 2 CƠ SỞ TỪ NGÀY "
+                + this.dateEditTuNgay.DateTime.ToString("dd/M/yyyy")+" ĐẾN NGÀY "+ this.dateEditDenNgay.DateTime.ToString("dd/M/yyyy");
 
-            //xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy") + "cần hỏi thầy ngày là lấy ngày của gv đăng kí?";
-            //xtraReportKQThi.xrLabelMonThi.Text = this.comboBoxMaMonHoc.Text.Trim();
-            //xtraReportKQThi.xrLabelLan.Text = this.spinEditLan.Value.ToString();
-
-            ReportPrintTool printTool = new ReportPrintTool(xtraReportKQThi);
+            ReportPrintTool printTool = new ReportPrintTool(xtraReportDSDKThi);
             printTool.ShowPreviewDialog();
         }
     }
