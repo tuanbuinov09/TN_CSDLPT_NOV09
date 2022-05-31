@@ -43,14 +43,15 @@ namespace TN_CSDLPT_NOV09.views
 
         private void FormChonMonThi_Load(object sender, EventArgs e)
         {
-            daNop = false;
+            // để khi vừa vào đã ấn thoát thì thoát luôn
+            daNop = true;
 
             timer = new System.Timers.Timer();
             timer.Interval = 1000; //1s
             timer.Elapsed += onTimeEvent;
 
             // nếu giáo viên thi thử
-            if (Program.mGroup == "GIANGVIEN")
+            if (Program.mGroup == "GIANGVIEN" || Program.mGroup == "COSO")
             {
                 this.labelTitle.Text = "Giáo viên thi thử:";
                 this.labelTitleMaSV.Text = "Mã GV:";
@@ -144,49 +145,7 @@ namespace TN_CSDLPT_NOV09.views
                 conn.Close();
             }
         }
-        public void themChiTietBaiThiGiaoVienThiThu()
-        {
-            string connectionString = Program.connstr;
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                // tạo transaction
-                using (SqlTransaction trans = conn.BeginTransaction())
-                {
-
-                    SqlCommand cmd =
-                    new SqlCommand(
-                        "INSERT INTO CT_BAITHI (CAUSO, MASV, MAMH, LAN, CAUHOI, DACHON) " +
-                        " VALUES (@CAUSO, @MASV, @MAMH, @LAN, @CAUHOI, @DACHON)");
-
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Connection = conn;
-                    cmd.Transaction = trans;
-                    cmd.Parameters.AddWithValue("@CAUSO", DbType.Int16);
-                    cmd.Parameters.AddWithValue("@MASV", DbType.String);
-                    cmd.Parameters.AddWithValue("@MAMH", DbType.String);
-                    cmd.Parameters.AddWithValue("@LAN", DbType.Int16);
-                    cmd.Parameters.AddWithValue("@CAUHOI", DbType.Int16);
-                    cmd.Parameters.AddWithValue("@DACHON", DbType.String);
-
-                    foreach (var item in listCauHoi)
-                    {
-                        cmd.Parameters[0].Value = item.CauSo;
-                        cmd.Parameters[1].Value = Program.maSinhVien.Trim();
-                        cmd.Parameters[2].Value = comboBoxMaMonHoc.SelectedValue.ToString().Trim();
-                        cmd.Parameters[3].Value = Decimal.ToInt16(spinEditLan.Value);
-                        cmd.Parameters[4].Value = item.IDDe;
-                        cmd.Parameters[5].Value = item.CauDaChon;
-
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    trans.Commit();
-                }
-                conn.Close();
-            }
-        }
+        
         private void onTimeEvent(object sender, ElapsedEventArgs e)
         {
             Invoke(new Action(() =>
@@ -225,26 +184,24 @@ namespace TN_CSDLPT_NOV09.views
                     //    MessageBox.Show("Ghi điểm thất bại: " + tinhDiem());
                     //}
                     timer.Stop();
-
-                    themChiTietBaiThi();
-
-                    ghiVaoBangDiem();
+                    if (Program.mGroup == "SINHVIEN")
+                    {
+                        themChiTietBaiThi();
+                        ghiVaoBangDiem();
+                    }
 
                     int xemChiTiet = -99;
                     if (Program.mGroup == "GIANGVIEN")
                     {
                         xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
-                        return;
                     }
                     if (Program.mGroup == "SINHVIEN")
                     {
                         xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem() + "\nNhấn OK để xem chi tiết", "Thông báo kết quả", MessageBoxButtons.OKCancel);
-
-                    }
-
-                    if (xemChiTiet == (int)DialogResult.OK)
-                    {
-                        this.moXtraReportKetQuaThi();
+                        if (xemChiTiet == (int)DialogResult.OK)
+                        {
+                            this.moXtraReportKetQuaThi();
+                        }
                     }
 
                     daNop = true;
@@ -255,6 +212,7 @@ namespace TN_CSDLPT_NOV09.views
                     dateEditNgayThi.Enabled = true;
                     buttonBatDauThi.Enabled = false;
                     buttonTimMonThi.Enabled = true;
+                    while (flowLayoutPanelCauHoiThi.Controls.Count > 0) flowLayoutPanelCauHoiThi.Controls.RemoveAt(0);
                     flowLayoutPanelCauHoiThi.Enabled = false;
                     labelTimer.Caption = "00:00:00";
                 }
@@ -302,6 +260,11 @@ namespace TN_CSDLPT_NOV09.views
             }
             String strLenh = "EXEC SP_TIM_MONTHI '" + Program.maSinhVien + "', '" + comboBoxMaMonHoc.SelectedValue.ToString() + "', '" +
              dateEditNgayThi.DateTime.ToString("yyyy-MM-dd") + "', " + spinEditLan.Value;
+            if (Program.mGroup == "GIANGVIEN")
+            {
+                strLenh = "EXEC SP_TIM_MONTHI_GVTHITHU '" + comboBoxMaMonHoc.SelectedValue.ToString() + "', '" +
+             dateEditNgayThi.DateTime.ToString("yyyy-MM-dd") + "', " + spinEditLan.Value;
+            }
             try
             {
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
@@ -340,16 +303,22 @@ namespace TN_CSDLPT_NOV09.views
         {
             barButtonNopBai.Enabled = false;
             buttonTimMonThi.Enabled = false;
-
+            
             String strLenh = "EXEC SP_KT_SINHVIEN_DATHI '" + Program.maSinhVien.Trim() + "', '" + comboBoxMaMonHoc.SelectedValue.ToString().Trim() + "', " + spinEditLan.Value;
-
-            int kq = Program.ExecSqlNonQuery(strLenh);
-            if (kq == 1)
+            // chỉ có sinh viên mới kiểm tra xem đã thi k, giáo viên thi thử thì k cần
+            if (Program.mGroup == "SINHVIEN")
             {
-                // 
-                buttonTimMonThi.Enabled = true;
-                return;
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1)
+                {
+                    // 
+                    buttonTimMonThi.Enabled = true;
+                    return;
+                }
+
             }
+
+            daNop = false;
 
             strLenh = "EXEC MY_SP_LAY_CAUHOI '" + comboBoxMaMonHoc.SelectedValue.ToString().Trim() + "', '" +
              comboBoxTrinhDo.Text + "', " + spinEditSoCauThi.Value;
@@ -430,6 +399,7 @@ namespace TN_CSDLPT_NOV09.views
         }
         private void barButtonNopBai_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+  
             //kiemTraChuaChonDapAn();
             String msg = kiemTraChuaChonDapAn();
             if (msg != "Các câu chưa chọn đáp án: ")
@@ -446,25 +416,24 @@ namespace TN_CSDLPT_NOV09.views
             }
             timer.Stop();
 
-            themChiTietBaiThi();
-
-            ghiVaoBangDiem();
+            if (Program.mGroup == "SINHVIEN")
+            {
+                themChiTietBaiThi();
+                ghiVaoBangDiem();
+            }
 
             int xemChiTiet = -99;
             if (Program.mGroup == "GIANGVIEN")
             {
                 xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
-                return;
             }
             if (Program.mGroup == "SINHVIEN")
             {
                 xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem() + "\nNhấn OK để xem chi tiết", "Thông báo kết quả", MessageBoxButtons.OKCancel);
-
-            }
-
-            if (xemChiTiet == (int)DialogResult.OK)
-            {
-                this.moXtraReportKetQuaThi();
+                if (xemChiTiet == (int)DialogResult.OK)
+                {
+                    this.moXtraReportKetQuaThi();
+                }
             }
 
             daNop = true;
@@ -475,6 +444,7 @@ namespace TN_CSDLPT_NOV09.views
             dateEditNgayThi.Enabled = true;
             buttonBatDauThi.Enabled = false;
             buttonTimMonThi.Enabled = true;
+            while (flowLayoutPanelCauHoiThi.Controls.Count > 0) flowLayoutPanelCauHoiThi.Controls.RemoveAt(0);
             flowLayoutPanelCauHoiThi.Enabled = false;
             labelTimer.Caption = "00:00:00";
         }
@@ -497,11 +467,12 @@ namespace TN_CSDLPT_NOV09.views
                 {
                     timer.Stop();
 
-                    themChiTietBaiThi();
+                    if (Program.mGroup == "SINHVIEN")
+                    {
+                        themChiTietBaiThi();
+                        ghiVaoBangDiem();
+                    }
 
-                    ghiVaoBangDiem();
-
-                    
                 }// nếu ấn cancel, thoát dialog r làm bài thi tiếp
                 else if (confirm == (int)DialogResult.Cancel)
                 {
@@ -513,17 +484,14 @@ namespace TN_CSDLPT_NOV09.views
             if (Program.mGroup == "GIANGVIEN")
             {
                 xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
-                return;
             }
             if (Program.mGroup == "SINHVIEN")
             {
                 xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem() + "\nNhấn OK để xem chi tiết", "Thông báo kết quả", MessageBoxButtons.OKCancel);
-
-            }
-
-            if (xemChiTiet == (int)DialogResult.OK)
-            {
-                this.moXtraReportKetQuaThi();
+                if (xemChiTiet == (int)DialogResult.OK)
+                {
+                    this.moXtraReportKetQuaThi();
+                }
             }
 
             daNop = true;
@@ -534,6 +502,7 @@ namespace TN_CSDLPT_NOV09.views
             dateEditNgayThi.Enabled = true;
             buttonBatDauThi.Enabled = false;
             buttonTimMonThi.Enabled = true;
+            while (flowLayoutPanelCauHoiThi.Controls.Count > 0) flowLayoutPanelCauHoiThi.Controls.RemoveAt(0);
             flowLayoutPanelCauHoiThi.Enabled = false;
             labelTimer.Caption = "00:00:00";
 
