@@ -64,7 +64,7 @@
             this.ribbonPageBaoCaoThongKe = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupXemRpBangDiem = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupXemRpDsDangKyThi = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupXemDanhSachDangKyThi = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMaUser = new System.Windows.Forms.ToolStripMenuItem();
@@ -366,7 +366,7 @@
             this.ribbonPageBaoCaoThongKe.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
             this.ribbonPageGroupXemRpBangDiem,
-            this.ribbonPageGroupXemRpDsDangKyThi});
+            this.ribbonPageGroupXemDanhSachDangKyThi});
             this.ribbonPageBaoCaoThongKe.Name = "ribbonPageBaoCaoThongKe";
             this.ribbonPageBaoCaoThongKe.Text = "Báo cáo/ Thống kê";
             // 
@@ -384,9 +384,9 @@
             // 
             // ribbonPageGroupXemDanhSachDangKyThi
             // 
-            this.ribbonPageGroupXemRpDsDangKyThi.ItemLinks.Add(this.barButtonXemDSGiaoVienDangKy);
-            this.ribbonPageGroupXemRpDsDangKyThi.Name = "ribbonPageGroupXemDanhSachDangKyThi";
-            this.ribbonPageGroupXemRpDsDangKyThi.Text = "_______";
+            this.ribbonPageGroupXemDanhSachDangKyThi.ItemLinks.Add(this.barButtonXemDSGiaoVienDangKy);
+            this.ribbonPageGroupXemDanhSachDangKyThi.Name = "ribbonPageGroupXemDanhSachDangKyThi";
+            this.ribbonPageGroupXemDanhSachDangKyThi.Text = "_______";
             // 
             // xtraTabbedMdiManager1
             // 
@@ -488,6 +488,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupXemRpBangDiem;
         private DevExpress.XtraBars.BarButtonItem barButtonXemDSGiaoVienDangKy;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupXemRpDsDangKyThi;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupXemDanhSachDangKyThi;
     }
 }
 

@@ -41,7 +41,7 @@ namespace TN_CSDLPT_NOV09
             this.ribbonPageGroupGiaoVien_DangKy.Visible = true;
             this.ribbonPageGroupVaoThi.Visible = true;
             // vì xem danh sách đăng kí cả 2 cơ sở nên chỉ cho trường xem
-            this.ribbonPageGroupXemRpDsDangKyThi.Visible = false;
+            this.ribbonPageGroupXemDanhSachDangKyThi.Visible = false;
 
             this.ribbonPageGroupXemRpBangDiem.Visible = true;
 
@@ -58,7 +58,7 @@ namespace TN_CSDLPT_NOV09
             }
             if (Program.mGroup == "GIANGVIEN")
             {
-                this.ribbonPageGroupXemRpDsDangKyThi.Visible = false;
+                this.ribbonPageGroupXemDanhSachDangKyThi.Visible = false;
                 this.ribbonPageGroupDangKy.Visible = false;
 
                 return;
@@ -67,7 +67,7 @@ namespace TN_CSDLPT_NOV09
             if (Program.mGroup == "TRUONG")
             {
                 // report danh sách đăng kí thi cả 2 cơ sở, nên chỉ cho trường xem
-                this.ribbonPageGroupXemRpDsDangKyThi.Visible = true;
+                this.ribbonPageGroupXemDanhSachDangKyThi.Visible = true;
                 this.ribbonPageGroupVaoThi.Visible = false;
 
                 return;

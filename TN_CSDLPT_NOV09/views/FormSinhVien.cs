@@ -218,10 +218,17 @@ namespace TN_CSDLPT_NOV09.views
                 hoChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["HO"].ToString().Trim();
                 tenChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["TEN"].ToString().Trim();
                 ngaySinhChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["NGAYSINH"].ToString().Trim();
-                //format thành định dạng date của sql để undo sửa
-                myDateTime = DateTime.Parse(ngaySinhChuaSua);
-                ngaySinhChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
-
+                try
+                {
+                    //format thành định dạng date của sql để undo sửa
+                    myDateTime = DateTime.Parse(ngaySinhChuaSua);
+                    ngaySinhChuaSuaSQLFormat = myDateTime.ToString("yyyy-MM-dd");
+                }
+                catch (Exception)
+                {
+                    // bắt trường hợp trước đó không nhập ngày sinh r lại undo
+                }
+              
                 diaChiChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["DIACHI"].ToString().Trim();
                 matKhauChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MATKHAU"].ToString().Trim();
                 maLopChuaSua = (String)((DataRowView)bindingSourceSinhVien[bindingSourceSinhVien.Position])["MALOP"].ToString().Trim();
@@ -288,6 +295,12 @@ namespace TN_CSDLPT_NOV09.views
             {
                 MessageBox.Show("Mật khẩu không được bỏ trống", "", MessageBoxButtons.OK);
                 textBoxMatKhau.Focus();
+                return;
+            }
+            if (this.dateEditNgaySinh.DateTime.Year==DateTime.Now.Year)
+            {
+                MessageBox.Show("Vui lòng chọn ngày sinh hợp lệ", "", MessageBoxButtons.OK);
+                this.dateEditNgaySinh.Focus();
                 return;
             }
             //check trùng mã, tên lớp khi thêm

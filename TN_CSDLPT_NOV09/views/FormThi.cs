@@ -191,7 +191,7 @@ namespace TN_CSDLPT_NOV09.views
                     }
 
                     int xemChiTiet = -99;
-                    if (Program.mGroup == "GIANGVIEN")
+                    if (Program.mGroup == "GIANGVIEN" || Program.mGroup == "COSO")
                     {
                         xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
                     }
@@ -214,6 +214,7 @@ namespace TN_CSDLPT_NOV09.views
                     buttonTimMonThi.Enabled = true;
                     while (flowLayoutPanelCauHoiThi.Controls.Count > 0) flowLayoutPanelCauHoiThi.Controls.RemoveAt(0);
                     flowLayoutPanelCauHoiThi.Enabled = false;
+                    listCauHoi.Clear();
                     labelTimer.Caption = "00:00:00";
                 }
 
@@ -260,7 +261,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             String strLenh = "EXEC SP_TIM_MONTHI '" + Program.maSinhVien + "', '" + comboBoxMaMonHoc.SelectedValue.ToString() + "', '" +
              dateEditNgayThi.DateTime.ToString("yyyy-MM-dd") + "', " + spinEditLan.Value;
-            if (Program.mGroup == "GIANGVIEN")
+            if (Program.mGroup == "GIANGVIEN"|| Program.mGroup == "COSO")
             {
                 strLenh = "EXEC SP_TIM_MONTHI_GVTHITHU '" + comboBoxMaMonHoc.SelectedValue.ToString() + "', '" +
              dateEditNgayThi.DateTime.ToString("yyyy-MM-dd") + "', " + spinEditLan.Value;
@@ -348,7 +349,7 @@ namespace TN_CSDLPT_NOV09.views
 
                 int thoiGianGiay = Decimal.ToInt16(spinEditThoiGian.Value) * 60;
 
-                //thoiGianGiay = 100; // de test
+                thoiGianGiay = 100; // de test
 
                 h = thoiGianGiay / 3600;
                 thoiGianGiay = thoiGianGiay - h * 3600;
@@ -423,7 +424,7 @@ namespace TN_CSDLPT_NOV09.views
             }
 
             int xemChiTiet = -99;
-            if (Program.mGroup == "GIANGVIEN")
+            if (Program.mGroup == "GIANGVIEN" || Program.mGroup == "COSO")
             {
                 xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
             }
@@ -446,6 +447,7 @@ namespace TN_CSDLPT_NOV09.views
             buttonTimMonThi.Enabled = true;
             while (flowLayoutPanelCauHoiThi.Controls.Count > 0) flowLayoutPanelCauHoiThi.Controls.RemoveAt(0);
             flowLayoutPanelCauHoiThi.Enabled = false;
+            listCauHoi.Clear();
             labelTimer.Caption = "00:00:00";
         }
 
@@ -481,7 +483,7 @@ namespace TN_CSDLPT_NOV09.views
             }
 
             int xemChiTiet = -99;
-            if (Program.mGroup == "GIANGVIEN")
+            if (Program.mGroup == "GIANGVIEN" || Program.mGroup == "COSO")
             {
                 xemChiTiet = (int)MessageBox.Show("Kết quả thi của bạn là: " + tinhDiem(), "Thông báo kết quả", MessageBoxButtons.OKCancel);
             }
@@ -504,6 +506,7 @@ namespace TN_CSDLPT_NOV09.views
             buttonTimMonThi.Enabled = true;
             while (flowLayoutPanelCauHoiThi.Controls.Count > 0) flowLayoutPanelCauHoiThi.Controls.RemoveAt(0);
             flowLayoutPanelCauHoiThi.Enabled = false;
+            listCauHoi.Clear();
             labelTimer.Caption = "00:00:00";
 
             this.Dispose();
