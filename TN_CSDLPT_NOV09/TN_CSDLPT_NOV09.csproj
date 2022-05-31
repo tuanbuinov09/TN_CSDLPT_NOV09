@@ -192,12 +192,6 @@
     <Compile Include="XtraReportDSDangKyThiTracNghiem.Designer.cs">
       <DependentUpon>XtraReportDSDangKyThiTracNghiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="XtraReportKetQuaGVThiThu.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReportKetQuaGVThiThu.Designer.cs">
-      <DependentUpon>XtraReportKetQuaGVThiThu.cs</DependentUpon>
-    </Compile>
     <Compile Include="XtraReportKetQuaThi.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -263,9 +257,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="XtraReportDSDangKyThiTracNghiem.resx">
       <DependentUpon>XtraReportDSDangKyThiTracNghiem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraReportKetQuaGVThiThu.resx">
-      <DependentUpon>XtraReportKetQuaGVThiThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XtraReportKetQuaThi.resx">
       <DependentUpon>XtraReportKetQuaThi.cs</DependentUpon>
