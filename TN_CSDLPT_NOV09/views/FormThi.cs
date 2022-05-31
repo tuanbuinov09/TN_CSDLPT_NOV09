@@ -418,7 +418,7 @@ namespace TN_CSDLPT_NOV09.views
             XtraReportKetQuaThi xtraReportKQThi = new XtraReportKetQuaThi(Program.maSinhVien.ToString().Trim()
                                                                         , comboBoxMaMonHoc.SelectedValue.ToString().Trim()
                                                                         , Decimal.ToInt16(spinEditLan.Value));
-            xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN: " + this.comboBoxMaMonHoc.Text.Trim() + "'\n SINH VIÊN: " + Program.mHoTen;
+            xtraReportKQThi.labelTieuDe.Text = "KẾT QUẢ THI MÔN: " + this.comboBoxMaMonHoc.Text.Trim() + "'\nSINH VIÊN: " + Program.mHoTen;
             xtraReportKQThi.xrLabelHoTen.Text = Program.mHoTen;
             xtraReportKQThi.xrLabelLop.Text = Program.tenLop;
             xtraReportKQThi.xrLabelNgayThi.Text = DateTime.Now.ToString("dd/MM/yyyy");

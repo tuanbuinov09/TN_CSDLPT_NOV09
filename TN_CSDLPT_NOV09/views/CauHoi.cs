@@ -13,8 +13,7 @@ namespace TN_CSDLPT_NOV09.views
 {
     public partial class CauHoi : DevExpress.XtraEditors.XtraUserControl
     {
-        //private int idBaiThi;
-        private int idde;
+        private int idDe;
         private int cauSo;
         private string ndCauHoi;
         private string cauA;
@@ -28,8 +27,8 @@ namespace TN_CSDLPT_NOV09.views
         [Category("Custom Props")]
         public int IDDe
         {
-            get { return idde; }
-            set { idde = value; }
+            get { return idDe; }
+            set { idDe = value; }
         }
 
         [Category("Custom Props")]
