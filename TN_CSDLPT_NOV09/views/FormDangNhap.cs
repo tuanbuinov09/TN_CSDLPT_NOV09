@@ -64,7 +64,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             catch (Exception e)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và password.\n " + e.Message, "", MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và password.","", MessageBoxButtons.OK);
             }
             return 0;
         }
