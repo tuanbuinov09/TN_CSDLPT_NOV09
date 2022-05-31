@@ -58,6 +58,8 @@ namespace TN_CSDLPT_NOV09
             }
             if (Program.mGroup == "GIANGVIEN")
             {
+                this.ribbonPageQuanLy.Visible = false;
+                this.ribbonPageGroupGiaoVien_DangKy.Visible = false;
                 this.ribbonPageGroupXemDanhSachDangKyThi.Visible = false;
                 this.ribbonPageGroupDangKy.Visible = false;
 

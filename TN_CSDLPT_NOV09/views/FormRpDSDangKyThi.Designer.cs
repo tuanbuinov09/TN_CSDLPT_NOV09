@@ -39,6 +39,7 @@
             this.dateEditDenNgay = new DevExpress.XtraEditors.DateEdit();
             this.dateEditTuNgay = new DevExpress.XtraEditors.DateEdit();
             this.buttonPreview = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             mALOPLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -71,6 +72,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.label2);
             this.panelControl1.Controls.Add(this.buttonThoat);
             this.panelControl1.Controls.Add(this.comboBoxCoSo);
             this.panelControl1.Controls.Add(this.label1);
@@ -99,6 +101,7 @@
             // comboBoxCoSo
             // 
             this.comboBoxCoSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCoSo.Enabled = false;
             this.comboBoxCoSo.FormattingEnabled = true;
             this.comboBoxCoSo.Location = new System.Drawing.Point(115, 16);
             this.comboBoxCoSo.Name = "comboBoxCoSo";
@@ -162,6 +165,15 @@
             this.buttonPreview.UseVisualStyleBackColor = true;
             this.buttonPreview.Click += new System.EventHandler(this.buttonPreview_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(331, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Bạn sẽ xem báo cáo của 2 cơ sở";
+            // 
             // FormRpDSDangKyThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,5 +208,6 @@
         private DevExpress.XtraEditors.DateEdit dateEditDenNgay;
         private DevExpress.XtraEditors.DateEdit dateEditTuNgay;
         private System.Windows.Forms.Button buttonPreview;
+        private System.Windows.Forms.Label label2;
     }
 }

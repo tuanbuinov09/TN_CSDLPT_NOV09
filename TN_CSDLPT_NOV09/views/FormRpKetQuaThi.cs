@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using System.Data.SqlClient;
 
 namespace TN_CSDLPT_NOV09.views
 {
@@ -37,6 +38,9 @@ namespace TN_CSDLPT_NOV09.views
             this.tableAdapterSinhVien.Connection.ConnectionString = Program.connstr;
             this.tableAdapterSinhVien.Fill(this.TN_CSDLPT_DataSet.SINHVIEN);
 
+            laycomboboxSinhVien("SELECT MASV, HOTEN = CONCAT(TRIM(HO), ' ', TRIM(TEN), ' / ', TRIM(MALOP)) FROM SINHVIEN");
+            laycomboboxmonhoc("SELECT MAMH, TENMH = CONCAT(TRIM(MAMH), ' - ', TRIM(TENMH)) FROM MONHOC");
+
             if (Program.mGroup == "SINHVIEN")
             {
                 comboBoxMaSinhVien.SelectedValue = Program.maSinhVien.Trim();
@@ -61,7 +65,43 @@ namespace TN_CSDLPT_NOV09.views
 
             }
         }
+        void laycomboboxmonhoc(string cmd)
+        {
+            //SqlCommand cmd = new SqlCommand();
+            //cmd.Connection = Program.conn; //database connection
+            //cmd.CommandText = "SP_LAY_DS_MONHOC"; //  Stored procedure name
+            //cmd.CommandType = CommandType.StoredProcedure; // set it to stored proc
 
+            DataTable dt = new DataTable();
+            if (Program.conn.State == ConnectionState.Closed)
+            {
+                Program.conn.Open();
+            }
+            SqlDataAdapter sda = new SqlDataAdapter(cmd, Program.conn);
+            sda.Fill(dt);
+            Program.conn.Close();
+            BindingSource bdsMonHoc = new BindingSource();
+            bdsMonHoc.DataSource = dt;
+            comboBoxMaMonHoc.DataSource = bdsMonHoc;
+            comboBoxMaMonHoc.DisplayMember = "TENMH";
+            comboBoxMaMonHoc.ValueMember = "MAMH";
+        }
+        void laycomboboxSinhVien(string cmd)
+        {
+            DataTable dt = new DataTable();
+            if (Program.conn.State == ConnectionState.Closed)
+            {
+                Program.conn.Open();
+            }
+            SqlDataAdapter sda = new SqlDataAdapter(cmd, Program.conn);
+            sda.Fill(dt);
+            Program.conn.Close();
+            BindingSource bdsMonHoc = new BindingSource();
+            bdsMonHoc.DataSource = dt;
+            comboBoxMaSinhVien.DataSource = bdsMonHoc;
+            comboBoxMaSinhVien.DisplayMember = "HOTEN";
+            comboBoxMaSinhVien.ValueMember = "MASV";
+        }
         private void comboBoxCoSo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxCoSo.SelectedValue.ToString() == "System.Data.DataRowView")
@@ -95,7 +135,8 @@ namespace TN_CSDLPT_NOV09.views
                 //vif môn học nhân bản nên khi chuyển cơ sở dữ liệu trong combobox cũng k thay đổi
                 //this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
                 //this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
-
+                laycomboboxSinhVien("SELECT MASV, HOTEN = CONCAT(TRIM(HO), ' ', TRIM(TEN), ' / ', TRIM(MALOP)) FROM SINHVIEN");
+                laycomboboxmonhoc("SELECT MAMH, TENMH = CONCAT(TRIM(MAMH), ' - ', TRIM(TENMH)) FROM MONHOC");
                 //Dùng sau
                 //maCoSo = ((DataRowView)bindingSourceMonHoc[0])["MACS"].ToString();
             }

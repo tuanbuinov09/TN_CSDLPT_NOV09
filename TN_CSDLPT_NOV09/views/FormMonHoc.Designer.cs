@@ -89,19 +89,19 @@
             mAMHLabel.AutoSize = true;
             mAMHLabel.Location = new System.Drawing.Point(38, 53);
             mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(41, 13);
+            mAMHLabel.Size = new System.Drawing.Size(68, 13);
             mAMHLabel.TabIndex = 0;
-            mAMHLabel.Text = "MAMH:";
+            mAMHLabel.Text = "Mã môn học:";
             mAMHLabel.Click += new System.EventHandler(this.mAMHLabel_Click);
             // 
             // tENMHLabel
             // 
             tENMHLabel.AutoSize = true;
-            tENMHLabel.Location = new System.Drawing.Point(452, 53);
+            tENMHLabel.Location = new System.Drawing.Point(38, 102);
             tENMHLabel.Name = "tENMHLabel";
-            tENMHLabel.Size = new System.Drawing.Size(45, 13);
+            tENMHLabel.Size = new System.Drawing.Size(72, 13);
             tENMHLabel.TabIndex = 2;
-            tENMHLabel.Text = "TENMH:";
+            tENMHLabel.Text = "Tên môn học:";
             // 
             // barDockControlTop
             // 
@@ -376,7 +376,7 @@
             // textBoxTenMonHoc
             // 
             this.textBoxTenMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceMonHoc, "TENMH", true));
-            this.textBoxTenMonHoc.Location = new System.Drawing.Point(503, 50);
+            this.textBoxTenMonHoc.Location = new System.Drawing.Point(128, 99);
             this.textBoxTenMonHoc.Name = "textBoxTenMonHoc";
             this.textBoxTenMonHoc.Size = new System.Drawing.Size(214, 21);
             this.textBoxTenMonHoc.TabIndex = 3;
@@ -384,7 +384,7 @@
             // textBoxMaMonHoc
             // 
             this.textBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceMonHoc, "MAMH", true));
-            this.textBoxMaMonHoc.Location = new System.Drawing.Point(89, 50);
+            this.textBoxMaMonHoc.Location = new System.Drawing.Point(128, 50);
             this.textBoxMaMonHoc.Name = "textBoxMaMonHoc";
             this.textBoxMaMonHoc.Size = new System.Drawing.Size(214, 21);
             this.textBoxMaMonHoc.TabIndex = 1;

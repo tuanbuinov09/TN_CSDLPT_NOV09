@@ -47,7 +47,6 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
             comboBoxCoSo.DisplayMember = "TENCS";
             comboBoxCoSo.ValueMember = "TENSERVER";
-
         }
 
         private int KetNoiCSDLGoc()
@@ -64,7 +63,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             catch (Exception e)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và password.","", MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại username và password.","", MessageBoxButtons.OK);
             }
             return 0;
         }
@@ -148,8 +147,7 @@ namespace TN_CSDLPT_NOV09.views
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Đăng nhập không thành công, xem lại mã sinh viên và mật khẩu:" 
-                        + ex.Message,"Lỗi", MessageBoxButtons.OK);
+                    MessageBox.Show("Đăng nhập không thành công, xem lại mã sinh viên và mật khẩu:" ,"Lỗi", MessageBoxButtons.OK);
                     return;
                 }
 

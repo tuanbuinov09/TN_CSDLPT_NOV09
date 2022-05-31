@@ -135,7 +135,7 @@
             this.comboBoxMaMonHoc.FormattingEnabled = true;
             this.comboBoxMaMonHoc.Location = new System.Drawing.Point(112, 72);
             this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
-            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(226, 21);
             this.comboBoxMaMonHoc.TabIndex = 4;
             this.comboBoxMaMonHoc.ValueMember = "MAMH";
             // 
@@ -172,7 +172,7 @@
             this.comboBoxCoSo.FormattingEnabled = true;
             this.comboBoxCoSo.Location = new System.Drawing.Point(112, 16);
             this.comboBoxCoSo.Name = "comboBoxCoSo";
-            this.comboBoxCoSo.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxCoSo.Size = new System.Drawing.Size(226, 21);
             this.comboBoxCoSo.TabIndex = 1;
             this.comboBoxCoSo.SelectedIndexChanged += new System.EventHandler(this.comboBoxCoSo_SelectedIndexChanged);
             // 
@@ -206,14 +206,14 @@
             0,
             0,
             0});
-            this.spinEditLan.Size = new System.Drawing.Size(190, 20);
+            this.spinEditLan.Size = new System.Drawing.Size(226, 20);
             this.spinEditLan.TabIndex = 22;
             // 
             // buttonPreview
             // 
             this.buttonPreview.Location = new System.Drawing.Point(112, 166);
             this.buttonPreview.Name = "buttonPreview";
-            this.buttonPreview.Size = new System.Drawing.Size(190, 23);
+            this.buttonPreview.Size = new System.Drawing.Size(226, 23);
             this.buttonPreview.TabIndex = 23;
             this.buttonPreview.Text = "Preview";
             this.buttonPreview.UseVisualStyleBackColor = true;
@@ -243,7 +243,7 @@
             this.comboBoxMaLop.FormattingEnabled = true;
             this.comboBoxMaLop.Location = new System.Drawing.Point(112, 34);
             this.comboBoxMaLop.Name = "comboBoxMaLop";
-            this.comboBoxMaLop.Size = new System.Drawing.Size(190, 21);
+            this.comboBoxMaLop.Size = new System.Drawing.Size(226, 21);
             this.comboBoxMaLop.TabIndex = 24;
             this.comboBoxMaLop.ValueMember = "MALOP";
             // 
