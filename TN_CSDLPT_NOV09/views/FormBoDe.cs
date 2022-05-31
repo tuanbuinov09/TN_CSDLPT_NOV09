@@ -56,14 +56,14 @@ namespace TN_CSDLPT_NOV09.views
 
             }
 
-            if (Program.mGroup == "TRUONG"||Program.mGroup=="COSO"|| Program.mGroup == "SINHVIEN")
+            if (Program.mGroup == "TRUONG"|| Program.mGroup == "SINHVIEN")
             {
 
                 barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled
                     = barButtonGhi.Enabled = barButtonPhucHoi.Enabled = barButtonHuy.Enabled = false;
 
             }
-            else// mGroup=="GIANGVIEN" chỉ có quyền giảng viên mới đc thao tác thêm xóa sửa bộ đề
+            else// mGroup=="GIANGVIEN", "COSO" chỉ có quyền giảng viên mới đc thao tác thêm xóa sửa bộ đề
             {
                 
                 barButtonThem.Enabled = barButtonSua.Enabled = barButtonXoa.Enabled

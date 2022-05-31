@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using System.Data.SqlClient;
 
 namespace TN_CSDLPT_NOV09.views
 {
@@ -29,6 +30,9 @@ namespace TN_CSDLPT_NOV09.views
             this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
             this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
 
+            laycomboboxLop("SELECT MALOP, TENLOP = CONCAT(TRIM(MALOP), ' - ', TRIM(TENLOP)) FROM LOP");
+            laycomboboxmonhoc("SELECT MAMH, TENMH = CONCAT(TRIM(MAMH), ' - ', TRIM(TENMH)) FROM MONHOC");
+
             //load dữ liệu vào combobox cơ sở
             comboBoxCoSo.DataSource = Program.bds_DanhSachPhanManh;
             comboBoxCoSo.DisplayMember = "TENCS";
@@ -44,7 +48,43 @@ namespace TN_CSDLPT_NOV09.views
                 comboBoxCoSo.Enabled = false;
             }
         }
+        void laycomboboxmonhoc(string cmd)
+        {
+            //SqlCommand cmd = new SqlCommand();
+            //cmd.Connection = Program.conn; //database connection
+            //cmd.CommandText = "SP_LAY_DS_MONHOC"; //  Stored procedure name
+            //cmd.CommandType = CommandType.StoredProcedure; // set it to stored proc
 
+            DataTable dt = new DataTable();
+            if (Program.conn.State == ConnectionState.Closed)
+            {
+                Program.conn.Open();
+            }
+            SqlDataAdapter sda = new SqlDataAdapter(cmd, Program.conn);
+            sda.Fill(dt);
+            Program.conn.Close();
+            BindingSource bdsMonHoc = new BindingSource();
+            bdsMonHoc.DataSource = dt;
+            comboBoxMaMonHoc.DataSource = bdsMonHoc;
+            comboBoxMaMonHoc.DisplayMember = "TENMH";
+            comboBoxMaMonHoc.ValueMember = "MAMH";
+        }
+        void laycomboboxLop(string cmd)
+        {
+            DataTable dt = new DataTable();
+            if (Program.conn.State == ConnectionState.Closed)
+            {
+                Program.conn.Open();
+            }
+            SqlDataAdapter sda = new SqlDataAdapter(cmd, Program.conn);
+            sda.Fill(dt);
+            Program.conn.Close();
+            BindingSource bdsMonHoc = new BindingSource();
+            bdsMonHoc.DataSource = dt;
+            comboBoxMaLop.DataSource = bdsMonHoc;
+            comboBoxMaLop.DisplayMember = "TENLOP";
+            comboBoxMaLop.ValueMember = "MALOP";
+        }
         private void comboBoxCoSo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxCoSo.SelectedValue.ToString() == "System.Data.DataRowView")
@@ -79,6 +119,8 @@ namespace TN_CSDLPT_NOV09.views
                 this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
                 this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
 
+                laycomboboxLop("SELECT MALOP, TENLOP = CONCAT(TRIM(MALOP), ' - ', TRIM(TENLOP)) FROM LOP");
+                laycomboboxmonhoc("SELECT MAMH, TENMH = CONCAT(TRIM(MAMH), ' - ', TRIM(TENMH)) FROM MONHOC");
             }
         }
 
@@ -93,8 +135,8 @@ namespace TN_CSDLPT_NOV09.views
             String tenLop = "";
             String maLop = "";
 
-            String strLenh = "EXEC SP_REPORT_BANGDIEM_MONHOC_THONGTIN_LOPMON '" + comboBoxMaLop.SelectedValue.ToString() + "', '" +
-            comboBoxMaMonHoc.SelectedValue.ToString() + "', " + spinEditLan.Value;
+            String strLenh = "EXEC SP_REPORT_BANGDIEM_MONHOC_THONGTIN_LOPMON '" + comboBoxMaLop.SelectedValue.ToString().Trim() + "', '" +
+            comboBoxMaMonHoc.SelectedValue.ToString().Trim() + "', " + spinEditLan.Value;
             
             try
             {

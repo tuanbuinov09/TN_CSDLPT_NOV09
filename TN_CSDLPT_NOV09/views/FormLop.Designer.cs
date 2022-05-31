@@ -88,27 +88,27 @@
             mALOPLabel.AutoSize = true;
             mALOPLabel.Location = new System.Drawing.Point(30, 28);
             mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(45, 13);
+            mALOPLabel.Size = new System.Drawing.Size(42, 13);
             mALOPLabel.TabIndex = 0;
-            mALOPLabel.Text = "MALOP:";
+            mALOPLabel.Text = "Mã lớp:";
             // 
             // tENLOPLabel
             // 
             tENLOPLabel.AutoSize = true;
             tENLOPLabel.Location = new System.Drawing.Point(30, 73);
             tENLOPLabel.Name = "tENLOPLabel";
-            tENLOPLabel.Size = new System.Drawing.Size(49, 13);
+            tENLOPLabel.Size = new System.Drawing.Size(46, 13);
             tENLOPLabel.TabIndex = 2;
-            tENLOPLabel.Text = "TENLOP:";
+            tENLOPLabel.Text = "Tên lớp:";
             // 
             // mAKHLabel
             // 
             mAKHLabel.AutoSize = true;
             mAKHLabel.Location = new System.Drawing.Point(30, 117);
             mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(39, 13);
+            mAKHLabel.Size = new System.Drawing.Size(51, 13);
             mAKHLabel.TabIndex = 4;
-            mAKHLabel.Text = "MAKH:";
+            mAKHLabel.Text = "Mã khoa:";
             // 
             // barManager1
             // 

@@ -96,27 +96,27 @@
             mAGVLabel.AutoSize = true;
             mAGVLabel.Location = new System.Drawing.Point(32, 32);
             mAGVLabel.Name = "mAGVLabel";
-            mAGVLabel.Size = new System.Drawing.Size(39, 13);
+            mAGVLabel.Size = new System.Drawing.Size(71, 13);
             mAGVLabel.TabIndex = 0;
-            mAGVLabel.Text = "MAGV:";
+            mAGVLabel.Text = "Mã giáo viên:";
             // 
             // hOLabel
             // 
             hOLabel.AutoSize = true;
             hOLabel.Location = new System.Drawing.Point(344, 32);
             hOLabel.Name = "hOLabel";
-            hOLabel.Size = new System.Drawing.Size(26, 13);
+            hOLabel.Size = new System.Drawing.Size(24, 13);
             hOLabel.TabIndex = 2;
-            hOLabel.Text = "HO:";
+            hOLabel.Text = "Họ:";
             // 
             // tENLabel
             // 
             tENLabel.AutoSize = true;
             tENLabel.Location = new System.Drawing.Point(546, 32);
             tENLabel.Name = "tENLabel";
-            tENLabel.Size = new System.Drawing.Size(30, 13);
+            tENLabel.Size = new System.Drawing.Size(29, 13);
             tENLabel.TabIndex = 4;
-            tENLabel.Text = "TEN:";
+            tENLabel.Text = "Tên:";
             tENLabel.Click += new System.EventHandler(this.tENLabel_Click);
             // 
             // dIACHILabel
@@ -124,18 +124,18 @@
             dIACHILabel.AutoSize = true;
             dIACHILabel.Location = new System.Drawing.Point(344, 79);
             dIACHILabel.Name = "dIACHILabel";
-            dIACHILabel.Size = new System.Drawing.Size(47, 13);
+            dIACHILabel.Size = new System.Drawing.Size(43, 13);
             dIACHILabel.TabIndex = 6;
-            dIACHILabel.Text = "DIACHI:";
+            dIACHILabel.Text = "Địa chỉ:";
             // 
             // mAKHLabel
             // 
             mAKHLabel.AutoSize = true;
             mAKHLabel.Location = new System.Drawing.Point(32, 79);
             mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(39, 13);
+            mAKHLabel.Size = new System.Drawing.Size(51, 13);
             mAKHLabel.TabIndex = 8;
-            mAKHLabel.Text = "MAKH:";
+            mAKHLabel.Text = "Mã khoa:";
             // 
             // barDockControl1
             // 
@@ -396,7 +396,7 @@
             // 
             this.comboBoxMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien, "MAKH", true));
             this.comboBoxMaKhoa.FormattingEnabled = true;
-            this.comboBoxMaKhoa.Location = new System.Drawing.Point(90, 76);
+            this.comboBoxMaKhoa.Location = new System.Drawing.Point(118, 76);
             this.comboBoxMaKhoa.Name = "comboBoxMaKhoa";
             this.comboBoxMaKhoa.Size = new System.Drawing.Size(190, 21);
             this.comboBoxMaKhoa.TabIndex = 9;
@@ -430,7 +430,7 @@
             // textBoxMaGiaoVien
             // 
             this.textBoxMaGiaoVien.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceGiaoVien, "MAGV", true));
-            this.textBoxMaGiaoVien.Location = new System.Drawing.Point(90, 29);
+            this.textBoxMaGiaoVien.Location = new System.Drawing.Point(118, 29);
             this.textBoxMaGiaoVien.Name = "textBoxMaGiaoVien";
             this.textBoxMaGiaoVien.Size = new System.Drawing.Size(190, 21);
             this.textBoxMaGiaoVien.TabIndex = 1;

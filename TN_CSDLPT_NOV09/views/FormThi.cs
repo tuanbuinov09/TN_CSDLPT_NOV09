@@ -78,11 +78,32 @@ namespace TN_CSDLPT_NOV09.views
             this.tableAdapterMonHoc.Connection.ConnectionString = Program.connstr;
             this.tableAdapterMonHoc.Fill(this.TN_CSDLPT_DataSet.MONHOC);
 
+            laycomboboxmonhoc("SELECT MAMH, TENMH = CONCAT(TRIM(MAMH), ' - ', TRIM(TENMH)) FROM MONHOC");
             spinEditSoCauThi.Enabled = spinEditThoiGian.Enabled = comboBoxTrinhDo.Enabled;
             barButtonNopBai.Enabled = buttonBatDauThi.Enabled = false;
             dateEditNgayThi.DateTime = DateTime.Now;
         }
+        void laycomboboxmonhoc(string cmd)
+        {
+            //SqlCommand cmd = new SqlCommand();
+            //cmd.Connection = Program.conn; //database connection
+            //cmd.CommandText = "SP_LAY_DS_MONHOC"; //  Stored procedure name
+            //cmd.CommandType = CommandType.StoredProcedure; // set it to stored proc
 
+            DataTable dt = new DataTable();
+            if (Program.conn.State == ConnectionState.Closed)
+            {
+                Program.conn.Open();
+            }
+            SqlDataAdapter sda = new SqlDataAdapter(cmd, Program.conn);
+            sda.Fill(dt);
+            Program.conn.Close();
+            BindingSource bdsMonHoc = new BindingSource();
+            bdsMonHoc.DataSource = dt;
+            comboBoxMaMonHoc.DataSource = bdsMonHoc;
+            comboBoxMaMonHoc.DisplayMember = "TENMH";
+            comboBoxMaMonHoc.ValueMember = "MAMH";
+        }
         private String kiemTraChuaChonDapAn()
         {
             String msg = "Các câu chưa chọn đáp án: ";
@@ -287,7 +308,7 @@ namespace TN_CSDLPT_NOV09.views
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không tìm thấy");
+                MessageBox.Show("Không tìm thấy môn thi, hãy chắc rằng lớp của bạn đã được đăng ký thi môn này.");
                 buttonBatDauThi.Enabled = false;
                 Program.myReader.Close();
                 Program.conn.Close();
@@ -349,7 +370,7 @@ namespace TN_CSDLPT_NOV09.views
 
                 int thoiGianGiay = Decimal.ToInt16(spinEditThoiGian.Value) * 60;
 
-                thoiGianGiay = 100; // de test
+                //thoiGianGiay = 100; // de test
 
                 h = thoiGianGiay / 3600;
                 thoiGianGiay = thoiGianGiay - h * 3600;
@@ -398,6 +419,12 @@ namespace TN_CSDLPT_NOV09.views
             ReportPrintTool printTool = new ReportPrintTool(xtraReportKQThi);
             printTool.ShowPreviewDialog();
         }
+
+        private void comboBoxMaMonHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void barButtonNopBai_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
   

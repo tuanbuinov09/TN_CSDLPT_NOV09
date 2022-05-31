@@ -232,7 +232,7 @@
             this.buttonBatDauThi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBatDauThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBatDauThi.ForeColor = System.Drawing.Color.White;
-            this.buttonBatDauThi.Location = new System.Drawing.Point(186, 276);
+            this.buttonBatDauThi.Location = new System.Drawing.Point(199, 272);
             this.buttonBatDauThi.Name = "buttonBatDauThi";
             this.buttonBatDauThi.Size = new System.Drawing.Size(95, 23);
             this.buttonBatDauThi.TabIndex = 30;
@@ -246,7 +246,7 @@
             this.comboBoxTrinhDo.FormattingEnabled = true;
             this.comboBoxTrinhDo.Location = new System.Drawing.Point(121, 203);
             this.comboBoxTrinhDo.Name = "comboBoxTrinhDo";
-            this.comboBoxTrinhDo.Size = new System.Drawing.Size(160, 21);
+            this.comboBoxTrinhDo.Size = new System.Drawing.Size(173, 21);
             this.comboBoxTrinhDo.TabIndex = 35;
             // 
             // spinEditThoiGian
@@ -276,7 +276,7 @@
             0,
             0,
             0});
-            this.spinEditThoiGian.Size = new System.Drawing.Size(160, 20);
+            this.spinEditThoiGian.Size = new System.Drawing.Size(173, 20);
             this.spinEditThoiGian.TabIndex = 33;
             // 
             // spinEditSoCauThi
@@ -306,7 +306,7 @@
             0,
             0,
             0});
-            this.spinEditSoCauThi.Size = new System.Drawing.Size(160, 20);
+            this.spinEditSoCauThi.Size = new System.Drawing.Size(173, 20);
             this.spinEditSoCauThi.TabIndex = 32;
             // 
             // buttonTimMonThi
@@ -315,7 +315,7 @@
             this.buttonTimMonThi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTimMonThi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTimMonThi.ForeColor = System.Drawing.Color.White;
-            this.buttonTimMonThi.Location = new System.Drawing.Point(186, 129);
+            this.buttonTimMonThi.Location = new System.Drawing.Point(199, 129);
             this.buttonTimMonThi.Name = "buttonTimMonThi";
             this.buttonTimMonThi.Size = new System.Drawing.Size(95, 23);
             this.buttonTimMonThi.TabIndex = 23;
@@ -344,21 +344,22 @@
             0,
             0,
             0});
-            this.spinEditLan.Size = new System.Drawing.Size(160, 20);
+            this.spinEditLan.Size = new System.Drawing.Size(173, 20);
             this.spinEditLan.TabIndex = 22;
             // 
             // comboBoxMaMonHoc
             // 
             this.comboBoxMaMonHoc.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceMonHoc, "MAMH", true));
             this.comboBoxMaMonHoc.DataSource = this.bindingSourceMonHoc;
-            this.comboBoxMaMonHoc.DisplayMember = "TENMH";
+            this.comboBoxMaMonHoc.DisplayMember = "MAMH";
             this.comboBoxMaMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMaMonHoc.FormattingEnabled = true;
             this.comboBoxMaMonHoc.Location = new System.Drawing.Point(121, 20);
             this.comboBoxMaMonHoc.Name = "comboBoxMaMonHoc";
-            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(160, 21);
+            this.comboBoxMaMonHoc.Size = new System.Drawing.Size(173, 21);
             this.comboBoxMaMonHoc.TabIndex = 1;
             this.comboBoxMaMonHoc.ValueMember = "MAMH";
+            this.comboBoxMaMonHoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxMaMonHoc_SelectedIndexChanged);
             // 
             // dateEditNgayThi
             // 
@@ -369,7 +370,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEditNgayThi.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEditNgayThi.Size = new System.Drawing.Size(160, 20);
+            this.dateEditNgayThi.Size = new System.Drawing.Size(173, 20);
             this.dateEditNgayThi.TabIndex = 3;
             // 
             // panelControl2
@@ -472,10 +473,10 @@
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.Location = new System.Drawing.Point(11, 11);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(164, 20);
+            this.labelTitle.Size = new System.Drawing.Size(154, 18);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "Thông tin sinh viên:";
             // 

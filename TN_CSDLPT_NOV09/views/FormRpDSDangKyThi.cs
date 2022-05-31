@@ -54,10 +54,10 @@ namespace TN_CSDLPT_NOV09.views
             comboBoxCoSo.DisplayMember = "TENCS";
             comboBoxCoSo.ValueMember = "TENSERVER";
             comboBoxCoSo.SelectedIndex = Program.indexCoSo;
-            //chỉ trường mới có quyền xem trên cơ sở khác
             if (Program.mGroup == "TRUONG")
             {
-                comboBoxCoSo.Enabled = true;
+                //chỉ trường mới có quyền xem trên cơ sở khác, nhưng ở đây false luôn vì báo cáo cả 2
+                comboBoxCoSo.Enabled = false;
             }
             else
             {

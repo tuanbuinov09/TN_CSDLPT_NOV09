@@ -297,7 +297,7 @@ namespace TN_CSDLPT_NOV09.views
                 textBoxMatKhau.Focus();
                 return;
             }
-            if (this.dateEditNgaySinh.DateTime.Year==DateTime.Now.Year)
+            if (this.dateEditNgaySinh.DateTime.Year>=DateTime.Now.Year)
             {
                 MessageBox.Show("Vui lòng chọn ngày sinh hợp lệ", "", MessageBoxButtons.OK);
                 this.dateEditNgaySinh.Focus();

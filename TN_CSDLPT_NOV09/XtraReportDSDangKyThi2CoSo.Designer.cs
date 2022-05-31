@@ -74,8 +74,6 @@ namespace TN_CSDLPT_NOV09
             this.tableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell15 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.GroupFooter1 = new DevExpress.XtraReports.UI.GroupFooterBand();
-            this.label2 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table3)).BeginInit();
@@ -242,7 +240,6 @@ namespace TN_CSDLPT_NOV09
             new DevExpress.XtraReports.UI.GroupField("TENCS", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
             this.GroupHeader1.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
             this.GroupHeader1.HeightF = 27F;
-            this.GroupHeader1.Level = 1;
             this.GroupHeader1.Name = "GroupHeader1";
             // 
             // table1
@@ -302,7 +299,7 @@ namespace TN_CSDLPT_NOV09
             this.table2});
             this.GroupHeader2.GroupUnion = DevExpress.XtraReports.UI.GroupUnion.WithFirstDetail;
             this.GroupHeader2.HeightF = 28F;
-            this.GroupHeader2.Level = 2;
+            this.GroupHeader2.Level = 1;
             this.GroupHeader2.Name = "GroupHeader2";
             // 
             // table2
@@ -425,6 +422,8 @@ namespace TN_CSDLPT_NOV09
             this.table3});
             this.Detail.HeightF = 25F;
             this.Detail.Name = "Detail";
+            this.Detail.SortFields.AddRange(new DevExpress.XtraReports.UI.GroupField[] {
+            new DevExpress.XtraReports.UI.GroupField("NGAYTHI", DevExpress.XtraReports.UI.XRColumnSortOrder.Ascending)});
             // 
             // table3
             // 
@@ -522,6 +521,7 @@ namespace TN_CSDLPT_NOV09
             this.tableCell14.StylePriority.UseBorderColor = false;
             this.tableCell14.StylePriority.UseBorders = false;
             this.tableCell14.StylePriority.UseBorderWidth = false;
+            this.tableCell14.TextFormatString = "{0}";
             this.tableCell14.Weight = 0.12948110749736075D;
             // 
             // tableCell15
@@ -555,23 +555,6 @@ namespace TN_CSDLPT_NOV09
             this.tableCell16.StylePriority.UseBorderWidth = false;
             this.tableCell16.Weight = 0.1034806537063884D;
             // 
-            // GroupFooter1
-            // 
-            this.GroupFooter1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.label2});
-            this.GroupFooter1.GroupUnion = DevExpress.XtraReports.UI.GroupFooterUnion.WithLastDetail;
-            this.GroupFooter1.HeightF = 6F;
-            this.GroupFooter1.Name = "GroupFooter1";
-            // 
-            // label2
-            // 
-            this.label2.Borders = DevExpress.XtraPrinting.BorderSide.None;
-            this.label2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.label2.Name = "label2";
-            this.label2.SizeF = new System.Drawing.SizeF(650F, 2.08F);
-            this.label2.StyleName = "GroupFooterBackground3";
-            this.label2.StylePriority.UseBorders = false;
-            // 
             // XtraReportDSDangKyThi2CoSo
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -580,8 +563,7 @@ namespace TN_CSDLPT_NOV09
             this.ReportHeader,
             this.GroupHeader1,
             this.GroupHeader2,
-            this.Detail,
-            this.GroupFooter1});
+            this.Detail});
             this.Borders = DevExpress.XtraPrinting.BorderSide.Left;
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
@@ -646,8 +628,6 @@ namespace TN_CSDLPT_NOV09
         private DevExpress.XtraReports.UI.XRTableCell tableCell14;
         private DevExpress.XtraReports.UI.XRTableCell tableCell15;
         private DevExpress.XtraReports.UI.XRTableCell tableCell16;
-        private DevExpress.XtraReports.UI.GroupFooterBand GroupFooter1;
-        private DevExpress.XtraReports.UI.XRLabel label2;
         public DevExpress.XtraReports.UI.XRLabel labelTieuDe;
     }
 }
