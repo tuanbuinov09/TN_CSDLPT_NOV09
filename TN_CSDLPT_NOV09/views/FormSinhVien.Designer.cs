@@ -102,63 +102,63 @@
             mASVLabel.AutoSize = true;
             mASVLabel.Location = new System.Drawing.Point(34, 36);
             mASVLabel.Name = "mASVLabel";
-            mASVLabel.Size = new System.Drawing.Size(38, 13);
+            mASVLabel.Size = new System.Drawing.Size(70, 13);
             mASVLabel.TabIndex = 0;
-            mASVLabel.Text = "MASV:";
+            mASVLabel.Text = "Mã sinh viên:";
             // 
             // hOLabel
             // 
             hOLabel.AutoSize = true;
             hOLabel.Location = new System.Drawing.Point(34, 70);
             hOLabel.Name = "hOLabel";
-            hOLabel.Size = new System.Drawing.Size(26, 13);
+            hOLabel.Size = new System.Drawing.Size(24, 13);
             hOLabel.TabIndex = 2;
-            hOLabel.Text = "HO:";
+            hOLabel.Text = "Họ:";
             // 
             // tENLabel
             // 
             tENLabel.AutoSize = true;
-            tENLabel.Location = new System.Drawing.Point(228, 70);
+            tENLabel.Location = new System.Drawing.Point(248, 70);
             tENLabel.Name = "tENLabel";
-            tENLabel.Size = new System.Drawing.Size(30, 13);
+            tENLabel.Size = new System.Drawing.Size(29, 13);
             tENLabel.TabIndex = 4;
-            tENLabel.Text = "TEN:";
+            tENLabel.Text = "Tên:";
             // 
             // nGAYSINHLabel
             // 
             nGAYSINHLabel.AutoSize = true;
             nGAYSINHLabel.Location = new System.Drawing.Point(489, 36);
             nGAYSINHLabel.Name = "nGAYSINHLabel";
-            nGAYSINHLabel.Size = new System.Drawing.Size(62, 13);
+            nGAYSINHLabel.Size = new System.Drawing.Size(58, 13);
             nGAYSINHLabel.TabIndex = 6;
-            nGAYSINHLabel.Text = "NGAYSINH:";
+            nGAYSINHLabel.Text = "Ngày sinh:";
             // 
             // dIACHILabel
             // 
             dIACHILabel.AutoSize = true;
             dIACHILabel.Location = new System.Drawing.Point(34, 110);
             dIACHILabel.Name = "dIACHILabel";
-            dIACHILabel.Size = new System.Drawing.Size(47, 13);
+            dIACHILabel.Size = new System.Drawing.Size(43, 13);
             dIACHILabel.TabIndex = 8;
-            dIACHILabel.Text = "DIACHI:";
+            dIACHILabel.Text = "Địa chỉ:";
             // 
             // mATKHAULabel
             // 
             mATKHAULabel.AutoSize = true;
             mATKHAULabel.Location = new System.Drawing.Point(489, 70);
             mATKHAULabel.Name = "mATKHAULabel";
-            mATKHAULabel.Size = new System.Drawing.Size(59, 13);
+            mATKHAULabel.Size = new System.Drawing.Size(55, 13);
             mATKHAULabel.TabIndex = 10;
-            mATKHAULabel.Text = "MATKHAU:";
+            mATKHAULabel.Text = "Mật khẩu:";
             // 
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
             mALOPLabel.Location = new System.Drawing.Point(489, 109);
             mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(45, 13);
+            mALOPLabel.Size = new System.Drawing.Size(42, 13);
             mALOPLabel.TabIndex = 12;
-            mALOPLabel.Text = "MALOP:";
+            mALOPLabel.Text = "Mã lớp:";
             // 
             // barManager1
             // 
@@ -430,7 +430,7 @@
             // textBoxDiaChi
             // 
             this.textBoxDiaChi.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "DIACHI", true));
-            this.textBoxDiaChi.Location = new System.Drawing.Point(90, 107);
+            this.textBoxDiaChi.Location = new System.Drawing.Point(110, 107);
             this.textBoxDiaChi.MenuManager = this.barManager1;
             this.textBoxDiaChi.Name = "textBoxDiaChi";
             this.textBoxDiaChi.Size = new System.Drawing.Size(274, 20);
@@ -453,7 +453,7 @@
             // textBoxTen
             // 
             this.textBoxTen.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "TEN", true));
-            this.textBoxTen.Location = new System.Drawing.Point(264, 67);
+            this.textBoxTen.Location = new System.Drawing.Point(284, 67);
             this.textBoxTen.MenuManager = this.barManager1;
             this.textBoxTen.Name = "textBoxTen";
             this.textBoxTen.Size = new System.Drawing.Size(100, 20);
@@ -462,7 +462,7 @@
             // textBoxHo
             // 
             this.textBoxHo.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "HO", true));
-            this.textBoxHo.Location = new System.Drawing.Point(90, 67);
+            this.textBoxHo.Location = new System.Drawing.Point(110, 67);
             this.textBoxHo.MenuManager = this.barManager1;
             this.textBoxHo.Name = "textBoxHo";
             this.textBoxHo.Size = new System.Drawing.Size(123, 20);
@@ -471,7 +471,7 @@
             // textBoxMaSinhVien
             // 
             this.textBoxMaSinhVien.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bindingSourceSinhVien, "MASV", true));
-            this.textBoxMaSinhVien.Location = new System.Drawing.Point(90, 33);
+            this.textBoxMaSinhVien.Location = new System.Drawing.Point(110, 33);
             this.textBoxMaSinhVien.MenuManager = this.barManager1;
             this.textBoxMaSinhVien.Name = "textBoxMaSinhVien";
             this.textBoxMaSinhVien.Size = new System.Drawing.Size(274, 20);
